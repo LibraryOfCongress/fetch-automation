@@ -1,0 +1,45 @@
+package ui_automation.pages;
+
+import org.openqa.selenium.WebDriver;
+import org.openqa.selenium.WebElement;
+import org.openqa.selenium.support.FindBy;
+import org.openqa.selenium.support.PageFactory;
+import ui_automation.utilities.Driver;
+
+import java.util.List;
+
+public class HomePage {
+    WebDriver driver;
+    public HomePage(){
+        driver= Driver.getInstance().getDriver();
+        PageFactory.initElements(driver, this);
+    }
+
+    @FindBy(xpath = "(//div[@class='q-focus-helper'])[1]" )
+    public WebElement header;
+
+    @FindBy(xpath = "(//div[.=' FETCH LOGO '])[2]")
+    public WebElement logo;
+
+    @FindBy(xpath = "//i[.='menu']")
+    public WebElement hamburgerMenu;
+
+    @FindBy(css = "[placeholder='Search']")
+    public WebElement searchBar;
+
+    @FindBy(xpath = "(//i[@role='presentation'])[2]")
+    public WebElement loginButton;
+
+    @FindBy(className = "q-list")
+    public WebElement sideNavigationMenu;
+
+    @FindBy(xpath = "//*[@class='demo']/li")
+    public WebElement barCodeField;
+
+    @FindBy(xpath="//*[@class='q-list']/a")
+    public List<WebElement> allNavigationTabs;
+
+
+
+
+}
