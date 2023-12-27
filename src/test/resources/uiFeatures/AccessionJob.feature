@@ -54,6 +54,72 @@ Feature: Accession Job Validation
        When user clicks on select Owner button
        Then user is able to choose any option from dropdown field
 
+       @FETCH-358 @FETCH-194 @trayed
+       Scenario: Verify Accession Process for Trayed Item
+         When user clicks Accession button on side navigation menu
+         And user hovers over Start Accession button
+         And user clicks Start Accession button
+         And user selects Trayed Accession
+         And user selects all required fields
+         And user clicks Submit button
+         And user clicks Scan Barcode
+         And user is able to edit Container Size and Media Type fields of the panel
+         And user is able to cancel edits
+         And user is able to edit Container Size and Media Type fields of the panel
+         And user is able to save edits
+         And Add Item button is enabled and clickable
+         And Pause Job button is enabled and clickable
+         And Complete Job button is enabled and clickable
+         When user checks an Item
+         Then Delete button is enabled
+         When user clicks Pause Job button
+         Then Add Item, Delete and Complete Job buttons are disabled
+
+
+  @FETCH-358 @FETCH-194 @search
+    Scenario: Verify dropdown search functionality
+    When user clicks Accession button on side navigation menu
+    And user hovers over Start Accession button
+    And user clicks Start Accession button
+    And user selects Trayed Accession
+    And user types "<search_query>" in the Owner dropdown search field
+    Then Owner dropdown should display options related to "<search_query>"
+    And user selects an option from the Owner dropdown
+    And the selected Owner option should be displayed on the page
+    And user types "<search_query>" in the Container Size dropdown search field
+    Then Container Size dropdown should display options related to "<search_query>"
+    And user selects an option from the Container Size dropdown
+    And the selected Container Size option should be displayed on the page
+    And user types "<search_query>" in the Media Type dropdown search field
+    Then Media Type dropdown should display options related to "<search_query>"
+    And user selects an option from the Media Type dropdown
+    And the selected Media Type option should be displayed on the page
+
+
+  @FETCH-364 @FETCH-184 @nontrayed
+  Scenario: Verify Accession Process for Non-Trayed Item
+    When user clicks Accession button on side navigation menu
+    And user hovers over Start Accession button
+    And user clicks Start Accession button
+    And user selects Non-Tray Accession
+    And user selects all required fields
+    And user clicks Submit button
+    And user clicks Scan Barcode
+    And user is able to edit Container Size and Media Type fields of the panel
+    And user is able to cancel edits
+    And user is able to edit Container Size and Media Type fields of the panel
+    And user is able to save edits
+    And Complete Job button is enabled and clickable
+    When user checks an Item
+    Then Delete button is enabled
+    And when user clicks Delete button
+    Then verify a modal confirming delete action appears
+    When user clicks Complete Job button
+    Then verify a modal confirming complete job action appears
+
+
+
+
 
 
 

@@ -66,13 +66,14 @@ Feature: Shelf Management Page Functionality Validation
        And cancel button is clickable
        And create shelf button is enabled and clickable
 
-       @FETCH-360 @FETCH-336 @run
+
+       @FETCH-360 @FETCH-336
        Scenario: User should be able to rearrange tables columns to their preferred order
          When user clicks on filter dropdown
          And user clicks Rearrange Columns toggle switch
          And user drags each menu item to their preferred order
          And user switches off the Rearrange Columns toggle
-         Then user verifies the updated order of the Shelf Table
+         Then user verifies the Shelf Table column names
 
 
 

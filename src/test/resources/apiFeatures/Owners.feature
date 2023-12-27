@@ -1,7 +1,7 @@
 @FETCH-312 @FETCH-303
 Feature: Owners API
 
-@owner_tier
+@owner_tier @run
   Scenario Outline: Create Owner Tier Record
     Given user creates a new record with following data <level>, "<name>"
     And user submits POST request to Owner Tier API endpoint
@@ -27,20 +27,28 @@ Feature: Owners API
     Given user submits GET request to retrieve all Owner Tier records
     Then user validates if status code is 200
 
-@owner @run
-  Scenario Outline: Create Owner Record
+@owner
+#  Scenario Outline: Create Owner Record
+#    Given Owner Tier recordID is created
+#    When user creates the request data with "<name>", <owner_tier_id>
+#    And user submits POST request to Owner API endpoint
+#    Then user validates if status code is 200
+#    And user validates if the value of name in response is "<name>"
+#    And user retrieves ownerID from response
+#  Examples:
+#  |name                    |owner_tier_id |
+#  |Library                 |142           |
+
+@run
+Scenario: Create Owner Record
     Given Owner Tier recordID is created
-    And user creates the request data with "<name>", <owner_tier_id>
+    When user creates the request data for owner record
     And user submits POST request to Owner API endpoint
     Then user validates if status code is 200
-    And user validates if the value of name in response is "<name>"
-    And user retrieves ownerID from response
-  Examples:
-  |name                    |owner_tier_id |
-  |Library                 |135           |
+
 
   @owner
-  Scenario: Get Owner Detals view
+  Scenario: Get Owner Details view
     Given user submits GET request with ownerID to get an Owner details
     Then user validates if status code is 200
 

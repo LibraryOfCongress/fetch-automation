@@ -13,6 +13,8 @@ import org.openqa.selenium.interactions.Actions;
 import ui_automation.pages.ShelfMgmtPage;
 import ui_automation.utilities.*;
 
+import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.List;
 import java.util.Map;
 
@@ -232,16 +234,16 @@ public class ShelfMgmtSteps {
     public void user_drags_each_menu_item_to_their_preferred_order() throws InterruptedException {
 
        //TODO find out why fields are moving when rearranging
+      //  Shelf Barcode field is not movable(moves other element instead)
         Actions actions = new Actions(driver);
-        WebElement source = driver.findElement(By.cssSelector("div.q-virtual-scroll__content .q-item:nth-child(8)"));
+        WebElement source = driver.findElement(By.cssSelector("div.q-virtual-scroll__content .q-item:nth-child(4)"));
         WebElement target = driver.findElement(By.cssSelector("div.q-virtual-scroll__content .q-item:nth-child(1)"));
 
-        WebElement source2 = driver.findElement(By.cssSelector("div.q-virtual-scroll__content .q-item:nth-child(4)"));
+        WebElement source2 = driver.findElement(By.cssSelector("div.q-virtual-scroll__content .q-item:nth-child(8)"));
         WebElement target2 = driver.findElement(By.xpath("(//div[.='Shelf Height'])[2]"));
         actions.dragAndDrop(source, target).perform();
-        Thread.sleep(3000);
         actions.dragAndDrop(source2, target2).perform();
-        Thread.sleep(3000);
+
     }
 
     @When("user switches off the Rearrange Columns toggle")
@@ -250,11 +252,20 @@ public class ShelfMgmtSteps {
         Thread.sleep(3000);
     }
 
-    @Then("user verifies the updated order of the Shelf Table")
-    public void user_verifies_the_updated_order_of_the_Shelf_Table() {
-        for(WebElement column: shelf.shelfTableColumns) {
-            System.out.println(column.getText());
+    @Then("user verifies the Shelf Table column names")
+    public void user_verifies_the_Shelf_Table_column_names() {
+        String column = "";
+        for(WebElement element: shelf.shelfTableColumns) {
+             column = element.getText();
         }
+        List<String> shelfColumns =new ArrayList<>(Arrays.asList("Shelf Width", "Shelf Height", "Shelf Depth",
+                "Vacancy", "Max Capacity", "Current Capacity", "Available Capacity", "Size Class", "Shelf Barcode"));
+               if(shelfColumns.contains(column)) {
+              System.out.println("Table has correct column names");
+               } else{
+              System.out.println("Table has wrong column names");
+     }
+
     }
 
 

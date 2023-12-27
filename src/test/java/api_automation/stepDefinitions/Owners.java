@@ -9,17 +9,13 @@ import api_automation.utils.TestBase;
 import io.cucumber.java.en.*;
 import io.restassured.http.ContentType;
 import io.restassured.response.Response;
-import io.restassured.RestAssured;
 
 
 import static io.restassured.RestAssured.given;
 import static org.junit.Assert.assertEquals;
 
-import io.restassured.response.ResponseBody;
 import org.junit.Assert;
 import org.junit.Before;
-
-import java.util.Map;
 
 public class Owners extends TestBase {
 
@@ -58,6 +54,8 @@ public class Owners extends TestBase {
     //Convert object to string
         ObjectMapper obMap = new ObjectMapper();
         requestData = obMap.writerWithDefaultPrettyPrinter().writeValueAsString(reqBuilder);
+        scenario.write(requestData);
+        scenario.embed(requestData.getBytes(), "application/json");
     }
 
 
@@ -67,9 +65,10 @@ public class Owners extends TestBase {
                     .contentType(ContentType.JSON)
                     .body(requestData)
                .when()
-               .post(property.getProperty("owner_tiersURL"));
+               .post(property.getProperty("owner_tiers"));
 
         String strResponse = response.prettyPrint();
+        scenario.write(strResponse);
     }
 
 
@@ -85,6 +84,7 @@ public class Owners extends TestBase {
     public void user_retrieves_recordID_from_response() {
         recordID = JsonPath.read(response.asString(), "id").toString();
         System.out.println("Record ID is: " + recordID);
+        scenario.write("Record ID::: " + recordID);
     }
 
 
@@ -92,7 +92,7 @@ public class Owners extends TestBase {
     public void user_submits_GET_request_with_recordID_to_get_an_Owner_Tier_details() {
         response = given()
                     .when()
-                     .get(property.getProperty("owner_tiersURL")+"/"+recordID);
+                     .get(property.getProperty("owner_tiers")+"/"+recordID);
         response.prettyPrint();
     }
 
@@ -101,7 +101,7 @@ public class Owners extends TestBase {
     public void user_submits_DELETE_request_with_recordID_to_Owner_Tier_API_endpoint() {
         resp = given()
                 .when()
-                .delete(property.getProperty("owner_tiersURL")+"/"+recordID);
+                .delete(property.getProperty("owner_tiers")+"/"+recordID);
     }
 
 
@@ -127,6 +127,22 @@ public class Owners extends TestBase {
 
         ObjectMapper obMap = new ObjectMapper();
         requestData = obMap.writerWithDefaultPrettyPrinter().writeValueAsString(reqBuilder);
+        scenario.write(requestData);
+        scenario.embed(requestData.getBytes(), "application/json");
+    }
+
+
+    @When("user creates the request data for owner record")
+    public void user_creates_the_request_data_for_owner_record() throws JsonProcessingException {
+        RequestBuilder reqBuilder = new RequestBuilder();
+        reqBuilder.setOwnerName("Library");
+        int tierID = Integer.parseInt(recordID);
+        reqBuilder.setOwnerTierID(tierID);
+
+        ObjectMapper obMap = new ObjectMapper();
+        requestData = obMap.writerWithDefaultPrettyPrinter().writeValueAsString(reqBuilder);
+        scenario.write(requestData);
+        scenario.embed(requestData.getBytes(), "application/json");
     }
 
 
@@ -136,9 +152,10 @@ public class Owners extends TestBase {
                 .contentType(ContentType.JSON)
                 .body(requestData)
                 .when()
-                .post(property.getProperty("owners_URL"));
+                .post(property.getProperty("owners"));
 
         String strResponse = response.prettyPrint();
+        scenario.write(strResponse);
     }
 
 
@@ -152,6 +169,7 @@ public class Owners extends TestBase {
     public void user_retrieves_ownerID_from_response() {
         ownerID = JsonPath.read(response.asString(), "id").toString();
         System.out.println("Owner ID is: " + ownerID);
+        scenario.write("Owner ID::: " + ownerID);
     }
 
 
@@ -159,8 +177,9 @@ public class Owners extends TestBase {
     public void user_submits_GET_request_with_ownerID_to_get_an_Owner_details() {
         response = given()
                 .when()
-                .get(property.getProperty("owners_URL")+"/"+ownerID);
+                .get(property.getProperty("owners")+"/"+ownerID);
         response.prettyPrint();
+        scenario.write(response.prettyPrint());
     }
 
 
@@ -168,7 +187,7 @@ public class Owners extends TestBase {
     public void user_submits_DELETE_request_with_ownerID_to_Owner_API_endpoint() {
         resp = given()
                 .when()
-                .delete(property.getProperty("owners_URL")+"/"+ownerID);
+                .delete(property.getProperty("owners")+"/"+ownerID);
     }
 
 }
