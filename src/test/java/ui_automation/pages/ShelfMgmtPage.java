@@ -20,19 +20,19 @@ public class ShelfMgmtPage {
     @FindBy(xpath = "(//div[.='Shelving'])[2]")
     public WebElement shelving;
 
-    @FindBy(css = "[id='aisle']")
-    public WebElement aile;
+    @FindBy(css = ":nth-child(1) > .shelving-details > .q-field > .q-field__inner > .q-field__control > .q-field__control-container > .q-field__native")
+    public WebElement aisle;
 
     @FindBy(xpath = "//*[@class='q-item__label']/span")
     public List<WebElement> allDropdownOptions;
 
-    @FindBy(css = "[id='side']")
+    @FindBy(css = ":nth-child(2) > .shelving-details > .q-field > .q-field__inner > .q-field__control > .q-field__control-container > .q-field__native")
     public WebElement side;
 
-    @FindBy(css = "[id='ladder']")
+    @FindBy(css = ":nth-child(3) > .shelving-details > .q-field > .q-field__inner > .q-field__control")
     public WebElement ladder;
 
-    @FindBy(css = "[class='q-field__native row items-center']")
+    @FindBy(xpath = "(//*[@class='q-field__native row items-center'])[4]")
     public WebElement filterDropdown;
 
     @FindBy(css = "[role='option']")

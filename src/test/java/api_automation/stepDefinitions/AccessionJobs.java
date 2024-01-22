@@ -22,10 +22,10 @@ public class AccessionJobs extends TestBase {
     static String accessionJobID;
     Scenario scenario;
 
-    @Before
-    public void setUp(Scenario scenario) {
-        this.scenario=scenario;
-    }
+//    @Before
+//    public void setUp(Scenario scenario) {
+//        this.scenario=scenario;
+//    }
 
     @Given("user creates the request data")
     public void user_creates_the_request_data() {

@@ -1,4 +1,4 @@
-
+@regression
 @FETCH-313 @FETCH-165 @shelf
 Feature: Shelf Management Page Functionality Validation
   Background:

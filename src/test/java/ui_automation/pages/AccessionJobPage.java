@@ -33,7 +33,7 @@ public class AccessionJobPage {
     @FindBy(css = "[placeholder='Select Owner']")
     public WebElement ownerField;
 
-    @FindBy(css = "div[id='f_76bce7be-bfea-4fac-ad73-0fe5f879a220_0'][role='option']")
+    @FindBy(xpath = "//*[span='John Doe']")
     public WebElement johnDoe;
 
     @FindBy(css = ".q-virtual-scroll__content>div:nth-child(3)")

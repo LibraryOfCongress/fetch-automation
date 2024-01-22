@@ -49,7 +49,7 @@ public class ShelfMgmtSteps {
 
     @Then("Aisle field is clickable")
     public void aisle_field_is_clickable() {
-        helper.isClickable(shelf.aile);
+        helper.isClickable(shelf.aisle);
     }
 
     @Then("Side field is clickable")
@@ -74,9 +74,10 @@ public class ShelfMgmtSteps {
 
     @When("user selects an option from Aisle dropdown")
     public void user_selects_an_option_from_Aisle_dropdown() throws InterruptedException {
-        helper.jSClick(shelf.aile);
+        helper.jSClick(shelf.aisle);
         shelf.allDropdownOptions.get(1).click();
-        selectedAisle = shelf.aile.getText();
+        selectedAisle = shelf.aisle.getText();
+        System.out.println("Selected aisle is " + selectedAisle);
         wait.hardWait(1000);
     }
 
@@ -97,11 +98,13 @@ public class ShelfMgmtSteps {
 
     @Then("the selected options should be displayed")
     public void the_selected_options_should_be_displayed() {
-        String displayedAisle = driver.findElement(By.xpath("//*[@id='aisle']/span")).getText();
+       // driver.findElement(By.cssSelector("[id='aisleSelection']")).click();
+        String displayedAisle = driver.findElement(By.xpath("(//*[@role='combobox'])[1]")).getText();
+        System.out.println("Displayed aisle is " + displayedAisle);
         Assert.assertEquals("Selected Aisle is not displayed", selectedAisle, displayedAisle);
-        String displayedSide = driver.findElement(By.xpath("//*[@id='side']/span")).getText();
+        String displayedSide = driver.findElement(By.xpath("(//*[@role='combobox'])[2]")).getText();
         Assert.assertEquals("Selected Side is not displayed", selectedSide, displayedSide);
-        String displayedLadder = driver.findElement(By.xpath("//*[@id='ladder']/span")).getText();
+        String displayedLadder = driver.findElement(By.xpath("(//*[@role='combobox'])[3]")).getText();
         Assert.assertEquals("Selected Ladder is not displayed", selectedLadder, displayedLadder);
         oLog.info("All selected options from Aisle, Side and Ladder dropdown are displayed");
     }
@@ -109,7 +112,7 @@ public class ShelfMgmtSteps {
 
     @When("user clicks on filter dropdown")
     public void user_clicks_on_filter_dropdown() {
-        shelf.filterDropdown.click();
+        helper.jSClick(shelf.filterDropdown);
     }
 
     @Then("user verifies filter dropdown options")

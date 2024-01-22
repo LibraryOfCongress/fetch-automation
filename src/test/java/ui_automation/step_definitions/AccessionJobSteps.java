@@ -37,8 +37,10 @@ public class AccessionJobSteps {
     }
 
     @When("user hovers over Start Accession button")
-    public void user_hovers_over_the_Start_Accession_button() {
-      helper.hover(accessionJob.startAccessionBtn);
+    public void user_hovers_over_the_Start_Accession_button() throws InterruptedException {
+
+        wait.handleStaleElement(By.xpath("(//button[@type='button'])[2]"),2,1000);
+        helper.hover(accessionJob.startAccessionBtn);
     }
 
     @When("user clicks Start Accession button")
@@ -141,7 +143,7 @@ public class AccessionJobSteps {
 
     @When("user clicks on select Owner button")
     public void userClicksOnSelectOwnerButton() {
-       helper.jSClick(accessionJob.ownerField);
+        accessionJob.ownerField.click();
     }
 
     @Then("user is able to choose any option from dropdown field")

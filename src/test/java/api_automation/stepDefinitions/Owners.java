@@ -26,10 +26,10 @@ public class Owners extends TestBase {
     static String ownerID;
     Scenario scenario;
 
-    @Before
-    public void setUp(Scenario scenario) {
-        this.scenario=scenario;
-    }
+//    @Before
+//    public void setUp(Scenario scenario) {
+//        this.scenario=scenario;
+//    }
 
 // OWNER TIER
     @Given("user submits GET request to retrieve all Owner Tier records")
@@ -54,8 +54,8 @@ public class Owners extends TestBase {
     //Convert object to string
         ObjectMapper obMap = new ObjectMapper();
         requestData = obMap.writerWithDefaultPrettyPrinter().writeValueAsString(reqBuilder);
-        scenario.write(requestData);
-        scenario.embed(requestData.getBytes(), "application/json");
+     //   scenario.write(requestData);
+     //   scenario.embed(requestData.getBytes(), "application/json");
     }
 
 
@@ -68,7 +68,7 @@ public class Owners extends TestBase {
                .post(property.getProperty("owner_tiers"));
 
         String strResponse = response.prettyPrint();
-        scenario.write(strResponse);
+      //  scenario.write(strResponse);
     }
 
 
@@ -84,7 +84,7 @@ public class Owners extends TestBase {
     public void user_retrieves_recordID_from_response() {
         recordID = JsonPath.read(response.asString(), "id").toString();
         System.out.println("Record ID is: " + recordID);
-        scenario.write("Record ID::: " + recordID);
+     //   scenario.write("Record ID::: " + recordID);
     }
 
 

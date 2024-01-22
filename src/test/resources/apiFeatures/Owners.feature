@@ -1,16 +1,17 @@
+
 @FETCH-312 @FETCH-303
 Feature: Owners API
 
-@owner_tier @run
+@owner_tier
   Scenario Outline: Create Owner Tier Record
     Given user creates a new record with following data <level>, "<name>"
     And user submits POST request to Owner Tier API endpoint
-    Then user validates if status code is 200
+    Then user validates if status code is 201
     And user validates if the value of name in response is "<name>"
     And user retrieves recordID from response
     Examples:
     |level |name            |
-    |4     |McDonalds       |
+    |4     |Fiestco         |
 
   @owner_tier
   Scenario: Get Owner Tier Detals view
@@ -39,7 +40,7 @@ Feature: Owners API
 #  |name                    |owner_tier_id |
 #  |Library                 |142           |
 
-@run
+
 Scenario: Create Owner Record
     Given Owner Tier recordID is created
     When user creates the request data for owner record
