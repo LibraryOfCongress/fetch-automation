@@ -39,6 +39,21 @@ public class HomePage {
     @FindBy(xpath="//*[@class='q-list']/a")
     public List<WebElement> allNavigationTabs;
 
+    @FindBy(css = "a[class$='nav-active']")
+    public WebElement highlightedLink;
+
+    @FindBy(css = "[href='/accession']")
+    public WebElement accessionLink;
+
+    @FindBy(css = "[href='/verification']")
+    public WebElement verificationLink;
+
+    @FindBy(css = "[href='/shelving']")
+    public WebElement shelvingLink;
+
+    @FindBy(css = "[href='/admin']")
+    public WebElement adminLink;
+
 
 
 

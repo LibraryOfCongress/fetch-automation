@@ -1,5 +1,7 @@
+@regression
 @home
 Feature: Home Page Functionality Validation
+
   Background:
     Given user navigates to FETCH Homepage
 
@@ -13,15 +15,31 @@ Feature: Home Page Functionality Validation
     And the side navigation menu is visible
 
 
-    Scenario: User should be able to validate side navigation tabs on Homepage
-      Then user verifies side navigation tabs on Homepage
+  Scenario: User should be able to validate side navigation tabs on Homepage
+    Then user verifies side navigation tabs on Homepage
 
-      |tabname      |
-      |Accession    |
-      |Verification |
-      |Shelving     |
-      |Request      |
-      |Refile       |
+      | tabname      |
+      | Accession    |
+      | Verification |
+      | Shelving     |
+      | Request      |
+      | Refile       |
+
+
+  @FETCH-526 @FETCH-454 @active_links
+  Scenario: User should tell which page/section of the webapp the user is currently at
+    When user clicks Accession on side navigation menu
+    Then verify that Accession navigation link on side menu is highlighted
+    When user clicks Verification on side navigation menu
+    Then verify that Verification navigation link on side menu is highlighted
+    When user clicks Shelving on side navigation menu
+    Then verify that Shelving navigation link on side menu is highlighted
+    When user clicks Admin on side navigation menu
+    Then verify that Admin navigation link on side menu is highlighted
+
+
+
+
 
 
 

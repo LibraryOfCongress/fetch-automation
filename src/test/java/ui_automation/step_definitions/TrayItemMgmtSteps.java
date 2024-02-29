@@ -1,0 +1,172 @@
+package ui_automation.step_definitions;
+
+import io.cucumber.java.en.And;
+import io.cucumber.java.en.Given;
+import io.cucumber.java.en.Then;
+import io.cucumber.java.en.When;
+import org.apache.log4j.LogManager;
+import org.apache.log4j.Logger;
+import org.junit.Assert;
+import org.openqa.selenium.By;
+import org.openqa.selenium.WebDriver;
+import ui_automation.pages.TrayItemMgmtPage;
+import ui_automation.utilities.*;
+
+import java.util.List;
+import java.util.Map;
+
+public class TrayItemMgmtSteps {
+
+    WebDriver driver = Driver.getInstance().getDriver();
+    TrayItemMgmtPage trayMgmt = new TrayItemMgmtPage();
+    Helper helper = new Helper();
+    GenericHelper generic = new GenericHelper();
+    SelectHelper select = new SelectHelper();
+    WaitHelper wait = new WaitHelper();
+
+    public static final Logger oLog = LogManager.getLogger(TrayItemMgmtSteps.class);
+
+
+    @Given("user navigates to Item Management Page")
+    public void user_navigates_to_Item_Management_Page() throws InterruptedException {
+        Driver.getInstance().getDriver().get(ConfigurationReader.getProperty("ui_config.properties", "trayItemMgmtURL"));
+        oLog.info("I navigated to Item Management Page");
+    }
+
+    @When("user looks at the tray header")
+    public void user_looks_at_the_tray_header() {
+        generic.IsElementPresentQuick(By.cssSelector(".col > .text-h4"));
+    }
+
+    @Then("the name of tray is displayed")
+    public void the_name_of_tray_is_displayed() {
+        helper.verifyElementDisplayed(trayMgmt.trayHeader);
+        String expectedTrayHeader = "Tray Mctray Photograph Archive - 332";
+        String actualTrayHeader = trayMgmt.trayHeader.getText();
+        Assert.assertEquals("Tray Header verification failed",
+                expectedTrayHeader, actualTrayHeader);
+        oLog.info("I verified Tray Header");
+    }
+
+    @Then("tray barcode is visible")
+    public void tray_barcode_is_visible() {
+        trayMgmt.trayBarcodeText.getText();
+    }
+
+
+    @Then("filter columns dropdown is visible and clickable")
+    public void filter_columns_button_is_visible_and_clickable() {
+        helper.verifyElementDisplayed(trayMgmt.filterColumns);
+        WaitHelper.waitForClickability(trayMgmt.filterColumns, 10);
+        trayMgmt.filterColumns.click();
+    }
+
+    @And("user verifies filter column options")
+    public void user_verifies_filter_column_options(io.cucumber.datatable.DataTable dataTable) {
+        List<Map<String, String>> maps = dataTable.asMaps(String.class, String.class);
+        int i = 0;
+
+        for (Map<String, String> map : maps) {
+            helper.isClickable(trayMgmt.filterOptions.get(i));
+            String expectedLabel = map.get("columnname");
+            String actualLabel = trayMgmt.filterOptions.get(i).getText();
+            Assert.assertEquals("Columnname verification failed",
+                    expectedLabel, actualLabel);
+            i++;
+        }
+        oLog.info("I verified Filter Columns Options");
+    }
+
+
+    @Then("user verifies tray labels on Items Management Page")
+    public void user_verifies_tray_details_labels_on_Items_Management_Page(io.cucumber.datatable.DataTable dataTable) {
+        List<Map<String, String>> maps = dataTable.asMaps(String.class, String.class);
+        int i = 0;
+
+        for (Map<String, String> map : maps) {
+            String expectedLabel = map.get("labelname");
+            String actualLabel = trayMgmt.trayLabels.get(i).getText();
+            Assert.assertEquals("Labelname verification failed",
+                    expectedLabel, actualLabel);
+            i++;
+        }
+        oLog.info("I verified Tray Labels");
+    }
+
+    @Then("user verifies items labels on Items Management Page")
+    public void user_verifies_items_labels_on_Items_Management_Page(io.cucumber.datatable.DataTable dataTable) {
+        List<Map<String, String>> maps = dataTable.asMaps(String.class, String.class);
+        int i = 0;
+
+        for (Map<String, String> map : maps) {
+            String expectedLabel = map.get("labelname");
+            String actualLabel = trayMgmt.itemsLabels.get(i).getText();
+            Assert.assertEquals("Labelname verification failed",
+                    expectedLabel, actualLabel);
+            i++;
+        }
+        oLog.info("I verified Items Labels");
+    }
+
+
+    @When("user clicks on any item in the table of items")
+    public void user_clicks_on_any_item_in_the_table_of_items() {
+        trayMgmt.item1.click();
+    }
+
+    @Then("the overlay slide is visible")
+    public void the_overlay_slide_is_visible() {
+        wait.waitForVisibility(trayMgmt.sideOverlay, 3000);
+    }
+
+    @And("user verifies item in tray details on Overlay Slide")
+    public void userVerifiesItemInTrayDetailsOnOverlaySlide(io.cucumber.datatable.DataTable dataTable) {
+        List<Map<String, String>> maps = dataTable.asMaps(String.class, String.class);
+        int i = 0;
+
+        for (Map<String, String> map : maps) {
+            String expectedLabel = map.get("labelname");
+            String actualLabel = trayMgmt.overlayItemsLabels.get(i).getText();
+            Assert.assertEquals("Labelname verification failed",
+                    expectedLabel, actualLabel);
+            i++;
+        }
+        oLog.info("I verified Item in Tray Details on Overlay Slide");
+    }
+
+
+    @Then("user verifies item details on Overlay Slide")
+    public void user_verifies_item_details_on_Overlay_Slide(io.cucumber.datatable.DataTable dataTable) {
+        List<Map<String, String>> maps = dataTable.asMaps(String.class, String.class);
+        int i = 0;
+
+        for (Map<String, String> map : maps) {
+            String expectedLabel = map.get("labelname");
+            String actualLabel = trayMgmt.overlayItemsLabels.get(i).getText();
+            Assert.assertEquals("Labelname verification failed",
+                    expectedLabel, actualLabel);
+            i++;
+        }
+    }
+
+
+    @And("the x button is clickable")
+    public void theXButtonIsClickable() {
+        helper.isClickable(trayMgmt.closeBtn);
+        helper.jSClick(trayMgmt.closeBtn);
+    }
+
+    @And("user clicks outside of overlay")
+    public void userClicksOutsideOfOverlay() throws InterruptedException {
+        wait.hardWait(1000);
+        helper.jSClick(trayMgmt.mainPage);
+    }
+
+    @Then("the overlay slide is not visible")
+    public void theOverlaySlideIsNotVisible() {
+        helper.verifyElementNotDisplayed(trayMgmt.sideOverlay);
+
+    }
+
+
+}
