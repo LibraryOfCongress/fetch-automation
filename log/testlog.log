@@ -9909,3 +9909,165 @@
 2024-02-29 15:50:53,255 - ui_automation.utilities.GenericHelper -INFO - true
 2024-02-29 15:50:53,337 - ui_automation.step_definitions.ShelvingSteps -INFO - I selected a Container Type
 2024-02-29 15:50:53,434 - ui_automation.step_definitions.ShelvingSteps -INFO - I clicked Create Shelf button
+2024-02-29 16:32:04,918 - io.github.bonigarcia.wdm.WebDriverManager -INFO - Using chromedriver 122.0.6261.94 (resolved driver for Chrome 122)
+2024-02-29 16:32:04,961 - io.github.bonigarcia.wdm.WebDriverManager -INFO - Exporting webdriver.chrome.driver as C:\Users\Afa Faraji\.cache\selenium\chromedriver\win64\122.0.6261.94\chromedriver.exe
+2024-02-29 16:32:06,892 - ui_automation.step_definitions.HomeSteps -INFO - I navigated to FETCH webapp
+2024-02-29 16:32:08,207 - ui_automation.step_definitions.HomeSteps -INFO - I navigated to Verification Page
+2024-03-01 10:54:22,217 - io.github.bonigarcia.wdm.WebDriverManager -INFO - Using chromedriver 122.0.6261.94 (resolved driver for Chrome 122)
+2024-03-01 10:54:22,239 - io.github.bonigarcia.wdm.WebDriverManager -INFO - Exporting webdriver.chrome.driver as C:\Users\Afa Faraji\.cache\selenium\chromedriver\win64\122.0.6261.94\chromedriver.exe
+2024-03-01 10:54:24,480 - ui_automation.step_definitions.HomeSteps -INFO - I navigated to FETCH webapp
+2024-03-01 10:54:25,878 - ui_automation.step_definitions.HomeSteps -INFO - I navigated to Verification Page
+2024-03-01 10:55:21,680 - io.github.bonigarcia.wdm.WebDriverManager -INFO - Using chromedriver 122.0.6261.94 (resolved driver for Chrome 122)
+2024-03-01 10:55:21,727 - io.github.bonigarcia.wdm.WebDriverManager -INFO - Exporting webdriver.chrome.driver as C:\Users\Afa Faraji\.cache\selenium\chromedriver\win64\122.0.6261.94\chromedriver.exe
+2024-03-01 10:55:23,820 - ui_automation.step_definitions.HomeSteps -INFO - I navigated to FETCH webapp
+2024-03-01 10:55:25,163 - ui_automation.step_definitions.HomeSteps -INFO - I navigated to Verification Page
+2024-03-01 10:57:08,351 - io.github.bonigarcia.wdm.WebDriverManager -INFO - Using chromedriver 122.0.6261.94 (resolved driver for Chrome 122)
+2024-03-01 10:57:08,384 - io.github.bonigarcia.wdm.WebDriverManager -INFO - Exporting webdriver.chrome.driver as C:\Users\Afa Faraji\.cache\selenium\chromedriver\win64\122.0.6261.94\chromedriver.exe
+2024-03-01 10:57:10,571 - ui_automation.step_definitions.HomeSteps -INFO - I navigated to FETCH webapp
+2024-03-01 10:57:11,952 - ui_automation.step_definitions.HomeSteps -INFO - I navigated to Verification Page
+2024-03-01 10:57:49,555 - io.github.bonigarcia.wdm.WebDriverManager -INFO - Using chromedriver 122.0.6261.94 (resolved driver for Chrome 122)
+2024-03-01 10:57:49,581 - io.github.bonigarcia.wdm.WebDriverManager -INFO - Exporting webdriver.chrome.driver as C:\Users\Afa Faraji\.cache\selenium\chromedriver\win64\122.0.6261.94\chromedriver.exe
+2024-03-01 10:57:51,383 - ui_automation.step_definitions.HomeSteps -INFO - I navigated to FETCH webapp
+2024-03-01 10:57:52,659 - ui_automation.step_definitions.HomeSteps -INFO - I navigated to Verification Page
+2024-03-01 10:58:43,015 - io.github.bonigarcia.wdm.WebDriverManager -INFO - Using chromedriver 122.0.6261.94 (resolved driver for Chrome 122)
+2024-03-01 10:58:43,044 - io.github.bonigarcia.wdm.WebDriverManager -INFO - Exporting webdriver.chrome.driver as C:\Users\Afa Faraji\.cache\selenium\chromedriver\win64\122.0.6261.94\chromedriver.exe
+2024-03-01 10:58:45,335 - ui_automation.step_definitions.HomeSteps -INFO - I navigated to FETCH webapp
+2024-03-01 10:58:46,641 - ui_automation.step_definitions.HomeSteps -INFO - I navigated to Verification Page
+2024-03-01 10:59:15,684 - io.github.bonigarcia.wdm.WebDriverManager -INFO - Using chromedriver 122.0.6261.94 (resolved driver for Chrome 122)
+2024-03-01 10:59:15,713 - io.github.bonigarcia.wdm.WebDriverManager -INFO - Exporting webdriver.chrome.driver as C:\Users\Afa Faraji\.cache\selenium\chromedriver\win64\122.0.6261.94\chromedriver.exe
+2024-03-01 10:59:17,522 - ui_automation.step_definitions.HomeSteps -INFO - I navigated to FETCH webapp
+2024-03-01 10:59:18,799 - ui_automation.step_definitions.HomeSteps -INFO - I navigated to Verification Page
+2024-03-01 10:59:18,941 - ui_automation.utilities.WaitHelper -INFO - 2000
+2024-03-01 11:02:55,513 - io.github.bonigarcia.wdm.WebDriverManager -INFO - Using chromedriver 122.0.6261.94 (resolved driver for Chrome 122)
+2024-03-01 11:02:55,533 - io.github.bonigarcia.wdm.WebDriverManager -INFO - Exporting webdriver.chrome.driver as C:\Users\Afa Faraji\.cache\selenium\chromedriver\win64\122.0.6261.94\chromedriver.exe
+2024-03-01 11:02:57,329 - ui_automation.step_definitions.HomeSteps -INFO - I navigated to FETCH webapp
+2024-03-01 11:02:58,689 - ui_automation.step_definitions.HomeSteps -INFO - I navigated to Verification Page
+2024-03-01 11:03:38,838 - io.github.bonigarcia.wdm.WebDriverManager -INFO - Using chromedriver 122.0.6261.94 (resolved driver for Chrome 122)
+2024-03-01 11:03:38,881 - io.github.bonigarcia.wdm.WebDriverManager -INFO - Exporting webdriver.chrome.driver as C:\Users\Afa Faraji\.cache\selenium\chromedriver\win64\122.0.6261.94\chromedriver.exe
+2024-03-01 11:03:40,790 - ui_automation.step_definitions.HomeSteps -INFO - I navigated to FETCH webapp
+2024-03-01 11:03:42,065 - ui_automation.step_definitions.HomeSteps -INFO - I navigated to Verification Page
+2024-03-01 11:05:17,007 - io.github.bonigarcia.wdm.WebDriverManager -INFO - Using chromedriver 122.0.6261.94 (resolved driver for Chrome 122)
+2024-03-01 11:05:17,048 - io.github.bonigarcia.wdm.WebDriverManager -INFO - Exporting webdriver.chrome.driver as C:\Users\Afa Faraji\.cache\selenium\chromedriver\win64\122.0.6261.94\chromedriver.exe
+2024-03-01 11:05:19,269 - ui_automation.step_definitions.HomeSteps -INFO - I navigated to FETCH webapp
+2024-03-01 11:05:20,725 - ui_automation.step_definitions.HomeSteps -INFO - I navigated to Verification Page
+2024-03-01 11:06:45,041 - io.github.bonigarcia.wdm.WebDriverManager -INFO - Using chromedriver 122.0.6261.94 (resolved driver for Chrome 122)
+2024-03-01 11:06:45,076 - io.github.bonigarcia.wdm.WebDriverManager -INFO - Exporting webdriver.chrome.driver as C:\Users\Afa Faraji\.cache\selenium\chromedriver\win64\122.0.6261.94\chromedriver.exe
+2024-03-01 11:06:46,946 - ui_automation.step_definitions.HomeSteps -INFO - I navigated to FETCH webapp
+2024-03-01 11:06:48,237 - ui_automation.step_definitions.HomeSteps -INFO - I navigated to Verification Page
+2024-03-01 11:07:13,054 - io.github.bonigarcia.wdm.WebDriverManager -INFO - Using chromedriver 122.0.6261.94 (resolved driver for Chrome 122)
+2024-03-01 11:07:13,081 - io.github.bonigarcia.wdm.WebDriverManager -INFO - Exporting webdriver.chrome.driver as C:\Users\Afa Faraji\.cache\selenium\chromedriver\win64\122.0.6261.94\chromedriver.exe
+2024-03-01 11:07:15,048 - ui_automation.step_definitions.HomeSteps -INFO - I navigated to FETCH webapp
+2024-03-01 11:07:16,460 - ui_automation.step_definitions.HomeSteps -INFO - I navigated to Verification Page
+2024-03-01 11:09:22,584 - io.github.bonigarcia.wdm.WebDriverManager -INFO - Using chromedriver 122.0.6261.94 (resolved driver for Chrome 122)
+2024-03-01 11:09:22,606 - io.github.bonigarcia.wdm.WebDriverManager -INFO - Exporting webdriver.chrome.driver as C:\Users\Afa Faraji\.cache\selenium\chromedriver\win64\122.0.6261.94\chromedriver.exe
+2024-03-01 11:09:24,727 - ui_automation.step_definitions.HomeSteps -INFO - I navigated to FETCH webapp
+2024-03-01 11:09:26,041 - ui_automation.step_definitions.HomeSteps -INFO - I navigated to Verification Page
+2024-03-01 11:09:56,966 - io.github.bonigarcia.wdm.WebDriverManager -INFO - Using chromedriver 122.0.6261.94 (resolved driver for Chrome 122)
+2024-03-01 11:09:57,008 - io.github.bonigarcia.wdm.WebDriverManager -INFO - Exporting webdriver.chrome.driver as C:\Users\Afa Faraji\.cache\selenium\chromedriver\win64\122.0.6261.94\chromedriver.exe
+2024-03-01 11:09:58,382 - ui_automation.step_definitions.HomeSteps -INFO - I navigated to FETCH webapp
+2024-03-01 11:10:00,151 - ui_automation.step_definitions.HomeSteps -INFO - I navigated to Verification Page
+2024-03-01 11:10:23,723 - io.github.bonigarcia.wdm.WebDriverManager -INFO - Using chromedriver 122.0.6261.94 (resolved driver for Chrome 122)
+2024-03-01 11:10:23,767 - io.github.bonigarcia.wdm.WebDriverManager -INFO - Exporting webdriver.chrome.driver as C:\Users\Afa Faraji\.cache\selenium\chromedriver\win64\122.0.6261.94\chromedriver.exe
+2024-03-01 11:10:26,368 - ui_automation.step_definitions.HomeSteps -INFO - I navigated to FETCH webapp
+2024-03-01 11:10:27,786 - ui_automation.step_definitions.HomeSteps -INFO - I navigated to Verification Page
+2024-03-01 11:15:21,736 - io.github.bonigarcia.wdm.WebDriverManager -INFO - Using chromedriver 122.0.6261.94 (resolved driver for Chrome 122)
+2024-03-01 11:15:21,798 - io.github.bonigarcia.wdm.WebDriverManager -INFO - Exporting webdriver.chrome.driver as C:\Users\Afa Faraji\.cache\selenium\chromedriver\win64\122.0.6261.94\chromedriver.exe
+2024-03-01 11:15:23,787 - ui_automation.step_definitions.HomeSteps -INFO - I navigated to FETCH webapp
+2024-03-01 11:15:25,668 - ui_automation.step_definitions.HomeSteps -INFO - I navigated to Verification Page
+2024-03-01 11:17:44,938 - io.github.bonigarcia.wdm.WebDriverManager -INFO - Using chromedriver 122.0.6261.94 (resolved driver for Chrome 122)
+2024-03-01 11:17:44,984 - io.github.bonigarcia.wdm.WebDriverManager -INFO - Exporting webdriver.chrome.driver as C:\Users\Afa Faraji\.cache\selenium\chromedriver\win64\122.0.6261.94\chromedriver.exe
+2024-03-01 11:17:47,572 - ui_automation.step_definitions.HomeSteps -INFO - I navigated to FETCH webapp
+2024-03-01 11:17:49,056 - ui_automation.step_definitions.HomeSteps -INFO - I navigated to Verification Page
+2024-03-01 11:20:53,601 - io.github.bonigarcia.wdm.WebDriverManager -INFO - Using chromedriver 122.0.6261.94 (resolved driver for Chrome 122)
+2024-03-01 11:20:53,631 - io.github.bonigarcia.wdm.WebDriverManager -INFO - Exporting webdriver.chrome.driver as C:\Users\Afa Faraji\.cache\selenium\chromedriver\win64\122.0.6261.94\chromedriver.exe
+2024-03-01 11:20:55,317 - ui_automation.step_definitions.HomeSteps -INFO - I navigated to FETCH webapp
+2024-03-01 11:20:56,659 - ui_automation.step_definitions.HomeSteps -INFO - I navigated to Verification Page
+2024-03-01 11:24:50,709 - io.github.bonigarcia.wdm.WebDriverManager -INFO - Using chromedriver 122.0.6261.94 (resolved driver for Chrome 122)
+2024-03-01 11:24:50,758 - io.github.bonigarcia.wdm.WebDriverManager -INFO - Exporting webdriver.chrome.driver as C:\Users\Afa Faraji\.cache\selenium\chromedriver\win64\122.0.6261.94\chromedriver.exe
+2024-03-01 11:24:53,418 - ui_automation.step_definitions.HomeSteps -INFO - I navigated to FETCH webapp
+2024-03-01 11:24:54,886 - ui_automation.step_definitions.HomeSteps -INFO - I navigated to Verification Page
+2024-03-01 11:26:43,863 - io.github.bonigarcia.wdm.WebDriverManager -INFO - Using chromedriver 122.0.6261.94 (resolved driver for Chrome 122)
+2024-03-01 11:26:43,931 - io.github.bonigarcia.wdm.WebDriverManager -INFO - Exporting webdriver.chrome.driver as C:\Users\Afa Faraji\.cache\selenium\chromedriver\win64\122.0.6261.94\chromedriver.exe
+2024-03-01 11:26:46,734 - ui_automation.step_definitions.HomeSteps -INFO - I navigated to FETCH webapp
+2024-03-01 11:26:48,199 - ui_automation.step_definitions.HomeSteps -INFO - I navigated to Verification Page
+2024-03-01 11:27:43,089 - io.github.bonigarcia.wdm.WebDriverManager -INFO - Using chromedriver 122.0.6261.94 (resolved driver for Chrome 122)
+2024-03-01 11:27:43,132 - io.github.bonigarcia.wdm.WebDriverManager -INFO - Exporting webdriver.chrome.driver as C:\Users\Afa Faraji\.cache\selenium\chromedriver\win64\122.0.6261.94\chromedriver.exe
+2024-03-01 11:27:44,879 - ui_automation.step_definitions.HomeSteps -INFO - I navigated to FETCH webapp
+2024-03-01 11:27:46,189 - ui_automation.step_definitions.HomeSteps -INFO - I navigated to Verification Page
+2024-03-01 11:32:06,752 - io.github.bonigarcia.wdm.WebDriverManager -INFO - Using chromedriver 122.0.6261.94 (resolved driver for Chrome 122)
+2024-03-01 11:32:06,796 - io.github.bonigarcia.wdm.WebDriverManager -INFO - Exporting webdriver.chrome.driver as C:\Users\Afa Faraji\.cache\selenium\chromedriver\win64\122.0.6261.94\chromedriver.exe
+2024-03-01 11:32:08,859 - ui_automation.step_definitions.HomeSteps -INFO - I navigated to FETCH webapp
+2024-03-01 11:32:10,148 - ui_automation.step_definitions.HomeSteps -INFO - I navigated to Verification Page
+2024-03-01 11:33:48,333 - io.github.bonigarcia.wdm.WebDriverManager -INFO - Using chromedriver 122.0.6261.94 (resolved driver for Chrome 122)
+2024-03-01 11:33:48,397 - io.github.bonigarcia.wdm.WebDriverManager -INFO - Exporting webdriver.chrome.driver as C:\Users\Afa Faraji\.cache\selenium\chromedriver\win64\122.0.6261.94\chromedriver.exe
+2024-03-01 11:33:51,253 - ui_automation.step_definitions.HomeSteps -INFO - I navigated to FETCH webapp
+2024-03-01 11:33:52,690 - ui_automation.step_definitions.HomeSteps -INFO - I navigated to Verification Page
+2024-03-01 11:35:34,740 - io.github.bonigarcia.wdm.WebDriverManager -INFO - Using chromedriver 122.0.6261.94 (resolved driver for Chrome 122)
+2024-03-01 11:35:34,759 - io.github.bonigarcia.wdm.WebDriverManager -INFO - Exporting webdriver.chrome.driver as C:\Users\Afa Faraji\.cache\selenium\chromedriver\win64\122.0.6261.94\chromedriver.exe
+2024-03-01 11:35:36,066 - ui_automation.step_definitions.HomeSteps -INFO - I navigated to FETCH webapp
+2024-03-01 11:35:37,234 - ui_automation.step_definitions.HomeSteps -INFO - I navigated to Verification Page
+2024-03-01 11:35:59,396 - io.github.bonigarcia.wdm.WebDriverManager -INFO - Using chromedriver 122.0.6261.94 (resolved driver for Chrome 122)
+2024-03-01 11:35:59,420 - io.github.bonigarcia.wdm.WebDriverManager -INFO - Exporting webdriver.chrome.driver as C:\Users\Afa Faraji\.cache\selenium\chromedriver\win64\122.0.6261.94\chromedriver.exe
+2024-03-01 11:36:00,734 - ui_automation.step_definitions.HomeSteps -INFO - I navigated to FETCH webapp
+2024-03-01 11:36:01,923 - ui_automation.step_definitions.HomeSteps -INFO - I navigated to Verification Page
+2024-03-01 11:36:33,837 - io.github.bonigarcia.wdm.WebDriverManager -INFO - Using chromedriver 122.0.6261.94 (resolved driver for Chrome 122)
+2024-03-01 11:36:33,857 - io.github.bonigarcia.wdm.WebDriverManager -INFO - Exporting webdriver.chrome.driver as C:\Users\Afa Faraji\.cache\selenium\chromedriver\win64\122.0.6261.94\chromedriver.exe
+2024-03-01 11:36:35,173 - ui_automation.step_definitions.HomeSteps -INFO - I navigated to FETCH webapp
+2024-03-01 11:36:36,358 - ui_automation.step_definitions.HomeSteps -INFO - I navigated to Verification Page
+2024-03-01 11:37:36,391 - io.github.bonigarcia.wdm.WebDriverManager -INFO - Using chromedriver 122.0.6261.94 (resolved driver for Chrome 122)
+2024-03-01 11:37:36,409 - io.github.bonigarcia.wdm.WebDriverManager -INFO - Exporting webdriver.chrome.driver as C:\Users\Afa Faraji\.cache\selenium\chromedriver\win64\122.0.6261.94\chromedriver.exe
+2024-03-01 11:37:37,869 - ui_automation.step_definitions.HomeSteps -INFO - I navigated to FETCH webapp
+2024-03-01 11:37:39,062 - ui_automation.step_definitions.HomeSteps -INFO - I navigated to Verification Page
+2024-03-01 13:39:25,114 - io.github.bonigarcia.wdm.WebDriverManager -INFO - Using chromedriver 122.0.6261.94 (resolved driver for Chrome 122)
+2024-03-01 13:39:25,131 - io.github.bonigarcia.wdm.WebDriverManager -INFO - Exporting webdriver.chrome.driver as C:\Users\Afa Faraji\.cache\selenium\chromedriver\win64\122.0.6261.94\chromedriver.exe
+2024-03-01 13:39:27,027 - ui_automation.step_definitions.HomeSteps -INFO - I navigated to FETCH webapp
+2024-03-01 13:39:28,327 - ui_automation.step_definitions.HomeSteps -INFO - I navigated to Verification Page
+2024-03-01 13:41:30,898 - io.github.bonigarcia.wdm.WebDriverManager -INFO - Using chromedriver 122.0.6261.94 (resolved driver for Chrome 122)
+2024-03-01 13:41:30,928 - io.github.bonigarcia.wdm.WebDriverManager -INFO - Exporting webdriver.chrome.driver as C:\Users\Afa Faraji\.cache\selenium\chromedriver\win64\122.0.6261.94\chromedriver.exe
+2024-03-01 13:41:32,699 - ui_automation.step_definitions.HomeSteps -INFO - I navigated to FETCH webapp
+2024-03-01 13:41:34,070 - ui_automation.step_definitions.HomeSteps -INFO - I navigated to Verification Page
+2024-03-01 13:42:13,279 - io.github.bonigarcia.wdm.WebDriverManager -INFO - Using chromedriver 122.0.6261.94 (resolved driver for Chrome 122)
+2024-03-01 13:42:13,312 - io.github.bonigarcia.wdm.WebDriverManager -INFO - Exporting webdriver.chrome.driver as C:\Users\Afa Faraji\.cache\selenium\chromedriver\win64\122.0.6261.94\chromedriver.exe
+2024-03-01 13:42:14,991 - ui_automation.step_definitions.HomeSteps -INFO - I navigated to FETCH webapp
+2024-03-01 13:42:16,271 - ui_automation.step_definitions.HomeSteps -INFO - I navigated to Verification Page
+2024-03-01 13:42:16,362 - ui_automation.step_definitions.AdminSteps -INFO - I verified Breadcrumb link names
+2024-03-01 13:56:34,181 - io.github.bonigarcia.wdm.WebDriverManager -INFO - Using chromedriver 122.0.6261.94 (resolved driver for Chrome 122)
+2024-03-01 13:56:34,209 - io.github.bonigarcia.wdm.WebDriverManager -INFO - Exporting webdriver.chrome.driver as C:\Users\Afa Faraji\.cache\selenium\chromedriver\win64\122.0.6261.94\chromedriver.exe
+2024-03-01 13:56:35,914 - ui_automation.step_definitions.HomeSteps -INFO - I navigated to FETCH webapp
+2024-03-01 13:56:37,176 - ui_automation.step_definitions.HomeSteps -INFO - I navigated to Verification Page
+2024-03-01 13:56:37,240 - ui_automation.step_definitions.AdminSteps -INFO - I verified Breadcrumb link names
+2024-03-01 13:56:37,420 - ui_automation.step_definitions.AdminSteps -INFO - I verified Breadcrumb link names
+2024-03-01 14:08:06,828 - io.github.bonigarcia.wdm.WebDriverManager -INFO - Using chromedriver 122.0.6261.94 (resolved driver for Chrome 122)
+2024-03-01 14:08:06,857 - io.github.bonigarcia.wdm.WebDriverManager -INFO - Exporting webdriver.chrome.driver as C:\Users\Afa Faraji\.cache\selenium\chromedriver\win64\122.0.6261.94\chromedriver.exe
+2024-03-01 14:08:08,640 - ui_automation.step_definitions.HomeSteps -INFO - I navigated to FETCH webapp
+2024-03-01 14:08:10,040 - ui_automation.step_definitions.HomeSteps -INFO - I navigated to Verification Page
+2024-03-01 14:08:10,139 - ui_automation.step_definitions.AdminSteps -INFO - I verified Breadcrumb link names
+2024-03-01 14:08:10,311 - ui_automation.step_definitions.AdminSteps -INFO - I verified Breadcrumb link names
+2024-03-01 14:08:11,558 - ui_automation.step_definitions.HomeSteps -INFO - I navigated to Admin Page
+2024-03-01 14:08:11,657 - ui_automation.step_definitions.AdminSteps -INFO - I selected Building
+2024-03-01 14:08:11,737 - ui_automation.step_definitions.AdminSteps -INFO - I verified Breadcrumb link names
+2024-03-01 14:24:03,599 - io.github.bonigarcia.wdm.WebDriverManager -INFO - Using chromedriver 122.0.6261.94 (resolved driver for Chrome 122)
+2024-03-01 14:24:03,645 - io.github.bonigarcia.wdm.WebDriverManager -INFO - Exporting webdriver.chrome.driver as C:\Users\Afa Faraji\.cache\selenium\chromedriver\win64\122.0.6261.94\chromedriver.exe
+2024-03-01 14:24:05,811 - ui_automation.step_definitions.AdminSteps -INFO - I am on Admin page
+2024-03-01 14:24:06,171 - ui_automation.step_definitions.AdminSteps -INFO - I verified Admin Dashboard contains 2 Buildings
+2024-03-01 14:24:06,424 - ui_automation.utilities.WaitHelper -INFO - 1000
+2024-03-01 14:24:07,605 - ui_automation.step_definitions.AdminSteps -INFO - I verified Add New dropdown options
+2024-03-01 14:24:07,801 - ui_automation.utilities.WaitHelper -INFO - 1000
+2024-03-01 14:24:08,906 - ui_automation.step_definitions.AdminSteps -INFO - I verified Location Hierarchy dropdown options
+2024-03-01 14:24:09,149 - io.github.bonigarcia.wdm.WebDriverManager -INFO - Using chromedriver 122.0.6261.94 (resolved driver for Chrome 122)
+2024-03-01 14:24:09,157 - io.github.bonigarcia.wdm.WebDriverManager -INFO - Exporting webdriver.chrome.driver as C:\Users\Afa Faraji\.cache\selenium\chromedriver\win64\122.0.6261.94\chromedriver.exe
+2024-03-01 14:24:10,426 - ui_automation.step_definitions.HomeSteps -INFO - I navigated to FETCH webapp
+2024-03-01 14:24:11,770 - ui_automation.step_definitions.HomeSteps -INFO - I navigated to Verification Page
+2024-03-01 14:24:11,825 - ui_automation.step_definitions.AdminSteps -INFO - I verified Breadcrumb link names
+2024-03-01 14:24:11,955 - ui_automation.step_definitions.AdminSteps -INFO - I verified Breadcrumb link names
+2024-03-01 14:24:12,037 - ui_automation.step_definitions.AdminSteps -INFO - I clicked Verification Breadcrumb link
+2024-03-01 14:24:12,049 - ui_automation.step_definitions.AdminSteps -INFO - I navigated to Verification page
+2024-03-01 14:24:12,131 - ui_automation.step_definitions.AdminSteps -INFO - I clicked Home Breadcrumb link
+2024-03-01 14:24:12,139 - ui_automation.step_definitions.AdminSteps -INFO - I navigated to Home page
+2024-03-01 14:24:13,221 - ui_automation.step_definitions.HomeSteps -INFO - I navigated to Admin Page
+2024-03-01 14:24:13,316 - ui_automation.step_definitions.AdminSteps -INFO - I selected Building
+2024-03-01 14:24:13,377 - ui_automation.step_definitions.AdminSteps -INFO - I verified Breadcrumb link names
+2024-03-01 14:24:13,486 - ui_automation.step_definitions.AdminSteps -INFO - I clicked Admin Breadcrumb link
+2024-03-01 14:24:13,500 - ui_automation.step_definitions.AdminSteps -INFO - I navigated to Admin page
+2024-03-01 14:24:13,569 - ui_automation.step_definitions.AdminSteps -INFO - I clicked Home Breadcrumb link
+2024-03-01 14:24:13,577 - ui_automation.step_definitions.AdminSteps -INFO - I navigated to Home page
