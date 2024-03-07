@@ -22,6 +22,7 @@ public class HomeSteps {
     WebDriver driver = Driver.getInstance().getDriver();
     HomePage home = new HomePage();
     Helper helper = new Helper();
+    AlertHelper alert = new AlertHelper();
 
     public static final Logger oLog = LogManager.getLogger(HomeSteps.class);
 

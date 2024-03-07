@@ -38,3 +38,10 @@ Feature: This feature file will validate WebPage Accessibility
     Given user navigates to the Shelving Page
     When user clicks on Create Shelving Job button
     Then verify Accessibility
+
+
+  Scenario: Verify Accessibility on Verification Job page
+    Given user navigates to FETCH Homepage
+    When user clicks Verification on side navigation menu
+    And user selects a Verification Job
+    Then verify Accessibility

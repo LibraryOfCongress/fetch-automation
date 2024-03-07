@@ -54,6 +54,8 @@ public class HomePage {
     @FindBy(css = "[href='/admin']")
     public WebElement adminLink;
 
+    @FindBy(css = "button[class$='q-btn q-btn-item non-selectable no-outline q-btn--flat q-btn--rectangle text-white q-btn--actionable q-focusable q-hoverable text-body1']:nth-child(3)")
+     public WebElement banner;
 
 
 

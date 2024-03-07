@@ -6,7 +6,7 @@ Feature: Admin Page Functionality Validation
     Given user navigates to the Admin Page
 
 
-  @FETCH-527 @FETCH-319 @run
+  @FETCH-527 @FETCH-319
   Scenario: User should be able to validate Admin Dashboard icons and tabs
     When user is on the Admin Page
     Then user verifies the Admin Dashboard contains Buildings

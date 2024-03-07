@@ -34,7 +34,7 @@ public class AccessionPage {
     public WebElement johnDoe;
 
     @FindBy(css = ".q-virtual-scroll__content>div:nth-child(3)")
-    public WebElement georgeW;
+    public WebElement sanders;
 
     @FindBy(css = "[placeholder='Select Size']")
     public WebElement containerSizeField;
@@ -81,7 +81,7 @@ public class AccessionPage {
     @FindBy(xpath = "(//input[@class='q-field__input q-placeholder col'])[2]")
     public WebElement mtField;
 
-    @FindBy(css = "[role='listbox']")
+    @FindBy(css = ".q-virtual-scroll__content span")
     public List<WebElement> mediaOptions;
 
     @FindBy(css = ".q-pr-xs-xs > .q-btn")
@@ -105,9 +105,38 @@ public class AccessionPage {
     @FindBy(css = "[class='q-card__section q-card__section--vert']>p")
     public WebElement modal;
 
+    @FindBy(css = "[class='q-card popup-modal']")
+    public WebElement popupModal;
+
     @FindBy(xpath = "(//span[.='Cancel'])[1]")
     public WebElement cancelModal;
 
+    @FindBy(css = "button[class$='q-btn--no-uppercase btn-no-wrap text-body1 q-mr-sm-md']")
+    public WebElement enterBarcodeBtn;
+
+    @FindBy(css = "[placeholder='Please Enter Barcode']")
+    public WebElement enterBarcodeField;
+
+    @FindBy(xpath = "//span[.='Add Tray']/../..")
+    public WebElement addTrayBtn;
+
+    @FindBy(css = "button[class$='btn-dashed btn-no-wrap text-body1 full-width']")
+    public WebElement addTrayModalBtn;
+
+    @FindBy(xpath = "(//span[.='submit']/..)[1]")
+    public WebElement submitBtn;
+
+    @FindBy(css = "[class='q-td text-left'] span")
+    public WebElement scannedItem;
+
+    @FindBy(css = "td.q-table--col-auto-width [role='checkbox']")
+    public WebElement scannedItemCheckbox;
+
+    @FindBy(css = "div[class='q-banner row items-center q-banner--dense rounded-borders alert-banner text-positive bg-color-green-light']")
+    public WebElement alertMsg;
+
+    @FindBy(css = "[class='barcode text-h4 q-mb-md-xl q-mb-lg-none']")
+    public WebElement scanTrayField;
 
 
 

@@ -5,15 +5,15 @@ import io.cucumber.java.en.Then;
 import io.cucumber.java.en.When;
 import org.apache.log4j.LogManager;
 import org.apache.log4j.Logger;
-import org.openqa.selenium.By;
-import org.openqa.selenium.Keys;
-import org.openqa.selenium.WebDriver;
-import org.openqa.selenium.WebElement;
+import org.openqa.selenium.*;
 import ui_automation.pages.AccessionPage;
+import ui_automation.pages.HomePage;
 import ui_automation.utilities.*;
 
+import java.util.Iterator;
 import java.util.List;
 import java.util.Map;
+import java.util.Set;
 
 import static org.junit.Assert.assertEquals;
 import static org.junit.Assert.assertTrue;
@@ -25,7 +25,9 @@ public class AccessionSteps {
     Helper helper = new Helper();
     SelectHelper select = new SelectHelper();
     WaitHelper wait = new WaitHelper();
-    GenericHelper genhelp = new GenericHelper();
+    AlertHelper alert = new AlertHelper();
+    HomePage home = new HomePage();
+
     public static final Logger oLog = LogManager.getLogger(AccessionSteps.class);
 
 
@@ -49,6 +51,7 @@ public class AccessionSteps {
 
     @Then("user verifies required and optional fields on Start New Accession modal")
     public void user_verifies_required_and_optional_fields_on_Start_New_Accession_modal(io.cucumber.datatable.DataTable dataTable) {
+        wait.waitForVisibility(accessionJob.newAccessionFields.get(0),10);
         List<Map<String, String>> maps = dataTable.asMaps(String.class, String.class);
         int i = 0;
 
@@ -63,13 +66,12 @@ public class AccessionSteps {
     }
 
     @When("user selects all required fields")
-    public void user_selects_all_required_fields() {
-        helper.jSClick(accessionJob.ownerField);
-        accessionJob.johnDoe.click();
+    public void user_selects_all_required_fields() throws InterruptedException {
+        wait.waitForClickability(accessionJob.ownerField, 10);
+        accessionJob.ownerField.click();
+        wait.hardWait(1000);
+        accessionJob.ownerFieldOptions.get(0).click();
         oLog.info("I clicked John Doe in Owner field");
-        accessionJob.containerSizeField.click();
-        accessionJob.aHigh.click();
-        oLog.info("I clicked A High option in Container Size field");
     }
 
     @When("user is able to click Back button")
@@ -85,7 +87,7 @@ public class AccessionSteps {
     @Then("user is able to return to the Start Accession single action square screen")
     public void user_is_able_to_return_to_the_Start_Accession_single_action_square_screen() {
         String actualURL = driver.getCurrentUrl();
-        String expectedURL = "https://c2vldimsweb01.loctest.gov/accession";
+        String expectedURL = "https://test.fetch.loctest.gov/accession";
         assertEquals("Returning to Accession Jobs Page failed",
                 expectedURL, actualURL);
         oLog.info("I returned to the Start Accession Job page");
@@ -94,54 +96,60 @@ public class AccessionSteps {
     //TODO find better locator
     @And("user verifies Owner field options")
     public void userVerifiesOwnerFieldOptions() {
-        helper.jSClick(accessionJob.ownerField);
-        List<String> elemTexts = helper.getElementsText(By.cssSelector(".q-virtual-scroll__content span"));
+        wait.waitForClickability(accessionJob.ownerField, 10);
+        accessionJob.ownerField.click();
+        List<String> elemTexts = helper.getElementsText(By.cssSelector("[class='q-virtual-scroll__content'] [role='option']"));
         for (String elemText : elemTexts) {
             System.out.println(elemText);
         }
+        accessionJob.ownerField.click();
         oLog.info("I printed Owner field options");
 
     }
 
-    @And("user verifies Container Size field options")
-    public void userVerifiesContainerSizeFieldOptions() {
-        helper.jSClick(accessionJob.containerSizeField);
-
-        //TODO find better locator
-        List<String> elemTexts = helper.getElementsText(By.cssSelector(".q-virtual-scroll__content span"));
-        for (String elemText : elemTexts) {
-            System.out.println(elemText);
-        }
-        oLog.info("I printed Container Size field options ");
-    }
-
     @And("user verifies Media Type field options")
     public void userVerifiesMediaTypeFieldOptions() {
-        helper.jSClick(accessionJob.mediaTypeField);
-
-        //TODO find better locator
-        List<String> elemTexts = helper.getElementsText(By.cssSelector(".q-virtual-scroll__content span"));
-        for (String elemText : elemTexts) {
-            System.out.println(elemText);
+        accessionJob.mediaTypeField.click();
+        for (WebElement elemText : accessionJob.mediaOptions) {
+            System.out.println(elemText.getText());
         }
         oLog.info("I printed Media Type field options ");
     }
 
-    @When("user clicks on select Owner button")
-    public void userClicksOnSelectOwnerButton() throws InterruptedException {
-        helper.jSClick(accessionJob.ownerField);
+    @When("user clicks Select Owner")
+    public void userClicksSelectOwner() {
+        wait.waitForClickability(accessionJob.ownerField, 10);
+        accessionJob.ownerField.click();
     }
 
-    @Then("user is able to choose any option from dropdown field")
-    public void userIsAbleToChooseAnyOptionFromDropdownField() throws InterruptedException {
+    @Then("user is able to choose any option from Owner dropdown field")
+    public void userIsAbleToChooseAnyOptionFromOwnerDropdownField() throws InterruptedException {
 
         //TODO create dynamic method
         select.selectCheckBox(accessionJob.johnDoe, true);
-        Thread.sleep(3000);
+        Thread.sleep(1000);
         accessionJob.ownerField.click();
-        select.selectCheckBox(accessionJob.georgeW, true);
-        Thread.sleep(3000);
+        select.selectCheckBox(accessionJob.sanders, true);
+        Thread.sleep(1000);
     }
+
+
+    @When("user clicks Select Media Type")
+    public void user_clicks_Select_Media_Type() {
+        wait.waitForClickability(accessionJob.mediaTypeField, 10);
+        accessionJob.mediaTypeField.click();
+    }
+
+    @Then("user is able to choose any option from Media Type dropdown field")
+    public void user_is_able_to_choose_any_option_from_Media_Type_dropdown_field() throws InterruptedException {
+        //TODO create dynamic method
+        select.selectCheckBox(accessionJob.mediaOptions.get(1), true);
+        Thread.sleep(1000);
+        accessionJob.ownerField.click();
+        select.selectCheckBox(accessionJob.mediaOptions.get(2), true);
+        Thread.sleep(1000);
+    }
+
 
     @When("user clicks Submit button")
     public void user_clicks_Submit_button() {
@@ -149,10 +157,10 @@ public class AccessionSteps {
         oLog.info("I clicked Submit button ");
     }
 
-    @When("user clicks Scan Barcode")
-    public void user_clicks_Scan_Barcode() {
-        helper.jSClick(accessionJob.scanBarcode);
-        oLog.info("I clicked(scanned) Barcode ");
+    @When("user scans Barcode")
+    public void user_scans_Barcode() {
+        driver.findElement(By.tagName("body")).sendKeys("scan!");
+        oLog.info("I scanned Barcode ");
     }
 
     @When("user is able to edit Container Size and Media Type fields of the panel")
@@ -338,6 +346,120 @@ public class AccessionSteps {
     public void verify_a_modal_confirming_complete_job_action_appears() {
         wait.waitForVisibility(accessionJob.modal, 1000);
         assertEquals("Are you sure you want to complete the job?", accessionJob.modal.getText());
+    }
+
+
+    @Then("verify that Enter Barcode button is enabled")
+    public void verify_that_Enter_Barcode_button_is_enabled() {
+        accessionJob.enterBarcodeBtn.isEnabled();
+        oLog.info("Enter Barcode button is enabled ");
+    }
+
+    @Then("user clicks Enter Barcode button")
+    public void user_clicks_Enter_Barcode_button() {
+        helper.jSClick(accessionJob.enterBarcodeBtn);
+        oLog.info("I clicked Enter Barcode button");
+    }
+
+    @Then("verify a modal with manual barcode entry is displayed")
+    public void verify_a_modal_with_manual_barcode_entry_is_displayed() {
+        wait.waitForVisibility(accessionJob.popupModal, 1000);
+        accessionJob.popupModal.isDisplayed();
+        oLog.info("Manual barcode entry modal is displayed");
+    }
+
+    @Then("user enters barcode and clicks Submit button")
+    public void user_enters_barcode_and_clicks_Submit_button() {
+        accessionJob.enterBarcodeField.sendKeys("12345");
+        accessionJob.submitBtn.click();
+    }
+
+    @Then("verify the entered barcode is displayed under Scanned Items")
+    public void verify_the_entered_barcode_is_displayed_under_Scanned_Items() {
+        assertEquals("Scanned Barcode is not displayed!", accessionJob.scannedItem.getText(), "12345");
+        oLog.info("Entered barcode is displayed under Scanned Items");
+    }
+
+    @When("user selects one of the barcodes in the table")
+    public void user_selects_one_of_the_barcodes_in_the_table() {
+        accessionJob.scannedItemCheckbox.click();
+    }
+
+    @Then("verify Enter Barcode button is changed to Edit Barcode")
+    public void verify_Enter_Barcode_button_is_changed_to_Edit_Barcode() {
+        assertEquals(true, accessionJob.enterBarcodeBtn.getText().contains("Edit Barcode"));
+        oLog.info("Enter Barcode button is changed to Edit button ");
+    }
+
+    @Then("user clicks Edit Barcode button")
+    public void user_clicks_Edit_Barcode_button() {
+        accessionJob.enterBarcodeBtn.click();
+    }
+
+    @Then("verify new modal allowing to edit the barcode is displayed")
+    public void verify_new_modal_allowing_to_edit_the_barcode_is_displayed() {
+        wait.waitForVisibility(accessionJob.popupModal, 1000);
+        accessionJob.popupModal.isDisplayed();
+        oLog.info("Edit barcode modal is displayed");
+    }
+
+    @Then("user edits the barcode and clicks submit button")
+    public void user_edits_the_barcode_and_clicks_submit_button() {
+        accessionJob.enterBarcodeField.sendKeys(Keys.CONTROL + "a");
+        accessionJob.enterBarcodeField.sendKeys(Keys.DELETE);
+        accessionJob.enterBarcodeField.sendKeys("54321");
+        accessionJob.submitBtn.click();
+    }
+
+    @Then("verify the updated barcode is displayed under Scanned Items")
+    public void verify_the_updated_barcode_is_displayed_under_Scanned_Items() {
+        assertEquals("Updated Barcode is not displayed!", accessionJob.scannedItem.getText(), "54321");
+        oLog.info("Edited barcode is displayed under Scanned Items");
+    }
+
+    @When("user verifies all barcodes")
+    public void user_verifies_all_barcodes() throws InterruptedException {
+        accessionJob.enterBarcodeBtn.click();
+        accessionJob.enterBarcodeField.sendKeys("54321");
+        accessionJob.submitBtn.click();
+        oLog.info("I verified the barcode");
+    }
+
+    @Then("verify Add Tray button is activated")
+    public void verify_Add_Tray_button_is_activated() {
+        assertEquals(true, accessionJob.addTrayBtn.isEnabled());
+        oLog.info("Add Tray button is activated");
+    }
+
+    @Then("user clicks Add Tray button")
+    public void user_clicks_Add_Tray_button() throws InterruptedException {
+        //TODO find the locator of alert msg so no need to use hardwait
+        wait.hardWait(5000);
+        wait.waitForVisibility(accessionJob.addTrayBtn, 1000);
+        accessionJob.addTrayBtn.click();
+        oLog.info("I clicked Add Tray button");
+    }
+
+    @Then("verify new modal Select Tray is displayed")
+    public void verify_new_modal_Select_Tray_is_displayed() {
+        assertEquals(true, accessionJob.popupModal.isDisplayed());
+    }
+
+    @Then("user clicks add tray on the modal")
+    public void user_clicks_add_tray_on_the_modal() {
+        wait.waitForClickability(accessionJob.addTrayModalBtn, 10);
+        accessionJob.addTrayModalBtn.click();
+    }
+
+    @Then("verify {string} alert message is displayed")
+    public void verify_alert_message_is_displayed(String alertMessage) {
+        assertEquals(true, accessionJob.alertMsg.getText().contains(alertMessage));
+    }
+
+    @Then("the container is cleared out so a new tray can be scanned")
+    public void the_container_is_cleared_out_so_a_new_tray_can_be_scanned() {
+        assertEquals("Please Scan Tray", accessionJob.scanTrayField.getText());
+        oLog.info("New Tray can be scanned");
     }
 
 
