@@ -11740,3 +11740,432 @@
 2024-03-07 16:06:44,016 - ui_automation.step_definitions.AccessionSteps -INFO - Enter Barcode button is changed to Edit button 
 2024-03-07 16:06:44,745 - ui_automation.step_definitions.AccessionSteps -INFO - Edit barcode modal is displayed
 2024-03-07 16:06:45,025 - ui_automation.step_definitions.AccessionSteps -INFO - Edited barcode is displayed under Scanned Items
+2024-03-08 13:24:28,966 - io.github.bonigarcia.wdm.WebDriverManager -INFO - Using chromedriver 122.0.6261.111 (resolved driver for Chrome 122)
+2024-03-08 13:24:29,049 - io.github.bonigarcia.wdm.online.Downloader -INFO - Downloading https://storage.googleapis.com/chrome-for-testing-public/122.0.6261.111/win64/chromedriver-win64.zip
+2024-03-08 13:24:33,414 - io.github.bonigarcia.wdm.online.Downloader -INFO - Extracting driver from compressed file chromedriver-win64.zip
+2024-03-08 13:24:33,616 - io.github.bonigarcia.wdm.WebDriverManager -INFO - Exporting webdriver.chrome.driver as C:\Users\Afa Faraji\.cache\selenium\chromedriver\win64\122.0.6261.111\chromedriver.exe
+2024-03-08 13:24:37,046 - ui_automation.step_definitions.TrayItemMgmtSteps -INFO - I navigated to Item Management Page
+2024-03-08 13:24:37,622 - ui_automation.step_definitions.HomeSteps -INFO - I navigated to Accession Jobs Page
+2024-03-08 13:24:37,861 - ui_automation.step_definitions.AccessionSteps -INFO - I started Accession Job
+2024-03-08 13:24:37,904 - ui_automation.step_definitions.AccessionSteps -INFO - I clicked Trayed Accession Option
+2024-03-08 13:24:38,082 - ui_automation.step_definitions.AccessionSteps -INFO - I verified New Accession Job's fields
+2024-03-08 13:24:38,455 - ui_automation.step_definitions.AccessionSteps -INFO - I printed Owner field options
+2024-03-08 13:24:38,903 - ui_automation.step_definitions.AccessionSteps -INFO - I printed Media Type field options 
+2024-03-08 13:24:39,072 - ui_automation.utilities.WaitHelper -INFO - 1000
+2024-03-08 13:24:40,172 - ui_automation.step_definitions.AccessionSteps -INFO - I clicked John Doe in Owner field
+2024-03-08 13:24:40,347 - ui_automation.step_definitions.AccessionSteps -INFO - I returned to the Start Accession Job page
+2024-03-08 13:24:40,646 - io.github.bonigarcia.wdm.WebDriverManager -INFO - Using chromedriver 122.0.6261.111 (resolved driver for Chrome 122)
+2024-03-08 13:24:40,654 - io.github.bonigarcia.wdm.WebDriverManager -INFO - Exporting webdriver.chrome.driver as C:\Users\Afa Faraji\.cache\selenium\chromedriver\win64\122.0.6261.111\chromedriver.exe
+2024-03-08 13:24:42,318 - ui_automation.step_definitions.TrayItemMgmtSteps -INFO - I navigated to Item Management Page
+2024-03-08 13:24:42,673 - ui_automation.step_definitions.HomeSteps -INFO - I navigated to Accession Jobs Page
+2024-03-08 13:24:42,843 - ui_automation.step_definitions.AccessionSteps -INFO - I started Accession Job
+2024-03-08 13:24:42,920 - ui_automation.step_definitions.AccessionSteps -INFO - I clicked Non-Tray Accession Option
+2024-03-08 13:24:43,084 - ui_automation.step_definitions.AccessionSteps -INFO - I verified New Accession Job's fields
+2024-03-08 13:24:43,530 - ui_automation.step_definitions.AccessionSteps -INFO - I printed Owner field options
+2024-03-08 13:24:44,009 - ui_automation.step_definitions.AccessionSteps -INFO - I printed Media Type field options 
+2024-03-08 13:24:44,119 - ui_automation.utilities.WaitHelper -INFO - 1000
+2024-03-08 13:24:45,208 - ui_automation.step_definitions.AccessionSteps -INFO - I clicked John Doe in Owner field
+2024-03-08 13:24:45,362 - ui_automation.step_definitions.AccessionSteps -INFO - I returned to the Start Accession Job page
+2024-03-08 13:24:45,653 - io.github.bonigarcia.wdm.WebDriverManager -INFO - Using chromedriver 122.0.6261.111 (resolved driver for Chrome 122)
+2024-03-08 13:24:45,669 - io.github.bonigarcia.wdm.WebDriverManager -INFO - Exporting webdriver.chrome.driver as C:\Users\Afa Faraji\.cache\selenium\chromedriver\win64\122.0.6261.111\chromedriver.exe
+2024-03-08 13:24:46,998 - ui_automation.step_definitions.TrayItemMgmtSteps -INFO - I navigated to Item Management Page
+2024-03-08 13:24:47,336 - ui_automation.step_definitions.HomeSteps -INFO - I navigated to Accession Jobs Page
+2024-03-08 13:24:47,479 - ui_automation.step_definitions.AccessionSteps -INFO - I started Accession Job
+2024-03-08 13:24:47,534 - ui_automation.step_definitions.AccessionSteps -INFO - I clicked Trayed Accession Option
+2024-03-08 13:24:53,071 - io.github.bonigarcia.wdm.WebDriverManager -INFO - Using chromedriver 122.0.6261.111 (resolved driver for Chrome 122)
+2024-03-08 13:24:53,085 - io.github.bonigarcia.wdm.WebDriverManager -INFO - Exporting webdriver.chrome.driver as C:\Users\Afa Faraji\.cache\selenium\chromedriver\win64\122.0.6261.111\chromedriver.exe
+2024-03-08 13:24:54,837 - ui_automation.step_definitions.TrayItemMgmtSteps -INFO - I navigated to Item Management Page
+2024-03-08 13:24:55,226 - ui_automation.step_definitions.HomeSteps -INFO - I navigated to Accession Jobs Page
+2024-03-08 13:24:55,359 - ui_automation.step_definitions.AccessionSteps -INFO - I started Accession Job
+2024-03-08 13:24:55,424 - ui_automation.step_definitions.AccessionSteps -INFO - I clicked Trayed Accession Option
+2024-03-08 13:24:56,135 - ui_automation.utilities.WaitHelper -INFO - 1000
+2024-03-08 13:24:57,575 - io.github.bonigarcia.wdm.WebDriverManager -INFO - Using chromedriver 122.0.6261.111 (resolved driver for Chrome 122)
+2024-03-08 13:24:57,585 - io.github.bonigarcia.wdm.WebDriverManager -INFO - Exporting webdriver.chrome.driver as C:\Users\Afa Faraji\.cache\selenium\chromedriver\win64\122.0.6261.111\chromedriver.exe
+2024-03-08 13:24:59,205 - ui_automation.step_definitions.TrayItemMgmtSteps -INFO - I navigated to Item Management Page
+2024-03-08 13:24:59,552 - ui_automation.step_definitions.HomeSteps -INFO - I navigated to Accession Jobs Page
+2024-03-08 13:24:59,683 - ui_automation.step_definitions.AccessionSteps -INFO - I started Accession Job
+2024-03-08 13:24:59,800 - ui_automation.step_definitions.AccessionSteps -INFO - I clicked Trayed Accession Option
+2024-03-08 13:25:00,082 - ui_automation.utilities.WaitHelper -INFO - 1000
+2024-03-08 13:25:01,204 - ui_automation.step_definitions.AccessionSteps -INFO - I clicked John Doe in Owner field
+2024-03-08 13:25:01,263 - ui_automation.step_definitions.AccessionSteps -INFO - I clicked Submit button 
+2024-03-08 13:25:01,348 - ui_automation.step_definitions.AccessionSteps -INFO - I scanned Barcode 
+2024-03-08 13:25:01,381 - ui_automation.step_definitions.AccessionSteps -INFO - Enter Barcode button is enabled 
+2024-03-08 13:25:01,439 - ui_automation.step_definitions.AccessionSteps -INFO - I clicked Enter Barcode button
+2024-03-08 13:25:01,550 - ui_automation.step_definitions.AccessionSteps -INFO - Manual barcode entry modal is displayed
+2024-03-08 13:25:01,833 - ui_automation.step_definitions.AccessionSteps -INFO - Entered barcode is displayed under Scanned Items
+2024-03-08 13:25:01,946 - ui_automation.step_definitions.AccessionSteps -INFO - Enter Barcode button is changed to Edit button 
+2024-03-08 13:25:02,137 - ui_automation.step_definitions.AccessionSteps -INFO - Edit barcode modal is displayed
+2024-03-08 13:25:02,444 - ui_automation.step_definitions.AccessionSteps -INFO - Edited barcode is displayed under Scanned Items
+2024-03-08 13:25:02,687 - ui_automation.step_definitions.AccessionSteps -INFO - I verified the barcode
+2024-03-08 13:25:02,711 - ui_automation.step_definitions.AccessionSteps -INFO - Add Tray button is activated
+2024-03-08 13:25:02,712 - ui_automation.utilities.WaitHelper -INFO - 5000
+2024-03-08 13:25:07,973 - ui_automation.step_definitions.AccessionSteps -INFO - I clicked Add Tray button
+2024-03-08 13:25:08,328 - ui_automation.step_definitions.AccessionSteps -INFO - New Tray can be scanned
+2024-03-08 13:25:08,676 - io.github.bonigarcia.wdm.WebDriverManager -INFO - Using chromedriver 122.0.6261.111 (resolved driver for Chrome 122)
+2024-03-08 13:25:08,707 - io.github.bonigarcia.wdm.WebDriverManager -INFO - Exporting webdriver.chrome.driver as C:\Users\Afa Faraji\.cache\selenium\chromedriver\win64\122.0.6261.111\chromedriver.exe
+2024-03-08 13:25:10,245 - ui_automation.step_definitions.TrayItemMgmtSteps -INFO - I navigated to Item Management Page
+2024-03-08 13:25:10,783 - ui_automation.step_definitions.HomeSteps -INFO - I navigated to Accession Jobs Page
+2024-03-08 13:25:11,040 - ui_automation.step_definitions.AccessionSteps -INFO - I started Accession Job
+2024-03-08 13:25:11,107 - ui_automation.step_definitions.AccessionSteps -INFO - I clicked Non-Tray Accession Option
+2024-03-08 13:25:11,332 - ui_automation.utilities.WaitHelper -INFO - 1000
+2024-03-08 13:25:12,474 - ui_automation.step_definitions.AccessionSteps -INFO - I clicked John Doe in Owner field
+2024-03-08 13:25:12,556 - ui_automation.step_definitions.AccessionSteps -INFO - I clicked Submit button 
+2024-03-08 13:25:12,614 - ui_automation.step_definitions.AccessionSteps -INFO - I clicked Enter Barcode button
+2024-03-08 13:25:13,447 - ui_automation.step_definitions.AccessionSteps -INFO - Manual barcode entry modal is displayed
+2024-03-08 13:25:13,905 - ui_automation.step_definitions.AccessionSteps -INFO - Entered barcode is displayed under Scanned Items
+2024-03-08 13:25:14,358 - ui_automation.step_definitions.AccessionSteps -INFO - Enter Barcode button is changed to Edit button 
+2024-03-08 13:25:14,716 - ui_automation.step_definitions.AccessionSteps -INFO - Edit barcode modal is displayed
+2024-03-08 13:25:15,179 - ui_automation.step_definitions.AccessionSteps -INFO - Edited barcode is displayed under Scanned Items
+2024-03-08 13:26:10,950 - io.github.bonigarcia.wdm.WebDriverManager -INFO - Using chromedriver 122.0.6261.111 (resolved driver for Chrome 122)
+2024-03-08 13:26:10,992 - io.github.bonigarcia.wdm.WebDriverManager -INFO - Exporting webdriver.chrome.driver as C:\Users\Afa Faraji\.cache\selenium\chromedriver\win64\122.0.6261.111\chromedriver.exe
+2024-03-08 13:26:13,030 - ui_automation.step_definitions.HomeSteps -INFO - I navigated to FETCH webapp
+2024-03-08 13:26:14,399 - ui_automation.step_definitions.HomeSteps -INFO - I navigated to Verification Page
+2024-03-08 13:26:14,471 - ui_automation.step_definitions.AdminSteps -INFO - I verified Breadcrumb link names
+2024-03-08 13:26:14,608 - ui_automation.step_definitions.AdminSteps -INFO - I verified Breadcrumb link names
+2024-03-08 13:26:14,715 - ui_automation.step_definitions.AdminSteps -INFO - I clicked Verification Breadcrumb link
+2024-03-08 13:26:14,724 - ui_automation.step_definitions.AdminSteps -INFO - I navigated to Verification page
+2024-03-08 13:26:14,911 - ui_automation.step_definitions.AdminSteps -INFO - I navigated to Home page
+2024-03-08 13:26:15,981 - ui_automation.step_definitions.HomeSteps -INFO - I navigated to Admin Page
+2024-03-08 13:26:16,071 - ui_automation.step_definitions.AdminSteps -INFO - I selected Building
+2024-03-08 13:26:16,155 - ui_automation.step_definitions.AdminSteps -INFO - I verified Breadcrumb link names
+2024-03-08 13:26:16,278 - ui_automation.step_definitions.AdminSteps -INFO - I clicked Admin Breadcrumb link
+2024-03-08 13:26:16,292 - ui_automation.step_definitions.AdminSteps -INFO - I navigated to Admin page
+2024-03-08 13:26:16,400 - ui_automation.step_definitions.AdminSteps -INFO - I navigated to Home page
+2024-03-13 10:38:57,195 - io.github.bonigarcia.wdm.WebDriverManager -INFO - Using chromedriver 122.0.6261.128 (resolved driver for Chrome 122)
+2024-03-13 10:38:57,264 - io.github.bonigarcia.wdm.online.Downloader -INFO - Downloading https://storage.googleapis.com/chrome-for-testing-public/122.0.6261.128/win64/chromedriver-win64.zip
+2024-03-13 10:39:02,000 - io.github.bonigarcia.wdm.online.Downloader -INFO - Extracting driver from compressed file chromedriver-win64.zip
+2024-03-13 10:39:02,111 - io.github.bonigarcia.wdm.WebDriverManager -INFO - Exporting webdriver.chrome.driver as C:\Users\Afa Faraji\.cache\selenium\chromedriver\win64\122.0.6261.128\chromedriver.exe
+2024-03-13 10:39:04,873 - ui_automation.step_definitions.HomeSteps -INFO - I navigated to FETCH webapp
+2024-03-13 10:39:06,155 - ui_automation.step_definitions.HomeSteps -INFO - I navigated to Verification Page
+2024-03-13 10:39:06,209 - ui_automation.step_definitions.AdminSteps -INFO - I verified Breadcrumb link names
+2024-03-13 10:39:06,309 - ui_automation.step_definitions.AdminSteps -INFO - I verified Breadcrumb link names
+2024-03-13 10:39:06,383 - ui_automation.step_definitions.AdminSteps -INFO - I clicked Verification Breadcrumb link
+2024-03-13 10:39:06,393 - ui_automation.step_definitions.AdminSteps -INFO - I navigated to Verification page
+2024-03-13 10:39:06,522 - ui_automation.step_definitions.AdminSteps -INFO - I navigated to Home page
+2024-03-13 10:39:07,582 - ui_automation.step_definitions.HomeSteps -INFO - I navigated to Admin Page
+2024-03-13 10:39:07,638 - ui_automation.step_definitions.AdminSteps -INFO - I selected Building
+2024-03-13 10:39:07,683 - ui_automation.step_definitions.AdminSteps -INFO - I verified Breadcrumb link names
+2024-03-13 10:39:07,752 - ui_automation.step_definitions.AdminSteps -INFO - I clicked Admin Breadcrumb link
+2024-03-13 10:39:07,759 - ui_automation.step_definitions.AdminSteps -INFO - I navigated to Admin page
+2024-03-13 10:39:07,855 - ui_automation.step_definitions.AdminSteps -INFO - I navigated to Home page
+2024-03-14 16:44:50,528 - io.github.bonigarcia.wdm.WebDriverManager -INFO - Using chromedriver 122.0.6261.128 (resolved driver for Chrome 122)
+2024-03-14 16:44:50,579 - io.github.bonigarcia.wdm.WebDriverManager -INFO - Exporting webdriver.chrome.driver as C:\Users\Afa Faraji\.cache\selenium\chromedriver\win64\122.0.6261.128\chromedriver.exe
+2024-03-14 16:46:10,144 - io.github.bonigarcia.wdm.WebDriverManager -INFO - Using chromedriver 122.0.6261.128 (resolved driver for Chrome 122)
+2024-03-14 16:46:10,189 - io.github.bonigarcia.wdm.WebDriverManager -INFO - Exporting webdriver.chrome.driver as C:\Users\Afa Faraji\.cache\selenium\chromedriver\win64\122.0.6261.128\chromedriver.exe
+2024-03-14 16:47:35,718 - io.github.bonigarcia.wdm.WebDriverManager -INFO - Using chromedriver 122.0.6261.128 (resolved driver for Chrome 122)
+2024-03-14 16:47:35,758 - io.github.bonigarcia.wdm.WebDriverManager -INFO - Exporting webdriver.chrome.driver as C:\Users\Afa Faraji\.cache\selenium\chromedriver\win64\122.0.6261.128\chromedriver.exe
+2024-03-14 16:48:52,746 - io.github.bonigarcia.wdm.WebDriverManager -INFO - Using chromedriver 122.0.6261.128 (resolved driver for Chrome 122)
+2024-03-14 16:48:52,778 - io.github.bonigarcia.wdm.WebDriverManager -INFO - Exporting webdriver.chrome.driver as C:\Users\Afa Faraji\.cache\selenium\chromedriver\win64\122.0.6261.128\chromedriver.exe
+2024-03-14 16:50:18,891 - io.github.bonigarcia.wdm.WebDriverManager -INFO - Using chromedriver 122.0.6261.128 (resolved driver for Chrome 122)
+2024-03-14 16:50:18,926 - io.github.bonigarcia.wdm.WebDriverManager -INFO - Exporting webdriver.chrome.driver as C:\Users\Afa Faraji\.cache\selenium\chromedriver\win64\122.0.6261.128\chromedriver.exe
+2024-03-14 16:50:56,136 - io.github.bonigarcia.wdm.WebDriverManager -INFO - Using chromedriver 122.0.6261.128 (resolved driver for Chrome 122)
+2024-03-14 16:50:56,167 - io.github.bonigarcia.wdm.WebDriverManager -INFO - Exporting webdriver.chrome.driver as C:\Users\Afa Faraji\.cache\selenium\chromedriver\win64\122.0.6261.128\chromedriver.exe
+2024-03-14 16:54:12,762 - io.github.bonigarcia.wdm.WebDriverManager -INFO - Using chromedriver 122.0.6261.128 (resolved driver for Chrome 122)
+2024-03-14 16:54:12,799 - io.github.bonigarcia.wdm.WebDriverManager -INFO - Exporting webdriver.chrome.driver as C:\Users\Afa Faraji\.cache\selenium\chromedriver\win64\122.0.6261.128\chromedriver.exe
+2024-03-14 16:55:07,133 - io.github.bonigarcia.wdm.WebDriverManager -INFO - Using chromedriver 122.0.6261.128 (resolved driver for Chrome 122)
+2024-03-14 16:55:07,168 - io.github.bonigarcia.wdm.WebDriverManager -INFO - Exporting webdriver.chrome.driver as C:\Users\Afa Faraji\.cache\selenium\chromedriver\win64\122.0.6261.128\chromedriver.exe
+2024-03-14 16:55:39,735 - io.github.bonigarcia.wdm.WebDriverManager -INFO - Using chromedriver 122.0.6261.128 (resolved driver for Chrome 122)
+2024-03-14 16:55:39,777 - io.github.bonigarcia.wdm.WebDriverManager -INFO - Exporting webdriver.chrome.driver as C:\Users\Afa Faraji\.cache\selenium\chromedriver\win64\122.0.6261.128\chromedriver.exe
+2024-03-14 16:56:09,641 - io.github.bonigarcia.wdm.WebDriverManager -INFO - Using chromedriver 122.0.6261.128 (resolved driver for Chrome 122)
+2024-03-14 16:56:09,683 - io.github.bonigarcia.wdm.WebDriverManager -INFO - Exporting webdriver.chrome.driver as C:\Users\Afa Faraji\.cache\selenium\chromedriver\win64\122.0.6261.128\chromedriver.exe
+2024-03-14 16:59:07,263 - io.github.bonigarcia.wdm.WebDriverManager -INFO - Using chromedriver 122.0.6261.128 (resolved driver for Chrome 122)
+2024-03-14 16:59:07,308 - io.github.bonigarcia.wdm.WebDriverManager -INFO - Exporting webdriver.chrome.driver as C:\Users\Afa Faraji\.cache\selenium\chromedriver\win64\122.0.6261.128\chromedriver.exe
+2024-03-14 17:43:04,438 - io.github.bonigarcia.wdm.WebDriverManager -INFO - Using chromedriver 122.0.6261.128 (resolved driver for Chrome 122)
+2024-03-14 17:43:04,480 - io.github.bonigarcia.wdm.WebDriverManager -INFO - Exporting webdriver.chrome.driver as C:\Users\Afa Faraji\.cache\selenium\chromedriver\win64\122.0.6261.128\chromedriver.exe
+2024-03-14 17:45:05,457 - io.github.bonigarcia.wdm.WebDriverManager -INFO - Using chromedriver 122.0.6261.128 (resolved driver for Chrome 122)
+2024-03-14 17:45:05,485 - io.github.bonigarcia.wdm.WebDriverManager -INFO - Exporting webdriver.chrome.driver as C:\Users\Afa Faraji\.cache\selenium\chromedriver\win64\122.0.6261.128\chromedriver.exe
+2024-03-14 17:45:56,728 - io.github.bonigarcia.wdm.WebDriverManager -INFO - Using chromedriver 122.0.6261.128 (resolved driver for Chrome 122)
+2024-03-14 17:45:56,762 - io.github.bonigarcia.wdm.WebDriverManager -INFO - Exporting webdriver.chrome.driver as C:\Users\Afa Faraji\.cache\selenium\chromedriver\win64\122.0.6261.128\chromedriver.exe
+2024-03-14 17:51:51,913 - io.github.bonigarcia.wdm.WebDriverManager -INFO - Using chromedriver 122.0.6261.128 (resolved driver for Chrome 122)
+2024-03-14 17:51:51,946 - io.github.bonigarcia.wdm.WebDriverManager -INFO - Exporting webdriver.chrome.driver as C:\Users\Afa Faraji\.cache\selenium\chromedriver\win64\122.0.6261.128\chromedriver.exe
+2024-03-14 17:51:55,015 - ui_automation.step_definitions.AccessionSteps -INFO - I scanned Barcode 
+2024-03-14 17:51:57,109 - ui_automation.step_definitions.AccessionSteps -INFO - I clicked Enter Barcode button
+2024-03-14 17:58:05,189 - io.github.bonigarcia.wdm.WebDriverManager -INFO - Using chromedriver 122.0.6261.128 (resolved driver for Chrome 122)
+2024-03-14 17:58:05,233 - io.github.bonigarcia.wdm.WebDriverManager -INFO - Exporting webdriver.chrome.driver as C:\Users\Afa Faraji\.cache\selenium\chromedriver\win64\122.0.6261.128\chromedriver.exe
+2024-03-14 17:58:08,008 - ui_automation.step_definitions.AccessionSteps -INFO - I scanned Barcode 
+2024-03-14 17:58:08,108 - ui_automation.step_definitions.AccessionSteps -INFO - I clicked Enter Barcode button
+2024-03-15 09:33:29,513 - io.github.bonigarcia.wdm.WebDriverManager -INFO - Using chromedriver 122.0.6261.128 (resolved driver for Chrome 122)
+2024-03-15 09:33:29,528 - io.github.bonigarcia.wdm.WebDriverManager -INFO - Exporting webdriver.chrome.driver as C:\Users\Afa Faraji\.cache\selenium\chromedriver\win64\122.0.6261.128\chromedriver.exe
+2024-03-15 09:33:31,585 - ui_automation.step_definitions.AccessionSteps -INFO - I scanned Barcode 
+2024-03-15 09:33:31,647 - ui_automation.step_definitions.AccessionSteps -INFO - I clicked Enter Barcode button
+2024-03-15 09:44:54,079 - io.github.bonigarcia.wdm.WebDriverManager -INFO - Using chromedriver 122.0.6261.128 (resolved driver for Chrome 122)
+2024-03-15 09:44:54,097 - io.github.bonigarcia.wdm.WebDriverManager -INFO - Exporting webdriver.chrome.driver as C:\Users\Afa Faraji\.cache\selenium\chromedriver\win64\122.0.6261.128\chromedriver.exe
+2024-03-15 09:44:55,974 - ui_automation.step_definitions.AccessionSteps -INFO - I scanned Barcode 
+2024-03-15 09:44:56,017 - ui_automation.step_definitions.AccessionSteps -INFO - I clicked Enter Barcode button
+2024-03-15 09:46:04,547 - io.github.bonigarcia.wdm.WebDriverManager -INFO - Using chromedriver 122.0.6261.128 (resolved driver for Chrome 122)
+2024-03-15 09:46:04,563 - io.github.bonigarcia.wdm.WebDriverManager -INFO - Exporting webdriver.chrome.driver as C:\Users\Afa Faraji\.cache\selenium\chromedriver\win64\122.0.6261.128\chromedriver.exe
+2024-03-15 09:46:06,616 - ui_automation.step_definitions.AccessionSteps -INFO - I scanned Barcode 
+2024-03-15 09:46:06,651 - ui_automation.step_definitions.AccessionSteps -INFO - I clicked Enter Barcode button
+2024-03-15 09:47:29,520 - io.github.bonigarcia.wdm.WebDriverManager -INFO - Using chromedriver 122.0.6261.128 (resolved driver for Chrome 122)
+2024-03-15 09:47:29,539 - io.github.bonigarcia.wdm.WebDriverManager -INFO - Exporting webdriver.chrome.driver as C:\Users\Afa Faraji\.cache\selenium\chromedriver\win64\122.0.6261.128\chromedriver.exe
+2024-03-15 09:47:31,278 - ui_automation.step_definitions.AccessionSteps -INFO - I scanned Barcode 
+2024-03-15 09:47:31,328 - ui_automation.step_definitions.AccessionSteps -INFO - I clicked Enter Barcode button
+2024-03-15 09:47:31,518 - ui_automation.step_definitions.AccessionSteps -INFO - Entered barcode is displayed under Scanned Items
+2024-03-15 09:47:31,527 - ui_automation.step_definitions.AccessionSteps -INFO - Entered barcode is displayed under Scanned Items
+2024-03-15 09:47:31,538 - ui_automation.step_definitions.AccessionSteps -INFO - Entered barcode is displayed under Scanned Items
+2024-03-15 09:48:59,616 - io.github.bonigarcia.wdm.WebDriverManager -INFO - Using chromedriver 122.0.6261.128 (resolved driver for Chrome 122)
+2024-03-15 09:48:59,634 - io.github.bonigarcia.wdm.WebDriverManager -INFO - Exporting webdriver.chrome.driver as C:\Users\Afa Faraji\.cache\selenium\chromedriver\win64\122.0.6261.128\chromedriver.exe
+2024-03-15 09:49:01,631 - ui_automation.step_definitions.AccessionSteps -INFO - I scanned Barcode 
+2024-03-15 09:49:01,713 - ui_automation.step_definitions.AccessionSteps -INFO - I clicked Enter Barcode button
+2024-03-15 09:49:01,921 - ui_automation.step_definitions.AccessionSteps -INFO - Entered barcode is displayed under Scanned Items
+2024-03-15 09:49:01,935 - ui_automation.step_definitions.AccessionSteps -INFO - Entered barcode is displayed under Scanned Items
+2024-03-15 09:49:01,954 - ui_automation.step_definitions.AccessionSteps -INFO - Entered barcode is displayed under Scanned Items
+2024-03-15 10:00:46,028 - io.github.bonigarcia.wdm.WebDriverManager -INFO - Using chromedriver 122.0.6261.128 (resolved driver for Chrome 122)
+2024-03-15 10:00:46,046 - io.github.bonigarcia.wdm.WebDriverManager -INFO - Exporting webdriver.chrome.driver as C:\Users\Afa Faraji\.cache\selenium\chromedriver\win64\122.0.6261.128\chromedriver.exe
+2024-03-15 10:00:47,851 - ui_automation.step_definitions.AccessionSteps -INFO - I scanned Barcode 
+2024-03-15 10:00:47,900 - ui_automation.step_definitions.AccessionSteps -INFO - I clicked Enter Barcode button
+2024-03-15 10:00:48,064 - ui_automation.step_definitions.AccessionSteps -INFO - Entered barcode is displayed under Scanned Items
+2024-03-15 10:00:48,077 - ui_automation.step_definitions.AccessionSteps -INFO - Entered barcode is displayed under Scanned Items
+2024-03-15 10:00:48,085 - ui_automation.step_definitions.AccessionSteps -INFO - Entered barcode is displayed under Scanned Items
+2024-03-15 10:02:03,355 - io.github.bonigarcia.wdm.WebDriverManager -INFO - Using chromedriver 122.0.6261.128 (resolved driver for Chrome 122)
+2024-03-15 10:02:03,372 - io.github.bonigarcia.wdm.WebDriverManager -INFO - Exporting webdriver.chrome.driver as C:\Users\Afa Faraji\.cache\selenium\chromedriver\win64\122.0.6261.128\chromedriver.exe
+2024-03-15 10:02:05,059 - ui_automation.step_definitions.AccessionSteps -INFO - I scanned Barcode 
+2024-03-15 10:02:05,097 - ui_automation.step_definitions.AccessionSteps -INFO - I clicked Enter Barcode button
+2024-03-15 10:02:05,289 - ui_automation.step_definitions.AccessionSteps -INFO - Entered barcode is displayed under Scanned Items
+2024-03-15 10:02:05,302 - ui_automation.step_definitions.AccessionSteps -INFO - Entered barcode is displayed under Scanned Items
+2024-03-15 10:02:05,315 - ui_automation.step_definitions.AccessionSteps -INFO - Entered barcode is displayed under Scanned Items
+2024-03-15 10:04:27,878 - io.github.bonigarcia.wdm.WebDriverManager -INFO - Using chromedriver 122.0.6261.128 (resolved driver for Chrome 122)
+2024-03-15 10:04:27,898 - io.github.bonigarcia.wdm.WebDriverManager -INFO - Exporting webdriver.chrome.driver as C:\Users\Afa Faraji\.cache\selenium\chromedriver\win64\122.0.6261.128\chromedriver.exe
+2024-03-15 10:04:29,743 - ui_automation.step_definitions.AccessionSteps -INFO - I scanned Barcode 
+2024-03-15 10:04:29,782 - ui_automation.step_definitions.AccessionSteps -INFO - I clicked Enter Barcode button
+2024-03-15 10:04:29,960 - ui_automation.step_definitions.AccessionSteps -INFO - Entered barcode is displayed under Scanned Items
+2024-03-15 10:04:29,969 - ui_automation.step_definitions.AccessionSteps -INFO - Entered barcode is displayed under Scanned Items
+2024-03-15 10:04:29,977 - ui_automation.step_definitions.AccessionSteps -INFO - Entered barcode is displayed under Scanned Items
+2024-03-15 10:05:37,507 - io.github.bonigarcia.wdm.WebDriverManager -INFO - Using chromedriver 122.0.6261.128 (resolved driver for Chrome 122)
+2024-03-15 10:05:37,527 - io.github.bonigarcia.wdm.WebDriverManager -INFO - Exporting webdriver.chrome.driver as C:\Users\Afa Faraji\.cache\selenium\chromedriver\win64\122.0.6261.128\chromedriver.exe
+2024-03-15 10:05:39,267 - ui_automation.step_definitions.AccessionSteps -INFO - I scanned Barcode 
+2024-03-15 10:05:39,321 - ui_automation.step_definitions.AccessionSteps -INFO - I clicked Enter Barcode button
+2024-03-15 10:05:39,588 - ui_automation.step_definitions.AccessionSteps -INFO - Entered barcode is displayed under Scanned Items
+2024-03-15 10:10:03,086 - io.github.bonigarcia.wdm.WebDriverManager -INFO - Using chromedriver 122.0.6261.128 (resolved driver for Chrome 122)
+2024-03-15 10:10:03,107 - io.github.bonigarcia.wdm.WebDriverManager -INFO - Exporting webdriver.chrome.driver as C:\Users\Afa Faraji\.cache\selenium\chromedriver\win64\122.0.6261.128\chromedriver.exe
+2024-03-15 10:10:05,108 - ui_automation.step_definitions.AccessionSteps -INFO - I scanned Barcode 
+2024-03-15 10:10:05,156 - ui_automation.step_definitions.AccessionSteps -INFO - I clicked Enter Barcode button
+2024-03-15 10:10:05,333 - ui_automation.step_definitions.AccessionSteps -INFO - Entered barcode is displayed under Scanned Items
+2024-03-15 10:15:49,144 - io.github.bonigarcia.wdm.WebDriverManager -INFO - Using chromedriver 122.0.6261.128 (resolved driver for Chrome 122)
+2024-03-15 10:15:49,165 - io.github.bonigarcia.wdm.WebDriverManager -INFO - Exporting webdriver.chrome.driver as C:\Users\Afa Faraji\.cache\selenium\chromedriver\win64\122.0.6261.128\chromedriver.exe
+2024-03-15 10:15:51,194 - ui_automation.step_definitions.AccessionSteps -INFO - I scanned Barcode 
+2024-03-15 10:15:51,245 - ui_automation.step_definitions.AccessionSteps -INFO - I clicked Enter Barcode button
+2024-03-15 10:15:51,463 - ui_automation.step_definitions.AccessionSteps -INFO - Entered barcode is displayed under Scanned Items
+2024-03-15 10:15:53,559 - ui_automation.step_definitions.AccessionSteps -INFO - Enter Barcode button is changed to Edit button 
+2024-03-15 10:16:24,034 - io.github.bonigarcia.wdm.WebDriverManager -INFO - Using chromedriver 122.0.6261.128 (resolved driver for Chrome 122)
+2024-03-15 10:16:24,053 - io.github.bonigarcia.wdm.WebDriverManager -INFO - Exporting webdriver.chrome.driver as C:\Users\Afa Faraji\.cache\selenium\chromedriver\win64\122.0.6261.128\chromedriver.exe
+2024-03-15 10:16:25,902 - ui_automation.step_definitions.AccessionSteps -INFO - I scanned Barcode 
+2024-03-15 10:16:25,954 - ui_automation.step_definitions.AccessionSteps -INFO - I clicked Enter Barcode button
+2024-03-15 10:16:26,136 - ui_automation.step_definitions.AccessionSteps -INFO - Entered barcode is displayed under Scanned Items
+2024-03-15 10:16:28,246 - ui_automation.step_definitions.AccessionSteps -INFO - Enter Barcode button is changed to Edit button 
+2024-03-15 10:27:06,860 - io.github.bonigarcia.wdm.WebDriverManager -INFO - Using chromedriver 122.0.6261.128 (resolved driver for Chrome 122)
+2024-03-15 10:27:06,879 - io.github.bonigarcia.wdm.WebDriverManager -INFO - Exporting webdriver.chrome.driver as C:\Users\Afa Faraji\.cache\selenium\chromedriver\win64\122.0.6261.128\chromedriver.exe
+2024-03-15 10:27:08,856 - ui_automation.step_definitions.AccessionSteps -INFO - I scanned Barcode 
+2024-03-15 10:27:08,917 - ui_automation.step_definitions.AccessionSteps -INFO - I clicked Enter Barcode button
+2024-03-15 10:27:09,137 - ui_automation.step_definitions.AccessionSteps -INFO - Entered barcode is displayed under Scanned Items
+2024-03-15 10:27:11,233 - ui_automation.step_definitions.AccessionSteps -INFO - Enter Barcode button is changed to Edit button 
+2024-03-15 10:30:57,438 - io.github.bonigarcia.wdm.WebDriverManager -INFO - Using chromedriver 122.0.6261.128 (resolved driver for Chrome 122)
+2024-03-15 10:30:57,459 - io.github.bonigarcia.wdm.WebDriverManager -INFO - Exporting webdriver.chrome.driver as C:\Users\Afa Faraji\.cache\selenium\chromedriver\win64\122.0.6261.128\chromedriver.exe
+2024-03-15 10:30:59,207 - ui_automation.step_definitions.AccessionSteps -INFO - I scanned Barcode 
+2024-03-15 10:30:59,253 - ui_automation.step_definitions.AccessionSteps -INFO - I clicked Enter Barcode button
+2024-03-15 10:30:59,418 - ui_automation.step_definitions.AccessionSteps -INFO - Entered barcode is displayed under Scanned Items
+2024-03-15 10:30:59,571 - ui_automation.step_definitions.AccessionSteps -INFO - Enter Barcode button is changed to Edit button 
+2024-03-15 10:30:59,880 - ui_automation.step_definitions.AccessionSteps -INFO - Edited barcode is displayed
+2024-03-15 10:31:00,061 - ui_automation.step_definitions.AccessionSteps -INFO - I verified the barcode
+2024-03-15 10:32:49,407 - io.github.bonigarcia.wdm.WebDriverManager -INFO - Using chromedriver 122.0.6261.128 (resolved driver for Chrome 122)
+2024-03-15 10:32:49,428 - io.github.bonigarcia.wdm.WebDriverManager -INFO - Exporting webdriver.chrome.driver as C:\Users\Afa Faraji\.cache\selenium\chromedriver\win64\122.0.6261.128\chromedriver.exe
+2024-03-15 10:32:51,229 - ui_automation.step_definitions.AccessionSteps -INFO - I scanned Barcode 
+2024-03-15 10:32:51,272 - ui_automation.step_definitions.AccessionSteps -INFO - I clicked Enter Barcode button
+2024-03-15 10:32:51,469 - ui_automation.step_definitions.AccessionSteps -INFO - Entered barcode is displayed under Scanned Items
+2024-03-15 10:32:51,542 - ui_automation.step_definitions.AccessionSteps -INFO - Enter Barcode button is changed to Edit button 
+2024-03-15 10:32:52,895 - ui_automation.step_definitions.AccessionSteps -INFO - Edited barcode is displayed
+2024-03-15 10:32:53,044 - ui_automation.step_definitions.AccessionSteps -INFO - I verified the barcode
+2024-03-15 10:33:33,830 - io.github.bonigarcia.wdm.WebDriverManager -INFO - Using chromedriver 122.0.6261.128 (resolved driver for Chrome 122)
+2024-03-15 10:33:33,854 - io.github.bonigarcia.wdm.WebDriverManager -INFO - Exporting webdriver.chrome.driver as C:\Users\Afa Faraji\.cache\selenium\chromedriver\win64\122.0.6261.128\chromedriver.exe
+2024-03-15 10:33:35,873 - ui_automation.step_definitions.AccessionSteps -INFO - I scanned Barcode 
+2024-03-15 10:33:35,919 - ui_automation.step_definitions.AccessionSteps -INFO - I clicked Enter Barcode button
+2024-03-15 10:33:36,099 - ui_automation.step_definitions.AccessionSteps -INFO - Entered barcode is displayed under Scanned Items
+2024-03-15 10:33:36,166 - ui_automation.step_definitions.AccessionSteps -INFO - Enter Barcode button is changed to Edit button 
+2024-03-15 10:33:37,517 - ui_automation.step_definitions.AccessionSteps -INFO - Edited barcode is displayed
+2024-03-15 10:33:37,710 - ui_automation.step_definitions.AccessionSteps -INFO - I verified the barcode
+2024-03-15 10:37:26,179 - io.github.bonigarcia.wdm.WebDriverManager -INFO - Using chromedriver 122.0.6261.128 (resolved driver for Chrome 122)
+2024-03-15 10:37:26,199 - io.github.bonigarcia.wdm.WebDriverManager -INFO - Exporting webdriver.chrome.driver as C:\Users\Afa Faraji\.cache\selenium\chromedriver\win64\122.0.6261.128\chromedriver.exe
+2024-03-15 10:37:28,322 - ui_automation.step_definitions.AccessionSteps -INFO - I scanned Barcode 
+2024-03-15 10:37:28,359 - ui_automation.step_definitions.AccessionSteps -INFO - I clicked Enter Barcode button
+2024-03-15 10:37:28,522 - ui_automation.step_definitions.AccessionSteps -INFO - Entered barcode is displayed under Scanned Items
+2024-03-15 10:37:28,616 - ui_automation.step_definitions.AccessionSteps -INFO - Enter Barcode button is changed to Edit button 
+2024-03-15 10:37:28,970 - ui_automation.step_definitions.AccessionSteps -INFO - Edited barcode is displayed
+2024-03-15 10:37:29,169 - ui_automation.step_definitions.AccessionSteps -INFO - I verified the barcode
+2024-03-15 10:44:00,466 - io.github.bonigarcia.wdm.WebDriverManager -INFO - Using chromedriver 122.0.6261.128 (resolved driver for Chrome 122)
+2024-03-15 10:44:00,487 - io.github.bonigarcia.wdm.WebDriverManager -INFO - Exporting webdriver.chrome.driver as C:\Users\Afa Faraji\.cache\selenium\chromedriver\win64\122.0.6261.128\chromedriver.exe
+2024-03-15 10:44:02,273 - ui_automation.step_definitions.AccessionSteps -INFO - I scanned Barcode 
+2024-03-15 10:44:02,315 - ui_automation.step_definitions.AccessionSteps -INFO - I clicked Enter Barcode button
+2024-03-15 10:44:02,489 - ui_automation.step_definitions.AccessionSteps -INFO - Entered barcode is displayed under Scanned Items
+2024-03-15 10:44:02,639 - ui_automation.step_definitions.AccessionSteps -INFO - Enter Barcode button is changed to Edit button 
+2024-03-15 10:44:02,995 - ui_automation.step_definitions.AccessionSteps -INFO - Edited barcode is displayed
+2024-03-15 10:44:03,283 - ui_automation.step_definitions.AccessionSteps -INFO - I verified the barcode
+2024-03-15 10:44:03,302 - ui_automation.step_definitions.AccessionSteps -INFO - Next Tray button is activated
+2024-03-15 10:51:18,832 - io.github.bonigarcia.wdm.WebDriverManager -INFO - Using chromedriver 122.0.6261.128 (resolved driver for Chrome 122)
+2024-03-15 10:51:18,853 - io.github.bonigarcia.wdm.WebDriverManager -INFO - Exporting webdriver.chrome.driver as C:\Users\Afa Faraji\.cache\selenium\chromedriver\win64\122.0.6261.128\chromedriver.exe
+2024-03-15 10:51:20,692 - ui_automation.step_definitions.AccessionSteps -INFO - I scanned Barcode 
+2024-03-15 10:51:20,740 - ui_automation.step_definitions.AccessionSteps -INFO - I clicked Enter Barcode button
+2024-03-15 10:51:20,922 - ui_automation.step_definitions.AccessionSteps -INFO - Entered barcode is displayed under Scanned Items
+2024-03-15 10:51:21,008 - ui_automation.step_definitions.AccessionSteps -INFO - Enter Barcode button is changed to Edit button 
+2024-03-15 10:51:21,399 - ui_automation.step_definitions.AccessionSteps -INFO - Edited barcode is displayed
+2024-03-15 10:51:21,693 - ui_automation.step_definitions.AccessionSteps -INFO - I verified the barcode
+2024-03-15 10:51:21,721 - ui_automation.step_definitions.AccessionSteps -INFO - Next Tray button is activated
+2024-03-15 10:52:05,570 - io.github.bonigarcia.wdm.WebDriverManager -INFO - Using chromedriver 122.0.6261.128 (resolved driver for Chrome 122)
+2024-03-15 10:52:05,593 - io.github.bonigarcia.wdm.WebDriverManager -INFO - Exporting webdriver.chrome.driver as C:\Users\Afa Faraji\.cache\selenium\chromedriver\win64\122.0.6261.128\chromedriver.exe
+2024-03-15 10:52:07,465 - ui_automation.step_definitions.AccessionSteps -INFO - I scanned Barcode 
+2024-03-15 10:52:07,516 - ui_automation.step_definitions.AccessionSteps -INFO - I clicked Enter Barcode button
+2024-03-15 10:52:07,690 - ui_automation.step_definitions.AccessionSteps -INFO - Entered barcode is displayed under Scanned Items
+2024-03-15 10:52:07,806 - ui_automation.step_definitions.AccessionSteps -INFO - Enter Barcode button is changed to Edit button 
+2024-03-15 10:52:08,154 - ui_automation.step_definitions.AccessionSteps -INFO - Edited barcode is displayed
+2024-03-15 10:52:08,334 - ui_automation.step_definitions.AccessionSteps -INFO - I verified the barcode
+2024-03-15 10:52:08,358 - ui_automation.step_definitions.AccessionSteps -INFO - Next Tray button is activated
+2024-03-15 10:52:08,545 - ui_automation.step_definitions.AccessionSteps -INFO - New Tray can be scanned
+2024-03-15 11:07:04,240 - io.github.bonigarcia.wdm.WebDriverManager -INFO - Using chromedriver 122.0.6261.128 (resolved driver for Chrome 122)
+2024-03-15 11:07:04,260 - io.github.bonigarcia.wdm.WebDriverManager -INFO - Exporting webdriver.chrome.driver as C:\Users\Afa Faraji\.cache\selenium\chromedriver\win64\122.0.6261.128\chromedriver.exe
+2024-03-15 11:07:06,133 - ui_automation.step_definitions.AccessionSteps -INFO - I scanned Barcode 
+2024-03-15 11:07:06,205 - ui_automation.step_definitions.AccessionSteps -INFO - I clicked Enter Barcode button
+2024-03-15 11:07:06,459 - ui_automation.step_definitions.AccessionSteps -INFO - Enter Barcode button is changed to Edit button 
+2024-03-15 11:07:06,812 - ui_automation.step_definitions.AccessionSteps -INFO - Edited barcode is displayed
+2024-03-15 11:07:07,093 - ui_automation.step_definitions.AccessionSteps -INFO - I verified the barcode
+2024-03-15 11:07:07,115 - ui_automation.step_definitions.AccessionSteps -INFO - Next Tray button is activated
+2024-03-15 11:07:07,295 - ui_automation.step_definitions.AccessionSteps -INFO - New Tray can be scanned
+2024-03-15 11:09:11,949 - io.github.bonigarcia.wdm.WebDriverManager -INFO - Using chromedriver 122.0.6261.128 (resolved driver for Chrome 122)
+2024-03-15 11:09:11,968 - io.github.bonigarcia.wdm.WebDriverManager -INFO - Exporting webdriver.chrome.driver as C:\Users\Afa Faraji\.cache\selenium\chromedriver\win64\122.0.6261.128\chromedriver.exe
+2024-03-15 11:09:13,772 - ui_automation.step_definitions.AccessionSteps -INFO - I scanned Barcode 
+2024-03-15 11:09:13,845 - ui_automation.step_definitions.AccessionSteps -INFO - I clicked Enter Barcode button
+2024-03-15 11:09:14,136 - ui_automation.step_definitions.AccessionSteps -INFO - Enter Barcode button is changed to Edit button 
+2024-03-15 11:09:14,513 - ui_automation.step_definitions.AccessionSteps -INFO - Edited barcode is displayed
+2024-03-15 11:09:14,718 - ui_automation.step_definitions.AccessionSteps -INFO - I verified the barcode
+2024-03-15 11:09:14,744 - ui_automation.step_definitions.AccessionSteps -INFO - Next Tray button is activated
+2024-03-15 11:09:14,946 - ui_automation.step_definitions.AccessionSteps -INFO - New Tray can be scanned
+2024-03-15 11:09:49,069 - io.github.bonigarcia.wdm.WebDriverManager -INFO - Using chromedriver 122.0.6261.128 (resolved driver for Chrome 122)
+2024-03-15 11:09:49,096 - io.github.bonigarcia.wdm.WebDriverManager -INFO - Exporting webdriver.chrome.driver as C:\Users\Afa Faraji\.cache\selenium\chromedriver\win64\122.0.6261.128\chromedriver.exe
+2024-03-15 11:09:51,130 - ui_automation.step_definitions.AccessionSteps -INFO - I scanned Barcode 
+2024-03-15 11:09:51,228 - ui_automation.step_definitions.AccessionSteps -INFO - I clicked Enter Barcode button
+2024-03-15 11:09:51,627 - ui_automation.step_definitions.AccessionSteps -INFO - Enter Barcode button is changed to Edit button 
+2024-03-15 11:09:52,206 - ui_automation.step_definitions.AccessionSteps -INFO - Edited barcode is displayed
+2024-03-15 11:09:52,370 - ui_automation.step_definitions.AccessionSteps -INFO - I verified the barcode
+2024-03-15 11:09:52,401 - ui_automation.step_definitions.AccessionSteps -INFO - Next Tray button is activated
+2024-03-15 11:09:52,712 - ui_automation.step_definitions.AccessionSteps -INFO - New Tray can be scanned
+2024-03-15 11:12:02,435 - io.github.bonigarcia.wdm.WebDriverManager -INFO - Using chromedriver 122.0.6261.128 (resolved driver for Chrome 122)
+2024-03-15 11:12:02,451 - io.github.bonigarcia.wdm.WebDriverManager -INFO - Exporting webdriver.chrome.driver as C:\Users\Afa Faraji\.cache\selenium\chromedriver\win64\122.0.6261.128\chromedriver.exe
+2024-03-15 11:12:14,060 - ui_automation.step_definitions.AccessionSteps -INFO - I scanned Barcode 
+2024-03-15 11:12:14,108 - ui_automation.step_definitions.AccessionSteps -INFO - I clicked Enter Barcode button
+2024-03-15 11:13:41,333 - io.github.bonigarcia.wdm.WebDriverManager -INFO - Using chromedriver 122.0.6261.128 (resolved driver for Chrome 122)
+2024-03-15 11:13:41,352 - io.github.bonigarcia.wdm.WebDriverManager -INFO - Exporting webdriver.chrome.driver as C:\Users\Afa Faraji\.cache\selenium\chromedriver\win64\122.0.6261.128\chromedriver.exe
+2024-03-15 11:13:53,128 - ui_automation.step_definitions.AccessionSteps -INFO - I scanned Barcode 
+2024-03-15 11:13:53,177 - ui_automation.step_definitions.AccessionSteps -INFO - I clicked Enter Barcode button
+2024-03-15 11:14:32,757 - io.github.bonigarcia.wdm.WebDriverManager -INFO - Using chromedriver 122.0.6261.128 (resolved driver for Chrome 122)
+2024-03-15 11:14:32,779 - io.github.bonigarcia.wdm.WebDriverManager -INFO - Exporting webdriver.chrome.driver as C:\Users\Afa Faraji\.cache\selenium\chromedriver\win64\122.0.6261.128\chromedriver.exe
+2024-03-15 11:14:46,463 - ui_automation.step_definitions.AccessionSteps -INFO - I scanned Barcode 
+2024-03-15 11:14:46,509 - ui_automation.step_definitions.AccessionSteps -INFO - I clicked Enter Barcode button
+2024-03-15 11:15:27,063 - io.github.bonigarcia.wdm.WebDriverManager -INFO - Using chromedriver 122.0.6261.128 (resolved driver for Chrome 122)
+2024-03-15 11:15:27,086 - io.github.bonigarcia.wdm.WebDriverManager -INFO - Exporting webdriver.chrome.driver as C:\Users\Afa Faraji\.cache\selenium\chromedriver\win64\122.0.6261.128\chromedriver.exe
+2024-03-15 11:15:40,651 - ui_automation.step_definitions.AccessionSteps -INFO - I scanned Barcode 
+2024-03-15 11:15:42,749 - ui_automation.step_definitions.AccessionSteps -INFO - I clicked Enter Barcode button
+2024-03-15 11:16:49,512 - io.github.bonigarcia.wdm.WebDriverManager -INFO - Using chromedriver 122.0.6261.128 (resolved driver for Chrome 122)
+2024-03-15 11:16:49,527 - io.github.bonigarcia.wdm.WebDriverManager -INFO - Exporting webdriver.chrome.driver as C:\Users\Afa Faraji\.cache\selenium\chromedriver\win64\122.0.6261.128\chromedriver.exe
+2024-03-15 11:16:51,629 - ui_automation.step_definitions.AccessionSteps -INFO - I scanned Barcode 
+2024-03-15 11:16:51,685 - ui_automation.step_definitions.AccessionSteps -INFO - I clicked Enter Barcode button
+2024-03-15 11:16:51,985 - ui_automation.step_definitions.AccessionSteps -INFO - Entered barcode is displayed under Scanned Items
+2024-03-15 11:16:52,050 - ui_automation.step_definitions.AccessionSteps -INFO - Enter Barcode button is changed to Edit button 
+2024-03-15 11:16:52,401 - ui_automation.step_definitions.AccessionSteps -INFO - Edited barcode is displayed
+2024-03-15 11:16:52,565 - ui_automation.step_definitions.AccessionSteps -INFO - I verified the barcode
+2024-03-15 11:16:52,593 - ui_automation.step_definitions.AccessionSteps -INFO - Next Tray button is activated
+2024-03-15 11:16:52,822 - ui_automation.step_definitions.AccessionSteps -INFO - New Tray can be scanned
+2024-03-15 11:18:21,036 - io.github.bonigarcia.wdm.WebDriverManager -INFO - Using chromedriver 122.0.6261.128 (resolved driver for Chrome 122)
+2024-03-15 11:18:21,059 - io.github.bonigarcia.wdm.WebDriverManager -INFO - Exporting webdriver.chrome.driver as C:\Users\Afa Faraji\.cache\selenium\chromedriver\win64\122.0.6261.128\chromedriver.exe
+2024-03-15 11:18:23,099 - ui_automation.step_definitions.AccessionSteps -INFO - I scanned Barcode 
+2024-03-15 11:18:23,136 - ui_automation.step_definitions.AccessionSteps -INFO - I clicked Enter Barcode button
+2024-03-15 11:18:23,317 - ui_automation.step_definitions.AccessionSteps -INFO - Entered barcode is displayed under Scanned Items
+2024-03-15 11:18:23,428 - ui_automation.step_definitions.AccessionSteps -INFO - Enter Barcode button is changed to Edit button 
+2024-03-15 11:18:23,797 - ui_automation.step_definitions.AccessionSteps -INFO - Edited barcode is displayed
+2024-03-15 11:18:23,990 - ui_automation.step_definitions.AccessionSteps -INFO - I verified the barcode
+2024-03-15 11:18:24,007 - ui_automation.step_definitions.AccessionSteps -INFO - Next Tray button is activated
+2024-03-15 11:19:25,489 - io.github.bonigarcia.wdm.WebDriverManager -INFO - Using chromedriver 122.0.6261.128 (resolved driver for Chrome 122)
+2024-03-15 11:19:25,507 - io.github.bonigarcia.wdm.WebDriverManager -INFO - Exporting webdriver.chrome.driver as C:\Users\Afa Faraji\.cache\selenium\chromedriver\win64\122.0.6261.128\chromedriver.exe
+2024-03-15 11:19:27,353 - ui_automation.step_definitions.AccessionSteps -INFO - I scanned Barcode 
+2024-03-15 11:19:27,387 - ui_automation.step_definitions.AccessionSteps -INFO - I clicked Enter Barcode button
+2024-03-15 11:19:27,599 - ui_automation.step_definitions.AccessionSteps -INFO - Entered barcode is displayed under Scanned Items
+2024-03-15 11:19:27,685 - ui_automation.step_definitions.AccessionSteps -INFO - Enter Barcode button is changed to Edit button 
+2024-03-15 11:19:29,080 - ui_automation.step_definitions.AccessionSteps -INFO - Edited barcode is displayed
+2024-03-15 11:19:29,266 - ui_automation.step_definitions.AccessionSteps -INFO - I verified the barcode
+2024-03-15 11:19:29,292 - ui_automation.step_definitions.AccessionSteps -INFO - Next Tray button is activated
+2024-03-15 11:19:58,100 - io.github.bonigarcia.wdm.WebDriverManager -INFO - Using chromedriver 122.0.6261.128 (resolved driver for Chrome 122)
+2024-03-15 11:19:58,122 - io.github.bonigarcia.wdm.WebDriverManager -INFO - Exporting webdriver.chrome.driver as C:\Users\Afa Faraji\.cache\selenium\chromedriver\win64\122.0.6261.128\chromedriver.exe
+2024-03-15 11:19:59,820 - ui_automation.step_definitions.AccessionSteps -INFO - I scanned Barcode 
+2024-03-15 11:19:59,865 - ui_automation.step_definitions.AccessionSteps -INFO - I clicked Enter Barcode button
+2024-03-15 11:20:00,055 - ui_automation.step_definitions.AccessionSteps -INFO - Entered barcode is displayed under Scanned Items
+2024-03-15 11:20:00,163 - ui_automation.step_definitions.AccessionSteps -INFO - Enter Barcode button is changed to Edit button 
+2024-03-15 11:20:01,669 - ui_automation.step_definitions.AccessionSteps -INFO - Edited barcode is displayed
+2024-03-15 11:20:01,889 - ui_automation.step_definitions.AccessionSteps -INFO - I verified the barcode
+2024-03-15 11:20:01,918 - ui_automation.step_definitions.AccessionSteps -INFO - Next Tray button is activated
+2024-03-15 11:20:02,152 - ui_automation.step_definitions.AccessionSteps -INFO - New Tray can be scanned
+2024-03-15 11:24:21,989 - io.github.bonigarcia.wdm.WebDriverManager -INFO - Using chromedriver 122.0.6261.128 (resolved driver for Chrome 122)
+2024-03-15 11:24:22,007 - io.github.bonigarcia.wdm.WebDriverManager -INFO - Exporting webdriver.chrome.driver as C:\Users\Afa Faraji\.cache\selenium\chromedriver\win64\122.0.6261.128\chromedriver.exe
+2024-03-15 11:29:06,002 - io.github.bonigarcia.wdm.WebDriverManager -INFO - Using chromedriver 122.0.6261.128 (resolved driver for Chrome 122)
+2024-03-15 11:29:06,021 - io.github.bonigarcia.wdm.WebDriverManager -INFO - Exporting webdriver.chrome.driver as C:\Users\Afa Faraji\.cache\selenium\chromedriver\win64\122.0.6261.128\chromedriver.exe
+2024-03-15 11:29:07,909 - ui_automation.step_definitions.AccessionSteps -INFO - I scanned Barcode 
+2024-03-15 11:29:07,965 - ui_automation.step_definitions.AccessionSteps -INFO - I clicked Enter Barcode button
+2024-03-15 11:29:08,140 - ui_automation.step_definitions.AccessionSteps -INFO - Entered barcode is displayed under Scanned Items
+2024-03-15 11:29:08,253 - ui_automation.step_definitions.AccessionSteps -INFO - Enter Barcode button is changed to Edit button 
+2024-03-15 11:29:09,651 - ui_automation.step_definitions.AccessionSteps -INFO - Edited barcode is displayed
+2024-03-15 11:29:09,860 - ui_automation.step_definitions.AccessionSteps -INFO - I verified the barcode
+2024-03-15 11:29:09,891 - ui_automation.step_definitions.AccessionSteps -INFO - Next Tray button is activated
+2024-03-15 11:29:10,035 - ui_automation.step_definitions.AccessionSteps -INFO - New Tray can be scanned
+2024-03-15 11:30:32,698 - io.github.bonigarcia.wdm.WebDriverManager -INFO - Using chromedriver 122.0.6261.128 (resolved driver for Chrome 122)
+2024-03-15 11:30:32,720 - io.github.bonigarcia.wdm.WebDriverManager -INFO - Exporting webdriver.chrome.driver as C:\Users\Afa Faraji\.cache\selenium\chromedriver\win64\122.0.6261.128\chromedriver.exe
+2024-03-15 11:30:34,511 - ui_automation.step_definitions.AccessionSteps -INFO - I scanned Barcode 
+2024-03-15 11:30:34,562 - ui_automation.step_definitions.AccessionSteps -INFO - I clicked Enter Barcode button
+2024-03-15 11:30:34,816 - ui_automation.step_definitions.AccessionSteps -INFO - Entered barcode is displayed under Scanned Items
+2024-03-15 11:30:34,902 - ui_automation.step_definitions.AccessionSteps -INFO - Enter Barcode button is changed to Edit button 
+2024-03-15 11:30:36,379 - ui_automation.step_definitions.AccessionSteps -INFO - Edited barcode is displayed
+2024-03-15 11:30:36,537 - ui_automation.step_definitions.AccessionSteps -INFO - I verified the barcode
+2024-03-15 11:30:36,564 - ui_automation.step_definitions.AccessionSteps -INFO - Next Tray button is activated
+2024-03-15 11:30:36,796 - ui_automation.step_definitions.AccessionSteps -INFO - New Tray can be scanned
+2024-03-15 11:30:57,670 - io.github.bonigarcia.wdm.WebDriverManager -INFO - Using chromedriver 122.0.6261.128 (resolved driver for Chrome 122)
+2024-03-15 11:30:57,691 - io.github.bonigarcia.wdm.WebDriverManager -INFO - Exporting webdriver.chrome.driver as C:\Users\Afa Faraji\.cache\selenium\chromedriver\win64\122.0.6261.128\chromedriver.exe
+2024-03-15 11:30:59,420 - ui_automation.step_definitions.AccessionSteps -INFO - I clicked Enter Barcode button
+2024-03-15 11:30:59,669 - ui_automation.step_definitions.AccessionSteps -INFO - Entered barcode is displayed under Scanned Items
+2024-03-15 11:30:59,810 - ui_automation.step_definitions.AccessionSteps -INFO - Enter Barcode button is changed to Edit button 
+2024-03-15 11:32:05,982 - io.github.bonigarcia.wdm.WebDriverManager -INFO - Using chromedriver 122.0.6261.128 (resolved driver for Chrome 122)
+2024-03-15 11:32:06,003 - io.github.bonigarcia.wdm.WebDriverManager -INFO - Exporting webdriver.chrome.driver as C:\Users\Afa Faraji\.cache\selenium\chromedriver\win64\122.0.6261.128\chromedriver.exe
+2024-03-15 11:32:07,986 - ui_automation.step_definitions.AccessionSteps -INFO - I clicked Enter Barcode button
+2024-03-15 11:32:08,178 - ui_automation.step_definitions.AccessionSteps -INFO - Entered barcode is displayed under Scanned Items
+2024-03-15 11:32:08,283 - ui_automation.step_definitions.AccessionSteps -INFO - Enter Barcode button is changed to Edit button 
+2024-03-15 11:32:09,681 - ui_automation.step_definitions.AccessionSteps -INFO - Edited barcode is displayed
+2024-03-15 11:36:52,983 - io.github.bonigarcia.wdm.WebDriverManager -INFO - Using chromedriver 122.0.6261.128 (resolved driver for Chrome 122)
+2024-03-15 11:36:52,996 - io.github.bonigarcia.wdm.WebDriverManager -INFO - Exporting webdriver.chrome.driver as C:\Users\Afa Faraji\.cache\selenium\chromedriver\win64\122.0.6261.128\chromedriver.exe
+2024-03-15 11:36:54,796 - ui_automation.step_definitions.AccessionSteps -INFO - I clicked Enter Barcode button
+2024-03-15 11:36:54,992 - ui_automation.step_definitions.AccessionSteps -INFO - Entered barcode is displayed under Scanned Items
+2024-03-15 11:36:55,095 - ui_automation.step_definitions.AccessionSteps -INFO - Enter Barcode button is changed to Edit button 
+2024-03-15 11:36:56,533 - ui_automation.step_definitions.AccessionSteps -INFO - Edited barcode is displayed
+2024-03-15 11:39:10,232 - io.github.bonigarcia.wdm.WebDriverManager -INFO - Using chromedriver 122.0.6261.128 (resolved driver for Chrome 122)
+2024-03-15 11:39:10,252 - io.github.bonigarcia.wdm.WebDriverManager -INFO - Exporting webdriver.chrome.driver as C:\Users\Afa Faraji\.cache\selenium\chromedriver\win64\122.0.6261.128\chromedriver.exe
+2024-03-15 11:39:12,243 - ui_automation.step_definitions.AccessionSteps -INFO - I clicked Enter Barcode button
+2024-03-15 11:39:12,462 - ui_automation.step_definitions.AccessionSteps -INFO - Entered barcode is displayed under Scanned Items
+2024-03-15 11:39:12,548 - ui_automation.step_definitions.AccessionSteps -INFO - Enter Barcode button is changed to Edit button 
+2024-03-15 11:39:13,942 - ui_automation.step_definitions.AccessionSteps -INFO - Edited barcode is displayed
+2024-03-15 11:42:17,122 - io.github.bonigarcia.wdm.WebDriverManager -INFO - Using chromedriver 122.0.6261.128 (resolved driver for Chrome 122)
+2024-03-15 11:42:17,139 - io.github.bonigarcia.wdm.WebDriverManager -INFO - Exporting webdriver.chrome.driver as C:\Users\Afa Faraji\.cache\selenium\chromedriver\win64\122.0.6261.128\chromedriver.exe
+2024-03-15 11:42:18,959 - ui_automation.step_definitions.AccessionSteps -INFO - I clicked Enter Barcode button
+2024-03-15 11:42:19,183 - ui_automation.step_definitions.AccessionSteps -INFO - Entered barcode is displayed under Scanned Items
+2024-03-15 11:42:19,269 - ui_automation.step_definitions.AccessionSteps -INFO - Enter Barcode button is changed to Edit button 
+2024-03-15 11:42:20,692 - ui_automation.step_definitions.AccessionSteps -INFO - Edited barcode is displayed
+2024-03-15 11:42:21,612 - ui_automation.step_definitions.AccessionSteps -INFO - Complete Job button is activated
+2024-03-15 11:43:00,766 - io.github.bonigarcia.wdm.WebDriverManager -INFO - Using chromedriver 122.0.6261.128 (resolved driver for Chrome 122)
+2024-03-15 11:43:00,783 - io.github.bonigarcia.wdm.WebDriverManager -INFO - Exporting webdriver.chrome.driver as C:\Users\Afa Faraji\.cache\selenium\chromedriver\win64\122.0.6261.128\chromedriver.exe
+2024-03-15 11:43:02,556 - ui_automation.step_definitions.AccessionSteps -INFO - I scanned Barcode 
+2024-03-15 11:43:02,595 - ui_automation.step_definitions.AccessionSteps -INFO - I clicked Enter Barcode button
+2024-03-15 11:43:02,908 - ui_automation.step_definitions.AccessionSteps -INFO - Entered barcode is displayed under Scanned Items
+2024-03-15 11:43:02,992 - ui_automation.step_definitions.AccessionSteps -INFO - Enter Barcode button is changed to Edit button 
+2024-03-15 11:43:04,433 - ui_automation.step_definitions.AccessionSteps -INFO - Edited barcode is displayed
+2024-03-15 11:43:04,609 - ui_automation.step_definitions.AccessionSteps -INFO - I verified the barcode
+2024-03-15 11:43:04,647 - ui_automation.step_definitions.AccessionSteps -INFO - Next Tray button is activated
+2024-03-15 11:43:04,798 - ui_automation.step_definitions.AccessionSteps -INFO - New Tray can be scanned
+2024-03-15 11:43:04,949 - io.github.bonigarcia.wdm.WebDriverManager -INFO - Using chromedriver 122.0.6261.128 (resolved driver for Chrome 122)
+2024-03-15 11:43:04,956 - io.github.bonigarcia.wdm.WebDriverManager -INFO - Exporting webdriver.chrome.driver as C:\Users\Afa Faraji\.cache\selenium\chromedriver\win64\122.0.6261.128\chromedriver.exe
+2024-03-15 11:43:06,501 - ui_automation.step_definitions.AccessionSteps -INFO - I clicked Enter Barcode button
+2024-03-15 11:43:06,676 - ui_automation.step_definitions.AccessionSteps -INFO - Entered barcode is displayed under Scanned Items
+2024-03-15 11:43:06,768 - ui_automation.step_definitions.AccessionSteps -INFO - Enter Barcode button is changed to Edit button 
+2024-03-15 11:43:08,184 - ui_automation.step_definitions.AccessionSteps -INFO - Edited barcode is displayed
+2024-03-15 11:43:08,991 - ui_automation.step_definitions.AccessionSteps -INFO - Complete Job button is activated

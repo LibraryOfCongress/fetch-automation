@@ -64,8 +64,8 @@ public class BreadcrumbSteps {
         oLog.info("I clicked Verification Breadcrumb link");
     }
 
-    @Then("user should navigate to the Verification page")
-    public void user_should_navigate_to_the_Verification_page() {
+    @Then("user should navigate to Verification page")
+    public void user_should_navigate_to_Verification_page() {
         assertTrue(driver.getCurrentUrl().equals("https://test.fetch.loctest.gov/verification"));
         oLog.info("I navigated to Verification page");
     }

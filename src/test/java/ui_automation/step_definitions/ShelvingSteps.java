@@ -24,7 +24,7 @@ import static org.junit.Assert.assertTrue;
 public class ShelvingSteps {
 
     WebDriver driver = Driver.getInstance().getDriver();
-    ShelvingPage shelf = new ShelvingPage();
+    ShelvingPage shelving = new ShelvingPage();
     Helper helper = new Helper();
     GenericHelper genHelp = new GenericHelper();
     WaitHelper wait = new WaitHelper();
@@ -45,7 +45,7 @@ public class ShelvingSteps {
     @When("user is on Shelving page")
     public void user_is_on_Shelving_Page() {
         String actualURL = driver.getCurrentUrl();
-        String expectedURL = "https://c2vldimsweb01.loctest.gov/shelving";
+        String expectedURL = "https://test.fetch.loctest.gov/shelving";
         Assert.assertEquals("Shelving page URL failed",
                 expectedURL, actualURL);
         oLog.info("I am on Shelving page");
@@ -53,21 +53,21 @@ public class ShelvingSteps {
 
     @Then("Filter icon is clickable")
     public void filter_icon_is_clickable() {
-        helper.isClickable(shelf.filter);
+        helper.isClickable(shelving.filter);
     }
     @Then("Rearrange dropdown is clickable")
     public void rearrange_dropdown_is_clickable() {
-        helper.isClickable(shelf.rearrangeDropdown);
+        helper.isClickable(shelving.rearrangeDropdown);
     }
 
     @Then("Create Shelving Job button is clickable")
     public void create_shelving_job_button_is_clickable() {
-        helper.isClickable(shelf.createShelvingJob);
+        helper.isClickable(shelving.createShelvingJob);
     }
 
     @When("user clicks on Rearrange dropdown")
     public void user_clicks_on_rearrange_dropdown() {
-        helper.jSClick(shelf.rearrangeDropdown);
+        helper.jSClick(shelving.rearrangeDropdown);
     }
 
     @Then("user verifies dropdown options")
@@ -78,7 +78,7 @@ public class ShelvingSteps {
         for (Map<String, String> map : maps) {
             String expectedOption = map.get("optionname");
             wait.hardWait(1000);
-            String actualOption = shelf.allFilterDropdownOptions.get(i).getText();
+            String actualOption = shelving.allFilterDropdownOptions.get(i).getText();
             Assert.assertEquals("Options names verification failed",
                     expectedOption, actualOption);
             i++;
@@ -88,7 +88,7 @@ public class ShelvingSteps {
 
     @Then("user verifies dropdown checkboxes are clickable")
     public void user_verifies_dropdown_checkboxes_are_clickable() {
-        for (WebElement option : shelf.allFilterDropdownOptions) {
+        for (WebElement option : shelving.allFilterDropdownOptions) {
             assertTrue("Checkbox is not clickable: " + option.isEnabled(), option.isDisplayed());
         }
     }
@@ -97,11 +97,11 @@ public class ShelvingSteps {
     public void user_verifies_dropdown_options_match_shelf_table_column_options() {
         String shelfTableValue = "";
         String filterDropdownValue = "";
-        for (WebElement option : shelf.shelfTableColumns) {
+        for (WebElement option : shelving.shelfTableColumns) {
             wait.waitForVisibility(option,2000);
             shelfTableValue = option.getText();
         }
-        for (WebElement value : shelf.allFilterDropdownOptions) {
+        for (WebElement value : shelving.allFilterDropdownOptions) {
             wait.waitForVisibility(value, 2000);
             filterDropdownValue = value.getText();
         }
@@ -110,7 +110,7 @@ public class ShelvingSteps {
 
     @Then("user verifies all options are selected")
     public void user_verifies_all_options_are_selected() {
-        for (WebElement checkbox : shelf.allFilterDropdownOptions) {
+        for (WebElement checkbox : shelving.allFilterDropdownOptions) {
             if(checkbox.getAttribute("aria-selected").equals("false")){
                 System.out.println("Not all the checkboxes are selected");
             }
@@ -119,14 +119,14 @@ public class ShelvingSteps {
 
     @Then("user is able to deselect all the options")
     public void user_is_able_to_deselect_all_the_options() {
-        for(WebElement checkbox : shelf.allFilterDropdownOptions){
+        for(WebElement checkbox : shelving.allFilterDropdownOptions){
             select.selectCheckBox(checkbox, true);
         }
     }
 
     @Then("user selects options A, B and C from the dropdown")
     public void user_selects_options_A_B_and_C_from_the_dropdown() {
-        for(WebElement checkbox : shelf.allFilterDropdownOptions) {
+        for(WebElement checkbox : shelving.allFilterDropdownOptions) {
         String checkboxValue = checkbox.getText();
         if(checkboxValue.equals("Job Number") || checkboxValue.equals("Status") ||
                 checkboxValue.equals("Date Added") ){
@@ -139,21 +139,21 @@ public class ShelvingSteps {
     public void selected_options_are_displayed_on_the_page() {
         String checkboxValue = "";
         String shelfTableValue = "";
-        for(WebElement checkbox : shelf.allFilterDropdownOptions){
+        for(WebElement checkbox : shelving.allFilterDropdownOptions){
             if(checkbox.getAttribute("aria-selected").equals("true")) {
                 wait.waitForVisibility(checkbox, 2000);
                 checkboxValue = checkbox.getText();
             }
         }
-        for(int i = 0; i <shelf.shelfTableColumns.size(); i++) {
-           shelfTableValue = shelf.shelfTableColumns.get(i).getText();
+        for(int i = 0; i < shelving.shelfTableColumns.size(); i++) {
+           shelfTableValue = shelving.shelfTableColumns.get(i).getText();
         }
         Assert.assertEquals("Selected options are not displayed!", checkboxValue, shelfTableValue);
     }
 
     @When("user clicks on Create Shelving Job button")
     public void user_clicks_on_create_shelving_job_button() {
-     helper.jSClick(shelf.createShelvingJob);
+     helper.jSClick(shelving.createShelvingJob);
     }
 
     @Then("user verifies fields on Create New Shelf modal")
@@ -164,7 +164,7 @@ public class ShelvingSteps {
 
         for (Map<String, String> map : maps) {
             String expectedOption = map.get("fieldname");
-            String actualOption = shelf.newShelfFields.get(i).getText();
+            String actualOption = shelving.newShelfFields.get(i).getText();
             Assert.assertEquals("Field names verification failed",
                     expectedOption, actualOption);
             i++;
@@ -174,18 +174,18 @@ public class ShelvingSteps {
 
     @Then("cancel button is clickable")
     public void cancel_button_is_clickable() {
-        helper.isClickable(shelf.cancelBtn);
+        helper.isClickable(shelving.cancelBtn);
     }
 
     @Then("create shelf button is enabled and clickable")
     public void create_shelf_button_is_enabled_and_clickable() {
-      helper.verifyElementEnabled(shelf.createShelfBtn);
-      helper.isClickable(shelf.createShelfBtn);
+      helper.verifyElementEnabled(shelving.createShelfBtn);
+      helper.isClickable(shelving.createShelfBtn);
     }
 
     @When("user clicks Rearrange Columns toggle switch")
     public void user_clicks_Rearrange_Columns_toggle_switch()  {
-        helper.jSClick(shelf.toggleSwitch);
+        helper.jSClick(shelving.toggleSwitch);
     }
 
 
@@ -202,13 +202,13 @@ public class ShelvingSteps {
 
     @When("user switches off the Rearrange Columns toggle")
     public void user_switches_off_the_Rearrange_Columns_toggle() {
-        helper.jSClick(shelf.toggleSwitch);
+        helper.jSClick(shelving.toggleSwitch);
     }
 
     @Then("user verifies the Shelf Table column names")
     public void user_verifies_the_Shelf_Table_column_names() {
         String column = "";
-        for(WebElement element: shelf.shelfTableColumns) {
+        for(WebElement element: shelving.shelfTableColumns) {
              column = element.getText();
         }
         List<String> shelfColumns =new ArrayList<>(Arrays.asList("Job Number", "# of Containers in Job", "Status",
@@ -223,30 +223,30 @@ public class ShelvingSteps {
 
     @When("user selects an Owner")
     public void user_selects_an_Owner() throws InterruptedException {
-    shelf.selectOwner.click();
+    shelving.selectOwner.click();
     wait.hardWait(1000);
-    shelf.sanders.click();
+    shelving.sanders.click();
     actions.sendKeys(Keys.TAB).build().perform();
         oLog.info("I selected an Owner");
     }
 
     @When("user enters a Shelf Number")
     public void user_enters_a_Shelf_Number() {
-    shelf.enterShelfNumber.sendKeys("1");
+    shelving.enterShelfNumber.sendKeys("1");
     actions.sendKeys(Keys.TAB).build().perform();
         oLog.info("I entered a Shelf Number");
     }
 
     @When("user enters a Shelf Width")
     public void user_enters_a_Shelf_Width() {
-    shelf.enterShelfWidth.sendKeys("5");
+    shelving.enterShelfWidth.sendKeys("5");
     actions.sendKeys(Keys.TAB).build().perform();
         oLog.info("I entered a Shelf Width");
     }
 
     @When("user enters a Shelf Height")
     public void user_enters_a_Shelf_Height() {
-    shelf.enterShelfHeight.sendKeys("3");
+    shelving.enterShelfHeight.sendKeys("3");
     actions.sendKeys(Keys.TAB).build().perform();
         oLog.info("I entered a Shelf Height");
     }
@@ -254,21 +254,21 @@ public class ShelvingSteps {
 
     @When("user enters a Shelf Depth")
     public void user_enters_a_Shelf_Depth() {
-    shelf.enterShelfDepth.sendKeys("1");
+    shelving.enterShelfDepth.sendKeys("1");
     actions.sendKeys(Keys.TAB).build().perform();
         oLog.info("I entered a Shelf Depth");
     }
 
     @When("user selects a Container Type")
     public void user_selects_a_Container_Type() throws InterruptedException {
-    shelf.selectType.click();
+    shelving.selectType.click();
     genHelp.getElement(By.cssSelector("div [role='option']:nth-child(1)")).click();
         oLog.info("I selected a Container Type");
     }
 
     @When("user clicks Create Shelf button")
     public void user_clicks_Create_Shelf_button() {
-    shelf.createShelfBtn.click();
+    shelving.createShelfBtn.click();
         oLog.info("I clicked Create Shelf button");
     }
 
