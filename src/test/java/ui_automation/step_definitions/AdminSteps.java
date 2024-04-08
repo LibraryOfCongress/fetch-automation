@@ -6,10 +6,7 @@ import io.cucumber.java.en.When;
 import org.apache.log4j.LogManager;
 import org.apache.log4j.Logger;
 import org.junit.Assert;
-import org.openqa.selenium.By;
-import org.openqa.selenium.Keys;
-import org.openqa.selenium.WebDriver;
-import org.openqa.selenium.WebElement;
+import org.openqa.selenium.*;
 import org.openqa.selenium.interactions.Actions;
 import ui_automation.pages.AdminPage;
 import ui_automation.utilities.ConfigurationReader;
@@ -43,7 +40,7 @@ public class AdminSteps {
     @When("user is on the Admin Page")
     public void user_is_on_the_Admin_Page() {
         String actualURL = driver.getCurrentUrl();
-        String expectedURL = "https://c2vldimsweb01.loctest.gov/admin";
+        String expectedURL = "https://test.fetch.loctest.gov/admin";
         assertEquals("Admin Page URL failed",
                 expectedURL, actualURL);
         oLog.info("I am on Admin page");
@@ -135,7 +132,7 @@ public class AdminSteps {
 
     @When("user clicks three-dots on the left side of the table")
     public void user_clicks_three_dots_on_the_left_side_of_the_table() {
-        admin.threeDots.click();
+        admin.threeDots.get(0).click();
     }
 
 
@@ -177,13 +174,13 @@ public class AdminSteps {
         admin.editShelfNumber.sendKeys(Keys.DELETE);
         admin.editShelfNumber.sendKeys("2");
 
-        helper.jSClick(admin.editOwner);
-        admin.modalFieldOptions.get(2).click();
-        actions.sendKeys(Keys.TAB).build().perform();
+//        helper.jSClick(admin.editOwner);
+//        admin.modalFieldOptions.get(0).click();
+//        actions.sendKeys(Keys.TAB).build().perform();
 
-        helper.jSClick(admin.editContainerField);
-        wait.hardWait(1000);
-        admin.modalFieldOptions.get(3).click();
+//        helper.jSClick(admin.editContainerField);
+//        wait.hardWait(1000);
+//        admin.modalFieldOptions.get(0).click();
 
         admin.editMaxCapacity.sendKeys(Keys.CONTROL + "a");
         admin.editMaxCapacity.sendKeys(Keys.DELETE);
@@ -360,7 +357,9 @@ public class AdminSteps {
 
     @Then("user selects Aisle from dropdown")
     public void user_selects_Aisle_from_dropdown() throws InterruptedException {
-        wait.handleStaleElement(By.cssSelector(".q-field__native [placeholder='Select Aisle']"), 4, 2000);
+        wait.hardWait(1000);
+        wait.handleStaleElement(By.cssSelector(".q-field__native [placeholder='Select Aisle']"), 4, 1000);
+
         admin.selectAisle.click();
         admin.fieldDropdwnList.get(1).click();
     }
@@ -398,13 +397,11 @@ public class AdminSteps {
 
     @When("user selects Ladder")
     public void user_selects_Ladder() throws InterruptedException {
-//        wait.waitForClickability(admin.ladderField,1000);
-//        admin.ladderField.click();
+        helper.scrollToElement(admin.selectLadder);
         wait.waitForClickability(admin.selectLadder, 1000);
         admin.selectLadder.click();
         wait.hardWait(1000);
         admin.modalFieldOptions.get(6).click();
-        Thread.sleep(3000);
     }
 
 

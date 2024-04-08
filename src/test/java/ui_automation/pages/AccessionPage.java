@@ -36,7 +36,7 @@ public class AccessionPage {
     @FindBy(css = ".q-virtual-scroll__content>div:nth-child(3)")
     public WebElement sanders;
 
-    @FindBy(css = "[placeholder='Select Size']")
+    @FindBy(css = "[placeholder='Select Size Class']")
     public WebElement containerSizeField;
 
     @FindBy(css = ".q-virtual-scroll__content span")

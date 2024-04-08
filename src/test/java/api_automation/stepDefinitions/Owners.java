@@ -1,193 +1,191 @@
 package api_automation.stepDefinitions;
 
-import com.fasterxml.jackson.databind.ObjectMapper;
-import api_automation.requestBuilder.RequestBuilder;
-import com.fasterxml.jackson.core.JsonProcessingException;
-import com.jayway.jsonpath.JsonPath;
-import io.cucumber.core.api.Scenario;
+
+import api_automation.requestBuilder.GorestRequestBuilder;
 import api_automation.utils.TestBase;
+
+
+import com.fasterxml.jackson.core.JsonProcessingException;
+import com.fasterxml.jackson.databind.ObjectMapper;
+import com.jayway.jsonpath.JsonPath;
+
+import io.cucumber.core.api.Scenario;
+import io.cucumber.java.Before;
 import io.cucumber.java.en.*;
 import io.restassured.http.ContentType;
 import io.restassured.response.Response;
 
-
 import static io.restassured.RestAssured.given;
 import static org.junit.Assert.assertEquals;
 
-import org.junit.Assert;
-import org.junit.Before;
-
 public class Owners extends TestBase {
 
-    static Response response;
-    Response resp;
+
     String requestData;
-    static String recordID;
-    static String ownerID;
+    static Response response;
+    int owner_tier_id;
+    int owner_id;
     Scenario scenario;
 
-//    @Before
-//    public void setUp(Scenario scenario) {
-//        this.scenario=scenario;
-//    }
+    @Before
+    public void keepScenario(Scenario scenario) {
+        this.scenario=scenario;
+    }
 
-// OWNER TIER
+    // OWNER TIER
+
     @Given("user submits GET request to retrieve all Owner Tier records")
     public void user_submits_GET_request_to_retrieve_all_Owner_Tier_records() {
-        response = given().when().get(property.getProperty("baseURI")+ "/owners/tiers");
+        response = given().when().get(property.getProperty("baseURI") + "/owners/tiers");
         response.prettyPrint();
     }
 
-
     @Then("user validates if status code is {int}")
     public void user_validates_if_status_code_is(int statusCode) {
-        Assert.assertEquals(statusCode, response.getStatusCode());
+        assertEquals(statusCode, response.getStatusCode());
     }
 
-
-    @Given("user creates a new record with following data {int}, {string}")
-    public void user_creates_a_new_record_with_following_data(int level, String name) throws JsonProcessingException {
-    //Create request in Java Object
-        RequestBuilder reqBuilder = new RequestBuilder();
-        reqBuilder.setLevel(level);
+    @When("user creates request data with {int}, {string}")
+    public void user_creates_request_data_with(int level, String name) throws JsonProcessingException {
+        //Create request in Java object
+        GorestRequestBuilder reqBuilder=new GorestRequestBuilder();
         reqBuilder.setName(name);
-    //Convert object to string
+        reqBuilder.setLevel(level);
+
+        //Convert object to string
         ObjectMapper obMap = new ObjectMapper();
-        requestData = obMap.writerWithDefaultPrettyPrinter().writeValueAsString(reqBuilder);
-     //   scenario.write(requestData);
-     //   scenario.embed(requestData.getBytes(), "application/json");
+        requestData=obMap.writerWithDefaultPrettyPrinter().writeValueAsString(reqBuilder);
+        //write response to report
+        scenario.write(requestData);
+        scenario.embed(requestData.getBytes(), "application/json");
     }
 
 
-    @Given("user submits POST request to Owner Tier API endpoint")
-    public void user_submits_POST_request_to_Owner_Tier_API_endpoint() {
-       response = given()
-                    .contentType(ContentType.JSON)
-                    .body(requestData)
-               .when()
-               .post(property.getProperty("owner_tiers"));
+    @When("user submits POST request to owners_tiers endpoint")
+    public void user_submits_POST_request_to_owner_tiers_endpoint() {
+        response=given()
+                .contentType(ContentType.JSON)
+                .body(requestData).
+                when()
+                .post(property.getProperty("baseURI") + "/owners/tiers");
 
-        String strResponse = response.prettyPrint();
-      //  scenario.write(strResponse);
+        String strResponse=response.prettyPrint();
+
+        //write response to file
+        scenario.write(strResponse);
     }
 
 
     @Then("user validates if the value of name in response is {string}")
     public void user_validates_if_the_value_of_name_in_response_is(String name) {
-      String actualName = JsonPath.read(response.asString(),"name");
-        System.out.println("Expected name: " + name + "Actual name: " + actualName);
+        String actualName = JsonPath.read(response.asString(), "name");
+        System.out.println("Expected name: " + name + " Actual name: " + actualName);
         assertEquals(name, actualName);
     }
 
 
-    @Then("user retrieves recordID from response")
-    public void user_retrieves_recordID_from_response() {
-        recordID = JsonPath.read(response.asString(), "id").toString();
-        System.out.println("Record ID is: " + recordID);
-     //   scenario.write("Record ID::: " + recordID);
+    @Then("user retrieves owner_tier_id from response")
+    public void user_retrieves_owner_tier_id_from_response() {
+//        owner_tier_id =JsonPath.read(response.asString(), "id").toString();
+        owner_tier_id =JsonPath.read(response.asString(), "id");
+        scenario.write("Owner_Tier ID::: "+ owner_tier_id);
     }
 
 
-    @Given("user submits GET request with recordID to get an Owner Tier details")
-    public void user_submits_GET_request_with_recordID_to_get_an_Owner_Tier_details() {
-        response = given()
-                    .when()
-                     .get(property.getProperty("owner_tiers")+"/"+recordID);
-        response.prettyPrint();
-    }
-
-
-    @Given("user submits DELETE request with recordID to Owner Tier API endpoint")
-    public void user_submits_DELETE_request_with_recordID_to_Owner_Tier_API_endpoint() {
-        resp = given()
-                .when()
-                .delete(property.getProperty("owner_tiers")+"/"+recordID);
-    }
-
-
-//    OWNER
-    @Given("user submits GET request to retrieve all Owner records")
-    public void user_submits_GET_request_to_retrieve_all_Owner_records() {
-        response = given().when().get(property.getProperty("baseURI")+ "/owners");
-        response.prettyPrint();
-    }
-
-
-    @Given("Owner Tier recordID is created")
-    public void owner_Tier_recordID_is_created() {
-        System.out.println("Owner Tier Record ID is: " + recordID);
-    }
-
-
-    @Given("user creates the request data with {string}, {int}")
-    public void user_creates_the_request_data_with(String name, int ownerTierID) throws JsonProcessingException {
-        RequestBuilder reqBuilder = new RequestBuilder();
-        reqBuilder.setOwnerName(name);
-        reqBuilder.setOwnerTierID(ownerTierID);
-
-        ObjectMapper obMap = new ObjectMapper();
-        requestData = obMap.writerWithDefaultPrettyPrinter().writeValueAsString(reqBuilder);
-        scenario.write(requestData);
-        scenario.embed(requestData.getBytes(), "application/json");
-    }
-
-
-    @When("user creates the request data for owner record")
-    public void user_creates_the_request_data_for_owner_record() throws JsonProcessingException {
-        RequestBuilder reqBuilder = new RequestBuilder();
-        reqBuilder.setOwnerName("Library");
-        int tierID = Integer.parseInt(recordID);
-        reqBuilder.setOwnerTierID(tierID);
-
-        ObjectMapper obMap = new ObjectMapper();
-        requestData = obMap.writerWithDefaultPrettyPrinter().writeValueAsString(reqBuilder);
-        scenario.write(requestData);
-        scenario.embed(requestData.getBytes(), "application/json");
-    }
-
-
-    @Given("user submits POST request to Owner API endpoint")
-    public void user_submits_POST_request_to_Owner_API_endpoint() {
-        response = given()
+    @Then("user submits PATCH request to owners_tiers endpoint")
+    public void user_submits_PATCH_request_to_owner_tiers_endpoint() {
+        String patchData = "{\n" +
+                "  \"level\": 3,\n" +
+                "  \"name\": \"ABC\"\n" +
+                "}";
+        response=given()
                 .contentType(ContentType.JSON)
-                .body(requestData)
-                .when()
-                .post(property.getProperty("owners"));
+                .body(patchData).
+                when()
+                .patch(property.getProperty("baseURI") + "/owners/tiers" + "/" + owner_tier_id);
 
-        String strResponse = response.prettyPrint();
+        String strResponse=response.prettyPrint();
+
+        //write response to file
+        scenario.write(strResponse);
+    }
+
+    @Then("user verifies updated name in response is {string}")
+    public void user_verifies_updated_name_in_response_is(String name) {
+        String updatedName = JsonPath.read(response.asString(), "name");
+        System.out.println("Expected name: " + name + " Actual name: " + updatedName);
+        assertEquals(name, updatedName);
+    }
+
+
+    @Then("user deletes Owner Tier record")
+    public void user_deletes_owner_tier_record () {
+        Response resp=given()
+                .when()
+                .delete(property.getProperty("owner_tiers")+"/"+ owner_tier_id);
+        String strResponse=resp.prettyPrint();
         scenario.write(strResponse);
     }
 
 
-    @Then("user validates status code is {int}")
-    public void userValidatesStatusCodeIs(int status) {
-        assertEquals(status, resp.getStatusCode());
-    }
+    // Owner
 
-
-    @Then("user retrieves ownerID from response")
-    public void user_retrieves_ownerID_from_response() {
-        ownerID = JsonPath.read(response.asString(), "id").toString();
-        System.out.println("Owner ID is: " + ownerID);
-        scenario.write("Owner ID::: " + ownerID);
-    }
-
-
-    @Given("user submits GET request with ownerID to get an Owner details")
-    public void user_submits_GET_request_with_ownerID_to_get_an_Owner_details() {
-        response = given()
-                .when()
-                .get(property.getProperty("owners")+"/"+ownerID);
+    @When("user submits GET request to retrieve all Owner records")
+    public void user_submits_GET_request_to_retrieve_all_Owner_records() {
+        response = given().when().get(property.getProperty("baseURI") + "/owners");
         response.prettyPrint();
-        scenario.write(response.prettyPrint());
     }
 
 
-    @Given("user submits DELETE request with ownerID to Owner API endpoint")
-    public void user_submits_DELETE_request_with_ownerID_to_Owner_API_endpoint() {
-        resp = given()
+    @And("user submits POST request to owners endpoint")
+    public void user_submits_PATCH_request_to_owners_enpoint() {
+        String postData = "{"
+                + "\"name\": \"LOC\","
+                + "\"owner_tier_id\": " + owner_tier_id
+                + "}";
+
+        response=given()
+                .contentType(ContentType.JSON)
+                .body(postData).
+                 when()
+                .post(property.getProperty("baseURI") + "/owners");
+
+        String strResponse=response.prettyPrint();
+
+        //write response to file
+        scenario.write(strResponse);
+    }
+
+    @Then("user retrieves owner_id from response")
+    public void user_retrieves_owner_id_from_response() {
+        owner_id =JsonPath.read(response.asString(), "id");
+        scenario.write("Owner ID::: "+ owner_id);
+    }
+
+    @And("user submits PATCH request to owners endpoint")
+    public void user_submits_PATCH_request_to_owners_endpoint() {
+        String patchData = "{\n" +
+                "      \"name\": \"Pest Control\"\n" +
+                "}";
+        response=given()
+                .contentType(ContentType.JSON)
+                .body(patchData).
+                when()
+                .patch(property.getProperty("baseURI") + "/owners" + "/" + owner_id);
+
+        String strResponse=response.prettyPrint();
+
+        //write response to file
+        scenario.write(strResponse);
+    }
+
+
+    @And("user deletes Owner record")
+    public void user_deletes_owner_record () {
+        Response resp=given()
                 .when()
-                .delete(property.getProperty("owners")+"/"+ownerID);
+                .delete(property.getProperty("owners")+"/"+ owner_id);
+        String strResponse=resp.prettyPrint();
+        scenario.write(strResponse);
     }
-
 }

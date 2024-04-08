@@ -69,7 +69,7 @@ public class AccessionSteps {
         accession.ownerField.click();
         wait.hardWait(1000);
         accession.ownerFieldOptions.get(0).click();
-        oLog.info("I clicked John Doe in Owner field");
+        oLog.info("I selected all required fields ( Owner )");
     }
 
     @When("user is able to click Back button")
@@ -95,19 +95,29 @@ public class AccessionSteps {
     @And("user verifies Owner field options")
     public void userVerifiesOwnerFieldOptions() {
         wait.waitForClickability(accession.ownerField, 10);
-        accession.ownerField.click();
-        List<String> elemTexts = helper.getElementsText(By.cssSelector("[class='q-virtual-scroll__content'] [role='option']"));
+        helper.clickWithJS(accession.ownerField);
+        List<String> elemTexts = helper.getElementsText(By.cssSelector(".q-virtual-scroll__content span"));
         for (String elemText : elemTexts) {
             System.out.println(elemText);
         }
         accession.ownerField.click();
         oLog.info("I printed Owner field options");
+    }
 
+    @And("user verifies Container Type field options")
+    public void userVerifiesContainerTypeFieldOptions() throws InterruptedException {
+        wait.waitForClickability(accession.containerSizeField, 10);
+        helper.clickWithJS(accession.containerSizeField);
+        for (WebElement elemText : accession.containerOptions) {
+            System.out.println(elemText.getText());
+        }
+        accession.containerSizeField.click();
+        oLog.info("I printed Container Size field options ");
     }
 
     @And("user verifies Media Type field options")
     public void userVerifiesMediaTypeFieldOptions() {
-        accession.mediaTypeField.click();
+        helper.clickWithJS(accession.mediaTypeField);
         for (WebElement elemText : accession.mediaOptions) {
             System.out.println(elemText.getText());
         }
@@ -354,9 +364,10 @@ public class AccessionSteps {
     }
 
     @Then("user clicks Enter Barcode button")
-    public void user_clicks_Enter_Barcode_button() {
-        helper.jSClick(accession.enterBarcodeBtn);
+    public void user_clicks_Enter_Barcode_button() throws InterruptedException {
+        helper.clickWithJS(accession.enterBarcodeBtn);
         oLog.info("I clicked Enter Barcode button");
+        Thread.sleep(8000);
     }
 
     @Then("verify a modal with manual barcode entry is displayed")
@@ -367,9 +378,10 @@ public class AccessionSteps {
     }
 
     @Then("user enters barcode and clicks Submit button")
-    public void user_enters_barcode_and_clicks_Submit_button() {
+    public void user_enters_barcode_and_clicks_Submit_button() throws InterruptedException {
         accession.enterBarcodeField.sendKeys("12345");
         accession.submitBtn.click();
+        Thread.sleep(8000);
     }
 
     @Then("verify the entered barcode is displayed under Scanned Items")

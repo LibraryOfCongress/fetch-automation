@@ -29,8 +29,8 @@ public class AdminPage {
     @FindBy(css = ".q-table tbody tr")
     public List<WebElement> shelvingItems;
 
-    @FindBy(css = ":nth-child(1) > .q-td.text-center > span[data-v-77cd8b95=\"\"] > .q-btn > .q-btn__content > .q-icon")
-    public WebElement threeDots;
+    @FindBy(css = "[class$='q-btn--actionable q-focusable q-hoverable more-menu']")
+    public List<WebElement> threeDots;
 
     @FindBy(css = ".q-menu > .q-list > .q-item")
     public WebElement editBtn;

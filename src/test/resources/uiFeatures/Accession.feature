@@ -30,11 +30,13 @@ Feature: Accession Job Validation
     And user selects Non-Tray Accession
     Then user verifies required and optional fields on Start New Accession modal
 
-      | fieldname             |
-      | Owner (Required)      |
-      | Media Type (Optional) |
+      | fieldname                 |
+      | Owner (Required)          |
+      | Container Size (Optional) |
+      | Media Type (Optional)     |
 
     And user verifies Owner field options
+    And user verifies Container Type field options
     And user verifies Media Type field options
     And user selects all required fields
     And user is able to click Back button
@@ -52,25 +54,6 @@ Feature: Accession Job Validation
     Then user is able to choose any option from Media Type dropdown field
 
 
-#       @FETCH-358 @FETCH-194 @trayed
-#       Scenario: Verify Accession Process for Trayed Item
-#         When user clicks Accession on side navigation menu
-#         And user clicks Start Accession button
-#         And user selects Trayed Accession
-#         And user selects all required fields
-#         And user clicks Submit button
-#         And user clicks Scan Barcode
-#         And user is able to edit Container Size and Media Type fields of the panel
-#         And user is able to cancel edits
-#         And user is able to edit Container Size and Media Type fields of the panel
-#         And user is able to save edits
-#         And Add Item button is enabled and clickable
-#         And Pause Job button is enabled and clickable
-#         And Complete Job button is enabled and clickable
-#         When user checks an Item
-#         Then Delete button is enabled
-#         When user clicks Pause Job button
-#         Then Add Item, Delete and Complete Job buttons are disabled
 
 
   @FETCH-358 @FETCH-194 @search
@@ -91,25 +74,6 @@ Feature: Accession Job Validation
     And user selects an option from the Media Type dropdown
     And the selected Media Type option should be displayed on the page
 
-
-#  @FETCH-364 @FETCH-184 @nontrayed
-#  Scenario: Verify Accession Process for Non-Trayed Item
-#    When user clicks Accession on side navigation menu
-#    And user clicks Start Accession button
-#    And user selects Non-Tray Accession
-#    And user selects all required fields
-#    And user clicks Submit button
-#    And user is able to edit Container Size and Media Type fields of the panel
-#    And user is able to cancel edits
-#    And user is able to edit Container Size and Media Type fields of the panel
-#    And user is able to save edits
-#    And Complete Job button is enabled and clickable
-#    When user checks an Item
-#    Then Delete button is enabled
-#    And when user clicks Delete button
-#    Then verify a modal confirming delete action appears
-#    When user clicks Complete Job button
-#    Then verify a modal confirming complete job action appears
 
 
   @FETCH-545 @FETCH-455 @trayed

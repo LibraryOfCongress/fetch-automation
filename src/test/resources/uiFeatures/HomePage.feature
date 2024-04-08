@@ -24,6 +24,7 @@ Feature: Home Page Functionality Validation
       | Shelving     |
       | Request      |
       | Refile       |
+      | Admin        |
 
 
   @FETCH-526 @FETCH-454 @active_links

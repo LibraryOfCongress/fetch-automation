@@ -69,6 +69,46 @@ public class ShelvingPage {
     @FindBy(css = "[role='listbox'] div.q-item:nth-child(3)")
     public WebElement sanders;
 
+    @FindBy(xpath = "//button[.='From Verification Job']")
+    public WebElement fromVerificationJob;
+
+    @FindBy(xpath = "//button[.='No']")
+    public WebElement no;
+
+    @FindBy(css = "[class='shelving-job-number-box text-h4 q-pa-md']")
+    public WebElement shelvingJobNumberBox;
+
+    @FindBy(xpath = "//button[.='Yes']")
+    public WebElement yes;
+
+    @FindBy(css = "[placeholder='Select Verification Job(s) by Number']")
+    public WebElement selectByNumber;
+
+    @FindBy(css = "[role='listbox'] [role='option']")
+    public List<WebElement> verificationJobsList;
+
+    @FindBy(xpath = "//button[.='Submit']")
+    public WebElement submit;
+
+    @FindBy(xpath = "//p[.='Created']")
+    public WebElement shelvingJobStatus;
+
+    @FindBy(id = "jobNumber")
+    public WebElement jobNumber;
+
+    @FindBy(css = "[class='q-card popup-modal']")
+    public WebElement createShelvingJobModal;
+
+    @FindBy(xpath = "//button[.='more_vert']")
+    public List<WebElement> threeDotMenu;
+
+    @FindBy(xpath = "(//td[@class='q-td text-left'])[8]")
+    public WebElement shelfNumber;
+
+    @FindBy(xpath = "//div[@role='menu']")
+    public WebElement editOrAssign;
+
+
 
 
 

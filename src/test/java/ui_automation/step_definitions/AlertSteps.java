@@ -41,7 +41,8 @@ public class AlertSteps {
     @Then("user verifies UI alert on top of the screen is visible")
     public void user_verifies_UI_alert_on_top_of_the_screen_is_visible() {
         String msg = alert.alertMsg.getText();
-        String expectedMsg = "This is a user generated error message ";
+        String expectedMsg = "This is a user generated error message\n" +
+                "close";
         System.out.println("Actual alert message: " + msg);
         assertEquals(expectedMsg, msg);
     }

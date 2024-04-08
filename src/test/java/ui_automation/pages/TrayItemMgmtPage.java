@@ -23,7 +23,7 @@ public class TrayItemMgmtPage {
     @FindBy(css = "[class='tray-details-label text-h6']")
     public List<WebElement> trayLabels;
 
-    @FindBy(css = "[class='barcode text-h4 q-py-xs-md']")
+    @FindBy(css = "[class='barcode text-h4 text-center q-py-xs-md']")
     public WebElement trayBarcodeText;
 
     @FindBy(css = ".q-field__native > span")

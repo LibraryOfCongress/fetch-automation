@@ -6,7 +6,6 @@ import org.apache.log4j.LogManager;
 import org.apache.log4j.Logger;
 import org.junit.Assert;
 import org.openqa.selenium.By;
-import org.openqa.selenium.NoSuchElementException;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.interactions.Actions;
@@ -14,10 +13,8 @@ import ui_automation.pages.HomePage;
 import ui_automation.pages.VerificationPage;
 import ui_automation.utilities.*;
 
-import java.util.Iterator;
 import java.util.List;
 import java.util.Map;
-import java.util.Set;
 
 import static org.junit.Assert.assertEquals;
 import static org.junit.Assert.assertTrue;
@@ -38,7 +35,7 @@ public class BreadcrumbSteps {
 
     @Then("user should see the corresponding breadcrumbs")
     public void user_should_see_the_corresponding_breadcrumbs(io.cucumber.datatable.DataTable dataTable) throws InterruptedException {
-        List<WebElement> breadcrumbs = driver.findElements(By.className("breadcrumb-items"));
+       List<WebElement> breadcrumbs = driver.findElements(By.className("breadcrumb-items"));
         List<Map<String, String>> maps = dataTable.asMaps(String.class, String.class);
         int i = 0;
 
@@ -53,9 +50,11 @@ public class BreadcrumbSteps {
 
 
     @Then("user selects a Verification Job")
-    public void user_selects_a_Verification_Job() {
-        helper.jSClick(verification.verificationJobs.get(0));
+    public void user_selects_a_Verification_Job() throws InterruptedException {
+        helper.jSClick(verification.trayedVerificationJob);
+        wait.hardWait(100);
     }
+
 
     @When("user clicks on Verification breadcrumb link")
     public void user_clicks_on_Verification_breadcrumb_link() {
@@ -78,8 +77,8 @@ public class BreadcrumbSteps {
     }
 
 
-    @When("user clicks Later on the banner")
-    public void user_clicks_Later_on_the_banner() {
+    @When("user clicks on the banner")
+    public void user_clicks_on_the_banner() {
         home.banner.click();
     }
 

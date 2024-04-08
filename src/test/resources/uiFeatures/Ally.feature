@@ -30,7 +30,6 @@ Feature: This feature file will validate WebPage Accessibility
     And user selects Trayed Accession
     And user selects all required fields
     And user clicks Submit button
-    And user clicks Scan Barcode
     Then verify Accessibility
 
 

@@ -19,6 +19,7 @@ import java.util.Arrays;
 import java.util.List;
 import java.util.Map;
 
+import static org.junit.Assert.assertEquals;
 import static org.junit.Assert.assertTrue;
 
 public class ShelvingSteps {
@@ -27,6 +28,7 @@ public class ShelvingSteps {
     ShelvingPage shelving = new ShelvingPage();
     Helper helper = new Helper();
     GenericHelper genHelp = new GenericHelper();
+    AlertHelper alert = new AlertHelper();
     WaitHelper wait = new WaitHelper();
     SelectHelper select = new SelectHelper();
     Actions actions = new Actions(driver);
@@ -223,16 +225,17 @@ public class ShelvingSteps {
 
     @When("user selects an Owner")
     public void user_selects_an_Owner() throws InterruptedException {
-    shelving.selectOwner.click();
-    wait.hardWait(1000);
-    shelving.sanders.click();
-    actions.sendKeys(Keys.TAB).build().perform();
-        oLog.info("I selected an Owner");
+        //TODO choose an Owner
+//    shelving.selectOwner.click();
+//    wait.hardWait(1000);
+//    shelving.sanders.click();
+//    actions.sendKeys(Keys.TAB).build().perform();
+//        oLog.info("I selected an Owner");
     }
 
     @When("user enters a Shelf Number")
     public void user_enters_a_Shelf_Number() {
-    shelving.enterShelfNumber.sendKeys("1");
+    shelving.enterShelfNumber.sendKeys("2");
     actions.sendKeys(Keys.TAB).build().perform();
         oLog.info("I entered a Shelf Number");
     }
@@ -271,6 +274,114 @@ public class ShelvingSteps {
     shelving.createShelfBtn.click();
         oLog.info("I clicked Create Shelf button");
     }
+
+
+    @When("user selects From Verification Job option")
+    public void user_selects_From_Verification_Job_option() {
+       helper.jSClick(shelving.fromVerificationJob);
+        oLog.info("I selected option - From Verification Job");
+    }
+
+    @When("user selects No")
+    public void user_selects_No() {
+        helper.jSClick(shelving.no);
+        oLog.info("I selected option - No");
+    }
+
+    @Then("user is able to select a Verification Job from the Verification Job\\(s) List")
+    public void user_is_able_to_select_a_Verification_Job_from_the_Verification_Job_s_List() throws InterruptedException {
+        shelving.selectByNumber.click();
+        helper.jSClick(shelving.verificationJobsList.get(0));
+        oLog.info("I selected a Verification Job from the list");
+    }
+
+    @Then("user clicks Submit")
+    public void user_clicks_Submit() {
+        helper.jSClick(shelving.submit);
+        oLog.info("I clicked Submit");
+    }
+
+    @Then("user verifies the Shelving Job is created")
+    public void user_verifies_the_Shelving_Job_is_created() {
+        Assert.assertEquals("Shelving Job is not created! ", "Created", shelving.shelvingJobStatus.getText());
+        oLog.info("Shelving Job is created");
+    }
+
+
+    @Then("user is navigated to the shelving detail page")
+    public void user_is_navigated_to_the_shelving_detail_page() {
+        assertEquals("Job Number:", shelving.jobNumber.getText() );
+        oLog.info("I navigated to Shelving Job detail page");
+    }
+
+    @When("user selects Yes")
+    public void user_selects_Yes() {
+        shelving.yes.click();
+        oLog.info("I selected option - Yes");
+    }
+
+    @Then("a new modal with shelving location options along with the verification job selection is displayed")
+    public void a_new_modal_with_shelving_location_options_along_with_the_verification_job_selection_is_displayed() {
+       helper.verifyElementDisplayed(shelving.createShelvingJobModal);
+        oLog.info("Modal with Shelving Location options and Verification Job selection is displayed");
+    }
+
+
+    @When("user navigates to Shelving Job")
+    public void user_navigates_to_Shelving_Job() {
+        driver.get("https://test.fetch.loctest.gov/shelving/123456789");
+        oLog.info("I navigated to the Shelving Job");
+    }
+
+    @When("user clicks three dot menu next to a container that has shelving location information")
+    public void user_clicks_three_dot_menu_next_to_a_container_that_has_shelving_location_information() {
+        if(!shelving.shelfNumber.getText().isEmpty()) {
+            helper.jSClick(shelving.threeDotMenu.get(0));
+        }else {
+            helper.jSClick(shelving.threeDotMenu.get(1));
+        }
+        oLog.info("I clicked three dot menu next to a container that has shelving location information");
+    }
+
+    @Then("user should see Edit Location option")
+    public void user_should_see_Edit_Location_option() {
+        wait.waitForVisibility(shelving.editOrAssign,10);
+        assertEquals("Edit Location", shelving.editOrAssign.getText());
+        oLog.info("I see Edit Location option");
+    }
+
+    @Then("user clicks Edit Location button")
+    public void user_clicks_Edit_Location_button() {
+        helper.jSClick(shelving.editOrAssign);
+        oLog.info("I clicked Edit Location button");
+    }
+
+    @Then("Edit Shelving Location modal is displayed")
+    public void edit_Shelving_Location_modal_is_displayed() {
+        oLog.info("Edit Shelving Location modal is displayed");
+    }
+
+    @When("user clicks three dot menu next to a container that does not have a shelving location information")
+    public void user_clicks_three_dot_menu_next_to_a_container_that_does_not_have_a_shelving_location_information() {
+        oLog.info("I clicked three dot menu next to a container that does not have a shelving location information");
+    }
+
+    @Then("user should see Assign Location option")
+    public void user_should_see_Assign_Location_option() {
+        oLog.info("I see Assign Location option");
+    }
+
+    @Then("user clicks Assign Location button")
+    public void user_clicks_Assign_Location_button() {
+        oLog.info("I clicked Assign Location button");
+    }
+
+    @Then("Assign Shelving Location modal is displayed")
+    public void assign_Shelving_Location_modal_is_displayed() {
+        oLog.info("Assign Shelving Location modal is displayed");
+    }
+
+
 
 
 

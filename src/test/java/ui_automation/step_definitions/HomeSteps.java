@@ -74,6 +74,7 @@ public class HomeSteps {
 
     @Then("user verifies side navigation tabs on Homepage")
     public void user_verifies_side_navigation_tabs_on_Homepage(DataTable dataTable) {
+
         List<Map<String, String>> maps = dataTable.asMaps(String.class, String.class);
         int i = 1;
 
@@ -84,7 +85,6 @@ public class HomeSteps {
                     expectedTabname, actualTabname);
             i++;
 
-            //System.out.println(map);
         }
 
     }
@@ -128,7 +128,7 @@ public class HomeSteps {
 
     @When("user clicks Admin on side navigation menu")
     public void user_clicks_Admin_on_side_navigation_menu() throws InterruptedException {
-        home.adminLink.click();
+        helper.clickWithJS(home.adminLink);
         Thread.sleep(1000);
         oLog.info("I navigated to Admin Page");
     }

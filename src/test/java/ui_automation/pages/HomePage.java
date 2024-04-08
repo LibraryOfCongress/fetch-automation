@@ -36,7 +36,7 @@ public class HomePage {
     @FindBy(xpath = "//*[@class='demo']/li")
     public WebElement barCodeField;
 
-    @FindBy(xpath="//*[@class='q-list']/a")
+    @FindBy(xpath="//*[@class='q-list nav-list']/a")
     public List<WebElement> allNavigationTabs;
 
     @FindBy(css = "a[class$='nav-active']")
