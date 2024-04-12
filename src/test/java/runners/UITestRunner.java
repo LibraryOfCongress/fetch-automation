@@ -8,7 +8,7 @@ import org.junit.runner.RunWith;
                 "json:target/cucumber.json"},
         features="src/test/resources/uiFeatures",
         glue="ui_automation.step_definitions",
-        tags= {"@FETCH-455", "not @wip"},
+        tags= {"@FETCH-545", "not @wip"},
         dryRun = false,
         monochrome = true
 )

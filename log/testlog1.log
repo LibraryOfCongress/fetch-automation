@@ -16393,3 +16393,20 @@
 2024-04-12 12:37:58,537 [main] INFO ui_automation.step_definitions.AccessionSteps - Entered barcode is displayed under Scanned Items
 2024-04-12 12:37:58,621 [main] INFO ui_automation.step_definitions.AccessionSteps - Enter Barcode button is changed to Edit button 
 2024-04-12 12:37:58,768 [main] INFO ui_automation.step_definitions.AccessionSteps - Edit barcode modal is displayed
+2024-04-12 12:51:51,911 [main] INFO io.github.bonigarcia.wdm.WebDriverManager - Using chromedriver 123.0.6312.122 (resolved driver for Chrome 123)
+2024-04-12 12:51:51,941 [main] INFO io.github.bonigarcia.wdm.WebDriverManager - Exporting webdriver.chrome.driver as C:\Users\Afa Faraji\.cache\selenium\chromedriver\win64\123.0.6312.122\chromedriver.exe
+2024-04-12 12:51:53,284 [main] INFO ui_automation.step_definitions.TrayItemMgmtSteps - I navigated to Item Management Page
+2024-04-12 12:51:53,582 [main] INFO ui_automation.step_definitions.HomeSteps - I navigated to Accession Jobs Page
+2024-04-12 12:51:53,718 [main] INFO ui_automation.step_definitions.AccessionSteps - I started Accession Job
+2024-04-12 12:51:53,780 [main] INFO ui_automation.step_definitions.AccessionSteps - I clicked Non-Tray Accession Option
+2024-04-12 12:51:53,978 [main] INFO ui_automation.utilities.WaitHelper - 1000
+2024-04-12 12:51:55,558 [main] INFO ui_automation.utilities.WaitHelper - 1000
+2024-04-12 12:51:56,680 [main] INFO ui_automation.step_definitions.AccessionSteps - I selected all fields 
+2024-04-12 12:51:56,728 [main] INFO ui_automation.step_definitions.AccessionSteps - I clicked Submit button 
+2024-04-12 12:51:56,876 [main] INFO ui_automation.utilities.WaitHelper - 1000
+2024-04-12 12:51:57,887 [main] INFO ui_automation.step_definitions.AccessionSteps - I clicked Enter Barcode button
+2024-04-12 12:51:57,973 [main] INFO ui_automation.step_definitions.AccessionSteps - Manual barcode entry modal is displayed
+2024-04-12 12:51:59,111 [main] INFO ui_automation.step_definitions.AccessionSteps - I entered barcode and clicked Submit
+2024-04-12 12:51:59,148 [main] INFO ui_automation.step_definitions.AccessionSteps - Entered barcode is displayed under Scanned Items
+2024-04-12 12:51:59,216 [main] INFO ui_automation.step_definitions.AccessionSteps - Enter Barcode button is changed to Edit button 
+2024-04-12 12:51:59,350 [main] INFO ui_automation.step_definitions.AccessionSteps - Edit barcode modal is displayed
