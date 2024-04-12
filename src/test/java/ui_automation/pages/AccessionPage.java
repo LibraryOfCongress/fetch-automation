@@ -39,11 +39,8 @@ public class AccessionPage {
     @FindBy(css = "[placeholder='Select Size Class']")
     public WebElement containerSizeField;
 
-    @FindBy(css = ".q-virtual-scroll__content span")
+    @FindBy(css = ".q-virtual-scroll__content .q-item__label")
     public List<WebElement> ownerFieldOptions;
-
-    @FindBy(css = "[role='option']:nth-child(1)")
-    public WebElement aHigh;
 
     @FindBy(css = "[placeholder='Select Media Type']")
     public WebElement mediaTypeField;
@@ -57,11 +54,8 @@ public class AccessionPage {
     @FindBy(css = ".q-btn--outline > .q-btn__content")
     public WebElement cancelBtn;
 
-    @FindBy(css = ".q-btn--unelevated > .q-btn__content")
+    @FindBy(xpath = "//button[.='Submit']")
     public WebElement submit;
-
-    @FindBy(css = ".column > .q-btn")
-    public WebElement scanBarcode;
 
     @FindBy(css = ":nth-child(3) > .text-h6 > .q-btn")
     public WebElement editContainerSize;
@@ -97,7 +91,10 @@ public class AccessionPage {
     public WebElement completeJob;
 
     @FindBy(css = "[class='q-table--col-auto-width']")
-    public List<WebElement> scanItemList;
+    public List<WebElement> scanItemCheckbox;
+
+    @FindBy(className = "q-td text-left")
+    public List<WebElement> scanItemsValues;
 
     @FindBy(css = ".no-wrap > .bg-negative")
     public WebElement delete;
@@ -137,6 +134,16 @@ public class AccessionPage {
 
     @FindBy(css = "[class='barcode text-h4 q-mb-md-xl q-mb-lg-none']")
     public WebElement scanTrayField;
+
+    @FindBy(xpath = "//button[.='Complete & Print']")
+    public WebElement completeAndprint;
+
+    @FindBy(xpath = "//*[.='Delete']/../..")
+    public WebElement deleteBtn;
+
+    @FindBy(xpath = "//button[.='Confirm']")
+    public WebElement confirmDelete;
+
 
 
 

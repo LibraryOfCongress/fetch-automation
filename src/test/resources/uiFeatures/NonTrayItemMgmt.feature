@@ -1,8 +1,10 @@
-@regression
-@FETCH-311 @FETCH-182 @nontray
+@regression @nontray
+
+@FETCH-311 @FETCH-182
 Feature: Non-Trayed Item Management Validation
   Background:
     Given user navigates to Non-Trayed Item Management Page
+
 
   Scenario: User should be able to validate Non-Trayed Item Page icons and tabs
     When user looks at the header

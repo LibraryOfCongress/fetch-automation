@@ -1,5 +1,5 @@
 @regression @shelving
-Feature: Shelf Management Page Functionality Validation
+Feature: Shelving Page Functionality Validation
 
   Background:
     Given user navigates to Shelving Page
@@ -37,21 +37,31 @@ Feature: Shelf Management Page Functionality Validation
     And user selects options A, B and C from the dropdown
     Then selected options are displayed on the page
 
-
-  Scenario: User should be able to create a New Shelving Job
+  @newShelf
+  Scenario: User should be able to validate fields of Create Shelving Job modal
     When user clicks on Create Shelving Job button
-    Then user verifies fields on Create New Shelf modal
+    And user selects From Verification Job option
+    And user selects Yes
+    Then a new modal with shelving location options along with the verification job selection is displayed
+    And user verifies Create Shelving Job modal sections
 
-      | fieldname              |
-      | Owner                  |
-      | Shelf Number           |
-      | Shelf Width            |
-      | Shelf Height           |
-      | Shelf Depth            |
-      | Allowed Container Type |
+      | section                              |
+      | Assign Shelving Location?            |
+      | Verification Job List:               |
+      | Please Select Shelving Location:     |
+
+    And user verifies Create Shelving Job modal dropdown fields
+
+      | field                                |
+      | Please Select Verification Job(s)    |
+      | Building                             |
+      | Module                               |
+      | Aisle                                |
+      | Side                                 |
+      | Ladder                               |
 
     And cancel button is clickable
-    And create shelf button is enabled and clickable
+    And submit button is enabled and clickable
 
 
   @FETCH-360 @FETCH-336
@@ -62,7 +72,7 @@ Feature: Shelf Management Page Functionality Validation
     And user switches off the Rearrange Columns toggle
     Then user verifies the Shelf Table column names
 
-  @newShelf
+  @wip
   Scenario: User should be able to Create new Shelf
     When user clicks on Create Shelving Job button
     And user selects an Owner
@@ -73,7 +83,7 @@ Feature: Shelf Management Page Functionality Validation
     And user selects a Container Type
     And user clicks Create Shelf button
 
-@run
+
   @FETCH-648 @FETCH-380
   Scenario: User should be able to create a Shelving Job from Verification Jobs
     When user clicks on Create Shelving Job button
@@ -89,9 +99,9 @@ Feature: Shelf Management Page Functionality Validation
     And user selects Yes
     Then a new modal with shelving location options along with the verification job selection is displayed
 
-  @run
+
   @FETCH-625 @FETCH-382
-    Scenario:  User should be able to change Shelving Address within a Shelving Job
+  Scenario:  User should be able to change Shelving Address within a Shelving Job
     When user navigates to Shelving Job
     And user clicks three dot menu next to a container that has shelving location information
     Then user should see Edit Location option

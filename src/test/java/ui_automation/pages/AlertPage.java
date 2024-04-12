@@ -33,6 +33,9 @@ public class AlertPage {
     @FindBy(xpath = "(//span[.='Cancel'])[1]")
     public WebElement cancelPersistentAlert;
 
+    @FindBy(css = "p.text-body1")
+    public WebElement toastMsg;
+
 
 
 

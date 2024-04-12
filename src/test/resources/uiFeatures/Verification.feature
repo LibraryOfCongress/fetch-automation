@@ -1,11 +1,11 @@
 @regression @verification
 
-Feature: Shelf Management Page Functionality Validation
+Feature: Verification Page Functionality Validation
 
   Background:
     Given user navigates to the Verification Page
 
-  @FETCH-585 @FETCH-456
+  @FETCH-585 @FETCH-456 @wip
   Scenario: User should be able to validate Verification Job features for a Trayed Item
     When user clicks on Verification Job for a Trayed Item
     Then Tray container view is displayed
@@ -25,7 +25,7 @@ Feature: Shelf Management Page Functionality Validation
     And user clicks on new tray on the modal
     Then the container is cleared out so a new tray can be scanned
 
-  @FETCH-585 @FETCH-456
+  @FETCH-585 @FETCH-456 @wip
   Scenario: User should be able to validate Verification Job features for a Non-Trayed Item
     When user clicks on Verification Job for a Non-Trayed Item
     Then user verifies non-trayed items container view is displayed
@@ -40,6 +40,17 @@ Feature: Shelf Management Page Functionality Validation
     Then verify the updated barcode is displayed
     When user verifies all the barcodes
     Then user verifies Complete Job button is activated
+
+
+  @FETCH-569 @FETCH-475
+  Scenario: User should be able to validate Verification Job Batch Sheet Template
+    When user navigates to the verification job link
+    And user clicks Complete Job button
+    And user clicks Complete&Print button
+    Then user is able to see a print window with a batch report
+
+
+
 
 
 

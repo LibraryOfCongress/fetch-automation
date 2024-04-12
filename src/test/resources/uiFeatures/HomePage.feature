@@ -1,5 +1,5 @@
-@regression
-@home
+@regression @home
+
 Feature: Home Page Functionality Validation
 
   Background:

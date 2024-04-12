@@ -2,7 +2,6 @@ package api_automation.stepDefinitions;
 
 import com.jayway.jsonpath.JsonPath;
 import api_automation.utils.TestBase;
-import io.cucumber.core.api.Scenario;
 import io.cucumber.java.en.*;
 import io.restassured.http.ContentType;
 import io.restassured.response.Response;
@@ -20,7 +19,7 @@ public class AccessionJobs extends TestBase {
     Response response;
     Response resp;
     static String accessionJobID;
-    Scenario scenario;
+//    Scenario scenario;
 
 //    @Before
 //    public void setUp(Scenario scenario) {
@@ -50,7 +49,7 @@ public class AccessionJobs extends TestBase {
                 .post(property.getProperty("accession_jobs"));
 
         String strResponse = response.prettyPrint();
-        scenario.write(strResponse);
+      //  scenario.write(strResponse);
     }
 
 
@@ -84,7 +83,7 @@ public class AccessionJobs extends TestBase {
     public void user_submits_GET_request_with_accessionJobID_to_retrieve_an_Accession_Job_details() {
         response = given().when().get(property.getProperty("accession_jobs")+"/"+accessionJobID);
         response.prettyPrint();
-        scenario.write(response.prettyPrint());
+       // scenario.write(response.prettyPrint());
     }
 
 
@@ -94,6 +93,7 @@ public class AccessionJobs extends TestBase {
                 .when()
                 .delete(property.getProperty("accession_jobs")+"/"+accessionJobID);
     }
+
 
 
 }

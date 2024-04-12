@@ -1,5 +1,5 @@
-@regression
-@FETCH-287 @FETCH-170 @tray
+@regression @tray
+@FETCH-287 @FETCH-170
 Feature: Trayed Item Page Validation
   Background:
     Given user navigates to Item Management Page

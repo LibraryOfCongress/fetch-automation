@@ -111,6 +111,13 @@ public class VerificationSteps {
     }
 
 
+    @When("user navigates to the verification job link")
+    public void user_navigates_to_the_verification_job_link() {
+        driver.get("https://test.fetch.loctest.gov/verification/1234567892/scan-items/CH220987");
+        oLog.info("I navigated to the verification job link");
+    }
+
+
 
 
 

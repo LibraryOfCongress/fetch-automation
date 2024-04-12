@@ -36,13 +36,13 @@ public class ShelvingPage {
     @FindBy(css = ".q-table th")
     public List<WebElement> shelfTableColumns;
 
-    @FindBy(css = "[class='form-group-label']")
-    public List<WebElement> newShelfFields;
+    @FindBy(className = "text-h6")
+    public List<WebElement> modalSections;
 
-    @FindBy(xpath = "(//span[.='Create Shelf'])[2]")
-    public WebElement createShelfBtn;
+    @FindBy(className = "form-group-label")
+    public List<WebElement> modalFields;
 
-    @FindBy(xpath = "(//span[.='Cancel'])[2]")
+    @FindBy(xpath = "//button[.='Cancel']")
     public WebElement cancelBtn;
 
     @FindBy(css = "[class='q-toggle__track']")
@@ -66,17 +66,11 @@ public class ShelvingPage {
     @FindBy(css = "[placeholder='Select Type']")
     public WebElement selectType;
 
-    @FindBy(css = "[role='listbox'] div.q-item:nth-child(3)")
-    public WebElement sanders;
-
     @FindBy(xpath = "//button[.='From Verification Job']")
     public WebElement fromVerificationJob;
 
     @FindBy(xpath = "//button[.='No']")
     public WebElement no;
-
-    @FindBy(css = "[class='shelving-job-number-box text-h4 q-pa-md']")
-    public WebElement shelvingJobNumberBox;
 
     @FindBy(xpath = "//button[.='Yes']")
     public WebElement yes;

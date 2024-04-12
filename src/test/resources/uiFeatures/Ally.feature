@@ -1,5 +1,6 @@
 @accessibility
-Feature: This feature file will validate WebPage Accessibility
+
+Feature: FETCH Accessibility Validation
 
 
   Scenario: Check Accessibility on Home Page

@@ -5,7 +5,9 @@ import io.cucumber.java.en.Then;
 import io.cucumber.java.en.When;
 import org.apache.log4j.LogManager;
 import org.apache.log4j.Logger;
+import org.openqa.selenium.Alert;
 import org.openqa.selenium.WebDriver;
+import ui_automation.pages.AccessionPage;
 import ui_automation.pages.AlertPage;
 import ui_automation.utilities.*;
 
@@ -19,6 +21,7 @@ public class AlertSteps {
     Helper helper = new Helper();
     AlertHelper alertHelper = new AlertHelper();
     SelectHelper select = new SelectHelper();
+    AccessionPage accession = new AccessionPage();
     WaitHelper wait = new WaitHelper();
     GenericHelper genhelp = new GenericHelper();
 
@@ -43,7 +46,7 @@ public class AlertSteps {
         String msg = alert.alertMsg.getText();
         String expectedMsg = "This is a user generated error message\n" +
                 "close";
-        System.out.println("Actual alert message: " + msg);
+      //  System.out.println("Actual alert message: " + msg);
         assertEquals(expectedMsg, msg);
     }
 
@@ -60,6 +63,7 @@ public class AlertSteps {
     @Then("user verifies alert popup is visible")
     public void user_verifies_alert_popup_is_visible() {
         String msg = alert.audioAlertMsg.getText();
+      //  System.out.println("Actual alert msg: " + msg);
         String expectedMsg = "This is a user generated error message with audio";
         assertEquals(expectedMsg, msg);
     }
@@ -68,5 +72,39 @@ public class AlertSteps {
     public void user_is_able_to_click_cancel_button() {
         alert.cancelPersistentAlert.click();
     }
+
+    @When("user navigates to Accession Job link")
+    public void user_navigates_to_Accession_Job_link() {
+        driver.get("https://test.fetch.loctest.gov/accession/16");
+        oLog.info("I navigated to Accession Job");
+    }
+
+    @When("user enters {string} barcode and clicks Submit button")
+    public void user_enters_barcode_and_clicks_Submit_button(String string) throws InterruptedException {
+        accession.enterBarcodeField.sendKeys(string);
+        accession.submitBtn.click();
+        oLog.info("I entered barcode and clicked submit button");
+    }
+
+    @Then("user verifies {string} alert msg")
+    public void user_verifies_alert_msg(String string)  {
+        assertEquals(string, alert.toastMsg.getText());
+        oLog.info("I verified alert notification message");
+    }
+
+    @When("user clicks Delete")
+    public void user_clicks_Delete() throws InterruptedException {
+        accession.deleteBtn.click();
+        Thread.sleep(7000);
+        oLog.info("I clicked delete button");
+    }
+
+    @When("user clicks Confirm")
+    public void user_clicks_Confirm()  {
+        accession.confirmDelete.click();
+        oLog.info("I confirmed I want to delete a barcode");
+    }
+
+
 
 }

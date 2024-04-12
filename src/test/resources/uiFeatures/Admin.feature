@@ -1,5 +1,5 @@
-@regression
-@admin
+@regression @admin
+
 Feature: Admin Page Functionality Validation
 
   Background:

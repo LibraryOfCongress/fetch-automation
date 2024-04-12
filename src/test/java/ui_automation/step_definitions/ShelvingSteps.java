@@ -28,7 +28,6 @@ public class ShelvingSteps {
     ShelvingPage shelving = new ShelvingPage();
     Helper helper = new Helper();
     GenericHelper genHelp = new GenericHelper();
-    AlertHelper alert = new AlertHelper();
     WaitHelper wait = new WaitHelper();
     SelectHelper select = new SelectHelper();
     Actions actions = new Actions(driver);
@@ -158,20 +157,37 @@ public class ShelvingSteps {
      helper.jSClick(shelving.createShelvingJob);
     }
 
-    @Then("user verifies fields on Create New Shelf modal")
-    public void user_verifies_fields_on_Create_New_Shelf_modal(io.cucumber.datatable.DataTable dataTable) throws InterruptedException {
+    @Then("user verifies Create Shelving Job modal sections")
+    public void user_verifies_Create_Shelving_Job_modal_sections(io.cucumber.datatable.DataTable dataTable) throws InterruptedException {
+        wait.hardWait(1000);
+        List<Map<String, String>> maps = dataTable.asMaps(String.class, String.class);
+        int i = 1;
+
+        for (Map<String, String> map : maps) {
+            String expectedOption = map.get("section");
+            String actualOption = shelving.modalSections.get(i).getText();
+            Assert.assertEquals("Section names verification failed",
+                    expectedOption, actualOption);
+            i++;
+        }
+        oLog.info("I verified Create Shelving Job sections");
+    }
+
+
+    @Then("user verifies Create Shelving Job modal dropdown fields")
+    public void user_verifies_Create_Shelving_Job_modal_dropdown_fields(io.cucumber.datatable.DataTable dataTable) throws InterruptedException {
         wait.hardWait(1000);
         List<Map<String, String>> maps = dataTable.asMaps(String.class, String.class);
         int i = 0;
 
         for (Map<String, String> map : maps) {
-            String expectedOption = map.get("fieldname");
-            String actualOption = shelving.newShelfFields.get(i).getText();
-            Assert.assertEquals("Field names verification failed",
+            String expectedOption = map.get("field");
+            String actualOption = shelving.modalFields.get(i).getText();
+            Assert.assertEquals("Dropdown field verification failed",
                     expectedOption, actualOption);
             i++;
         }
-        oLog.info("I verified Create New Shelf fields");
+        oLog.info("I verified Create Shelving Job dropdown fields");
     }
 
     @Then("cancel button is clickable")
@@ -179,10 +195,10 @@ public class ShelvingSteps {
         helper.isClickable(shelving.cancelBtn);
     }
 
-    @Then("create shelf button is enabled and clickable")
-    public void create_shelf_button_is_enabled_and_clickable() {
-      helper.verifyElementEnabled(shelving.createShelfBtn);
-      helper.isClickable(shelving.createShelfBtn);
+    @Then("submit button is enabled and clickable")
+    public void submit_button_is_enabled_and_clickable() {
+      helper.verifyElementEnabled(shelving.submit);
+      helper.isClickable(shelving.submit);
     }
 
     @When("user clicks Rearrange Columns toggle switch")
@@ -271,8 +287,8 @@ public class ShelvingSteps {
 
     @When("user clicks Create Shelf button")
     public void user_clicks_Create_Shelf_button() {
-    shelving.createShelfBtn.click();
-        oLog.info("I clicked Create Shelf button");
+    shelving.submit.click();
+        oLog.info("I clicked submit button");
     }
 
 

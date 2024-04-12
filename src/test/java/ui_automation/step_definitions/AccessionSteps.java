@@ -6,6 +6,8 @@ import io.cucumber.java.en.When;
 import org.apache.log4j.LogManager;
 import org.apache.log4j.Logger;
 import org.openqa.selenium.*;
+import org.openqa.selenium.support.ui.ExpectedConditions;
+import org.openqa.selenium.support.ui.WebDriverWait;
 import ui_automation.pages.AccessionPage;
 import ui_automation.pages.HomePage;
 import ui_automation.utilities.*;
@@ -23,8 +25,6 @@ public class AccessionSteps {
     Helper helper = new Helper();
     SelectHelper select = new SelectHelper();
     WaitHelper wait = new WaitHelper();
-    AlertHelper alert = new AlertHelper();
-    HomePage home = new HomePage();
 
     public static final Logger oLog = LogManager.getLogger(AccessionSteps.class);
 
@@ -49,7 +49,7 @@ public class AccessionSteps {
 
     @Then("user verifies required and optional fields on Start New Accession modal")
     public void user_verifies_required_and_optional_fields_on_Start_New_Accession_modal(io.cucumber.datatable.DataTable dataTable) {
-        wait.waitForVisibility(accession.newAccessionFields.get(0),10);
+        wait.waitForVisibility(accession.newAccessionFields.get(0), 10);
         List<Map<String, String>> maps = dataTable.asMaps(String.class, String.class);
         int i = 0;
 
@@ -72,14 +72,60 @@ public class AccessionSteps {
         oLog.info("I selected all required fields ( Owner )");
     }
 
-    @When("user is able to click Back button")
-    public void user_is_able_to_click_Back_button() {
+    @When("user selects all fields")
+    public void user_selects_all_fields() throws InterruptedException {
+        wait.waitForClickability(accession.ownerField, 10);
+        accession.ownerField.click();
+        wait.hardWait(1000);
+        accession.ownerFieldOptions.get(3).click();
+        accession.containerSizeField.click();
+        helper.jSClick(accession.containerOptions.get(7));
+        accession.mediaTypeField.click();
+        wait.hardWait(1000);
+        wait.waitForClickability(accession.mediaTypeField, 10);
+        accession.mediaOptions.get(3).click();
+        oLog.info("I selected all fields ");
+    }
+
+    @Then("Owner dropdown is clickable")
+    public void owner_dropdown_is_clickable() {
+        helper.isClickable(accession.ownerField);
+    }
+
+    @Then("Container Size dropdown is clickable")
+    public void container_Size_dropdown_is_clickable() {
+        helper.isClickable(accession.containerSizeField);
+    }
+
+    @Then("Media Type field is clickable")
+    public void media_Type_field_is_clickable() {
+        helper.isClickable(accession.mediaTypeField);
+    }
+
+
+    @Then("submit button is disabled")
+    public void submit_button_is_disabled() {
+        helper.verifyElementDisabled(accession.submit);
+    }
+
+    @Then("submit button is enabled")
+    public void submit_button_is_enabled() {
+        helper.verifyElementEnabled(accession.submit);
+    }
+
+    @When("back button is clickable")
+    public void back_button_is_clickable() {
         helper.isClickable(accession.backBtn);
     }
 
-    @When("user is able to click Cancel button")
-    public void user_is_able_to_click_Cancel_button() {
-        helper.isClickable(accession.cancelBtn);
+    @When("cancel button is enabled")
+    public void cancel_button_is_enabled() {
+        helper.verifyElementEnabled(accession.cancelBtn);
+    }
+
+    @And("user clicks cancel button")
+    public void user_clicks_cancel_button() {
+        helper.jSClick(accession.cancelBtn);
     }
 
     @Then("user is able to return to the Start Accession single action square screen")
@@ -89,39 +135,6 @@ public class AccessionSteps {
         assertEquals("Returning to Accession Jobs Page failed",
                 expectedURL, actualURL);
         oLog.info("I returned to the Start Accession Job page");
-    }
-
-    //TODO find better locator
-    @And("user verifies Owner field options")
-    public void userVerifiesOwnerFieldOptions() {
-        wait.waitForClickability(accession.ownerField, 10);
-        helper.clickWithJS(accession.ownerField);
-        List<String> elemTexts = helper.getElementsText(By.cssSelector(".q-virtual-scroll__content span"));
-        for (String elemText : elemTexts) {
-            System.out.println(elemText);
-        }
-        accession.ownerField.click();
-        oLog.info("I printed Owner field options");
-    }
-
-    @And("user verifies Container Type field options")
-    public void userVerifiesContainerTypeFieldOptions() throws InterruptedException {
-        wait.waitForClickability(accession.containerSizeField, 10);
-        helper.clickWithJS(accession.containerSizeField);
-        for (WebElement elemText : accession.containerOptions) {
-            System.out.println(elemText.getText());
-        }
-        accession.containerSizeField.click();
-        oLog.info("I printed Container Size field options ");
-    }
-
-    @And("user verifies Media Type field options")
-    public void userVerifiesMediaTypeFieldOptions() {
-        helper.clickWithJS(accession.mediaTypeField);
-        for (WebElement elemText : accession.mediaOptions) {
-            System.out.println(elemText.getText());
-        }
-        oLog.info("I printed Media Type field options ");
     }
 
     @When("user clicks Select Owner")
@@ -159,15 +172,15 @@ public class AccessionSteps {
     }
 
 
-    @When("user clicks Submit button")
-    public void user_clicks_Submit_button() {
+    @When("user clicks submit button")
+    public void user_clicks_submit_button() {
         helper.jSClick(accession.submit);
         oLog.info("I clicked Submit button ");
     }
 
     @When("user scans Barcode")
     public void user_scans_Barcode() {
-        driver.findElement(By.tagName("body")).sendKeys("scan!");
+        driver.findElement(By.tagName("body")).sendKeys("!BH7!");
         oLog.info("I scanned Barcode ");
     }
 
@@ -218,7 +231,7 @@ public class AccessionSteps {
 
     @When("user checks an Item")
     public void user_checks_an_Item() {
-        accession.scanItemList.get(1).click();
+        accession.scanItemCheckbox.get(1).click();
     }
 
     @Then("Delete button is enabled")
@@ -241,15 +254,16 @@ public class AccessionSteps {
 
 
     @When("user types {string} in the Owner dropdown search field")
-    public void user_types_in_the_Owner_dropdown_search_field(String string) {
+    public void user_types_in_the_Owner_dropdown_search_field(String string) throws InterruptedException {
         accession.ownerField.click();
-        accession.ownerField.sendKeys("wash");
+        accession.ownerField.sendKeys("coll");
+        wait.hardWait(1000);
     }
 
     @Then("Owner dropdown should display options related to {string}")
     public void Owner_dropdown_should_display_options_related_to(String string) {
         for (WebElement option : accession.ownerFieldOptions) {
-            assertTrue(option.getText().toLowerCase().contains("wash"));
+            assertTrue(option.getText().toLowerCase().contains("coll"));
         }
     }
 
@@ -259,50 +273,10 @@ public class AccessionSteps {
         accession.ownerField.sendKeys(Keys.ENTER);
     }
 
-    @Then("the selected Owner option should be displayed on the page")
-    public void the_selected_Owner_option_should_be_displayed_on_the_page() {
-
-        //TODO actual value should be displayed
-        String actual = accession.ownerField.getAttribute("placeholder");
-        System.out.println(actual);
-        // Assert.assertEquals("Selected option is not displayed ", "George Washington", actual);
-    }
-
-
-    @Then("user types {string} in the Container Size dropdown search field")
-    public void user_types_in_the_Container_Size_dropdown_search_field(String string) throws InterruptedException {
-        accession.containerSizeField.click();
-        accession.containerSizeField.sendKeys("b l");
-        wait.hardWait(1000);
-    }
-
-    @Then("Container Size dropdown should display options related to {string}")
-    public void container_Size_dropdown_should_display_options_related_to(String string) {
-        for (WebElement option : accession.containerOptions) {
-            assertTrue(option.getText().toLowerCase().contains("b l"));
-        }
-    }
-
-    @Then("user selects an option from the Container Size dropdown")
-    public void user_selects_an_option_from_the_Container_Size_dropdown() throws InterruptedException {
-        accession.containerSizeField.sendKeys(Keys.ARROW_DOWN);
-        accession.containerSizeField.sendKeys(Keys.ENTER);
-        wait.hardWait(1000);
-    }
-
-    //TODO actual value should be displayed
-    @Then("the selected Container Size option should be displayed on the page")
-    public void the_selected_Container_Size_option_should_be_displayed_on_the_page() {
-        String actual = accession.containerSizeField.getText();
-        System.out.println(actual);
-        // Assert.assertEquals("Selected option is not displayed ", "B Low", actual);
-    }
-
-
     @Then("user types {string} in the Media Type dropdown search field")
     public void user_types_in_the_Media_Type_dropdown_search_field(String string) throws InterruptedException {
         accession.mediaTypeField.click();
-        accession.mediaTypeField.sendKeys("mu");
+        accession.mediaTypeField.sendKeys("boo");
         wait.hardWait(1000);
 
     }
@@ -310,7 +284,7 @@ public class AccessionSteps {
     @Then("Media Type dropdown should display options related to {string}")
     public void media_Type_dropdown_should_display_options_related_to(String string) {
         for (WebElement option : accession.mediaOptions) {
-            assertTrue(option.getText().toLowerCase().contains("mu"));
+            assertTrue(option.getText().toLowerCase().contains("boo"));
         }
     }
 
@@ -320,14 +294,12 @@ public class AccessionSteps {
         accession.mediaTypeField.sendKeys(Keys.ENTER);
     }
 
-    //TODO actual value should be displayed
-    @Then("the selected Media Type option should be displayed on the page")
-    public void the_selected_Media_Type_option_should_be_displayed_on_the_page() {
-        String actual = accession.mediaTypeField.getText();
-        System.out.println(actual);
-        // Assert.assertEquals("Selected option is not displayed ", "Music", actual);
+    @Then("user selects an option from the Container Size dropdown")
+    public void user_selects_an_option_from_the_Container_Size_dropdown() throws InterruptedException {
+        accession.containerSizeField.sendKeys(Keys.ARROW_DOWN);
+        accession.containerSizeField.sendKeys(Keys.ENTER);
+        Thread.sleep(5000);
     }
-
 
     @Then("when user clicks Delete button")
     public void when_user_clicks_Delete_button() {
@@ -349,13 +321,11 @@ public class AccessionSteps {
         oLog.info("I clicked Complete Job button ");
     }
 
-
     @Then("verify a modal confirming complete job action appears")
     public void verify_a_modal_confirming_complete_job_action_appears() {
         wait.waitForVisibility(accession.modal, 1000);
         assertEquals("Are you sure you want to complete the job?", accession.modal.getText());
     }
-
 
     @Then("verify that Enter Barcode button is enabled")
     public void verify_that_Enter_Barcode_button_is_enabled() {
@@ -365,9 +335,9 @@ public class AccessionSteps {
 
     @Then("user clicks Enter Barcode button")
     public void user_clicks_Enter_Barcode_button() throws InterruptedException {
-        helper.clickWithJS(accession.enterBarcodeBtn);
+        accession.enterBarcodeBtn.click();
+        wait.hardWait(1000);
         oLog.info("I clicked Enter Barcode button");
-        Thread.sleep(8000);
     }
 
     @Then("verify a modal with manual barcode entry is displayed")
@@ -379,9 +349,11 @@ public class AccessionSteps {
 
     @Then("user enters barcode and clicks Submit button")
     public void user_enters_barcode_and_clicks_Submit_button() throws InterruptedException {
+        accession.enterBarcodeField.click();
         accession.enterBarcodeField.sendKeys("12345");
-        accession.submitBtn.click();
-        Thread.sleep(8000);
+        helper.jSClick(accession.submitBtn);
+        Thread.sleep(1000);
+        oLog.info("I entered barcode and clicked Submit");
     }
 
     @Then("verify the entered barcode is displayed under Scanned Items")
@@ -418,22 +390,18 @@ public class AccessionSteps {
         accession.enterBarcodeField.sendKeys(Keys.CONTROL + "a");
         accession.enterBarcodeField.sendKeys(Keys.DELETE);
         accession.enterBarcodeField.sendKeys("54321");
+        Thread.sleep(3000);
         accession.submitBtn.click();
+        Thread.sleep(7000);
     }
 
-    @Then("verify the updated barcode is displayed under Scanned Items")
-    public void verify_the_updated_barcode_is_displayed_under_Scanned_Items() {
-        assertEquals("Updated Barcode is not displayed!", accession.scannedItem.getText(), "54321");
+
+    @Then("verify the edited barcode is displayed under Scanned Items")
+    public void verify_the_edited_barcode_is_displayed_under_Scanned_Items() {
+        assertEquals("Edited Barcode is not displayed!", "54321", accession.scannedItem.getText());
         oLog.info("Edited barcode is displayed under Scanned Items");
     }
 
-    @When("user verifies all barcodes")
-    public void user_verifies_all_barcodes() throws InterruptedException {
-        accession.enterBarcodeBtn.click();
-        accession.enterBarcodeField.sendKeys("54321");
-        accession.submitBtn.click();
-        oLog.info("I verified the barcode");
-    }
 
     @Then("verify Add Tray button is activated")
     public void verify_Add_Tray_button_is_activated() {
@@ -472,7 +440,27 @@ public class AccessionSteps {
         oLog.info("New Tray can be scanned");
     }
 
+    @When("user clicks Complete&Print button")
+    public void user_clicks_Complete_Print_button() {
+        helper.jSClick(accession.completeAndprint);
+        oLog.info("I clicked Complete&Print button");
+    }
+
+    @Then("user is able to see a print window with a batch report")
+    public void user_is_able_to_see_a_print_window_with_a_batch_report() {
+        WebDriverWait wait1 = new WebDriverWait(driver, 10);
+        wait1.until(ExpectedConditions.numberOfWindowsToBe(2));
+        if(driver.getWindowHandles().size() > 1) {
+            System.out.println("Print window is displayed");
+        } else {
+            System.out.println("Print window is not displayed");
+        }
 
 }
 
-
+    @When("user navigates to the accession job link")
+    public void userNavigatesToTheAccessionJobLink() {
+        driver.get("https://test.fetch.loctest.gov/accession/2/scan-items/NT555923");
+        oLog.info("I navigated to the accession job link");
+    }
+}
