@@ -36,6 +36,17 @@ public class AlertPage {
     @FindBy(css = "p.text-body1")
     public WebElement toastMsg;
 
+    @FindBy(xpath = "//p[.='The Job has been completed and moved for verification.']")
+    public WebElement completedAndMovedForVerificationMsg;
+
+    @FindBy(xpath = "//p[.='The Job has been completed.']")
+    public WebElement theJobHasBeenCompleted;
+    @FindBy(xpath = "//button[.='close']")
+    public  WebElement closeToastMsg;
+
+    @FindBy(xpath = "//div[.='Non-Trayed']")
+    public WebElement nonTrayedAccessionJob;
+
 
 
 

@@ -26,9 +26,6 @@ public class BreadcrumbSteps {
     Helper helper = new Helper();
     WaitHelper wait = new WaitHelper();
     HomePage home = new HomePage();
-    Actions actions = new Actions(driver);
-    AlertHelper alert = new AlertHelper();
-    GenericHelper genHelp = new GenericHelper();
 
     public static final Logger oLog = LogManager.getLogger(AdminSteps.class);
 
@@ -51,7 +48,8 @@ public class BreadcrumbSteps {
 
     @Then("user selects a Verification Job")
     public void user_selects_a_Verification_Job() throws InterruptedException {
-        helper.jSClick(verification.trayedVerificationJob);
+        System.out.println(verification.jobsList.get(0).getText());
+        helper.jSClick(verification.jobsList.get(0));
         wait.hardWait(100);
     }
 

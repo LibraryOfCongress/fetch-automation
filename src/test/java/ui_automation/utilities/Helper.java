@@ -106,7 +106,7 @@ public class Helper {
     }
 
     public static boolean isClickable(WebElement element) {
-        WebDriverWait wait = new WebDriverWait(Driver.getInstance().getDriver(), 10);
+        WebDriverWait wait = new WebDriverWait(Driver.getInstance().getDriver(),Duration.ofSeconds(10));
         try {
             wait.until(ExpectedConditions.elementToBeClickable(element));
 
@@ -137,6 +137,14 @@ public class Helper {
         } catch (Exception e) {
             return false;
         }
+    }
+
+    public static int generateBarcodeNumber() {
+        Random rand = new Random();
+        int max =10000, min =1000;
+        int number = rand.nextInt(max-min+1)+min;
+
+        return number ;
     }
 
 

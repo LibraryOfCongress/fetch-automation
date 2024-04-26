@@ -66,7 +66,7 @@ public class AccessionPage {
     @FindBy(css = ".q-pl-xs-xs > .q-btn > .q-btn__content")
     public WebElement cancelEdit;
 
-    @FindBy(css = "[role='combobox']")
+    @FindBy(xpath = "(//input[@class='q-field__input q-placeholder col'])[1]")
     public WebElement csField;
 
     @FindBy(css = "[role='option']")
@@ -84,8 +84,11 @@ public class AccessionPage {
     @FindBy(css = ".no-wrap > .bg-accent")
     public WebElement addItem;
 
-    @FindBy(css = ":nth-child(2) > .q-btn--outline")
+    @FindBy(xpath = "//*[.='Pause Job']")
     public WebElement pauseJob;
+
+    @FindBy(xpath = "//*[.='Resume Job']/../..")
+    public WebElement resumeJob;
 
     @FindBy(css = ".q-mb-xs-lg > :nth-child(2) > .q-btn--unelevated")
     public WebElement completeJob;
@@ -93,8 +96,8 @@ public class AccessionPage {
     @FindBy(css = "[class='q-table--col-auto-width']")
     public List<WebElement> scanItemCheckbox;
 
-    @FindBy(className = "q-td text-left")
-    public List<WebElement> scanItemsValues;
+//    @FindBy(className = "q-td text-left")
+//    public List<WebElement> scanItemsValues;
 
     @FindBy(css = ".no-wrap > .bg-negative")
     public WebElement delete;
@@ -124,7 +127,7 @@ public class AccessionPage {
     public WebElement submitBtn;
 
     @FindBy(css = "[class='q-td text-left'] span")
-    public WebElement scannedItem;
+    public List<WebElement> scannedItemList;
 
     @FindBy(css = "td.q-table--col-auto-width [role='checkbox']")
     public WebElement scannedItemCheckbox;
@@ -132,7 +135,7 @@ public class AccessionPage {
     @FindBy(css = "div[class='q-banner row items-center q-banner--dense rounded-borders alert-banner text-positive bg-color-green-light']")
     public WebElement alertMsg;
 
-    @FindBy(css = "[class='barcode text-h4 q-mb-md-xl q-mb-lg-none']")
+    @FindBy(xpath = "(//div[.='Please Scan Tray'])[2]")
     public WebElement scanTrayField;
 
     @FindBy(xpath = "//button[.='Complete & Print']")
@@ -144,11 +147,17 @@ public class AccessionPage {
     @FindBy(xpath = "//button[.='Confirm']")
     public WebElement confirmDelete;
 
+    @FindBy(xpath = "//i[.='more_vert']")
+    public WebElement threeDot;
 
+    @FindBy(css = "[class$='q-item--clickable q-link cursor-pointer q-focusable q-hoverable']")
+    public WebElement editAccessionJob;
 
+    @FindBy(css = "div[role='option']")
+    public List<WebElement> editFieldOptions;
 
-
-
+    @FindBy(xpath = "//button[.='Complete']")
+    public WebElement complete;
 
 
 

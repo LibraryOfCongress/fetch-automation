@@ -1,5 +1,6 @@
 package ui_automation.step_definitions;
 
+import io.cucumber.java.en.And;
 import io.cucumber.java.en.Given;
 import io.cucumber.java.en.When;
 import io.cucumber.java.en.Then;
@@ -31,6 +32,8 @@ public class ShelvingSteps {
     WaitHelper wait = new WaitHelper();
     SelectHelper select = new SelectHelper();
     Actions actions = new Actions(driver);
+
+
 
     public static final Logger oLog = LogManager.getLogger(ShelvingSteps.class);
 
@@ -293,7 +296,7 @@ public class ShelvingSteps {
 
 
     @When("user selects From Verification Job option")
-    public void user_selects_From_Verification_Job_option() {
+    public void user_selects_From_Verification_Job_option()  {
        helper.jSClick(shelving.fromVerificationJob);
         oLog.info("I selected option - From Verification Job");
     }
@@ -331,7 +334,8 @@ public class ShelvingSteps {
     }
 
     @When("user selects Yes")
-    public void user_selects_Yes() {
+    public void user_selects_Yes() throws InterruptedException {
+        wait.waitForClickability(shelving.yes,3000);
         shelving.yes.click();
         oLog.info("I selected option - Yes");
     }
@@ -396,9 +400,6 @@ public class ShelvingSteps {
     public void assign_Shelving_Location_modal_is_displayed() {
         oLog.info("Assign Shelving Location modal is displayed");
     }
-
-
-
 
 
 }

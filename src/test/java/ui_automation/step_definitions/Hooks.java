@@ -1,7 +1,7 @@
 package ui_automation.step_definitions;
 
 
-import io.cucumber.core.api.Scenario;
+import io.cucumber.java.Scenario;
 import io.cucumber.java.After;
 import io.cucumber.java.Before;
 import org.openqa.selenium.OutputType;
@@ -30,7 +30,7 @@ public class Hooks {
     public void tearDown(Scenario scenario) {
         if (scenario.isFailed()) {
             final byte[] screenshot = ((TakesScreenshot) Driver.getInstance().getDriver()).getScreenshotAs(OutputType.BYTES);
-            scenario.embed(screenshot, "image/png");
+            scenario.attach(screenshot, "image/png", "Screenshot");
         }
         Driver.getInstance().removeDriver();
     }

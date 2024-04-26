@@ -20,12 +20,11 @@ Feature: Breadcrumb Functionality Validation
       | breadcrumb   |
       | Home         |
       | Verification |
-      | 1            |
+      | 22           |
 
     When user clicks on Verification breadcrumb link
     Then user should navigate to Verification page
     When user clicks on Home breadcrumb link
-    And user clicks on the banner
     Then user should navigate to the Home page
     When user clicks Admin on side navigation menu
     And user selects Building

@@ -5,7 +5,6 @@ import io.cucumber.java.en.Then;
 import io.cucumber.java.en.When;
 import org.apache.log4j.LogManager;
 import org.apache.log4j.Logger;
-import org.openqa.selenium.Alert;
 import org.openqa.selenium.WebDriver;
 import ui_automation.pages.AccessionPage;
 import ui_automation.pages.AlertPage;
@@ -19,11 +18,9 @@ public class AlertSteps {
     WebDriver driver = Driver.getInstance().getDriver();
     AlertPage alert = new AlertPage();
     Helper helper = new Helper();
-    AlertHelper alertHelper = new AlertHelper();
-    SelectHelper select = new SelectHelper();
     AccessionPage accession = new AccessionPage();
     WaitHelper wait = new WaitHelper();
-    GenericHelper genhelp = new GenericHelper();
+
 
     public static final Logger oLog = LogManager.getLogger(AccessionSteps.class);
 
@@ -73,9 +70,9 @@ public class AlertSteps {
         alert.cancelPersistentAlert.click();
     }
 
-    @When("user navigates to Accession Job link")
-    public void user_navigates_to_Accession_Job_link() {
-        driver.get("https://test.fetch.loctest.gov/accession/16");
+    @When("user navigates to Accession Job for a Non-Trayed Item")
+    public void user_navigates_to_Accession_Job_for_a_Non_Trayed_Item() {
+        alert.nonTrayedAccessionJob.click();
         oLog.info("I navigated to Accession Job");
     }
 
@@ -87,24 +84,42 @@ public class AlertSteps {
     }
 
     @Then("user verifies {string} alert msg")
-    public void user_verifies_alert_msg(String string)  {
+    public void user_verifies_alert_msg(String string) throws InterruptedException {
+        wait.waitForVisibility(alert.toastMsg, 1000);
         assertEquals(string, alert.toastMsg.getText());
+        alert.closeToastMsg.click();
+        wait.hardWait(2000);
         oLog.info("I verified alert notification message");
     }
 
     @When("user clicks Delete")
     public void user_clicks_Delete() throws InterruptedException {
-        accession.deleteBtn.click();
-        Thread.sleep(7000);
+        wait.waitForClickability(accession.deleteBtn,3000);
+        helper.jSClick(accession.deleteBtn);
         oLog.info("I clicked delete button");
     }
 
     @When("user clicks Confirm")
-    public void user_clicks_Confirm()  {
-        accession.confirmDelete.click();
+    public void user_clicks_Confirm() throws InterruptedException {
+       helper.jSClick(accession.confirmDelete);
         oLog.info("I confirmed I want to delete a barcode");
     }
 
 
+    @Then("user verifies {string}")
+    public void user_verifies(String string) {
+       wait.waitForVisibility(alert.completedAndMovedForVerificationMsg, 1000);
+        assertEquals(string, alert.completedAndMovedForVerificationMsg.getText());
+        alert.closeToastMsg.click();
+        oLog.info("I verified notification message");
+    }
 
+
+    @Then("user verifies {string} msg")
+    public void user_verifies_msg(String string) {
+        wait.waitForVisibility(alert.theJobHasBeenCompleted, 1000);
+        assertEquals(string, alert.theJobHasBeenCompleted.getText());
+        alert.closeToastMsg.click();
+        oLog.info("I verified notification message");
+    }
 }

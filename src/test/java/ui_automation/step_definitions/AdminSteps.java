@@ -7,7 +7,6 @@ import org.apache.log4j.LogManager;
 import org.apache.log4j.Logger;
 import org.junit.Assert;
 import org.openqa.selenium.*;
-import org.openqa.selenium.interactions.Actions;
 import ui_automation.pages.AdminPage;
 import ui_automation.utilities.ConfigurationReader;
 import ui_automation.utilities.Driver;
@@ -26,7 +25,6 @@ public class AdminSteps {
     AdminPage admin = new AdminPage();
     Helper helper = new Helper();
     WaitHelper wait = new WaitHelper();
-    Actions actions = new Actions(driver);
 
     public static final Logger oLog = LogManager.getLogger(AdminSteps.class);
 

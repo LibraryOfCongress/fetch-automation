@@ -19,8 +19,17 @@ public class VerificationPage {
     @FindBy(xpath = "//div[.='Trayed']")
     public WebElement trayedVerificationJob;
 
+    @FindBy(css = "[class='verification-card-barcode text-h4']")
+    public List<WebElement> jobsList;
+
     @FindBy(xpath = "//div[.='Non-Trayed']")
     public WebElement nonTrayedVerificationJob;
+
+    @FindBy(xpath = "//div[.='Trayed']")
+    public List<WebElement> trayedJobList;
+
+    @FindBy(xpath = "//div[.='Non-Trayed']")
+    public List<WebElement> nonTrayedJobList;
 
     @FindBy(css = "[class$='q-mb-md-xl q-mb-lg-none']")
     public WebElement scanTrayBox;
@@ -49,4 +58,21 @@ public class VerificationPage {
     @FindBy(xpath = "//span[.='Complete Job'] /../..")
     public WebElement completeJob;
 
+    @FindBy(xpath = "(//i[.='more_vert'])[1]")
+    public WebElement threeDot;
+
+    @FindBy(xpath = "(//input[@class='q-field__input q-placeholder col'])[1]")
+    public WebElement editOwnerField;
+
+    @FindBy(xpath = "(//input[@class='q-field__input q-placeholder col'])[2]")
+    public WebElement editContainerSizeField;
+
+    @FindBy(xpath = "(//input[@class='q-field__input q-placeholder col'])[3]")
+    public WebElement editMediaTypeField;
+
+    @FindBy(css = "div[role='option']")
+    public List<WebElement> editFieldOptions;
+
+    @FindBy(css = "[class='q-td text-left'] span")
+    public List<WebElement> scannedItemList;
 }

@@ -7,6 +7,8 @@ import io.cucumber.java.en.When;
 import org.apache.log4j.LogManager;
 import org.apache.log4j.Logger;
 import org.junit.Assert;
+import org.openqa.selenium.By;
+import org.openqa.selenium.Keys;
 import org.openqa.selenium.WebDriver;
 import ui_automation.pages.HomePage;
 import ui_automation.utilities.*;
@@ -23,12 +25,13 @@ public class HomeSteps {
     HomePage home = new HomePage();
     Helper helper = new Helper();
     AlertHelper alert = new AlertHelper();
+    WaitHelper wait = new WaitHelper();
 
     public static final Logger oLog = LogManager.getLogger(HomeSteps.class);
 
 
     @Given("user navigates to FETCH Homepage")
-    public void user_navigates_to_FETCH_Homepage() throws InterruptedException {
+    public void user_navigates_to_FETCH_Homepage()  {
         Driver.getInstance().getDriver().get(ConfigurationReader.getProperty("ui_config.properties", "fetchURL"));
         oLog.info("I navigated to FETCH webapp");
     }
@@ -136,6 +139,54 @@ public class HomeSteps {
     @Then("verify that Admin navigation link on side menu is highlighted")
     public void verify_that_Admin_navigation_link_on_side_menu_is_highlighted() {
         assertEquals("Link not highlighted", "Admin", home.highlightedLink.getText());
+    }
+
+
+    @When("user clicks Login icon on dashboard")
+    public void user_clicks_Login_icon_on_dashboard() {
+        home.loginIcon.click();
+        oLog.info("I clicked Login icon on dashboard");
+    }
+
+    @When("user enters {string} username")
+    public void user_enters_username(String username) {
+        home.usernameField.sendKeys(username);
+        oLog.info("I entered username");
+    }
+
+    @When("user enters {string} password")
+    public void user_enters_password(String password) {
+        home.passwordField.sendKeys(password);
+        oLog.info("I entered password");
+    }
+
+    @When("user clicks login button")
+    public void user_clicks_login_button() {
+        wait.waitForClickability(home.login, 20);
+        home.login.click();
+        oLog.info("I clicked login button");
+    }
+
+    @Then("user should be able to verify account name on user dashboard")
+    public void user_should_be_able_to_verify_account_name_on_user_dashboard() {
+        home.loginIcon.click();
+        String actualAccountName = home.userName.getText();
+        Assert.assertEquals("Account name is not verified!", "Admin User", actualAccountName);
+        oLog.info("I verified account name");
+    }
+
+    @Then("user validates {string} error message")
+    public void user_validates_error_message(String expectedErrorMessage) {
+        String actualErrorMessage = home.errorMessage.getText();
+        Assert.assertEquals("Error message validation failed!", expectedErrorMessage, actualErrorMessage);
+        oLog.info("I validated error message");
+    }
+
+    @When("user clicks logout button")
+    public void user_clicks_logout_button() {
+        wait.waitForClickability(home.logout, 20);
+        home.logout.click();
+        oLog.info("I clicked logout button");
     }
 
 

@@ -57,6 +57,27 @@ public class HomePage {
     @FindBy(css = "button[class$='q-btn q-btn-item non-selectable no-outline q-btn--flat q-btn--rectangle text-white q-btn--actionable q-focusable q-hoverable text-body1']:nth-child(3)")
      public WebElement banner;
 
+    @FindBy(css = "[class='nav-actions']")
+    public WebElement loginIcon;
+
+    @FindBy(css = "[placeholder='Enter Username']")
+    public WebElement usernameField;
+
+    @FindBy(css = "[placeholder='Enter Password']")
+    public WebElement passwordField;
+
+    @FindBy(css = "[aria-label='Internal Login']")
+    public WebElement login;
+
+    @FindBy(className = "text-h6")
+    public WebElement userName;
+
+    @FindBy(xpath = "//i[.='logout']/../../..")
+    public WebElement logout;
+
+    @FindBy(css = "")
+    public WebElement errorMessage;
+
 
 
 }

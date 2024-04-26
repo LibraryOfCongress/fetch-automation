@@ -72,7 +72,7 @@ public class ShelvingPage {
     @FindBy(xpath = "//button[.='No']")
     public WebElement no;
 
-    @FindBy(xpath = "//button[.='Yes']")
+    @FindBy(css = "[class$='q-btn--rectangle bg-white text-black q-btn--actionable q-focusable q-hoverable q-btn--no-uppercase']")
     public WebElement yes;
 
     @FindBy(css = "[placeholder='Select Verification Job(s) by Number']")

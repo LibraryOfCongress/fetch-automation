@@ -39,6 +39,40 @@ Feature: Home Page Functionality Validation
     Then verify that Admin navigation link on side menu is highlighted
 
 
+  @FETCH-694 @FETCH-548 @smoke @login @positive @run
+  Scenario: User should be able to verify successful login with valid credentials
+    When user clicks Login icon on dashboard
+    And user enters "username" username
+    And user enters "password" password
+    And user clicks login button
+    Then user should be able to verify account name on user dashboard
+    When user clicks Login icon on dashboard
+    And user clicks logout button
+    Then user verifies "You have successfully been logged out of FETCH." alert msg
+
+
+  @FETCH-694 @FETCH-548 @login @negative @wip
+  Scenario Outline: User should not be able to login with invalid credentials
+    When user clicks Login icon on dashboard
+    And user enters "<username>" username
+    And user enters "<password>" password
+    And user clicks login button
+    Then user validates "<errorMessage>" error message
+
+    Examples:
+    | username            | password     | errorMessage              |
+    | invalidUsername     | invalidPwd   | Invalid credentials       |
+    |                     | invalidPwd   | Username cannot be empty  |
+    | invalidUsername     |              | Password cannot be empty  |
+    |                     |              | Username cannot be empty  |
+
+
+
+
+
+
+
+
 
 
 

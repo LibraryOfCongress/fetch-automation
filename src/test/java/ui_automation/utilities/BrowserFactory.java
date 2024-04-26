@@ -34,6 +34,9 @@ public class BrowserFactory {
                     options.addArguments("--ignore-ssl-errors=yes");
                     options.addArguments("--ignore-certificate-errors");
                     options.setExperimentalOption("prefs", chromePrefs);
+//                    options.addArguments("--auto-open-devtools-for-tabs");
+
+
 
                     driver = new ChromeDriver(options);
                 }
@@ -41,7 +44,7 @@ public class BrowserFactory {
                     switch (System.getProperty("browser")) {
                         case "chrome-headless":
                             WebDriverManager.chromedriver().setup();
-                            driver = new ChromeDriver(new ChromeOptions().setHeadless(true));
+                            driver = new ChromeDriver(new ChromeOptions().addArguments("--headless=new"));
                             break;
                         case "chromeRemote":
                             HashMap<String, Object> chromePrefs = new HashMap<String, Object>();
@@ -64,7 +67,7 @@ public class BrowserFactory {
                             break;
                         case "firefox-headless":
                             WebDriverManager.firefoxdriver().setup();
-                            driver = new FirefoxDriver(new FirefoxOptions().setHeadless(true));
+                            driver = new FirefoxDriver(new FirefoxOptions().addArguments("--headless=new"));
                             break;
                         case "firefoxRemote":
                             FirefoxOptions firOptions = new FirefoxOptions();

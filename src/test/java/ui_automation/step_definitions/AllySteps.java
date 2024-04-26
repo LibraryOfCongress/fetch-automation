@@ -41,10 +41,6 @@ public class AllySteps {
         }
     }
 
-    @Given("user navigates to the Accession Page")
-    public void user_navigates_to_the_Accession_Page() {
-        Driver.getInstance().getDriver().get(ConfigurationReader.getProperty("ui_config.properties", "accessionURL"));
-    }
 
     @Given("user navigates to the Shelving Page")
     public void user_navigates_to_the_Shelving_Page() {

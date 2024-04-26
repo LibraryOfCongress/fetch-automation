@@ -1,9 +1,10 @@
 @regression @tray
-@FETCH-287 @FETCH-170
+
 Feature: Trayed Item Page Validation
   Background:
     Given user navigates to Item Management Page
 
+  @FETCH-287 @FETCH-170
   Scenario: User should be able to validate Tray Management icons and tabs
     When user looks at the tray header
     Then the name of tray is displayed
@@ -22,6 +23,7 @@ Feature: Trayed Item Page Validation
       |Permanent Location  |
 
 
+  @FETCH-287 @FETCH-170
   Scenario: User should be able to validate Tray Labels
     Then user verifies tray labels on Items Management Page
 

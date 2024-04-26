@@ -37,6 +37,7 @@ Feature: Shelving Page Functionality Validation
     And user selects options A, B and C from the dropdown
     Then selected options are displayed on the page
 
+
   @newShelf
   Scenario: User should be able to validate fields of Create Shelving Job modal
     When user clicks on Create Shelving Job button
@@ -64,7 +65,7 @@ Feature: Shelving Page Functionality Validation
     And submit button is enabled and clickable
 
 
-  @FETCH-360 @FETCH-336
+  @FETCH-360 @FETCH-336 @wip
   Scenario: User should be able to rearrange tables columns to their preferred order
     When user clicks on Rearrange dropdown
     And user clicks Rearrange Columns toggle switch
