@@ -20,7 +20,7 @@ Feature: Breadcrumb Functionality Validation
       | breadcrumb   |
       | Home         |
       | Verification |
-      | 22           |
+      | 11           |
 
     When user clicks on Verification breadcrumb link
     Then user should navigate to Verification page

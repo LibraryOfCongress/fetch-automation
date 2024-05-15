@@ -69,7 +69,7 @@ Feature: Accession Page Functionality Validation
     Then submit button is disabled
 
 
-  @FETCH-358 @FETCH-194 @search
+  @FETCH-358 @FETCH-194 @smoke @search
   Scenario: User should be able to verify dropdown search functionality
     When user clicks Start Accession button
     And user selects Trayed Accession
@@ -130,13 +130,18 @@ Feature: Accession Page Functionality Validation
 
   @FETCH-586 @FETCH-474 @print
   Scenario: User should be able to validate Accession Job Batch Sheet Template Creation
-    When user navigates to the accession job link
-    And user clicks Complete Job button
+    When user clicks Start Accession button
+    And user selects Non-Tray Accession
+    And user selects all fields
+    And user clicks submit button
+    And user clicks Enter Barcode button
+    Then user enters barcode and clicks Submit button
+    When user clicks Complete Job button
     And user clicks Complete&Print button
     Then user is able to see a print window with a batch report
 
 
-  @FETCH-627 @FETCH-582 @nontrayed_accession
+  @FETCH-627 @FETCH-582 @smoke @nontrayed_accession
   Scenario: User should be able to go through the Accession workflow process from start to finish for a Non-Trayed Job
     When user clicks Start Accession button
     And user selects Non-Tray Accession
@@ -153,6 +158,8 @@ Feature: Accession Page Functionality Validation
     And user enters barcode and clicks Submit button
     Then user verifies "The item has been added." alert msg
     And verify the entered barcode is displayed under Scanned Items
+    And user clicks Enter Barcode button
+    And user enters barcode and clicks Submit button
     When user selects the barcode
     Then verify Enter Barcode button is changed to Edit Barcode
     When user clicks Edit Barcode button
@@ -175,7 +182,7 @@ Feature: Accession Page Functionality Validation
     Then user verifies "The Job has been completed and moved for verification."
 
 
-  @FETCH-627 @FETCH-582 @trayed_accession
+  @FETCH-627 @FETCH-582 @smoke @trayed_accession
   Scenario: User should be able to go through the Accession workflow process from start to finish for a Trayed Job
     When user clicks Start Accession button
     And user selects Trayed Accession
@@ -214,7 +221,6 @@ Feature: Accession Page Functionality Validation
     When user clicks Complete Job button
     And user clicks Complete
     Then user verifies "The Job has been completed and moved for verification."
-
 
 
 

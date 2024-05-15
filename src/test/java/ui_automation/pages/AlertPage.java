@@ -33,7 +33,8 @@ public class AlertPage {
     @FindBy(xpath = "(//span[.='Cancel'])[1]")
     public WebElement cancelPersistentAlert;
 
-    @FindBy(css = "p.text-body1")
+//    @FindBy(css = "p.text-body1")
+    @FindBy(css = "[class='q-banner__content col text-body2'] [class='text-body1']")
     public WebElement toastMsg;
 
     @FindBy(xpath = "//p[.='The Job has been completed and moved for verification.']")
@@ -41,6 +42,17 @@ public class AlertPage {
 
     @FindBy(xpath = "//p[.='The Job has been completed.']")
     public WebElement theJobHasBeenCompleted;
+
+    @FindBy(xpath = "//p[.='The container has been updated.']")
+    public WebElement theContainerHasBeenUpdated;
+
+
+    @FindBy(xpath = "//*[contains(text(),'successfully created')]")
+    public WebElement shelvingJobCreated;
+
+    @FindBy(xpath = "//*[contains(text(),'assigned container shelf')]")
+    public WebElement assignedShelf;
+
     @FindBy(xpath = "//button[.='close']")
     public  WebElement closeToastMsg;
 

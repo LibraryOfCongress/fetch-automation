@@ -41,6 +41,7 @@ public class BrowserFactory {
                     driver = new ChromeDriver(options);
                 }
                 else {
+                    //if System.getProperty("browser") returns value then based on value Switch case will be executed
                     switch (System.getProperty("browser")) {
                         case "chrome-headless":
                             WebDriverManager.chromedriver().setup();

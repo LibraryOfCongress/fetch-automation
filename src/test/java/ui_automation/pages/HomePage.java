@@ -69,14 +69,17 @@ public class HomePage {
     @FindBy(css = "[aria-label='Internal Login']")
     public WebElement login;
 
-    @FindBy(className = "text-h6")
-    public WebElement userName;
+    @FindBy(css = "[class='text-body2 text-color-gray-dark']")
+    public WebElement user;
 
     @FindBy(xpath = "//i[.='logout']/../../..")
     public WebElement logout;
 
     @FindBy(css = "")
     public WebElement errorMessage;
+
+    @FindBy(css = "ul.demo >li")
+    public List<WebElement> scannedBarcodes;
 
 
 

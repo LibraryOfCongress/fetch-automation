@@ -14,6 +14,7 @@ import ui_automation.pages.VerificationPage;
 import ui_automation.utilities.*;
 
 import java.util.Random;
+import java.util.concurrent.ThreadLocalRandom;
 
 import static org.junit.Assert.assertEquals;
 
@@ -23,12 +24,11 @@ public class VerificationSteps {
     VerificationPage verification = new VerificationPage();
     AccessionPage accession = new AccessionPage();
     Helper helper = new Helper();
-    SelectHelper select = new SelectHelper();
     WaitHelper wait = new WaitHelper();
-    AlertHelper alert = new AlertHelper();
-    Random random = new Random();
-    int random1 = random.nextInt(100000);
-    int random2 = random.nextInt(100000);
+    ThreadLocalRandom random = ThreadLocalRandom.current();
+    long random1 = random.nextLong(10000000000L, 100000000000L);
+    long random2 = random.nextLong(10000000000L, 100000000000L);
+    static String verifificationJobNumber = "";
 
     public static final Logger oLog = LogManager.getLogger(AccessionSteps.class);
 
@@ -45,7 +45,7 @@ public class VerificationSteps {
 
     @Then("user scans a Tray")
     public void user_scans_a_Tray() {
-        driver.findElement(By.tagName("body")).sendKeys("!AH8979!");
+        driver.findElement(By.tagName("body")).sendKeys("!AH787878!");
         oLog.info("I scanned Barcode ");
     }
 
@@ -106,6 +106,7 @@ public class VerificationSteps {
         int i = 0;
         for (WebElement item : verification.scannedVerificationItems) {
             verification.enterBarcodeBtn.click();
+            wait.waitForClickability(verification.enterBarcodeField,1000);
             verification.enterBarcodeField.sendKeys(item.getText());
             verification.submitBtn.click();
             i++;
@@ -116,7 +117,8 @@ public class VerificationSteps {
 
     @When("user verifies the barcode")
     public void user_verifies_the_barcode() throws InterruptedException {
-        helper.jSClick(verification.enterBarcodeBtn);
+        wait.waitForClickability(verification.enterBarcodeBtn, 1000);
+        verification.enterBarcodeBtn.click();
         verification.enterBarcodeField.sendKeys(verification.scannedVerificationItems.get(0).getText());
         verification.submitBtn.click();
         wait.hardWait(2000);
@@ -145,25 +147,29 @@ public class VerificationSteps {
     @When("user clicks most recent Verification Job for a Trayed Item")
     public void userClicksMostRecentVerificationJobForATrayedItem() {
         helper.jSClick(verification.trayedJobList.get(verification.trayedJobList.size()-1));
+        oLog.info("I clicked most recent Verification Job for a Trayed Item");
     }
 
 
     @When("user clicks most recent Verification Job for a Non-Trayed Item")
     public void userClicksMostRecentVerificationJobForANonTrayedItem() {
         helper.jSClick(verification.nonTrayedJobList.get(verification.nonTrayedJobList.size()-1));
+        oLog.info("I clicked most recent Verification Job for a Non-Trayed Item");
     }
 
 
-    @When("user clicks three dot menu next to Verification Job Number")
-    public void user_clicks_three_dot_menu_next_to_Verification_Job_Number()  {
+    @When("user clicks three dot menu next to Job Number")
+    public void user_clicks_three_dot_menu_next_to_Job_Number() throws InterruptedException {
         helper.jSClick(verification.threeDot);
+        wait.hardWait(2000);
+        oLog.info("I clicked three dot menu");
     }
 
 
     @When("user edits Owner field")
     public void user_edits_Owner_field() throws InterruptedException {
         helper.scrollIntoViewAndClick(verification.editOwnerField);
-        verification.editFieldOptions.get(4).click();
+        verification.editFieldOptions.get(3).click();
         wait.hardWait(1000);
     }
 
@@ -171,7 +177,7 @@ public class VerificationSteps {
     @When("user edits Container Size field")
     public void user_edits_Container_Size_field() throws InterruptedException {
         helper.scrollIntoViewAndClick(verification.editContainerSizeField);
-        verification.editFieldOptions.get(4).click();
+        verification.editFieldOptions.get(2).click();
         wait.hardWait(1000);
     }
 
@@ -187,7 +193,7 @@ public class VerificationSteps {
     @Then("user enters the barcode and clicks Submit button")
     public void user_enters_the_barcode_and_clicks_Submit_button() throws InterruptedException {
         accession.enterBarcodeField.click();
-        accession.enterBarcodeField.sendKeys(Integer.toString(random1));
+        accession.enterBarcodeField.sendKeys(Long.toString(random1));
         helper.jSClick(accession.submitBtn);
         Thread.sleep(1000);
         oLog.info("I entered barcode and clicked Submit");
@@ -196,7 +202,7 @@ public class VerificationSteps {
 
     @Then("verify the entered barcode is displayed")
     public void verify_the_entered_barcode_is_displayed()  {
-        assertEquals("Scanned Barcode is not displayed!", Integer.toString(random1), verification.scannedItemList.get(verification.scannedItemList.size()-1).getText());
+        assertEquals("Scanned Barcode is not displayed!", Long.toString(random1), verification.scannedItemList.get(verification.scannedItemList.size()-1).getText());
         oLog.info("Entered barcode is displayed");
     }
 
@@ -205,7 +211,7 @@ public class VerificationSteps {
     public void user_edits_the_barcode_and_clicks_Submit_button() throws InterruptedException {
         accession.enterBarcodeField.sendKeys(Keys.CONTROL + "a");
         accession.enterBarcodeField.sendKeys(Keys.DELETE);
-        accession.enterBarcodeField.sendKeys(Integer.toString(random2));
+        accession.enterBarcodeField.sendKeys(Long.toString(random2));
         accession.submitBtn.click();
         wait.hardWait(2000);
     }
@@ -214,18 +220,25 @@ public class VerificationSteps {
     @Then("verify the edited barcode is displayed")
     public void verify_the_edited_barcode_is_displayed() {
         wait.waitForVisibility(verification.scannedItemList.get(verification.scannedItemList.size()-1), 2000);
-        assertEquals("Edited Barcode is not displayed!", Integer.toString(random2), verification.scannedItemList.get(verification.scannedItemList.size()-1).getText());
+        assertEquals("Edited Barcode is not displayed!", Long.toString(random2), verification.scannedItemList.get(verification.scannedItemList.size()-1).getText());
         oLog.info("Edited barcode is displayed");
     }
 
 
     @When("user scans Tray Barcode")
     public void user_scans_Tray_Barcode() throws InterruptedException {
-        wait.hardWait(3000);
-        driver.findElement(By.tagName("body")).sendKeys(AccessionSteps.generatedTray);
         wait.hardWait(1000);
+        driver.findElement(By.tagName("body")).sendKeys(AccessionSteps.generatedTray);
        oLog.info("I scanned Barcode ");
     }
 
+
+    @And("user saves Verification Job number")
+    public void user_saves_Verification_job_number() {
+        WebElement vJobNumber = driver.findElement(By.xpath("(//div[@class='breadcrumb-items'])[3]"));
+        verifificationJobNumber = vJobNumber.getText();
+        System.out.println("Verification Job Number: " + verifificationJobNumber);
+
+    }
 
 }

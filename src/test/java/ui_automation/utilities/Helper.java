@@ -141,7 +141,7 @@ public class Helper {
 
     public static int generateBarcodeNumber() {
         Random rand = new Random();
-        int max =10000, min =1000;
+        int max =999999, min =100000;
         int number = rand.nextInt(max-min+1)+min;
 
         return number ;

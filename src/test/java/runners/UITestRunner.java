@@ -8,7 +8,7 @@ import org.junit.runner.RunWith;
                 "json:target/cucumber.json"},
         features="src/test/resources/uiFeatures",
         glue="ui_automation.step_definitions",
-        tags= "@admin and not @wip",
+        tags= "@FETCH-765",
         dryRun = false,
         monochrome = true
 )

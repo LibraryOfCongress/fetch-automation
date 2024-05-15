@@ -17,6 +17,7 @@ import java.time.Duration;
 import java.util.List;
 import java.util.Map;
 import java.util.Random;
+import java.util.concurrent.ThreadLocalRandom;
 
 import static org.junit.Assert.assertEquals;
 import static org.junit.Assert.assertTrue;
@@ -28,9 +29,10 @@ public class AccessionSteps {
     Helper helper = new Helper();
     SelectHelper select = new SelectHelper();
     WaitHelper wait = new WaitHelper();
-    Random random = new Random();
-    int random1 = random.nextInt(100000);
-    int random2 = random.nextInt(100000);
+    static ThreadLocalRandom random = ThreadLocalRandom.current();
+    static long random1 = random.nextLong(10000000000L, 100000000000L);
+    static long random2 = random.nextLong(10000000000L, 100000000000L);
+
     static String generatedTray="";
 
     public static final Logger oLog = LogManager.getLogger(AccessionSteps.class);
@@ -79,7 +81,7 @@ public class AccessionSteps {
         wait.waitForClickability(accession.ownerField, 10);
         accession.ownerField.click();
         wait.hardWait(1000);
-        accession.ownerFieldOptions.get(0).click();
+        accession.ownerFieldOptions.get(3).click();
         oLog.info("I selected all required fields ( Owner )");
     }
 
@@ -88,7 +90,7 @@ public class AccessionSteps {
         wait.waitForClickability(accession.ownerField, 10);
         accession.ownerField.click();
         wait.hardWait(1000);
-        accession.ownerFieldOptions.get(3).click();
+        accession.ownerFieldOptions.get(0).click();
         accession.containerSizeField.click();
         helper.jSClick(accession.containerOptions.get(7));
         accession.mediaTypeField.click();
@@ -154,34 +156,11 @@ public class AccessionSteps {
         accession.ownerField.click();
     }
 
-    @Then("user is able to choose any option from Owner dropdown field")
-    public void userIsAbleToChooseAnyOptionFromOwnerDropdownField() throws InterruptedException {
-
-        //TODO create dynamic method
-        select.selectCheckBox(accession.johnDoe, true);
-        Thread.sleep(1000);
-        accession.ownerField.click();
-        select.selectCheckBox(accession.sanders, true);
-        Thread.sleep(1000);
-    }
-
-
     @When("user clicks Select Media Type")
     public void user_clicks_Select_Media_Type() {
         wait.waitForClickability(accession.mediaTypeField, 10);
         accession.mediaTypeField.click();
     }
-
-    @Then("user is able to choose any option from Media Type dropdown field")
-    public void user_is_able_to_choose_any_option_from_Media_Type_dropdown_field() throws InterruptedException {
-        //TODO create dynamic method
-        select.selectCheckBox(accession.mediaOptions.get(1), true);
-        Thread.sleep(1000);
-        accession.ownerField.click();
-        select.selectCheckBox(accession.mediaOptions.get(2), true);
-        Thread.sleep(1000);
-    }
-
 
     @When("user clicks submit button")
     public void user_clicks_submit_button() throws InterruptedException {
@@ -193,13 +172,13 @@ public class AccessionSteps {
     @When("user scans Barcode")
     public void user_scans_Barcode() throws InterruptedException {
         wait.hardWait(3000);
-        generatedTray = "!AH"+helper.generateBarcodeNumber()+"!";
+        generatedTray = "AH"+helper.generateBarcodeNumber();
         driver.findElement(By.tagName("body")).sendKeys(generatedTray);
         oLog.info("I scanned Barcode ");
     }
 
     @When("user is able to edit Container Size and Media Type fields of the panel")
-    public void user_is_able_to_edit_Container_Size_and_Media_Type_fields_of_the_panel() throws InterruptedException {
+    public void user_is_able_to_edit_Container_Size_and_Media_Type_fields_of_the_panel()  {
         helper.jSClick(accession.editContainerSize);
         helper.jSClick(accession.csField);
         accession.containerOptions.get(3).click();
@@ -330,8 +309,10 @@ public class AccessionSteps {
     }
 
     @When("user clicks Complete Job button")
-    public void user_clicks_Complete_Job_button() {
+    public void user_clicks_Complete_Job_button() throws InterruptedException {
+        wait.hardWait(1000);
         helper.jSClick(accession.completeJob);
+        wait.hardWait(1000);
         oLog.info("I clicked Complete Job button ");
     }
 
@@ -364,7 +345,7 @@ public class AccessionSteps {
     @Then("user enters barcode and clicks Submit button")
     public void user_enters_barcode_and_clicks_Submit_button() throws InterruptedException {
         accession.enterBarcodeField.click();
-        accession.enterBarcodeField.sendKeys(Integer.toString(random1));
+        accession.enterBarcodeField.sendKeys(Long.toString(random1));
         helper.jSClick(accession.submitBtn);
         Thread.sleep(1000);
         oLog.info("I entered barcode and clicked Submit");
@@ -372,13 +353,13 @@ public class AccessionSteps {
 
     @Then("verify the entered barcode is displayed under Scanned Items")
     public void verify_the_entered_barcode_is_displayed_under_Scanned_Items() {
-        assertEquals("Scanned Barcode is not displayed!", accession.scannedItemList.get(accession.scannedItemList.size()-1).getText(), Integer.toString(random1));
+        assertEquals("Scanned Barcode is not displayed!", accession.scannedItemList.get(accession.scannedItemList.size()-1).getText(), Long.toString(random1));
         oLog.info("Entered barcode is displayed under Scanned Items");
     }
 
     @When("user selects one of the barcodes in the table")
-    public void user_selects_one_of_the_barcodes_in_the_table() {
-        accession.scannedItemCheckbox.click();
+    public void user_selects_one_of_the_barcodes_in_the_table()  {
+        helper.jSClick(accession.scannedItemCheckbox);
     }
 
     @Then("verify Enter Barcode button is changed to Edit Barcode")
@@ -404,16 +385,17 @@ public class AccessionSteps {
     public void user_edits_the_barcode_and_clicks_submit_button() throws InterruptedException {
         accession.enterBarcodeField.sendKeys(Keys.CONTROL + "a");
         accession.enterBarcodeField.sendKeys(Keys.DELETE);
-        accession.enterBarcodeField.sendKeys(Integer.toString(random2));
+        accession.enterBarcodeField.sendKeys(Long.toString(random2));
         accession.submitBtn.click();
         wait.hardWait(2000);
     }
 
 
     @Then("verify the edited barcode is displayed under Scanned Items")
-    public void verify_the_edited_barcode_is_displayed_under_Scanned_Items() {
-        wait.waitForVisibility(accession.scannedItemList.get(accession.scannedItemList.size()-1), 2000);
-        assertEquals("Edited Barcode is not displayed!", Integer.toString(random2), accession.scannedItemList.get(accession.scannedItemList.size()-1).getText());
+    public void verify_the_edited_barcode_is_displayed_under_Scanned_Items() throws InterruptedException {
+        wait.hardWait(1000);
+        wait.waitForVisibility(accession.scannedItemList.get(accession.scannedItemList.size()-1), 5000);
+        assertEquals("Edited Barcode is not displayed!", Long.toString(random2), accession.scannedItemList.get(accession.scannedItemList.size()-1).getText());
         oLog.info("Edited barcode is displayed under Scanned Items");
     }
 
@@ -426,10 +408,9 @@ public class AccessionSteps {
 
     @Then("user clicks Add Tray button")
     public void user_clicks_Add_Tray_button() throws InterruptedException {
-        //TODO find the locator of alert msg so no need to use hardwait
-        wait.hardWait(5000);
-        wait.waitForVisibility(accession.addTrayBtn, 1000);
-        accession.addTrayBtn.click();;
+        driver.manage().window().fullscreen();
+        wait.waitForVisibility(accession.addTrayBtn, 4000);
+        helper.jSClick(accession.addTrayBtn);
         oLog.info("I clicked Add Tray button");
     }
 
@@ -471,14 +452,7 @@ public class AccessionSteps {
         } else {
             System.out.println("Print window is not displayed");
         }
-
 }
-
-    @When("user navigates to the accession job link")
-    public void userNavigatesToTheAccessionJobLink() {
-        driver.get("https://test.fetch.loctest.gov/accession/2/scan-items/NT555923");
-        oLog.info("I navigated to the accession job link");
-    }
 
     @And("user selects Media Type")
     public void user_selects_media_type() throws InterruptedException {
@@ -490,8 +464,8 @@ public class AccessionSteps {
     @And("user enters barcode by scanning")
     public void user_enters_barcode_by_scanning() throws InterruptedException {
         wait.hardWait(1000);
-        driver.findElement(By.tagName("body")).sendKeys("!"+random1+"!");
-        wait.hardWait(1000);
+        driver.findElement(By.tagName("body")).sendKeys(""+random1+"");
+        wait.hardWait(3000);
         oLog.info("I entered barcode by scanning it ");
     }
 
@@ -507,14 +481,15 @@ public class AccessionSteps {
     }
 
     @When("user clicks Edit")
-    public void user_clicks_Edit() {
+    public void user_clicks_Edit() throws InterruptedException {
+        wait.hardWait(1000);
         helper.jSClick(accession.editAccessionJob);
     }
 
     @When("user edits Container Size")
     public void user_edits_Container_Size() throws InterruptedException {
         helper.scrollIntoViewAndClick(accession.csField);
-        accession.editFieldOptions.get(6).click();
+        accession.editFieldOptions.get(2).click();
         wait.hardWait(1000);
     }
 
@@ -539,10 +514,14 @@ public class AccessionSteps {
     }
 
     @When("user clicks Complete")
-    public void user_clicks_Complete() throws InterruptedException {
-        wait.hardWait(1000);
+    public void user_clicks_Complete() {
+        wait.waitForClickability(accession.complete, 3000);
         helper.jSClick(accession.complete);
     }
 
 
+    @Then("Enter Barcode button is enabled")
+    public void enter_Barcode_button_is_enabled() {
+        helper.verifyElementEnabled(accession.enterBarcodeBtn);
+    }
 }

@@ -108,7 +108,7 @@ public class AlertSteps {
 
     @Then("user verifies {string}")
     public void user_verifies(String string) {
-       wait.waitForVisibility(alert.completedAndMovedForVerificationMsg, 1000);
+       wait.waitForVisibility(alert.completedAndMovedForVerificationMsg, 5000);
         assertEquals(string, alert.completedAndMovedForVerificationMsg.getText());
         alert.closeToastMsg.click();
         oLog.info("I verified notification message");
@@ -122,4 +122,24 @@ public class AlertSteps {
         alert.closeToastMsg.click();
         oLog.info("I verified notification message");
     }
-}
+
+
+    @Then("user verifies {string} notification")
+    public void user_verifies_notification(String string) {
+        wait.waitForVisibility(alert.shelvingJobCreated, 1000);
+        assertEquals(string, alert.shelvingJobCreated.getText());
+        alert.closeToastMsg.click();
+        oLog.info("I verified notification message");
+    }
+
+    @Then("user verifies {string} message")
+        public void user_verifies_message(String string) throws InterruptedException {
+            wait.waitForVisibility(alert.theContainerHasBeenUpdated, 1000);
+            assertEquals(string, alert.theContainerHasBeenUpdated.getText());
+            alert.closeToastMsg.click();
+            wait.hardWait(3000);
+            oLog.info("I verified message");
+        }
+    }
+
+

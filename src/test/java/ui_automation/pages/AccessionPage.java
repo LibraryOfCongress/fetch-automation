@@ -96,8 +96,6 @@ public class AccessionPage {
     @FindBy(css = "[class='q-table--col-auto-width']")
     public List<WebElement> scanItemCheckbox;
 
-//    @FindBy(className = "q-td text-left")
-//    public List<WebElement> scanItemsValues;
 
     @FindBy(css = ".no-wrap > .bg-negative")
     public WebElement delete;
@@ -158,6 +156,7 @@ public class AccessionPage {
 
     @FindBy(xpath = "//button[.='Complete']")
     public WebElement complete;
+
 
 
 

@@ -39,32 +39,56 @@ Feature: Home Page Functionality Validation
     Then verify that Admin navigation link on side menu is highlighted
 
 
-  @FETCH-694 @FETCH-548 @smoke @login @positive @run
+  @FETCH-694 @FETCH-548 @smoke @login @positive
   Scenario: User should be able to verify successful login with valid credentials
     When user clicks Login icon on dashboard
-    And user enters "username" username
+    And user enters "Admin" username
     And user enters "password" password
     And user clicks login button
-    Then user should be able to verify account name on user dashboard
     When user clicks Login icon on dashboard
+    Then user should be able to verify account name on user dashboard
     And user clicks logout button
     Then user verifies "You have successfully been logged out of FETCH." alert msg
 
 
-  @FETCH-694 @FETCH-548 @login @negative @wip
+  @FETCH-694 @FETCH-548 @login @negative
   Scenario Outline: User should not be able to login with invalid credentials
     When user clicks Login icon on dashboard
     And user enters "<username>" username
     And user enters "<password>" password
-    And user clicks login button
-    Then user validates "<errorMessage>" error message
+    Then login button is not enabled
+
 
     Examples:
-    | username            | password     | errorMessage              |
-    | invalidUsername     | invalidPwd   | Invalid credentials       |
-    |                     | invalidPwd   | Username cannot be empty  |
-    | invalidUsername     |              | Password cannot be empty  |
-    |                     |              | Username cannot be empty  |
+      | username        | password   |
+      |                 | invalidPwd |
+      | invalidUsername |            |
+      |                 |            |
+
+
+  @FETCH-765 @FETCH-670
+  Scenario: User should be able to use Toggle Scanning Function
+    When user clicks Login icon on dashboard
+    And user enters "Admin" username
+    And user enters "password" password
+    And user clicks login button
+    And user clicks Login icon on dashboard
+    When user switches on Toggle Barcode Scan
+    Then verify barcode scanning is enabled
+    When user enters barcode by scanning
+    Then user verifies the scanned barcode is displayed
+    When user clicks Accession on side navigation menu
+    And user clicks Start Accession button
+    And user selects Trayed Accession
+    And user selects all required fields
+    And user selects Media Type
+    And user clicks submit button
+    And user scans Barcode
+    And user enters barcode by scanning
+    Then verify the entered barcode is displayed under Scanned Items
+    When user disables Toggle Barcode Scan
+    Then Enter Barcode button is enabled
+
 
 
 

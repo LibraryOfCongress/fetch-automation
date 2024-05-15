@@ -359,7 +359,7 @@ public class AdminSteps {
         wait.handleStaleElement(By.cssSelector(".q-field__native [placeholder='Select Aisle']"), 4, 1000);
 
         admin.selectAisle.click();
-        admin.fieldDropdwnList.get(1).click();
+        admin.fieldDropdwnList.get(2).click();
     }
 
 
@@ -399,7 +399,7 @@ public class AdminSteps {
         wait.waitForClickability(admin.selectLadder, 1000);
         admin.selectLadder.click();
         wait.hardWait(1000);
-        admin.modalFieldOptions.get(6).click();
+        admin.modalFieldOptions.get(19).click();
     }
 
 

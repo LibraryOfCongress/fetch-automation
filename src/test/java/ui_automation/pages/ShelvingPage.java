@@ -69,6 +69,9 @@ public class ShelvingPage {
     @FindBy(xpath = "//button[.='From Verification Job']")
     public WebElement fromVerificationJob;
 
+    @FindBy(xpath = "//button[.='Direct To Shelve']")
+    public WebElement directToShelve;
+
     @FindBy(xpath = "//button[.='No']")
     public WebElement no;
 
@@ -84,7 +87,7 @@ public class ShelvingPage {
     @FindBy(xpath = "//button[.='Submit']")
     public WebElement submit;
 
-    @FindBy(xpath = "//p[.='Created']")
+    @FindBy(css = "p[class*='text-body1 outline text-highlight']")
     public WebElement shelvingJobStatus;
 
     @FindBy(id = "jobNumber")
@@ -96,11 +99,74 @@ public class ShelvingPage {
     @FindBy(xpath = "//button[.='more_vert']")
     public List<WebElement> threeDotMenu;
 
+    @FindBy(xpath = "(//button[.='more_vert'])[2]")
+    public WebElement threeDotNextToContainer;
+
     @FindBy(xpath = "(//td[@class='q-td text-left'])[8]")
     public WebElement shelfNumber;
 
     @FindBy(xpath = "//div[@role='menu']")
     public WebElement editOrAssign;
+
+    @FindBy(css = "[placeholder='Select Building']")
+    public WebElement building;
+
+    @FindBy(css = "div[class*='q-item q-item-type row no-wrap q-item--clickable q-link cursor-pointer q-manual-focusable']")
+    public List<WebElement> buildings;
+
+    @FindBy(xpath = "//td[.='Running']")
+    public WebElement runningJob;
+
+    @FindBy(css = "[class='q-field__input q-placeholder col']")
+    public WebElement assignedUserField;
+
+    @FindBy(xpath = "//button[.='Save Edits']")
+    public WebElement saveEdits;
+
+    @FindBy(xpath = "//button[.='Cancel']")
+    public WebElement cancelEdits;
+
+    @FindBy(xpath = "//button[.='Right']")
+    public WebElement rightSide;
+
+    @FindBy(xpath = "//button[.='Execute Job']")
+    public WebElement executeJob;
+
+    @FindBy(xpath = "//*[contains(text(),'assigned container shelf')]")
+    public WebElement assignedShelf;
+
+    @FindBy(xpath = "//button[.='close']")
+    public  WebElement closeMsg;
+
+    @FindBy(css = "[class='text-bold text-nowrap text-positive']")
+    public WebElement shelvedCheckMark;
+
+    @FindBy(css = ".q-field__native [placeholder='Select Shelf']")
+    public WebElement selectShelf;
+
+    @FindBy(css = ".q-field__native [placeholder='Select Shelf Position']")
+    public WebElement selectShelfPosition;
+
+    @FindBy(xpath = "//button[.='Complete Job']")
+    public WebElement completeJob;
+
+    @FindBy(css = "[class$='q-item--clickable q-link cursor-pointer q-focusable q-hoverable']")
+    public WebElement editLocation;
+
+    @FindBy(xpath = "//button[.='Confirm']")
+    public WebElement beAwareMsg;
+
+    @FindBy(css = "[role='switch']")
+    public WebElement toggleScan;
+
+    @FindBy(css = "[class='q-banner__content col text-body2']")
+    public WebElement scanningEnabledAlert;
+
+    @FindBy(xpath = "//button[.='Disable Scan']")
+    public WebElement disableScan;
+
+    @FindBy(css = "[aria-label='barcodeInputDelay']")
+    public WebElement inputDelay;
 
 
 

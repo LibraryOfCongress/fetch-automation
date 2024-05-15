@@ -5,7 +5,7 @@ Feature: Verification Page Functionality Validation
   Background:
     Given user navigates to the Verification Page
 
-  @FETCH-585 @FETCH-456
+  @FETCH-585 @FETCH-456 @trayed
   Scenario: User should be able to validate Verification Job features for a Trayed Item
     When user clicks on Verification Job for a Trayed Item
     Then Tray container view is displayed
@@ -23,7 +23,7 @@ Feature: Verification Page Functionality Validation
     And user clicks on new tray on the modal
     Then the container is cleared out so a new tray can be scanned
 
-  @FETCH-585 @FETCH-456
+  @FETCH-585 @FETCH-456 @nontrayed
   Scenario: User should be able to validate Verification Job features for a Non-Trayed Item
     When user clicks on Verification Job for a Non-Trayed Item
     Then user verifies non-trayed items container view is displayed
@@ -53,7 +53,7 @@ Feature: Verification Page Functionality Validation
   @FETCH-627 @FETCH-582 @nontrayed_verification
   Scenario: User should be able to go through the Verification workflow process from start to finish for a Non-Trayed Job
     When user clicks most recent Verification Job for a Non-Trayed Item
-    And user clicks three dot menu next to Verification Job Number
+    And user clicks three dot menu next to Job Number
     And user clicks Edit
     And user edits Owner field
     And user edits Container Size field
@@ -84,11 +84,11 @@ Feature: Verification Page Functionality Validation
     Then user verifies "The Job has been completed." msg
 
 
-  @FETCH-627 @FETCH-582 @trayed_verification
+  @FETCH-627 @FETCH-582 @smoke @trayed_verification
   Scenario: User should be able to go through the Verification workflow process from start to finish for a Trayed Job
     When user clicks most recent Verification Job for a Trayed Item
     And user scans Tray Barcode
-    And user clicks three dot menu next to Verification Job Number
+    And user clicks three dot menu next to Job Number
     And user clicks Edit
     And user edits Container Size
     And user edits Media Type
@@ -116,6 +116,8 @@ Feature: Verification Page Functionality Validation
     When user clicks Complete Job button
     And user clicks Complete
     Then user verifies "The Job has been completed." msg
+
+
 
 
 

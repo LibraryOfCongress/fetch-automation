@@ -7,8 +7,6 @@ import io.cucumber.java.en.When;
 import org.apache.log4j.LogManager;
 import org.apache.log4j.Logger;
 import org.junit.Assert;
-import org.openqa.selenium.By;
-import org.openqa.selenium.Keys;
 import org.openqa.selenium.WebDriver;
 import ui_automation.pages.HomePage;
 import ui_automation.utilities.*;
@@ -143,8 +141,9 @@ public class HomeSteps {
 
 
     @When("user clicks Login icon on dashboard")
-    public void user_clicks_Login_icon_on_dashboard() {
+    public void user_clicks_Login_icon_on_dashboard() throws InterruptedException {
         home.loginIcon.click();
+        wait.hardWait(1000);
         oLog.info("I clicked Login icon on dashboard");
     }
 
@@ -169,9 +168,10 @@ public class HomeSteps {
 
     @Then("user should be able to verify account name on user dashboard")
     public void user_should_be_able_to_verify_account_name_on_user_dashboard() {
-        home.loginIcon.click();
-        String actualAccountName = home.userName.getText();
-        Assert.assertEquals("Account name is not verified!", "Admin User", actualAccountName);
+       helper.jSClick(home.loginIcon);
+        String actualAccountName = home.user.getText();
+        System.out.println("USER: " + actualAccountName);
+        Assert.assertEquals("Account name is not verified!", "Admin", actualAccountName);
         oLog.info("I verified account name");
     }
 
@@ -187,6 +187,20 @@ public class HomeSteps {
         wait.waitForClickability(home.logout, 20);
         home.logout.click();
         oLog.info("I clicked logout button");
+    }
+
+
+    @Then("login button is not enabled")
+    public void login_button_is_not_enabled() {
+       Assert.assertEquals(false,  home.login.isEnabled());
+        oLog.info("Login button is not enabled");
+    }
+
+
+    @Then("user verifies the scanned barcode is displayed")
+    public void user_verifies_the_scanned_barcode_is_displayed() {
+        assertEquals("Scanned Barcode is not displayed!", home.scannedBarcodes.get(home.scannedBarcodes.size()-1).getText(), Long.toString(AccessionSteps.random1));
+        oLog.info("Entered barcode is displayed under Scanned Items");
     }
 
 
