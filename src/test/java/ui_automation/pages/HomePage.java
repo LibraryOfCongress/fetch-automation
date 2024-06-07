@@ -69,7 +69,7 @@ public class HomePage {
     @FindBy(css = "[aria-label='Internal Login']")
     public WebElement login;
 
-    @FindBy(css = "[class='text-body2 text-color-gray-dark']")
+    @FindBy(css = "p[class='text-body2 text-color-gray-dark']:nth-child(2)")
     public WebElement user;
 
     @FindBy(xpath = "//i[.='logout']/../../..")

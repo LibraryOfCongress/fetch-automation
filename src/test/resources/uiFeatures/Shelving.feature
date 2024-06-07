@@ -64,12 +64,10 @@ Feature: Shelving Page Functionality Validation
     And submit button is enabled and clickable
 
 
-  @FETCH-360 @FETCH-336 @wip
+  @FETCH-360 @FETCH-336
   Scenario: User should be able to rearrange tables columns to their preferred order
     When user clicks on Rearrange dropdown
-    And user clicks Rearrange Columns toggle switch
-    And user drags each menu item to their preferred order
-    And user switches off the Rearrange Columns toggle
+    And user unchecks menu items to their preferred order
     Then user verifies the Shelf Table column names
 
 
@@ -139,7 +137,6 @@ Feature: Shelving Page Functionality Validation
     And user clicks submit button
     And user scans Barcode
     And user enters barcode by scanning
-    And user enters barcode by scanning
     When user clicks Complete Job button
     And user clicks Complete
     Then user verifies "The Job has been completed and moved for verification."
@@ -162,6 +159,7 @@ Feature: Shelving Page Functionality Validation
     And user selects Yes
     Then user selects a created Verification Job
     And user selects a Building from Shelving Locations
+    And user selects Module from dropdown
     And user selects Aisle from dropdown
     And user selects Right side
     And user selects Ladder
@@ -190,6 +188,7 @@ Feature: Shelving Page Functionality Validation
     When user clicks Complete Job
     And user clicks Complete
     Then user verifies "The Shelving Job has been completed." alert msg
+
 
 
 

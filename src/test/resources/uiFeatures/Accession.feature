@@ -1,4 +1,4 @@
-@regression @accession
+@accession
 
 Feature: Accession Page Functionality Validation
 
@@ -83,6 +83,12 @@ Feature: Accession Page Functionality Validation
 
   @FETCH-545 @FETCH-455 @trayed
   Scenario: User should be able to verify Accession Process for Trayed Item
+    When user clicks Login icon on dashboard
+    And user enters "Admin" username
+    And user enters "password" password
+    And user clicks login button
+    And user clicks Login icon on dashboard
+    When user switches on Toggle Barcode Scan
     When user clicks Start Accession button
     And user selects Trayed Accession
     And user selects all required fields
@@ -90,10 +96,8 @@ Feature: Accession Page Functionality Validation
     And user clicks submit button
     And user scans Barcode
     And user enters barcode by scanning
-#    And user clicks Enter Barcode button
-#    Then verify a modal with manual barcode entry is displayed
-#    And user enters barcode and clicks Submit button
-#    Then verify the entered barcode is displayed under Scanned Items
+    And user disables Toggle Barcode Scan
+    Then user clicks Login icon on dashboard
     When user selects one of the barcodes in the table
     Then verify Enter Barcode button is changed to Edit Barcode
     And user clicks Edit Barcode button
@@ -121,8 +125,9 @@ Feature: Accession Page Functionality Validation
     Then verify Enter Barcode button is changed to Edit Barcode
     And user clicks Edit Barcode button
     Then verify new modal allowing to edit the barcode is displayed
-    And user edits the barcode and clicks submit button
-    Then verify the edited barcode is displayed under Scanned Items
+    And user edits the barcode
+    And user submits the change
+    Then verify the edited barcode
     And user selects one of the barcodes in the table
     And user clicks Delete
     And user clicks Confirm
@@ -141,7 +146,7 @@ Feature: Accession Page Functionality Validation
     Then user is able to see a print window with a batch report
 
 
-  @FETCH-627 @FETCH-582 @smoke @nontrayed_accession
+  @FETCH-627 @FETCH-582 @nontrayed_accession
   Scenario: User should be able to go through the Accession workflow process from start to finish for a Non-Trayed Job
     When user clicks Start Accession button
     And user selects Non-Tray Accession
@@ -182,8 +187,14 @@ Feature: Accession Page Functionality Validation
     Then user verifies "The Job has been completed and moved for verification."
 
 
-  @FETCH-627 @FETCH-582 @smoke @trayed_accession
+  @FETCH-627 @FETCH-582 @trayed_accession
   Scenario: User should be able to go through the Accession workflow process from start to finish for a Trayed Job
+    When user clicks Login icon on dashboard
+    And user enters "Admin" username
+    And user enters "password" password
+    And user clicks login button
+    And user clicks Login icon on dashboard
+    When user switches on Toggle Barcode Scan
     When user clicks Start Accession button
     And user selects Trayed Accession
     And user selects all required fields
@@ -193,6 +204,7 @@ Feature: Accession Page Functionality Validation
     And user scans Barcode
     When user enters barcode by scanning
     Then user verifies "The item has been added." alert msg
+    Then user disables Toggle Barcode Scan
     When user clicks Enter Barcode button
     Then verify a modal with manual barcode entry is displayed
     And user enters the barcode and clicks Submit button

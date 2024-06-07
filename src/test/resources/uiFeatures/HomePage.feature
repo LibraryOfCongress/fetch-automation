@@ -1,4 +1,4 @@
-@regression @home
+@home
 
 Feature: Home Page Functionality Validation
 

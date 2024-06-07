@@ -45,7 +45,7 @@ public class VerificationSteps {
 
     @Then("user scans a Tray")
     public void user_scans_a_Tray() {
-        driver.findElement(By.tagName("body")).sendKeys("!AH787878!");
+        driver.findElement(By.tagName("body")).sendKeys("AH787878");
         oLog.info("I scanned Barcode ");
     }
 
@@ -235,8 +235,8 @@ public class VerificationSteps {
 
     @And("user saves Verification Job number")
     public void user_saves_Verification_job_number() {
-        WebElement vJobNumber = driver.findElement(By.xpath("(//div[@class='breadcrumb-items'])[3]"));
-        verifificationJobNumber = vJobNumber.getText();
+        WebElement vJobNumber = driver.findElement(By.cssSelector("[class='text-h4 text-bold']"));
+        verifificationJobNumber = vJobNumber.getText().substring(5).trim();
         System.out.println("Verification Job Number: " + verifificationJobNumber);
 
     }

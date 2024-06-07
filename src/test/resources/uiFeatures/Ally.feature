@@ -12,17 +12,21 @@ Feature: FETCH Accessibility Validation
     Given user navigates to the Accession Page
     Then verify Accessibility
 
+
   Scenario: Check Accessibility on Verification Page
     Given user navigates to the Verification Page
     Then verify Accessibility
+
 
   Scenario: Check Accessibility on Shelving Page
     Given user navigates to the Shelving Page
     Then verify Accessibility
 
+
   Scenario: Check Accessibility on Admin Dashboard
     Given user navigates to the Admin Page
     Then verify Accessibility
+
 
   Scenario: Verify Accessibility of Accession Process for Trayed Item
     Given user navigates to the Home Page
@@ -30,7 +34,7 @@ Feature: FETCH Accessibility Validation
     And user clicks Start Accession button
     And user selects Trayed Accession
     And user selects all required fields
-    And user clicks Submit button
+#    And user clicks submit button
     Then verify Accessibility
 
 

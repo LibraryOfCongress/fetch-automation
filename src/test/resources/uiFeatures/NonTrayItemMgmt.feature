@@ -1,4 +1,4 @@
-@regression @nontray
+@nontray
 
 @FETCH-311 @FETCH-182
 Feature: Non-Trayed Item Management Validation

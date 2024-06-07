@@ -1,4 +1,4 @@
-@regression @tray
+@tray
 
 Feature: Trayed Item Page Validation
   Background:

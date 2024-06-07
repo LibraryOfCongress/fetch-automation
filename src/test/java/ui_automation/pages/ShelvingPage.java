@@ -27,6 +27,9 @@ public class ShelvingPage {
     @FindBy(css = ".q-field__native > span")
     public WebElement rearrangeDropdown;
 
+    @FindBy(css = "[role='checkbox']")
+    public List<WebElement> rearrangeDropdownOptions;
+
     @FindBy(css = "[role='option']")
     public List<WebElement> allFilterDropdownOptions;
 
@@ -44,9 +47,6 @@ public class ShelvingPage {
 
     @FindBy(xpath = "//button[.='Cancel']")
     public WebElement cancelBtn;
-
-    @FindBy(css = "[class='q-toggle__track']")
-    public WebElement toggleSwitch;
 
     @FindBy(css = "[placeholder='Select Owner']")
     public WebElement selectOwner;

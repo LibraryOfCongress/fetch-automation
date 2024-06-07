@@ -32,6 +32,7 @@ public class AccessionSteps {
     static ThreadLocalRandom random = ThreadLocalRandom.current();
     static long random1 = random.nextLong(10000000000L, 100000000000L);
     static long random2 = random.nextLong(10000000000L, 100000000000L);
+    static long random3 = random.nextLong(10000000000L, 100000000000L);
 
     static String generatedTray="";
 
@@ -44,7 +45,8 @@ public class AccessionSteps {
     }
     @When("user clicks Start Accession button")
     public void user_clicks_Start_Accession_button() {
-        helper.jSClick(accession.startAccessionBtn);
+        wait.waitForClickability(accession.startAccessionBtn,100);
+        accession.startAccessionBtn.click();
         oLog.info("I started Accession Job");
     }
 
@@ -167,6 +169,14 @@ public class AccessionSteps {
         helper.jSClick(accession.submit);
         wait.hardWait(1000);
         oLog.info("I clicked Submit button ");
+    }
+
+
+    @When("user submits the change")
+    public void user_submits_the_change() throws InterruptedException {
+        helper.jSClick(accession.submitBtn);
+        wait.hardWait(2000);
+        oLog.info("I clicked submit button ");
     }
 
     @When("user scans Barcode")
@@ -391,6 +401,14 @@ public class AccessionSteps {
     }
 
 
+    @Then("user edits the barcode")
+    public void user_edits_the_barcode()  {
+        accession.enterBarcodeField.sendKeys(Keys.CONTROL + "a");
+        accession.enterBarcodeField.sendKeys(Keys.DELETE);
+        accession.enterBarcodeField.sendKeys(Long.toString(random3));
+    }
+
+
     @Then("verify the edited barcode is displayed under Scanned Items")
     public void verify_the_edited_barcode_is_displayed_under_Scanned_Items() throws InterruptedException {
         wait.hardWait(1000);
@@ -400,8 +418,18 @@ public class AccessionSteps {
     }
 
 
+    @Then("verify the edited barcode")
+    public void verify_the_edited_barcode() throws InterruptedException {
+        wait.hardWait(1000);
+        wait.waitForVisibility(accession.scannedItemList.get(accession.scannedItemList.size()-1), 5000);
+        assertEquals("Edited Barcode is not displayed!", Long.toString(random3), accession.scannedItemList.get(accession.scannedItemList.size()-1).getText());
+        oLog.info("Edited barcode is displayed");
+    }
+
+
     @Then("verify Add Tray button is activated")
     public void verify_Add_Tray_button_is_activated() {
+        helper.scrollIntoView(accession.addTrayBtn);
         assertEquals(true, accession.addTrayBtn.isEnabled());
         oLog.info("Add Tray button is activated");
     }

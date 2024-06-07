@@ -7,10 +7,7 @@ import io.cucumber.java.en.Then;
 import org.apache.log4j.LogManager;
 import org.apache.log4j.Logger;
 import org.junit.Assert;
-import org.openqa.selenium.By;
-import org.openqa.selenium.Keys;
-import org.openqa.selenium.WebDriver;
-import org.openqa.selenium.WebElement;
+import org.openqa.selenium.*;
 import org.openqa.selenium.interactions.Actions;
 import org.openqa.selenium.support.FindBy;
 import ui_automation.pages.AdminPage;
@@ -203,26 +200,16 @@ public class ShelvingSteps {
       helper.isClickable(shelving.submit);
     }
 
-    @When("user clicks Rearrange Columns toggle switch")
-    public void user_clicks_Rearrange_Columns_toggle_switch()  {
-        helper.jSClick(shelving.toggleSwitch);
-    }
 
-
-    @When("user drags each menu item to their preferred order")
-    public void user_drags_each_menu_item_to_their_preferred_order() throws InterruptedException {
-        Actions actions = new Actions(driver);
-        WebElement source = driver.findElement(By.xpath("(//div[.='Status'])[1]"));
-        WebElement target = driver.findElement(By.xpath("(//div[.='Job Number'])[1]"));
-        WebElement source2 = driver.findElement(By.xpath("(//div[.='Assigned User'])[1]"));
-        WebElement target2 = driver.findElement(By.xpath("(//div[.='Date Added'])[1]"));
-        actions.dragAndDrop(source, target).perform();
-        actions.dragAndDrop(source2, target2).perform();
-    }
-
-    @When("user switches off the Rearrange Columns toggle")
-    public void user_switches_off_the_Rearrange_Columns_toggle() {
-        helper.jSClick(shelving.toggleSwitch);
+    @When("user unchecks menu items to their preferred order")
+    public void user_unchecks_menu_items_to_their_preferred_order() throws InterruptedException {
+        shelving.rearrangeDropdownOptions.get(1).click();
+        wait.hardWait(100);
+        shelving.rearrangeDropdownOptions.get(4).click();
+        shelving.rearrangeDropdownOptions.get(5).click();
+        wait.hardWait(100);
+        shelving.rearrangeDropdown.click();
+        oLog.info("I unchecked some menu items");
     }
 
     @Then("user verifies the Shelf Table column names")
@@ -231,14 +218,14 @@ public class ShelvingSteps {
         for(WebElement element: shelving.shelfTableColumns) {
              column = element.getText();
         }
-        List<String> shelfColumns =new ArrayList<>(Arrays.asList("Job Number", "# of Containers in Job", "Status",
-                "Assigned User", "Date Added"));
+        List<String> shelfColumns =new ArrayList<>(Arrays.asList("Job Number", "Status",
+                "Assigned User"));
                if(shelfColumns.contains(column)) {
               System.out.println("Table has correct column names");
                } else{
               System.out.println("Table has wrong column names");
      }
-
+        oLog.info("I verified column names");
     }
 
     @When("user selects an Owner")
@@ -320,7 +307,7 @@ public class ShelvingSteps {
     public void user_selects_a_Building_from_Shelving_Locations() throws InterruptedException {
         wait.waitForClickability(shelving.building, 1000);
         helper.jSClick(shelving.building);
-        helper.jSClick(shelving.buildings.get(2));
+        helper.jSClick(shelving.buildings.get(0));
         oLog.info("I selected a Building from Shelving Locations");
     }
 
@@ -467,8 +454,14 @@ public class ShelvingSteps {
     @Then("user selects a created Verification Job")
     public void user_selects_a_created_Verification_Job() throws InterruptedException {
         shelving.selectByNumber.click();
-        helper.getElementsText(shelving.verificationJobsList);
-        helper.jSClick(shelving.verificationJobsList.get(shelving.verificationJobsList.size()-1));
+
+        for(WebElement dropdownValue: shelving.verificationJobsList) {
+            ((JavascriptExecutor) driver).executeScript("arguments[0].scrollIntoView(true);",dropdownValue);
+            System.out.println(dropdownValue.getText());
+            if(dropdownValue.getText().contains(VerificationSteps.verifificationJobNumber)) {
+                dropdownValue.click();
+            }
+        }
         shelving.selectByNumber.click();
         wait.hardWait(1000);
         oLog.info("I selected a Verification Job from the list");

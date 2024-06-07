@@ -16,13 +16,13 @@ public class VerificationPage {
         PageFactory.initElements(driver, this);
     }
 
-    @FindBy(xpath = "//div[.='Trayed']")
+    @FindBy(xpath = "//*[text()='Trayed']")
     public WebElement trayedVerificationJob;
 
     @FindBy(css = "[class='verification-card-barcode text-h4']")
     public List<WebElement> jobsList;
 
-    @FindBy(xpath = "//div[.='Non-Trayed']")
+    @FindBy(xpath = "//*[text()='Non-Trayed']")
     public WebElement nonTrayedVerificationJob;
 
     @FindBy(xpath = "//div[.='Trayed']")

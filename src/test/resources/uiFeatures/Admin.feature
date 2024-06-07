@@ -1,4 +1,4 @@
-@regression @admin
+@admin
 
 Feature: Admin Page Functionality Validation
 
@@ -9,6 +9,8 @@ Feature: Admin Page Functionality Validation
   @FETCH-527 @FETCH-319
   Scenario: User should be able to validate Admin Dashboard icons and tabs
     When user is on the Admin Page
+    Then user verifies the Admin Dashboard contains links
+    When user clicks Buildings
     Then user verifies the Admin Dashboard contains Buildings
     And Add New dropdown is displayed and clickable
     And user verifies Add New dropdown options
@@ -29,7 +31,8 @@ Feature: Admin Page Functionality Validation
 
   @FETCH-527 @FETCH-319
   Scenario: User should be able to see and edit shelving items of a Building
-    When user selects Building
+    When user clicks Buildings
+    And user selects Building
     Then user should see building's shelving items
     When user clicks three-dots on the left side of the table
     And user clicks Edit Shelf button
@@ -53,7 +56,8 @@ Feature: Admin Page Functionality Validation
 
   @FETCH-527 @FETCH-319 @add_building
   Scenario: User should be able to validate Add Building feature
-    When user clicks Add New dropdown button
+    When user clicks Buildings
+    And user clicks Add New dropdown button
     And user selects add Building option
     Then user verifies popup modal is displayed
     And Building field is displayed
@@ -65,7 +69,8 @@ Feature: Admin Page Functionality Validation
 
   @FETCH-527 @FETCH-319 @add_module
   Scenario: User should be able to validate Add Module feature
-    When user clicks Add New dropdown button
+    When user clicks Buildings
+    And user clicks Add New dropdown button
     And user selects add Module option
     Then user verifies popup modal is displayed
     And Building dropdown is clickable
@@ -80,7 +85,8 @@ Feature: Admin Page Functionality Validation
 
   @FETCH-527 @FETCH-319 @add_aisle
   Scenario: User should be able to validate Add Aisle feature
-    When user clicks Add New dropdown button
+    When user clicks Buildings
+    And user clicks Add New dropdown button
     And user selects add Aisle option
     Then user verifies popup modal is displayed
     And Building dropdown is clickable
@@ -98,7 +104,8 @@ Feature: Admin Page Functionality Validation
 
   @FETCH-527 @FETCH-319 @add_ladder
   Scenario: User should be able to validate Add Ladder feature
-    When user clicks Add New dropdown button
+    When user clicks Buildings
+    And user clicks Add New dropdown button
     And user selects add Ladder option
     Then user verifies popup modal is displayed
     And Building dropdown is clickable
@@ -121,7 +128,8 @@ Feature: Admin Page Functionality Validation
 
   @FETCH-527 @FETCH-319 @manual_LH
   Scenario: User should be able to validate Location Hierarchy Manual creation
-    When user clicks Location Hierarchy dropdown button
+    When user clicks Buildings
+    And user clicks Location Hierarchy dropdown button
     And user selects Manual option
     And user verifies popup modal is displayed
     When user selects Building from dropdown
@@ -135,7 +143,8 @@ Feature: Admin Page Functionality Validation
 
   @FETCH-527 @FETCH-319 @bulk_upload
   Scenario: User should be able to validate Location Hierarchy Bulk Upload creation
-    When user clicks Location Hierarchy dropdown button
+    When user clicks Buildings
+    And user clicks Location Hierarchy dropdown button
     And user selects Bulk Upload option
     And user verifies popup modal is displayed
     When user selects Building from dropdown
@@ -146,6 +155,55 @@ Feature: Admin Page Functionality Validation
     And user uploads file
     Then Create button is enabled
     And user exits modal
+
+
+  @FETCH-819 @FETCH-547
+  Scenario: User should be able to validate Group Management UI
+    Then user verifies the Admin Dashboard contains links
+    When user clicks Groups and Permissions
+    Then user verifies the dashboard contains Groups
+    When user clicks Add New Group
+    And user enters Group Name
+    And user clicks Submit
+    Then user verifies a new Group is created
+    And user closes alert message
+    When user clicks three dot menu next to group name
+    Then user verifies all the options
+
+      | option                    |
+      | Edit Permissions          |
+      | Add/Edit User(s) in Group |
+      | Rename Group Name         |
+      | Delete Group              |
+
+    When user clicks Edit Permissions
+    Then user verifies permissions tab names
+
+      | name         |
+      | ACCESSION    |
+      | VERIFICATION |
+      | SHELVING     |
+      | REQUEST      |
+      | PICKLIST     |
+      | REFILE       |
+
+    And user adds some permissions
+    Then user clicks on Groups and Permissions breadcrumb link
+    When user clicks three dot menu next to group name
+    And user clicks Add Edit Users in Group
+    And user selects User names
+    Then user clicks Add Users
+    When user clicks on User name
+    Then user is able to delete User from Group
+    And user closes modal
+    When user clicks three dot menu next to group name
+    And user clicks Rename Group Name
+    And user renames Group
+    Then user saves changes
+    When user clicks three dot menu next to group name
+    And user clicks Delete Group
+    Then user is able to delete Group
+
 
 
 

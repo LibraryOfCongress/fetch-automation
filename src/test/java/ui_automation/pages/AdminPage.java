@@ -11,14 +11,27 @@ import java.util.List;
 public class AdminPage {
 
     WebDriver driver;
-    public AdminPage(){
-        driver= Driver.getInstance().getDriver();
+
+    public AdminPage() {
+        driver = Driver.getInstance().getDriver();
         PageFactory.initElements(driver, this);
     }
 
 
+    @FindBy(css = "[class='q-list'] a")
+    public List<WebElement> adminPageLinks;
+
+    @FindBy(css = "[href='/admin/buildings/']")
+    public WebElement buildingsLink;
+
+    @FindBy(css = "[href='/admin/groups/']")
+    public WebElement groupsAndPermissionsLink;
+
     @FindBy(css = "[class='row'] [class$='building-card']")
     public List<WebElement> buildings;
+
+    @FindBy(css = "[class='text-h5 text-bold']")
+    public List<WebElement> groups;
 
     @FindBy(css = "[class$='q-mr-sm']")
     public WebElement addNew;
@@ -35,7 +48,7 @@ public class AdminPage {
     @FindBy(css = ".q-menu > .q-list > .q-item")
     public WebElement editBtn;
 
-    @FindBy(css = "[class='q-card building-modal']")
+    @FindBy(css = "[class='q-card popup-modal']")
     public WebElement editShelfModal;
 
     @FindBy(css = "[class='form-group q-mb-md']  .form-group-label")
@@ -81,7 +94,7 @@ public class AdminPage {
     public List<WebElement> locHierOptions;
 
     @FindBy(css = "[class='q-card popup-modal']")
-    public  WebElement popUpModal;
+    public WebElement popUpModal;
 
     @FindBy(css = "[placeholder='Please Type Building Name']")
     public WebElement buildingField;
@@ -127,5 +140,45 @@ public class AdminPage {
 
     @FindBy(xpath = "//li[@class='text-body1']/span")
     public WebElement uploadedFile;
+
+    @FindBy(css = "[placeholder='Enter Group Name']")
+    public WebElement enterGroupNameField;
+
+    @FindBy(css = "[aria-label='optionsMenu']")
+    public List<WebElement> threeDotMenu;
+
+    @FindBy(css = "[role='menuitem']")
+    public List<WebElement> menuOptions;
+
+    @FindBy(css = "[role='tab']")
+    public List<WebElement> tabNames;
+
+    @FindBy(xpath = "//button[.='Delete Group']")
+    public WebElement confirmDeleteGroup;
+
+    @FindBy(xpath = "//button[.='Yes']")
+    public List<WebElement> yes;
+
+    @FindBy(css = "[placeholder='Select User To Add']")
+    public WebElement selectUserToAddField;
+
+    @FindBy(css = "[role='option']")
+    public List<WebElement> usersList;
+
+    @FindBy(xpath = "//button[.='Add User(s)']")
+    public WebElement addUsersBtn;
+
+    @FindBy(css = "[class='admin-groups-users-chip q-pa-xs']")
+    public List<WebElement> groupUserTabs;
+
+    @FindBy(xpath = "//button[.='Delete User']")
+    public WebElement deleteUserFromGroupBtn;
+
+    @FindBy(css = "[aria-label='closeModal']")
+    public WebElement closeModal;
+
+    @FindBy(xpath = "//button[.='Save Changes']")
+    public WebElement renameGroupBtn;
+
 
 }
