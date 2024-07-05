@@ -296,7 +296,7 @@ public class ShelvingSteps {
     @Then("user selects a Verification Job from the Verification Job\\(s) List")
     public void user_selects_a_Verification_Job_from_the_Verification_Job_s_List() throws InterruptedException {
         shelving.selectByNumber.click();
-        helper.jSClick(shelving.verificationJobsList.get(shelving.verificationJobsList.size()-1));
+        helper.jSClick(shelving.verificationJobsList.get(0));
         shelving.selectByNumber.click();
         wait.hardWait(1000);
         oLog.info("I selected a Verification Job from the list");
@@ -312,7 +312,8 @@ public class ShelvingSteps {
     }
 
     @Then("user clicks Submit")
-    public void user_clicks_Submit() {
+    public void user_clicks_Submit() throws InterruptedException {
+        wait.hardWait(100);
         helper.jSClick(shelving.submit);
         oLog.info("I clicked Submit");
     }
@@ -346,18 +347,14 @@ public class ShelvingSteps {
 
     @When("user navigates to Shelving Job")
     public void user_navigates_to_Shelving_Job() {
-        driver.get("https://test.fetch.loctest.gov/shelving/123456789");
+        driver.get("https://test.fetch.loctest.gov/shelving/4");
         oLog.info("I navigated to the Shelving Job");
     }
 
-    @When("user clicks three dot menu next to a container that has shelving location information")
-    public void user_clicks_three_dot_menu_next_to_a_container_that_has_shelving_location_information() {
-        if(!shelving.shelfNumber.getText().isEmpty()) {
-            helper.jSClick(shelving.threeDotMenu.get(0));
-        }else {
-            helper.jSClick(shelving.threeDotMenu.get(1));
-        }
-        oLog.info("I clicked three dot menu next to a container that has shelving location information");
+    @When("user clicks three dot menu next to a container")
+    public void user_clicks_three_dot_menu_next_to_a_container() {
+        helper.jSClick(shelving.threeDotNextToContainer);
+        oLog.info("I clicked three dot menu next to a container");
     }
 
     @Then("user should see Edit Location option")

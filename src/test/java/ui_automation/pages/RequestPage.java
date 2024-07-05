@@ -47,4 +47,27 @@ public class RequestPage {
 
     @FindBy(css = "[class='barcode text-h4 text-center']")
     public WebElement actualBarcode;
+
+    @FindBy(css = "[role='checkbox']")
+    public List<WebElement> checkboxesRequests;
+
+    @FindBy(xpath = "//span[contains(text(),'Create Pick List')]")
+    public WebElement createPickListBtn;
+
+    @FindBy(xpath = "//span[contains(text(),'Add To Pick List')]")
+    public WebElement addToPickListBtn;
+
+    @FindBy(css = "[id='alertText']")
+    public WebElement alertText;
+
+    @FindBy(css = "[id='alertText'] a")
+    public WebElement createdPickListLink;
+
+    @FindBy(css = "[placeholder='Select Pick List Job']")
+    public WebElement selectPickListJobDropdown;
+
+    @FindBy(css = "[role='option']")
+    public List<WebElement> dropdownList;
+
+
 }

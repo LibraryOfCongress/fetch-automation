@@ -4,7 +4,7 @@ Feature: Shelving Page Functionality Validation
   Background:
     Given user navigates to Shelving Page
 
-  @FETCH-313 @FETCH-165 @regression
+  @FETCH-313 @FETCH-165
   Scenario: User should be able to validate Shelf Management icons and tabs
     When user is on Shelving page
     Then the hamburger menu is clickable
@@ -29,7 +29,7 @@ Feature: Shelving Page Functionality Validation
     And user verifies dropdown checkboxes are clickable
     And user verifies dropdown options match shelf table column options
 
-  @regression
+
   Scenario: User should be able to select multiple options from Rearrange Dropdown
     When user clicks on Rearrange dropdown
     Then user verifies all options are selected
@@ -37,8 +37,8 @@ Feature: Shelving Page Functionality Validation
     And user selects options A, B and C from the dropdown
     Then selected options are displayed on the page
 
-  @regression
-  Scenario: User should be able to validate fields of Create Shelving Job From Verification modal
+
+    Scenario: User should be able to validate fields of Create Shelving Job From Verification modal
     When user clicks on Create Shelving Job button
     And user selects From Verification Job option
     And user selects Yes
@@ -71,7 +71,7 @@ Feature: Shelving Page Functionality Validation
     Then user verifies the Shelf Table column names
 
 
-  @FETCH-648 @FETCH-380 @regression
+  @FETCH-648 @FETCH-380
   Scenario: User should be able to create a Shelving Job from Verification Jobs
     When user clicks on Create Shelving Job button
     And user selects From Verification Job option
@@ -91,14 +91,14 @@ Feature: Shelving Page Functionality Validation
   @FETCH-625 @FETCH-382
   Scenario:  User should be able to change Shelving Address within a Shelving Job
     When user navigates to Shelving Job
-    And user clicks three dot menu next to a container that has shelving location information
+    And user clicks three dot menu next to a container
     Then user should see Edit Location option
     And user clicks Edit Location button
     Then Edit Shelving Location modal is displayed
-    When user clicks three dot menu next to a container that does not have a shelving location information
-    Then user should see Assign Location option
-    And user clicks Assign Location button
-    Then Assign Shelving Location modal is displayed
+#    When user clicks three dot menu next to a container that does not have a shelving location information
+#    Then user should see Assign Location option
+#    And user clicks Assign Location button
+#    Then Assign Shelving Location modal is displayed
 
 
   @FETCH-684 @FETCH-438

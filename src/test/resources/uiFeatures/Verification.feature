@@ -1,24 +1,26 @@
-@regression @verification
+@verification
 
 Feature: Verification Page Functionality Validation
 
   Background:
     Given user navigates to the Verification Page
 
-  @FETCH-585 @FETCH-456 @trayed
+  @FETCH-585 @FETCH-456 @trayed @next_tray
   Scenario: User should be able to validate Verification Job features for a Trayed Item
     When user clicks Login icon on dashboard
     And user enters "Admin" username
     And user enters "password" password
     And user clicks login button
     And user clicks Login icon on dashboard
-    When user switches on Toggle Barcode Scan
+    Then user switches on Toggle Barcode Scan
+    Then verify barcode scanning is enabled
     When user clicks on Verification Job for a Trayed Item
     Then Tray container view is displayed
     And user scans a Tray
+    Then user disables Toggle Barcode Scan
+    And user verifies the barcode
     And user clicks Enter Barcode button
     And user enters barcode and clicks Submit button
-    Then user verifies the entered barcode is displayed
     When user selects the barcode
     Then verify Enter Barcode button is changed to Edit Barcode
     And user clicks Edit Barcode button

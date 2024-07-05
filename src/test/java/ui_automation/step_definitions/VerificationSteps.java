@@ -35,24 +35,25 @@ public class VerificationSteps {
 
     @When("user clicks on Verification Job for a Trayed Item")
     public void user_clicks_on_Verification_Job_for_a_Trayed_Item() {
-        verification.trayedVerificationJob.click();
-    }
+        verification.trayedVerificationJobs.get(0).click();    }
 
     @Then("Tray container view is displayed")
-    public void tray_container_view_is_displayed() {
+    public void tray_container_view_is_displayed() throws InterruptedException {
         assertEquals("Please Scan Tray", verification.scanTrayBox.getText());
     }
 
     @Then("user scans a Tray")
-    public void user_scans_a_Tray() {
-        driver.findElement(By.tagName("body")).sendKeys("AH787878");
+    public void user_scans_a_Tray() throws InterruptedException {
+     //   driver.findElement(By.tagName("body")).sendKeys((AccessionSteps.generatedTray));
+        driver.findElement(By.tagName("body")).sendKeys("EL222222");
+        wait.hardWait(1000);
         oLog.info("I scanned Barcode ");
     }
 
     @Then("user verifies the entered barcode is displayed")
     public void user_verifies_the_entered_barcode_is_displayed() {
         int index = verification.scannedVerificationItems.size();
-        assertEquals("Scanned Barcode is not displayed!", verification.scannedVerificationItems.get(index - 1).getText(), "12345");
+        assertEquals("Entered Barcode is not displayed!", verification.scannedVerificationItems.get(index - 1).getText(), random1);
         oLog.info("Entered barcode is displayed under Scanned Items");
     }
 
@@ -76,19 +77,24 @@ public class VerificationSteps {
     }
 
     @Then("verify Next Tray button is activated")
-    public void verify_Next_Tray_button_is_activated() {
+    public void verify_Next_Tray_button_is_activated() throws InterruptedException {
+        helper.scrollIntoView(verification.nextTrayBtn);
         assertEquals(true, verification.nextTrayBtn.isEnabled());
         oLog.info("Next Tray button is activated");
     }
 
     @Then("user clicks Next Tray button")
-    public void user_clicks_Next_Tray_button() {
-        verification.nextTrayBtn.click();
+    public void user_clicks_Next_Tray_button() throws InterruptedException {
+        helper.scrollIntoView(verification.nextTrayBtn);
+        helper.jSClick(verification.nextTrayBtn);
+        wait.hardWait(1000);
+
     }
 
     @Then("user clicks on new tray on the modal")
-    public void user_clicks_on_new_tray_on_the_modal() {
+    public void user_clicks_on_new_tray_on_the_modal() throws InterruptedException {
         verification.newTrays.get(0).click();
+        wait.hardWait(1000);
     }
 
     @When("user clicks on Verification Job for a Non-Trayed Item")

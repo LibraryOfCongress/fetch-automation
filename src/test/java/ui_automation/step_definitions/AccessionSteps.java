@@ -340,6 +340,7 @@ public class AccessionSteps {
 
     @Then("user clicks Enter Barcode button")
     public void user_clicks_Enter_Barcode_button() throws InterruptedException {
+        wait.waitForClickability(accession.enterBarcodeBtn,1000);
         helper.jSClick(accession.enterBarcodeBtn);
         wait.hardWait(1000);
         oLog.info("I clicked Enter Barcode button");

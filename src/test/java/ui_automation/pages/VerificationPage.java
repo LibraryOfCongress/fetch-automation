@@ -17,7 +17,7 @@ public class VerificationPage {
     }
 
     @FindBy(xpath = "//*[text()='Trayed']")
-    public WebElement trayedVerificationJob;
+    public List<WebElement> trayedVerificationJobs;
 
     @FindBy(css = "[class='verification-card-barcode text-h4']")
     public List<WebElement> jobsList;
@@ -40,7 +40,7 @@ public class VerificationPage {
     @FindBy(css = "[class='q-table'] td [role='checkbox']")
     public List<WebElement> scannedItemsCheckbox;
 
-    @FindBy(xpath = "//span[.='Next Tray']/..")
+    @FindBy(xpath = "(//span[.='Next Tray']/..)[1]")
     public WebElement nextTrayBtn;
 
     @FindBy(css = "button[class$='verification-next-tray-action full-width']")
