@@ -1,4 +1,4 @@
-##Automation
+## Automation
 
 This is **FETCH **automation project. This repository demonstrates how to set up and use Cucumber with Selenium WebDriver for automated testing of web application using Java and Maven, integrated with IntelliJ IDEA.
 
