@@ -3,8 +3,6 @@ package ui_automation.step_definitions;
 import io.cucumber.java.en.Given;
 import io.cucumber.java.en.Then;
 import io.cucumber.java.en.When;
-import org.apache.log4j.LogManager;
-import org.apache.log4j.Logger;
 import org.junit.Assert;
 import org.openqa.selenium.*;
 import ui_automation.pages.AdminPage;
@@ -27,8 +25,6 @@ public class AdminSteps {
     WaitHelper wait = new WaitHelper();
     AlertSteps alertSteps = new AlertSteps();
 
-    public static final Logger oLog = LogManager.getLogger(AdminSteps.class);
-
 
     @Given("user navigates to the Admin Page")
     public void user_navigates_to_the_Admin_Page() {
@@ -40,24 +36,19 @@ public class AdminSteps {
         String actualURL = driver.getCurrentUrl();
         String expectedURL = "https://test.fetch.loctest.gov/admin";
         assertEquals("Admin Page URL failed", expectedURL, actualURL);
-        oLog.info("I am on Admin page");
     }
 
     @Then("user verifies the Admin Dashboard contains links")
     public void user_verifies_the_Admin_Dashboard_contains_links() {
-        int count = 0;
         for (WebElement link : admin.adminPageLinks) {
-            count++;
             assertTrue(link.isDisplayed());
-            System.out.println("Displayed Links: " + link.getText());
         }
-        oLog.info("I verified Admin Dashboard contains " + count + " Links");
     }
 
     @When("user clicks Buildings")
-    public void user_clicks_Buildings() {
+    public void user_clicks_Buildings() throws InterruptedException {
         helper.jSClick(admin.buildingsLink);
-        oLog.info("I clicked Buildings Link");
+        wait.hardWait(100);
     }
 
     @Then("user verifies the Admin Dashboard contains Buildings")
@@ -68,23 +59,20 @@ public class AdminSteps {
             assertTrue(building.isDisplayed());
             System.out.println("Displayed Building " + count + " : " + building.getText());
         }
-        oLog.info("I verified Admin Dashboard contains " + count + " Buildings");
     }
 
     @Then("Add New dropdown is displayed and clickable")
     public void add_New_dropdown_is_displayed_and_clickable() {
-        helper.verifyElementDisplayed(admin.addNew);
-        helper.isClickable(admin.addNew);
+        Helper.verifyElementDisplayed(admin.addNew);
+        Helper.isClickable(admin.addNew);
     }
 
     @Then("user verifies Add New dropdown options")
     public void user_verifies_Add_New_dropdown_options(io.cucumber.datatable.DataTable dataTable) throws InterruptedException {
         helper.jSClick(admin.addNew);
         wait.hardWait(1000);
-
         List<Map<String, String>> maps = dataTable.asMaps(String.class, String.class);
         int i = 0;
-
         for (Map<String, String> map : maps) {
             String expectedField = map.get("option");
             String actualField = admin.addNewOptions.get(i).getText();
@@ -92,13 +80,12 @@ public class AdminSteps {
             i++;
         }
         helper.jSClick(admin.addNew);
-        oLog.info("I verified Add New dropdown options");
     }
 
     @Then("Location Hierarchy dropdown is displayed and clickable")
     public void location_Hierarchy_dropdown_is_displayed_and_clickable() {
-        helper.verifyElementDisplayed(admin.locationHierarchy);
-        helper.isClickable(admin.locationHierarchy);
+        Helper.verifyElementDisplayed(admin.locationHierarchy);
+        Helper.isClickable(admin.locationHierarchy);
     }
 
     @Then("user verifies Location Hierarchy dropdown options")
@@ -114,13 +101,11 @@ public class AdminSteps {
             Assert.assertEquals("Options name verification failed", expectedField, actualField);
             i++;
         }
-        oLog.info("I verified Location Hierarchy dropdown options");
     }
 
     @When("user selects Building")
     public void user_selects_Building() {
         helper.jSClick(admin.buildings.get(0));
-        oLog.info("I selected Building");
     }
 
     @Then("user should see building's shelving items")
@@ -131,7 +116,6 @@ public class AdminSteps {
             assertTrue(item.isDisplayed());
             System.out.println("Displayed Shelving Item " + count + " : " + item.getText());
         }
-        oLog.info("Shelf table contains " + count + " items");
     }
 
     @When("user clicks three-dots on the left side of the table")
@@ -146,9 +130,8 @@ public class AdminSteps {
 
     @Then("Edit Shelf modal is displayed")
     public void edit_Shelf_modal_is_displayed() {
-        wait.waitForVisibility(admin.editShelfModal, 1000);
-        helper.verifyElementDisplayed(admin.editShelfModal);
-        oLog.info("Edit Shelf modal is displayed");
+        WaitHelper.waitForVisibility(admin.editShelfModal, 1000);
+        Helper.verifyElementDisplayed(admin.editShelfModal);
     }
 
     @Then("user verifies fields on Edit Shelf modal")
@@ -163,23 +146,13 @@ public class AdminSteps {
             Assert.assertEquals("Fields name verification failed", expectedField, actualField);
             i++;
         }
-        oLog.info("I verified Edit Shelf modal fields");
     }
 
     @Then("user is able to edit all the fields")
-    public void user_is_able_to_edit_all_the_fields() throws InterruptedException {
-
+    public void user_is_able_to_edit_all_the_fields() {
         admin.editShelfNumber.sendKeys(Keys.CONTROL + "a");
         admin.editShelfNumber.sendKeys(Keys.DELETE);
         admin.editShelfNumber.sendKeys("2");
-
-//        helper.jSClick(admin.editOwner);
-//        admin.modalFieldOptions.get(0).click();
-//        actions.sendKeys(Keys.TAB).build().perform();
-
-//        helper.jSClick(admin.editContainerField);
-//        wait.hardWait(1000);
-//        admin.modalFieldOptions.get(0).click();
 
         admin.editMaxCapacity.sendKeys(Keys.CONTROL + "a");
         admin.editMaxCapacity.sendKeys(Keys.DELETE);
@@ -203,12 +176,12 @@ public class AdminSteps {
 
     @Then("Update button is clickable")
     public void update_button_is_clickable() {
-        helper.isClickable(admin.update);
+        Helper.isClickable(admin.update);
     }
 
     @Then("Cancel button is clickable")
     public void cancel_button_is_clickable() {
-        helper.isClickable(admin.cancelUpdate);
+        Helper.isClickable(admin.cancelUpdate);
     }
 
     @When("user clicks Add New dropdown button")
@@ -217,24 +190,24 @@ public class AdminSteps {
     }
 
     @When("user selects add Building option")
-    public void user_selects_add_Building_option() throws InterruptedException {
+    public void user_selects_add_Building_option() {
         admin.addNewOptions.get(0).click();
     }
 
     @Then("user verifies popup modal is displayed")
     public void user_verifies_popup_modal_is_displayed() {
-        wait.waitForVisibility(admin.popUpModal, 1000);
-        helper.verifyElementDisplayed(admin.popUpModal);
+        WaitHelper.waitForVisibility(admin.popUpModal, 1000);
+        Helper.verifyElementDisplayed(admin.popUpModal);
     }
 
     @Then("Building field is displayed")
     public void building_field_is_displayed() {
-        helper.verifyElementDisplayed(admin.buildingField);
+        Helper.verifyElementDisplayed(admin.buildingField);
     }
 
     @Then("Create button is disabled")
     public void create_button_is_disabled() {
-        Assert.assertEquals(false, admin.createBtn.isEnabled());
+        Assert.assertFalse(admin.createBtn.isEnabled());
     }
 
     @When("user enters Building information")
@@ -244,7 +217,7 @@ public class AdminSteps {
 
     @Then("Create button is enabled")
     public void create_button_is_enabled() {
-        Assert.assertEquals(true, admin.createBtn.isEnabled());
+        assertTrue(admin.createBtn.isEnabled());
     }
 
     @Then("user exits modal")
@@ -259,7 +232,7 @@ public class AdminSteps {
 
     @Then("Building dropdown is clickable")
     public void building_dropdown_is_clickable() {
-        helper.isClickable(admin.selectBuilding);
+        Helper.isClickable(admin.selectBuilding);
     }
 
     @Then("Module field is disabled")
@@ -276,7 +249,7 @@ public class AdminSteps {
 
     @Then("Module field is enabled")
     public void module_field_is_enabled() {
-        helper.isClickable(admin.moduleField);
+        Helper.isClickable(admin.moduleField);
     }
 
     @When("user enters Module information")
@@ -293,21 +266,20 @@ public class AdminSteps {
 
     @Then("Aisle field is disabled")
     public void aisle_field_is_disabled() {
-        Assert.assertEquals(false, admin.aisleField.isEnabled());
+        Assert.assertFalse(admin.aisleField.isEnabled());
     }
 
     @Then("Aisle field is enabled")
     public void aisle_field_is_enabled() {
-        Assert.assertEquals(true, admin.aisleField.isEnabled());
+        assertTrue(admin.aisleField.isEnabled());
     }
 
     @When("user selects Module from dropdown")
     public void user_selects_Module_from_dropdown() throws InterruptedException {
         wait.hardWait(1000);
         wait.handleStaleElement(By.cssSelector(".q-field__native [placeholder='Select Module']"), 4, 1000);
-
         admin.selectModule.click();
-        admin.fieldDropdwnList.get(1).click();
+        admin.fieldDropdwnList.get(0).click();
     }
 
     @When("user enters Aisle information")
@@ -323,26 +295,25 @@ public class AdminSteps {
 
     @Then("Ladder field is disabled")
     public void ladder_field_is_disabled() {
-        Assert.assertEquals(false, admin.ladderField.isEnabled());
+        Assert.assertFalse(admin.ladderField.isEnabled());
     }
 
     @Then("Side button is enabled")
     public void side_button_is_enabled() {
-        Assert.assertEquals(true, admin.sideBtnLeft.isEnabled());
+        assertTrue(admin.sideBtnLeft.isEnabled());
     }
 
     @Then("user selects Aisle from dropdown")
     public void user_selects_Aisle_from_dropdown() throws InterruptedException {
         wait.hardWait(1000);
         wait.handleStaleElement(By.cssSelector(".q-field__native [placeholder='Select Aisle']"), 4, 1000);
-
         admin.selectAisle.click();
         admin.fieldDropdwnList.get(0).click();
     }
 
     @Then("Ladder field is enabled")
     public void ladder_field_is_enabled() {
-        Assert.assertEquals(true, admin.ladderField.isEnabled());
+        assertTrue(admin.ladderField.isEnabled());
     }
 
     @Then("user enters Ladder information")
@@ -352,7 +323,7 @@ public class AdminSteps {
     }
 
     @Then("user selects Side")
-    public void user_selects_Side() throws InterruptedException {
+    public void user_selects_Side() {
         helper.jSClick(admin.sideBtnRight);
     }
 
@@ -369,10 +340,10 @@ public class AdminSteps {
     @When("user selects Ladder")
     public void user_selects_Ladder() throws InterruptedException {
         helper.scrollToElement(admin.selectLadder);
-        wait.waitForClickability(admin.selectLadder, 1000);
+        WaitHelper.waitForClickability(admin.selectLadder, 1000);
         admin.selectLadder.click();
         wait.hardWait(1000);
-        admin.modalFieldOptions.get(9).click();
+        admin.modalFieldOptions.get(0).click();
     }
 
     @When("user selects Bulk Upload option")
@@ -395,7 +366,6 @@ public class AdminSteps {
     @When("user clicks Groups and Permissions")
     public void user_clicks_Groups_and_Permissions() {
         helper.jSClick(admin.groupsAndPermissionsLink);
-        oLog.info("I clicked Groups&Permissions Link");
     }
 
     @Then("user verifies the dashboard contains Groups")
@@ -407,20 +377,17 @@ public class AdminSteps {
             assertTrue(group.isDisplayed());
             System.out.println("Displayed Groups " + count + " : " + group.getText());
         }
-        oLog.info("I verified dashboard contains " + count + " Groups");
     }
 
     @When("user clicks Add New Group")
     public void user_clicks_Add_New_Group() {
         helper.jSClick(admin.groups.getLast());
-        oLog.info("I clicked Add New Group");
     }
 
     @When("user enters Group Name")
     public void user_enters_Group_Name() {
         helper.jSClick(admin.enterGroupNameField);
         admin.enterGroupNameField.sendKeys("Test");
-        oLog.info("I clicked Add New Group");
     }
 
     @Then("user verifies a new Group is created")
@@ -430,7 +397,6 @@ public class AdminSteps {
                 assertTrue(group.isDisplayed());
             }
         }
-        oLog.info("New Group is created");
     }
 
     @Then("user closes alert message")
@@ -441,7 +407,6 @@ public class AdminSteps {
     @When("user clicks three dot menu next to group name")
     public void user_clicks_three_dot_menu_next_to_group_ame() {
         helper.jSClick(admin.threeDotMenu.getLast());
-        oLog.info("I clicked three dot menu");
     }
 
     @Then("user verifies all the options")
@@ -449,20 +414,17 @@ public class AdminSteps {
         wait.hardWait(1000);
         List<Map<String, String>> maps = dataTable.asMaps(String.class, String.class);
         int i = 0;
-
         for (Map<String, String> map : maps) {
             String expectedField = map.get("option");
             String actualField = admin.menuOptions.get(i).getText();
             Assert.assertEquals("Options name verification failed", expectedField, actualField);
             i++;
         }
-        oLog.info("I verified Group menu options");
     }
 
     @When("user clicks Edit Permissions")
     public void user_clicks_Edit_Permissions() {
         helper.jSClick(admin.menuOptions.getFirst());
-        oLog.info("I clicked Edit Permissions");
     }
 
     @Then("user verifies permissions tab names")
@@ -470,14 +432,12 @@ public class AdminSteps {
         wait.hardWait(1000);
         List<Map<String, String>> maps = dataTable.asMaps(String.class, String.class);
         int i = 0;
-
         for (Map<String, String> map : maps) {
             String expectedField = map.get("name");
             String actualField = admin.tabNames.get(i).getText();
             Assert.assertEquals("Tab Name verification failed", expectedField, actualField);
             i++;
         }
-        oLog.info("I verified permissions tab names");
     }
 
     @When("user adds some permissions")
@@ -490,20 +450,17 @@ public class AdminSteps {
         helper.jSClick(verifTab);
         wait.hardWait(1000);
         helper.jSClick(admin.yes.getFirst());
-        oLog.info("I added some permissions to Group");
     }
 
     @When("user clicks on Groups and Permissions breadcrumb link")
     public void user_clicks_on_Groups_and_Permissions_breadcrumb_link() {
         WebElement groupsAndPermissionsBreadcrumbLink = driver.findElement(By.xpath("//a[.='Groups & Permissions']"));
         groupsAndPermissionsBreadcrumbLink.click();
-        oLog.info("I clicked Groups and Permissions Breadcrumb link");
     }
 
     @When("user clicks Add Edit Users in Group")
     public void user_clicks_Add_Edit_Users_in_Group() {
         helper.jSClick(admin.menuOptions.get(1));
-        oLog.info("I clicked Add/Edit User(s) in Group");
     }
 
     @When("user selects User names")
@@ -512,28 +469,24 @@ public class AdminSteps {
         helper.jSClick(admin.usersList.get(4));
         helper.jSClick(admin.usersList.get(5));
         helper.jSClick(admin.selectUserToAddField);
-        oLog.info("I selected Users");
     }
 
     @When("user clicks Add Users")
     public void user_clicks_Add_Users() throws InterruptedException {
         helper.jSClick(admin.addUsersBtn);
         wait.hardWait(1000);
-        oLog.info("I clicked Add User(s) button");
     }
 
     @When("user clicks on User name")
     public void user_clicks_on_User_name() throws InterruptedException {
-        wait.waitForClickability(admin.groupUserTabs.getFirst(), 100);
+        WaitHelper.waitForClickability(admin.groupUserTabs.getFirst(), 100);
         admin.groupUserTabs.get(0).click();
         wait.hardWait(1000);
-        oLog.info("I clicked on User");
     }
 
     @When("user is able to delete User from Group")
     public void user_is_able_to_delete_User_from_Group() {
         helper.jSClick(admin.deleteUserFromGroupBtn);
-        oLog.info("I deleted User from Group");
     }
 
     @When("user closes modal")
@@ -545,7 +498,6 @@ public class AdminSteps {
     @When("user clicks Rename Group Name")
     public void user_clicks_Rename_Group_Name() {
         helper.jSClick(admin.menuOptions.get(2));
-        oLog.info("I clicked Rename Group Name");
     }
 
     @When("user renames Group")
@@ -555,27 +507,23 @@ public class AdminSteps {
         admin.enterGroupNameField.sendKeys(Keys.DELETE);
         admin.enterGroupNameField.sendKeys("Renamed Test");
         wait.hardWait(1000);
-        oLog.info("I renamed Group");
     }
 
     @When("user saves changes")
     public void user_saves_changes() throws InterruptedException {
         helper.jSClick(admin.renameGroupBtn);
         wait.hardWait(1000);
-        oLog.info("I saved changes to Group Name");
     }
 
     @When("user clicks Delete Group")
     public void user_clicks_Delete_Group() throws InterruptedException {
         helper.jSClick(admin.menuOptions.getLast());
         wait.hardWait(1000);
-        oLog.info("I clicked Delete Group");
     }
 
     @Then("user is able to delete Group")
     public void user_is_able_to_delete_Group() {
         helper.jSClick(admin.confirmDeleteGroup);
-        oLog.info("I deleted Group");
     }
 
 

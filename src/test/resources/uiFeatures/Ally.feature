@@ -34,7 +34,6 @@ Feature: FETCH Accessibility Validation
     And user clicks Start Accession button
     And user selects Trayed Accession
     And user selects all required fields
-#    And user clicks submit button
     Then verify Accessibility
 
 

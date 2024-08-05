@@ -24,17 +24,11 @@ public class AccessionPage {
     @FindBy(css = ".column > :nth-child(2) > .q-btn__content")
     public WebElement trayedAccession;
 
-    @FindBy(css = ".q-mb-md > .q-btn__content")
+    @FindBy(xpath = "//button[.='Non-Tray Accession']")
     public WebElement nonTrayAccession;
 
     @FindBy(css = "[placeholder='Select Owner']")
     public WebElement ownerField;
-
-    @FindBy(css = "[role='option']:nth-child(1)")
-    public WebElement johnDoe;
-
-    @FindBy(css = ".q-virtual-scroll__content>div:nth-child(3)")
-    public WebElement sanders;
 
     @FindBy(css = "[placeholder='Select Size Class']")
     public WebElement containerSizeField;
@@ -115,7 +109,7 @@ public class AccessionPage {
     @FindBy(css = "[placeholder='Please Enter Barcode']")
     public WebElement enterBarcodeField;
 
-    @FindBy(xpath = "//span[.='Add Tray']/../..")
+    @FindBy(xpath = "//span[.='Add Tray (1)']/../..")
     public WebElement addTrayBtn;
 
     @FindBy(css = "button[class$='btn-dashed btn-no-wrap text-body1 full-width']")
@@ -129,6 +123,9 @@ public class AccessionPage {
 
     @FindBy(css = "td.q-table--col-auto-width [role='checkbox']")
     public WebElement scannedItemCheckbox;
+
+    @FindBy(css = "td.q-table--col-auto-width [role='checkbox']")
+    public List<WebElement> scannedItemCheckboxes;
 
     @FindBy(css = "div[class='q-banner row items-center q-banner--dense rounded-borders alert-banner text-positive bg-color-green-light']")
     public WebElement alertMsg;
@@ -151,16 +148,38 @@ public class AccessionPage {
     @FindBy(css = "[class$='q-item--clickable q-link cursor-pointer q-focusable q-hoverable']")
     public WebElement editAccessionJob;
 
+    @FindBy(xpath = "(//div[@role='menuitem'])[2]")
+    public WebElement cancelAccessionJob;
+
+    @FindBy(xpath = "(//div[@role='menuitem'])[3]")
+    public WebElement editTrayBarcode;
+
+    @FindBy(xpath = "(//div[@role='menuitem'])[4]")
+    public WebElement deleteTray;
+
     @FindBy(css = "div[role='option']")
     public List<WebElement> editFieldOptions;
 
     @FindBy(xpath = "//button[.='Complete']")
     public WebElement complete;
 
+    @FindBy(css = "[class='accession-card-barcode text-h4']")
+    public List<WebElement> accessionJobNumbers;
 
+    @FindBy(css = "[class='q-card__section q-card__section--vert']")
+    public WebElement warningMsg;
 
+    @FindBy(xpath = "//button[.='Cancel Job']")
+    public WebElement confirmCancellation;
 
+    @FindBy(xpath = "//button[.='Delete Tray']")
+    public WebElement confirmDeleteTray;
 
+    @FindBy(css = "[placeholder='Please Enter Tray Barcode']")
+    public WebElement editTrayBarcodeField;
+
+    @FindBy(css = "[class='accession-card-barcode text-h4']")
+    public List<WebElement> accessionJobsList;
 
 
 

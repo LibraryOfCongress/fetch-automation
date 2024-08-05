@@ -3,12 +3,13 @@
 Feature: Admin Page Functionality Validation
 
   Background:
-    Given user navigates to the Admin Page
+    Given user navigates to FETCH Homepage
+    And user logs in as a tester
 
 
   @FETCH-527 @FETCH-319
   Scenario: User should be able to validate Admin Dashboard icons and tabs
-    When user is on the Admin Page
+    When user clicks Admin on side navigation menu
     Then user verifies the Admin Dashboard contains links
     When user clicks Buildings
     Then user verifies the Admin Dashboard contains Buildings
@@ -31,7 +32,8 @@ Feature: Admin Page Functionality Validation
 
   @FETCH-527 @FETCH-319
   Scenario: User should be able to see and edit shelving items of a Building
-    When user clicks Buildings
+    When user navigates to the Admin Page
+    And user clicks Buildings
     And user selects Building
     Then user should see building's shelving items
     When user clicks three-dots on the left side of the table
@@ -56,7 +58,8 @@ Feature: Admin Page Functionality Validation
 
   @FETCH-527 @FETCH-319 @add_building
   Scenario: User should be able to validate Add Building feature
-    When user clicks Buildings
+    When user navigates to the Admin Page
+    And user clicks Buildings
     And user clicks Add New dropdown button
     And user selects add Building option
     Then user verifies popup modal is displayed
@@ -69,7 +72,8 @@ Feature: Admin Page Functionality Validation
 
   @FETCH-527 @FETCH-319 @add_module
   Scenario: User should be able to validate Add Module feature
-    When user clicks Buildings
+    When user navigates to the Admin Page
+    And user clicks Buildings
     And user clicks Add New dropdown button
     And user selects add Module option
     Then user verifies popup modal is displayed
@@ -85,7 +89,8 @@ Feature: Admin Page Functionality Validation
 
   @FETCH-527 @FETCH-319 @add_aisle
   Scenario: User should be able to validate Add Aisle feature
-    When user clicks Buildings
+    When user navigates to the Admin Page
+    And user clicks Buildings
     And user clicks Add New dropdown button
     And user selects add Aisle option
     Then user verifies popup modal is displayed
@@ -104,7 +109,8 @@ Feature: Admin Page Functionality Validation
 
   @FETCH-527 @FETCH-319 @add_ladder
   Scenario: User should be able to validate Add Ladder feature
-    When user clicks Buildings
+    When user navigates to the Admin Page
+    And user clicks Buildings
     And user clicks Add New dropdown button
     And user selects add Ladder option
     Then user verifies popup modal is displayed
@@ -128,7 +134,8 @@ Feature: Admin Page Functionality Validation
 
   @FETCH-527 @FETCH-319 @manual_LH
   Scenario: User should be able to validate Location Hierarchy Manual creation
-    When user clicks Buildings
+    When user navigates to the Admin Page
+    And user clicks Buildings
     And user clicks Location Hierarchy dropdown button
     And user selects Manual option
     And user verifies popup modal is displayed
@@ -143,7 +150,8 @@ Feature: Admin Page Functionality Validation
 
   @FETCH-527 @FETCH-319 @bulk_upload
   Scenario: User should be able to validate Location Hierarchy Bulk Upload creation
-    When user clicks Buildings
+    When user navigates to the Admin Page
+    And user clicks Buildings
     And user clicks Location Hierarchy dropdown button
     And user selects Bulk Upload option
     And user verifies popup modal is displayed
@@ -159,8 +167,8 @@ Feature: Admin Page Functionality Validation
 
   @FETCH-819 @FETCH-547
   Scenario: User should be able to validate Group Management UI
-    Then user verifies the Admin Dashboard contains links
-    When user clicks Groups and Permissions
+    When user navigates to the Admin Page
+    And user clicks Groups and Permissions
     Then user verifies the dashboard contains Groups
     When user clicks Add New Group
     And user enters Group Name

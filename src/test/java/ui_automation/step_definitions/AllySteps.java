@@ -41,16 +41,9 @@ public class AllySteps {
         }
     }
 
-
     @Given("user navigates to the Shelving Page")
     public void user_navigates_to_the_Shelving_Page() {
         Driver.getInstance().getDriver().get(ConfigurationReader.getProperty("ui_config.properties", "shelvingURL"));
-    }
-
-
-    @Given("user navigates to the Verification Page")
-    public void user_navigates_to_the_Verification_Page() {
-        Driver.getInstance().getDriver().get(ConfigurationReader.getProperty("ui_config.properties", "verificationURL"));
     }
 
 

@@ -39,4 +39,7 @@ public class WithdrawalPage {
     @FindBy(xpath = "(//button[.='more_vert'])[2]")
     public WebElement threeDotNextToItemBarcode;
 
+    @FindBy(xpath = "//td[.='Created']")
+    public WebElement createdJob;
+
 }

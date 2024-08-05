@@ -18,9 +18,6 @@ public class ShelvingPage {
 
 
 
-    @FindBy(xpath = "//*[@class='q-item__label']/span")
-    public List<WebElement> allDropdownOptions;
-
     @FindBy(css = "button[class$='table-component-filter']")
     public WebElement filter;
 
@@ -31,7 +28,7 @@ public class ShelvingPage {
     public List<WebElement> rearrangeDropdownOptions;
 
     @FindBy(css = "[role='option']")
-    public List<WebElement> allFilterDropdownOptions;
+    public List<WebElement> allDropdownOptions;
 
     @FindBy(css = ".col-xs-grow > .q-btn")
     public WebElement createShelvingJob;
@@ -81,7 +78,7 @@ public class ShelvingPage {
     @FindBy(css = "[placeholder='Select Verification Job(s) by Number']")
     public WebElement selectByNumber;
 
-    @FindBy(css = "[role='listbox'] [role='option']")
+    @FindBy(css = "[role='option']")
     public List<WebElement> verificationJobsList;
 
     @FindBy(xpath = "//button[.='Submit']")
@@ -95,9 +92,6 @@ public class ShelvingPage {
 
     @FindBy(css = "[class='q-card popup-modal']")
     public WebElement createShelvingJobModal;
-
-    @FindBy(xpath = "//button[.='more_vert']")
-    public List<WebElement> threeDotMenu;
 
     @FindBy(xpath = "(//button[.='more_vert'])[2]")
     public WebElement threeDotNextToContainer;
@@ -116,6 +110,9 @@ public class ShelvingPage {
 
     @FindBy(xpath = "//td[.='Running']")
     public WebElement runningJob;
+
+    @FindBy(xpath = "//td[.='Created']")
+    public WebElement createdJob;
 
     @FindBy(css = "[class='q-field__input q-placeholder col']")
     public WebElement assignedUserField;
@@ -156,17 +153,20 @@ public class ShelvingPage {
     @FindBy(xpath = "//button[.='Confirm']")
     public WebElement beAwareMsg;
 
-    @FindBy(css = "[role='switch']")
-    public WebElement toggleScan;
-
-    @FindBy(css = "[class='q-banner__content col text-body2']")
-    public WebElement scanningEnabledAlert;
-
-    @FindBy(xpath = "//button[.='Disable Scan']")
-    public WebElement disableScan;
-
     @FindBy(css = "[aria-label='barcodeInputDelay']")
     public WebElement inputDelay;
+
+    @FindBy(xpath = "(//td[@class='q-td text-left'])[1]")
+    public WebElement containerBarcode;
+
+    @FindBy(xpath = "(//td[@class='q-td text-left'])[10]")
+    public WebElement secondContainerBarcode;
+
+    @FindBy(css = "[aria-label='barcodeToggle']")
+    public WebElement toggleScan;
+
+    @FindBy(xpath = "//button[.='Complete']")
+    public WebElement complete;
 
 
 

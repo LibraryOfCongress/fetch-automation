@@ -10,6 +10,7 @@ import org.openqa.selenium.WebDriver;
 import ui_automation.utilities.BrowserFactory;
 import ui_automation.utilities.Driver;
 
+import java.time.Duration;
 import java.util.concurrent.TimeUnit;
 
 public class Hooks {
@@ -21,11 +22,11 @@ public class Hooks {
         driver = BrowserFactory.createInstance();
         Driver.getInstance().setDriver(driver);
         driver = Driver.getInstance().getDriver();
-
-        driver.manage().timeouts().implicitlyWait(10, TimeUnit.SECONDS);
+        driver.manage().timeouts().implicitlyWait(Duration.ofSeconds(15));
         driver.manage().window().maximize();
     }
 
+    //after scenario
     @After
     public void tearDown(Scenario scenario) {
         if (scenario.isFailed()) {

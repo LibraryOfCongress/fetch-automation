@@ -30,11 +30,17 @@ public class RequestPage {
     @FindBy(css = "[placeholder='Enter or Scan Item Barcode']")
     public WebElement itemBarcodeField;
 
+    @FindBy(css = "[placeholder='Enter External Request Id']")
+    public WebElement requestIDField;
+
     @FindBy(css = "[placeholder='Enter Requestor Name']")
     public WebElement requestorNameField;
 
     @FindBy(css = "[placeholder='Select Request Type']")
     public WebElement requestTypeField;
+
+    @FindBy(css = "[placeholder='Select Priority']")
+    public WebElement priorityField;
 
     @FindBy(css = "[role='option']")
     public List<WebElement> options;
@@ -68,6 +74,9 @@ public class RequestPage {
 
     @FindBy(css = "[role='option']")
     public List<WebElement> dropdownList;
+
+    @FindBy(xpath = "//button[.='Submit']")
+    public WebElement submitRequest;
 
 
 }

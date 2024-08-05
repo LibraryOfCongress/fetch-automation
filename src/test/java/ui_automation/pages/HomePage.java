@@ -9,7 +9,9 @@ import ui_automation.utilities.Driver;
 import java.util.List;
 
 public class HomePage {
+
     WebDriver driver;
+
     public HomePage(){
         driver= Driver.getInstance().getDriver();
         PageFactory.initElements(driver, this);
@@ -18,25 +20,16 @@ public class HomePage {
     @FindBy(xpath = "(//div[@class='q-focus-helper'])[1]" )
     public WebElement header;
 
-    @FindBy(xpath = "(//div[.=' FETCH LOGO '])[2]")
-    public WebElement logo;
-
-    @FindBy(xpath = "//i[.='menu']")
+    @FindBy(css = "[aria-label='Menu Button']")
     public WebElement hamburgerMenu;
 
-    @FindBy(css = "[placeholder='Search']")
+    @FindBy(css = "[type='search']")
     public WebElement searchBar;
-
-    @FindBy(xpath = "(//i[@role='presentation'])[2]")
-    public WebElement loginButton;
-
-    @FindBy(className = "q-list")
-    public WebElement sideNavigationMenu;
 
     @FindBy(xpath = "//*[@class='demo']/li")
     public WebElement barCodeField;
 
-    @FindBy(xpath="//*[@class='q-list nav-list']/a")
+    @FindBy(css = "[class='q-list nav-list'] [class='q-item__label']")
     public List<WebElement> allNavigationTabs;
 
     @FindBy(css = "a[class$='nav-active']")
@@ -51,35 +44,69 @@ public class HomePage {
     @FindBy(css = "[href='/shelving']")
     public WebElement shelvingLink;
 
+    @FindBy(css = "[href='/request']")
+    public WebElement requestLink;
+
+    @FindBy(css = "[href='/picklist']")
+    public WebElement picklistLink;
+
+    @FindBy(css = "[href='/refile']")
+    public WebElement refileLink;
+
+    @FindBy(css = "[href='/withdrawal']")
+    public WebElement withdrawalLink;
+
+    @FindBy(css = "[href='/reports']")
+    public WebElement reportsLink;
+
     @FindBy(css = "[href='/admin']")
     public WebElement adminLink;
+
+    @FindBy(css = "[aria-label='barcodeToggle']")
+    public WebElement toggleScan;
+
+    @FindBy(xpath = "//button[.='Disable Scan']")
+    public WebElement disableScan;
+
+    @FindBy(css = "[class='q-banner__content col text-body2']")
+    public WebElement scanningEnabledAlert;
 
     @FindBy(css = "button[class$='q-btn q-btn-item non-selectable no-outline q-btn--flat q-btn--rectangle text-white q-btn--actionable q-focusable q-hoverable text-body1']:nth-child(3)")
      public WebElement banner;
 
     @FindBy(css = "[class='nav-actions']")
-    public WebElement loginIcon;
+    public WebElement loginButton;
 
-    @FindBy(css = "[placeholder='Enter Username']")
+    @FindBy(css = "[placeholder='Enter User Email']")
     public WebElement usernameField;
-
-    @FindBy(css = "[placeholder='Enter Password']")
-    public WebElement passwordField;
 
     @FindBy(css = "[aria-label='Internal Login']")
     public WebElement login;
 
-    @FindBy(css = "p[class='text-body2 text-color-gray-dark']:nth-child(2)")
+    @FindBy(css = "h1.text-h6")
     public WebElement user;
 
     @FindBy(xpath = "//i[.='logout']/../../..")
     public WebElement logout;
 
-    @FindBy(css = "")
+    @FindBy(xpath = "")
     public WebElement errorMessage;
 
     @FindBy(css = "ul.demo >li")
     public List<WebElement> scannedBarcodes;
+
+    @FindBy(xpath = "//button[.='SSO Login']")
+    public WebElement ssoLogin;
+
+    @FindBy(css = "[type='email']")
+    public WebElement email;
+
+    @FindBy(css = "[type='submit']")
+    public WebElement next;
+
+    @FindBy(css = "[type='password']")
+    public WebElement password;
+
 
 
 

@@ -20,7 +20,7 @@ public class VerificationPage {
     public List<WebElement> trayedVerificationJobs;
 
     @FindBy(css = "[class='verification-card-barcode text-h4']")
-    public List<WebElement> jobsList;
+    public List<WebElement> verificationJobsList;
 
     @FindBy(xpath = "//*[text()='Non-Trayed']")
     public WebElement nonTrayedVerificationJob;
@@ -34,7 +34,7 @@ public class VerificationPage {
     @FindBy(css = "[class$='q-mb-md-xl q-mb-lg-none']")
     public WebElement scanTrayBox;
 
-    @FindBy(css = "[class='q-table'] tbody tr")
+    @FindBy(xpath = "//*[@class='q-table']/tbody/tr")
     public List<WebElement> scannedVerificationItems;
 
     @FindBy(css = "[class='q-table'] td [role='checkbox']")
@@ -75,4 +75,11 @@ public class VerificationPage {
 
     @FindBy(css = "[class='q-td text-left'] span")
     public List<WebElement> scannedItemList;
+
+    @FindBy(css = "[class='q-td text-right']")
+    public List<WebElement> verifiedCheckMark;
+
+    @FindBy(xpath = "//button[.='Add New Item']")
+    public WebElement addNewItem;
+
 }

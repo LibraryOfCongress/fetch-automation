@@ -21,7 +21,7 @@ public class AlertPage {
     @FindBy(css = ".alert-notification")
     public WebElement alertMsg;
 
-    @FindBy(css = ".q-banner__actions")
+    @FindBy(css = "[aria-label='dismissAlert']")
     public WebElement cancelGenAlert;
 
     @FindBy(xpath = "(//span[.='Show Persistent Alert'])[1]")
@@ -33,7 +33,6 @@ public class AlertPage {
     @FindBy(xpath = "(//span[.='Cancel'])[1]")
     public WebElement cancelPersistentAlert;
 
-//    @FindBy(css = "p.text-body1")
     @FindBy(css = "[class='q-banner__content col text-body2'] [class='text-body1']")
     public WebElement toastMsg;
 

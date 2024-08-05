@@ -37,4 +37,10 @@ public class PickListPage {
 
     @FindBy(css = ".q-table th")
     public List<WebElement> itemsInJobTableColumnNames;
+
+    @FindBy(xpath = "//td[.='Created']")
+    public WebElement createdJob;
+
+    @FindBy(xpath = "//td[.='Running']")
+    public WebElement runningJob;
 }

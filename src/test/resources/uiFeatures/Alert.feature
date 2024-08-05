@@ -16,12 +16,19 @@ Feature: Alert Notification Validation
     @accessionJobAlerts
     Scenario: User is able to validate UI Alert Notifications on Accession Job Page
       When user navigates to the Accession Page
-      And user navigates to Accession Job for a Non-Trayed Item
+      When user clicks Start Accession button
+      And user selects Non-Tray Accession
+      And user selects all fields
+      And user clicks submit button
+      Then user verifies "An Accession Job has successfully been created." alert msg
       And user clicks Enter Barcode button
       And user enters barcode and clicks Submit button
-      Then user verifies "The item has been added." alert msg
-      When user selects the barcode
+      When user selects one of the barcodes in the table
       And user clicks Delete
       And user clicks Confirm
       Then user verifies "The selected item(s) has been removed." alert msg
+      When user clicks three dot menu next to Accession Job Number
+      And user clicks Cancel Job
+      Then user verifies warning message
+      And user confirms cancellation
 

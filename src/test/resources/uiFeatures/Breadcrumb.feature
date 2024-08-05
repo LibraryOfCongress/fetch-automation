@@ -5,39 +5,27 @@ Feature: Breadcrumb Functionality Validation
   Background:
     Given user navigates to FETCH Homepage
 
-  @FETCH-533 @FETCH-472
+  @FETCH-533 @FETCH-472 @regression
   Scenario: User should be able to validate Breadcrumb Navigation
-    When user clicks Verification on side navigation menu
+    When user clicks Accession on side navigation menu
     Then user should see the corresponding breadcrumbs
 
-      | breadcrumb   |
-      | Home         |
-      | Verification |
+      | breadcrumb |
+      | Home       |
+      | Accession  |
 
-    And user selects a Verification Job
-    Then user should see the corresponding breadcrumbs
-
-      | breadcrumb   |
-      | Home         |
-      | Verification |
-      | 1            |
-
-    When user clicks on Verification breadcrumb link
-    Then user should navigate to Verification page
+    And user clicks Start Accession button
+    And user selects Non-Tray Accession
+    And user selects all required fields
+    And user clicks submit button
+    Then user should see the following breadcrumbs
+    When user clicks three dot menu next to Accession Job Number
+    And user clicks Cancel Job
+    Then user verifies warning message
+    And user confirms cancellation
+    Then user is able to click X to cancel alert
     When user clicks on Home breadcrumb link
     Then user should navigate to the Home page
-    When user clicks Admin on side navigation menu
-    And user selects Building
-    Then user should see the corresponding breadcrumbs
 
-      | breadcrumb   |
-      | Home         |
-      | Admin        |
-      | Cabin Branch |
-
-    When user clicks on Admin breadcrumb link
-    Then user should navigate to the Admin page
-    When user clicks on Home breadcrumb link
-    Then user should navigate to the Home page
 
 

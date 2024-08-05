@@ -35,9 +35,6 @@ public class BrowserFactory {
                     options.addArguments("--ignore-certificate-errors");
                     options.setExperimentalOption("prefs", chromePrefs);
 //                    options.addArguments("--auto-open-devtools-for-tabs");
-
-
-
                     driver = new ChromeDriver(options);
                 }
                 else {
