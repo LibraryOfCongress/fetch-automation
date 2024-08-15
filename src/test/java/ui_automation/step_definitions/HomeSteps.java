@@ -94,7 +94,7 @@ public class HomeSteps {
 
     @When("user clicks Shelving on side navigation menu")
     public void user_clicks_Shelving_on_side_navigation_menu() throws InterruptedException {
-        home.shelvingLink.click();
+        Helper.clickWithJS(home.shelvingLink);
         wait.hardWait(1000);
     }
 
@@ -164,11 +164,21 @@ public class HomeSteps {
         Thread.sleep(1000);
     }
 
-    @When("user logs in as a tester")
-    public void user_logs_in_as_a_tester() throws InterruptedException {
+    @When("user logs in as a tester1")
+    public void user_logs_in_as_a_tester1() throws InterruptedException {
         home.loginButton.click();
         wait.hardWait(1000);
         home.usernameField.sendKeys("tester1@loctest.gov");
+        WaitHelper.waitForClickability(home.login, 20);
+        home.login.click();
+        wait.hardWait(2000);
+    }
+
+    @And("user logs in as an admin")
+    public void user_logs_in_as_an_admin() throws InterruptedException {
+        home.loginButton.click();
+        wait.hardWait(1000);
+        home.usernameField.sendKeys("admin@loctest.gov");
         WaitHelper.waitForClickability(home.login, 20);
         home.login.click();
         wait.hardWait(2000);
@@ -189,7 +199,7 @@ public class HomeSteps {
     public void user_should_be_able_to_verify_account_name_on_user_dashboard() {
         WebElement userIcon = driver.findElement(By.cssSelector("[aria-label='UserMenu']"));
         userIcon.click();
-        wait.waitForClickability(home.user,1000);
+        WaitHelper.waitForClickability(home.user,1000);
         String actualAccountName = home.user.getText();
         Assert.assertEquals("Account name is not verified!", "Tester One", actualAccountName);
     }

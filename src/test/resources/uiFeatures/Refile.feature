@@ -3,11 +3,13 @@
 Feature: Refile Page Functionality Validation
 
   Background:
-    Given user navigates to the Refile Page
+    Given user navigates to FETCH Homepage
+    And user logs in as a tester1
 
 
   @FETCH-834 @FETCH-763 @regression
   Scenario: User should be able to verify Front-End Layout of Refile Dashboard
+    When user navigates to the Refile Page
     Then user verifies Refile Job table is displayed
     And user verifies Refile Job table column names
 

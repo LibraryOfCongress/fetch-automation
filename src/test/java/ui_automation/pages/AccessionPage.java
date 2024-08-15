@@ -18,7 +18,7 @@ public class AccessionPage {
     }
 
 
-    @FindBy(css = "button[class$='q-focusable q-hoverable accession-btn text-h4']")
+    @FindBy(xpath = "//button[.='Start Accession']")
     public WebElement startAccessionBtn;
 
     @FindBy(css = ".column > :nth-child(2) > .q-btn__content")
@@ -124,9 +124,6 @@ public class AccessionPage {
     @FindBy(css = "td.q-table--col-auto-width [role='checkbox']")
     public WebElement scannedItemCheckbox;
 
-    @FindBy(css = "td.q-table--col-auto-width [role='checkbox']")
-    public List<WebElement> scannedItemCheckboxes;
-
     @FindBy(css = "div[class='q-banner row items-center q-banner--dense rounded-borders alert-banner text-positive bg-color-green-light']")
     public WebElement alertMsg;
 
@@ -139,7 +136,7 @@ public class AccessionPage {
     @FindBy(xpath = "//*[.='Delete']/../..")
     public WebElement deleteBtn;
 
-    @FindBy(xpath = "//button[.='Confirm']")
+    @FindBy(xpath = "//button[.='Delete Item(s)']")
     public WebElement confirmDelete;
 
     @FindBy(xpath = "//i[.='more_vert']")
@@ -163,9 +160,6 @@ public class AccessionPage {
     @FindBy(xpath = "//button[.='Complete']")
     public WebElement complete;
 
-    @FindBy(css = "[class='accession-card-barcode text-h4']")
-    public List<WebElement> accessionJobNumbers;
-
     @FindBy(css = "[class='q-card__section q-card__section--vert']")
     public WebElement warningMsg;
 
@@ -178,7 +172,7 @@ public class AccessionPage {
     @FindBy(css = "[placeholder='Please Enter Tray Barcode']")
     public WebElement editTrayBarcodeField;
 
-    @FindBy(css = "[class='accession-card-barcode text-h4']")
+    @FindBy(css = "[class='q-table'] tbody tr")
     public List<WebElement> accessionJobsList;
 
 

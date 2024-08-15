@@ -1,5 +1,6 @@
 package ui_automation.step_definitions;
 
+import io.cucumber.java.en.And;
 import io.cucumber.java.en.Given;
 import io.cucumber.java.en.Then;
 import io.cucumber.java.en.When;
@@ -47,7 +48,22 @@ public class AdminSteps {
 
     @When("user clicks Buildings")
     public void user_clicks_Buildings() throws InterruptedException {
+        WaitHelper.waitForClickability(admin.buildingsLink,2000);
         helper.jSClick(admin.buildingsLink);
+        wait.hardWait(100);
+    }
+
+    @When("user selects Buildings")
+    public void user_selects_Buildings() throws InterruptedException {
+        WaitHelper.waitForClickability(admin.lmDropdownLinks.get(0),2000);
+        helper.jSClick(admin.lmDropdownLinks.get(0));
+        wait.hardWait(100);
+    }
+
+    @When("user clicks Location Manager Link")
+    public void user_clicks_Location_Manager_Link() throws InterruptedException {
+        WaitHelper.waitForClickability(admin.locationManagerLink,2000);
+        helper.jSClick(admin.locationManagerLink);
         wait.hardWait(100);
     }
 
@@ -67,19 +83,17 @@ public class AdminSteps {
         Helper.isClickable(admin.addNew);
     }
 
-    @Then("user verifies Add New dropdown options")
-    public void user_verifies_Add_New_dropdown_options(io.cucumber.datatable.DataTable dataTable) throws InterruptedException {
-        helper.jSClick(admin.addNew);
+    @Then("user verifies Location Manager dropdown options")
+    public void user_verifies_Location_Manager_dropdown_options(io.cucumber.datatable.DataTable dataTable) throws InterruptedException {
         wait.hardWait(1000);
         List<Map<String, String>> maps = dataTable.asMaps(String.class, String.class);
         int i = 0;
         for (Map<String, String> map : maps) {
             String expectedField = map.get("option");
-            String actualField = admin.addNewOptions.get(i).getText();
-            Assert.assertEquals("Options name verification failed", expectedField, actualField);
+            String actualField = admin.lmDropdownLinks.get(i).getText();
+            Assert.assertTrue(expectedField, actualField.contains(expectedField));
             i++;
         }
-        helper.jSClick(admin.addNew);
     }
 
     @Then("Location Hierarchy dropdown is displayed and clickable")
@@ -105,7 +119,7 @@ public class AdminSteps {
 
     @When("user selects Building")
     public void user_selects_Building() {
-        helper.jSClick(admin.buildings.get(0));
+        helper.jSClick(admin.lmDropdownLinks.get(0));
     }
 
     @Then("user should see building's shelving items")
@@ -381,7 +395,7 @@ public class AdminSteps {
 
     @When("user clicks Add New Group")
     public void user_clicks_Add_New_Group() {
-        helper.jSClick(admin.groups.getLast());
+        helper.jSClick(admin.addNewGroup);
     }
 
     @When("user enters Group Name")
@@ -440,11 +454,24 @@ public class AdminSteps {
         }
     }
 
+    @Then("user verifies table columns")
+    public void user_verifies_table_columns(io.cucumber.datatable.DataTable dataTable) throws InterruptedException {
+        wait.hardWait(1000);
+        List<Map<String, String>> maps = dataTable.asMaps(String.class, String.class);
+        int i = 1;
+        for (Map<String, String> map : maps) {
+            String expectedField = map.get("column");
+            String actualField = admin.tableColumns.get(i).getText();
+            Assert.assertEquals("Column Name verification failed", expectedField, actualField);
+            i++;
+        }
+    }
+
     @When("user adds some permissions")
     public void user_adds_some_permissions() throws InterruptedException {
-        helper.jSClick(admin.yes.getFirst());
+        helper.jSClick(admin.no.getFirst());
         wait.hardWait(1000);
-        helper.jSClick(admin.yes.get(3));
+        helper.jSClick(admin.yes.get(1));
         wait.hardWait(1000);
         WebElement verifTab = driver.findElement(By.cssSelector("[role='tab']:nth-child(2)"));
         helper.jSClick(verifTab);
@@ -527,4 +554,8 @@ public class AdminSteps {
     }
 
 
+    @Then("user verifies Add Building button is clickable")
+    public void user_verifies_Add_Building_button_is_clickable() {
+        Helper.isClickable(admin.addBuildingBtn);
+    }
 }

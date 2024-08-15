@@ -71,7 +71,6 @@ public class Helper {
         }
     }
 
-
     public static void verifyElementDisabled(WebElement element) {
         if(element.getAttribute("aria-disabled").equals("true")) {
             System.out.println("Button is disabled");

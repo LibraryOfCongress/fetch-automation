@@ -3,6 +3,7 @@
 Feature: Alert Notification Validation
   Background:
     Given user navigates to the testing link
+    And user logs in as a tester1
 
   @FETCH-457 @FETCH-330
   Scenario: User is able to verify UI Alert Notification

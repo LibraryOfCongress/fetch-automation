@@ -4,6 +4,7 @@ Feature: Breadcrumb Functionality Validation
 
   Background:
     Given user navigates to FETCH Homepage
+    And user logs in as a tester1
 
   @FETCH-533 @FETCH-472 @regression
   Scenario: User should be able to validate Breadcrumb Navigation

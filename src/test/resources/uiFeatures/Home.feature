@@ -8,7 +8,8 @@ Feature: Home Page Functionality Validation
 
   @regression
   Scenario: User should be able to validate Homepage icons and tabs
-    When user looks at the header
+    When user logs in as a tester1
+    And user looks at the header
     Then the hamburger menu is clickable
     And the search bar is visible
     And the login button is clickable
@@ -17,6 +18,7 @@ Feature: Home Page Functionality Validation
 
   @regression @smoke
   Scenario: User should be able to validate side navigation tabs on Homepage
+    When user logs in as a tester1
     Then user verifies side navigation tabs on Homepage
 
       | tabname      |
@@ -28,12 +30,12 @@ Feature: Home Page Functionality Validation
       | Refile       |
       | Withdrawal   |
       | Reports      |
-      | Admin        |
 
 
   @FETCH-526 @FETCH-454 @active_links @regression @smoke
   Scenario: User should tell which Page/Section of the WebApp they are currently at
-    When user clicks Accession on side navigation menu
+    When user logs in as a tester1
+    And user clicks Accession on side navigation menu
     Then verify that Accession navigation link on side menu is highlighted
     When user clicks Verification on side navigation menu
     Then verify that Verification navigation link on side menu is highlighted
@@ -53,7 +55,7 @@ Feature: Home Page Functionality Validation
 
   @FETCH-694 @FETCH-548 @smoke
   Scenario: User should be able to verify successful login with valid credentials
-    When user logs in as a tester
+    When user logs in as a tester1
     Then user should be able to verify account name on user dashboard
 
 
@@ -65,7 +67,7 @@ Feature: Home Page Functionality Validation
 
   @FETCH-765 @FETCH-670 @scanning @regression
   Scenario: User should be able to use Toggle Scanning Function
-    When user logs in as a tester
+    When user logs in as a tester1
     And user switches on Toggle Barcode Scan
     Then verify barcode scanning is enabled
     When user enters barcode by scanning

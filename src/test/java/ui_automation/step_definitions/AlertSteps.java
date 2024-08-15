@@ -89,6 +89,7 @@ public class AlertSteps {
 
     @When("user clicks Confirm")
     public void user_clicks_Confirm() throws InterruptedException {
+        WaitHelper.waitForClickability(accession.confirmDelete, 2000);
         helper.jSClick(accession.confirmDelete);
         wait.hardWait(2000);
     }

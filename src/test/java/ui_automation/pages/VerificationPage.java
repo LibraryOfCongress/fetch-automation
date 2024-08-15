@@ -19,16 +19,16 @@ public class VerificationPage {
     @FindBy(xpath = "//*[text()='Trayed']")
     public List<WebElement> trayedVerificationJobs;
 
-    @FindBy(css = "[class='verification-card-barcode text-h4']")
+    @FindBy(css = "[class='q-table'] tbody tr")
     public List<WebElement> verificationJobsList;
 
     @FindBy(xpath = "//*[text()='Non-Trayed']")
     public WebElement nonTrayedVerificationJob;
 
-    @FindBy(xpath = "//div[.='Trayed']")
+    @FindBy(xpath = "//*[text()='Trayed']")
     public List<WebElement> trayedJobList;
 
-    @FindBy(xpath = "//div[.='Non-Trayed']")
+    @FindBy(xpath = "//*[text()='Non-Trayed']")
     public List<WebElement> nonTrayedJobList;
 
     @FindBy(css = "[class$='q-mb-md-xl q-mb-lg-none']")
@@ -76,10 +76,16 @@ public class VerificationPage {
     @FindBy(css = "[class='q-td text-left'] span")
     public List<WebElement> scannedItemList;
 
-    @FindBy(css = "[class='q-td text-right']")
-    public List<WebElement> verifiedCheckMark;
+    @FindBy(css = "[class='text-bold text-positive']")
+    public WebElement verifiedCheckMark;
 
     @FindBy(xpath = "//button[.='Add New Item']")
     public WebElement addNewItem;
+
+    @FindBy(xpath = "(//i[.='more_vert'])[2]")
+    public WebElement menuToPrintJob;
+
+    @FindBy(css = "[role='menuitem']")
+    public WebElement printJob;
 
 }

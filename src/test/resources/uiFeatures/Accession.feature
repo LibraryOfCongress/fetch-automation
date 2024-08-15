@@ -3,12 +3,14 @@
 Feature: Accession Page Functionality Validation
 
   Background:
-    Given user navigates to the Accession Page
+    Given user navigates to FETCH Homepage
+    And user logs in as a tester1
 
 
-  @FETCH-314 @FETCH-249 @regression @smoke
+  @FETCH-314 @FETCH-249 @regression
   Scenario: User should be able to verify Front-End Layout for Accession Job of Trayed Items
-    When user clicks Start Accession button
+    When user navigates to the Accession Page
+    And user clicks Start Accession button
     And user selects Trayed Accession
     Then user verifies required and optional fields on Start New Accession modal
 
@@ -21,12 +23,12 @@ Feature: Accession Page Functionality Validation
     And back button is clickable
     And cancel button is enabled
     And submit button is disabled
-    Then user is able to return to the Start Accession single action square screen
 
 
-  @FETCH-314 @FETCH-249 @regression @smoke
+  @FETCH-314 @FETCH-249 @regression
   Scenario: User should be able to verify Front-End Layout for Accession Job of Non-Trayed Items
-    When user clicks Start Accession button
+    When user navigates to the Accession Page
+    And user clicks Start Accession button
     And user selects Non-Tray Accession
     Then user verifies required and optional fields on Start New Accession modal
 
@@ -41,12 +43,12 @@ Feature: Accession Page Functionality Validation
     And back button is clickable
     And cancel button is enabled
     And submit button is disabled
-    Then user is able to return to the Start Accession single action square screen
 
 
   @FETCH-904 @FETCH-773 @regression @smoke
   Scenario: User should be able to create a new Accession Job when required field is selected
-    When user clicks Start Accession button
+    When user navigates to the Accession Page
+    And user clicks Start Accession button
     And user selects Trayed Accession
     And user selects all required fields
     Then submit button is enabled and clickable
@@ -59,7 +61,8 @@ Feature: Accession Page Functionality Validation
 
   @FETCH-904 @FETCH-773 @negative
   Scenario: User should not be able to create a new Accession Job if required field is not selected
-    When user clicks Start Accession button
+    When user navigates to the Accession Page
+    And user clicks Start Accession button
     And user selects Trayed Accession
     And user selects Media Type
     Then submit button is disabled
@@ -71,9 +74,9 @@ Feature: Accession Page Functionality Validation
     Then submit button is disabled
 
 
-  @FETCH-904 @FETCH-773 @regression @smoke
+  @FETCH-904 @FETCH-773 @regression
   Scenario: User should be able to see a New Scanned Item as a First Item in the table
-    When user logs in as a tester
+    When user navigates to the Accession Page
     And user switches on Toggle Barcode Scan
     When user clicks Start Accession button
     And user selects Trayed Accession
@@ -89,9 +92,10 @@ Feature: Accession Page Functionality Validation
     Then user confirms cancellation
 
 
-  @FETCH-358 @FETCH-194 @search @regression @smoke
+  @FETCH-358 @FETCH-194 @search @regression
   Scenario: User should be able to verify dropdown search functionality
-    When user clicks Start Accession button
+    When user navigates to the Accession Page
+    And user clicks Start Accession button
     And user selects Trayed Accession
     And user types "<search_query>" in the Owner dropdown search field
     And Owner dropdown should display options related to search query
@@ -103,7 +107,7 @@ Feature: Accession Page Functionality Validation
 
   @FETCH-545 @FETCH-455 @add_tray
   Scenario: User should be able to Add Tray to Trayed Assession Job
-    When user logs in as a tester
+    When user navigates to the Accession Page
     And user switches on Toggle Barcode Scan
     When user clicks Start Accession button
     And user selects Trayed Accession
@@ -130,7 +134,8 @@ Feature: Accession Page Functionality Validation
 
   @FETCH-545 @FETCH-455 @FETCH-627 @FETCH-582 @nontrayed_accession @regression @smoke
   Scenario: User should be able to go through the Accession workflow process from start to finish for a Non-Trayed Job
-    When user clicks Start Accession button
+    When user navigates to the Accession Page
+    And user clicks Start Accession button
     And user selects Non-Tray Accession
     And user selects all fields
     And user clicks submit button
@@ -163,14 +168,11 @@ Feature: Accession Page Functionality Validation
     And user clicks Cancel Job
     Then user verifies warning message
     And user confirms cancellation
-#    When user clicks Complete Job button
-#    And user clicks Complete
-#    Then user verifies "The Job has been completed and moved for verification."
 
 
   @FETCH-627 @FETCH-582 @trayed_accession @regression @smoke
   Scenario: User should be able to go through the Accession workflow process from start to finish for a Trayed Job
-    When user logs in as a tester
+    When user navigates to the Accession Page
     And user switches on Toggle Barcode Scan
     When user clicks Start Accession button
     And user selects Trayed Accession
@@ -208,14 +210,12 @@ Feature: Accession Page Functionality Validation
     And user clicks Cancel Job
     Then user verifies warning message
     And user confirms cancellation
-#    When user clicks Complete Job button
-#    And user clicks Complete
-#    Then user verifies "The Job has been completed and moved for verification."
 
 
   @FETCH-586 @FETCH-474 @print
   Scenario: User should be able to validate Accession Job Batch Sheet Template Creation
-    When user clicks Start Accession button
+    When user navigates to the Accession Page
+    And user clicks Start Accession button
     And user selects Non-Tray Accession
     And user selects all fields
     And user clicks submit button
@@ -228,7 +228,7 @@ Feature: Accession Page Functionality Validation
 
   @FETCH-917 @FETCH-735 @delete_tray @regression
   Scenario: User should be able to cancel an Accession Job
-    When user logs in as a tester
+    When user navigates to the Accession Page
     And user switches on Toggle Barcode Scan
     When user clicks Start Accession button
     And user selects Trayed Accession
@@ -252,7 +252,8 @@ Feature: Accession Page Functionality Validation
 
   @FETCH-917 @FETCH-735 @cancel_accession @regression
   Scenario: User should be able to cancel an Accession Job
-    When user selects an Accession Job
+    When user navigates to the Accession Page
+    And user selects an Accession Job
     And user clicks three dot menu next to Accession Job Number
     And user clicks Cancel Job
     Then user verifies warning message

@@ -32,7 +32,6 @@ public class ShelvingSteps {
     static String itemBarcode = "";
 
 
-
     @Given("user navigates to Shelving Page")
     public void user_navigates_to_Shelving_Page() {
         Driver.getInstance().getDriver().get(ConfigurationReader.getProperty("ui_config.properties", "shelvingURL"));
@@ -98,7 +97,7 @@ public class ShelvingSteps {
         String shelfTableValue = "";
         String filterDropdownValue = "";
         for (WebElement option : shelving.shelfTableColumns) {
-            WaitHelper.waitForVisibility(option,2000);
+            WaitHelper.waitForVisibility(option, 2000);
             shelfTableValue = option.getText();
         }
         for (WebElement value : shelving.allDropdownOptions) {
@@ -111,7 +110,7 @@ public class ShelvingSteps {
     @Then("user verifies all options are selected")
     public void user_verifies_all_options_are_selected() {
         for (WebElement checkbox : shelving.allDropdownOptions) {
-            if(checkbox.getAttribute("aria-selected").equals("false")){
+            if (checkbox.getAttribute("aria-selected").equals("false")) {
                 System.out.println("Not all the checkboxes are selected");
             }
         }
@@ -119,19 +118,19 @@ public class ShelvingSteps {
 
     @Then("user is able to deselect all the options")
     public void user_is_able_to_deselect_all_the_options() {
-        for(WebElement checkbox : shelving.allDropdownOptions){
+        for (WebElement checkbox : shelving.allDropdownOptions) {
             select.selectCheckBox(checkbox, true);
         }
     }
 
     @Then("user selects options A, B and C from the dropdown")
     public void user_selects_options_A_B_and_C_from_the_dropdown() {
-        for(WebElement checkbox : shelving.allDropdownOptions) {
-        String checkboxValue = checkbox.getText();
-        if(checkboxValue.equals("Job Number") || checkboxValue.equals("Status") ||
-                checkboxValue.equals("Date Added") ){
-            checkbox.click();
-        }
+        for (WebElement checkbox : shelving.allDropdownOptions) {
+            String checkboxValue = checkbox.getText();
+            if (checkboxValue.equals("Job Number") || checkboxValue.equals("Status") ||
+                    checkboxValue.equals("Date Added")) {
+                checkbox.click();
+            }
         }
     }
 
@@ -139,21 +138,22 @@ public class ShelvingSteps {
     public void selected_options_are_displayed_on_the_page() {
         String checkboxValue = "";
         String shelfTableValue = "";
-        for(WebElement checkbox : shelving.allDropdownOptions){
-            if(checkbox.getAttribute("aria-selected").equals("true")) {
+        for (WebElement checkbox : shelving.allDropdownOptions) {
+            if (checkbox.getAttribute("aria-selected").equals("true")) {
                 WaitHelper.waitForVisibility(checkbox, 2000);
                 checkboxValue = checkbox.getText();
             }
         }
-        for(int i = 0; i < shelving.shelfTableColumns.size(); i++) {
-           shelfTableValue = shelving.shelfTableColumns.get(i).getText();
+        for (int i = 0; i < shelving.shelfTableColumns.size(); i++) {
+            shelfTableValue = shelving.shelfTableColumns.get(i).getText();
         }
         Assert.assertEquals("Selected options are not displayed!", checkboxValue, shelfTableValue);
     }
 
     @When("user clicks on Create Shelving Job button")
     public void user_clicks_on_create_shelving_job_button() {
-     helper.jSClick(shelving.createShelvingJob);
+        WaitHelper.waitForClickability(shelving.createShelvingJob, 1000);
+        shelving.createShelvingJob.click();
     }
 
     @Then("user verifies Create Shelving Job modal sections")
@@ -192,8 +192,8 @@ public class ShelvingSteps {
 
     @Then("submit button is enabled and clickable")
     public void submit_button_is_enabled_and_clickable() {
-      Helper.verifyElementEnabled(shelving.submit);
-      Helper.isClickable(shelving.submit);
+        Helper.verifyElementEnabled(shelving.submit);
+        Helper.isClickable(shelving.submit);
     }
 
     @When("user unchecks menu items to their preferred order")
@@ -209,56 +209,56 @@ public class ShelvingSteps {
     @Then("user verifies the Shelf Table column names")
     public void user_verifies_the_Shelf_Table_column_names() {
         String column = "";
-        for(WebElement element: shelving.shelfTableColumns) {
-             column = element.getText();
+        for (WebElement element : shelving.shelfTableColumns) {
+            column = element.getText();
         }
-        List<String> shelfColumns =new ArrayList<>(Arrays.asList("Job Number", "Status",
+        List<String> shelfColumns = new ArrayList<>(Arrays.asList("Job Number", "Status",
                 "Assigned User"));
-               if(shelfColumns.contains(column)) {
-              System.out.println("Table has correct column names");
-               } else{
-              System.out.println("Table has wrong column names");
-     }
+        if (shelfColumns.contains(column)) {
+            System.out.println("Table has correct column names");
+        } else {
+            System.out.println("Table has wrong column names");
+        }
     }
 
     @When("user enters a Shelf Number")
     public void user_enters_a_Shelf_Number() {
-    shelving.enterShelfNumber.sendKeys("2");
-    actions.sendKeys(Keys.TAB).build().perform();
+        shelving.enterShelfNumber.sendKeys("2");
+        actions.sendKeys(Keys.TAB).build().perform();
     }
 
     @When("user enters a Shelf Width")
     public void user_enters_a_Shelf_Width() {
-    shelving.enterShelfWidth.sendKeys("5");
-    actions.sendKeys(Keys.TAB).build().perform();
+        shelving.enterShelfWidth.sendKeys("5");
+        actions.sendKeys(Keys.TAB).build().perform();
     }
 
     @When("user enters a Shelf Height")
     public void user_enters_a_Shelf_Height() {
-    shelving.enterShelfHeight.sendKeys("3");
-    actions.sendKeys(Keys.TAB).build().perform();
+        shelving.enterShelfHeight.sendKeys("3");
+        actions.sendKeys(Keys.TAB).build().perform();
     }
 
     @When("user enters a Shelf Depth")
     public void user_enters_a_Shelf_Depth() {
-    shelving.enterShelfDepth.sendKeys("1");
-    actions.sendKeys(Keys.TAB).build().perform();
+        shelving.enterShelfDepth.sendKeys("1");
+        actions.sendKeys(Keys.TAB).build().perform();
     }
 
     @When("user selects a Container Type")
-    public void user_selects_a_Container_Type() throws InterruptedException {
-    shelving.selectType.click();
-    genHelp.getElement(By.cssSelector("div [role='option']:nth-child(1)")).click();
+    public void user_selects_a_Container_Type() {
+        shelving.selectType.click();
+        genHelp.getElement(By.cssSelector("div [role='option']:nth-child(1)")).click();
     }
 
     @When("user clicks Create Shelf button")
     public void user_clicks_Create_Shelf_button() {
-    shelving.submit.click();
+        shelving.submit.click();
     }
 
     @When("user selects From Verification Job option")
-    public void user_selects_From_Verification_Job_option()  {
-       helper.jSClick(shelving.fromVerificationJob);
+    public void user_selects_From_Verification_Job_option() {
+        helper.jSClick(shelving.fromVerificationJob);
     }
 
     @When("user selects No")
@@ -269,8 +269,8 @@ public class ShelvingSteps {
     @Then("user selects a Verification Job from the Verification Job\\(s) List")
     public void user_selects_a_Verification_Job_from_the_Verification_Job_s_List() throws InterruptedException {
         shelving.selectByNumber.click();
-        for(WebElement job: shelving.verificationJobsList) {
-            if (job.getText().equals(VerificationSteps.verifificationJobNumber)){
+        for (WebElement job : shelving.verificationJobsList) {
+            if (job.getText().equals(VerificationSteps.verifificationJobNumber)) {
                 job.click();
             }
         }
@@ -279,7 +279,7 @@ public class ShelvingSteps {
     }
 
     @Then("user selects a Building from Shelving Locations")
-    public void user_selects_a_Building_from_Shelving_Locations() throws InterruptedException {
+    public void user_selects_a_Building_from_Shelving_Locations() {
         WaitHelper.waitForClickability(shelving.building, 1000);
         shelving.building.click();
         helper.jSClick(shelving.buildings.get(0));
@@ -292,14 +292,14 @@ public class ShelvingSteps {
     }
 
     @When("user selects Yes")
-    public void user_selects_Yes() throws InterruptedException {
-        WaitHelper.waitForClickability(shelving.yes,3000);
+    public void user_selects_Yes() {
+        WaitHelper.waitForClickability(shelving.yes, 3000);
         shelving.yes.click();
     }
 
     @Then("a new modal with shelving location options along with the verification job selection is displayed")
     public void a_new_modal_with_shelving_location_options_along_with_the_verification_job_selection_is_displayed() {
-       Helper.verifyElementDisplayed(shelving.createShelvingJobModal);
+        Helper.verifyElementDisplayed(shelving.createShelvingJobModal);
     }
 
     @When("user navigates to Shelving Job")
@@ -316,13 +316,13 @@ public class ShelvingSteps {
 
     @Then("user should see Edit Location option")
     public void user_should_see_Edit_Location_option() {
-        WaitHelper.waitForVisibility(shelving.editOrAssign,10);
+        WaitHelper.waitForVisibility(shelving.editOrAssign, 10);
         assertEquals("Edit Location", shelving.editOrAssign.getText());
     }
 
     @Then("user clicks Edit Location button")
     public void user_clicks_Edit_Location_button() {
-       shelving.editOrAssign.click();
+        shelving.editOrAssign.click();
     }
 
     @When("user navigates to Shelving Job with Running Status")
@@ -344,7 +344,7 @@ public class ShelvingSteps {
 
     @Then("Save Edits button is clickable")
     public void save_edits_button_is_clickable() {
-       Helper.isClickable(shelving.saveEdits);
+        Helper.isClickable(shelving.saveEdits);
     }
 
     @Then("Cancel edits button is clickable")
@@ -359,7 +359,7 @@ public class ShelvingSteps {
 
     @When("user selects Direct To Shelve option")
     public void user_selects_direct_to_shelve_option() {
-       helper.jSClick(shelving.directToShelve);
+        helper.jSClick(shelving.directToShelve);
     }
 
     @Then("user selects Right side")
@@ -376,18 +376,19 @@ public class ShelvingSteps {
 
     @When("user clicks Execute Job")
     public void user_clicks_execute_job() throws InterruptedException {
-       helper.jSClick(shelving.executeJob);
-       wait.hardWait(2000);
-       helper.jSClick(shelving.beAwareMsg);
-       wait.hardWait(100);
+        helper.jSClick(shelving.executeJob);
+        wait.hardWait(2000);
+        helper.jSClick(shelving.beAwareMsg);
+        wait.hardWait(100);
     }
 
     @Then("user selects a created Verification Job")
     public void user_selects_a_created_Verification_Job() throws InterruptedException {
+        WaitHelper.waitForClickability(shelving.selectByNumber, 1000);
         shelving.selectByNumber.click();
-        for(WebElement dropdownValue: shelving.verificationJobsList) {
-            ((JavascriptExecutor) driver).executeScript("arguments[0].scrollIntoView(true);",dropdownValue);
-            if(dropdownValue.getText().contains(VerificationSteps.verifificationJobNumber)) {
+        for (WebElement dropdownValue : shelving.verificationJobsList) {
+            ((JavascriptExecutor) driver).executeScript("arguments[0].scrollIntoView(true);", dropdownValue);
+            if (dropdownValue.getText().contains(VerificationSteps.verifificationJobNumber)) {
                 dropdownValue.click();
             }
         }
@@ -406,8 +407,8 @@ public class ShelvingSteps {
 
     @And("user scans Container")
     public void user_scans_Container() throws InterruptedException {
-      driver.findElement(By.tagName("body")).sendKeys(shelving.containerBarcode.getText());
-      wait.hardWait(2000);
+        driver.findElement(By.tagName("body")).sendKeys(shelving.containerBarcode.getText());
+        wait.hardWait(2000);
     }
 
     @And("user scans wrong Container")
@@ -420,28 +421,28 @@ public class ShelvingSteps {
     public void user_scans_shelf_to_verify_Container() throws InterruptedException {
         driver.findElement(By.tagName("body")).sendKeys("1");
         WaitHelper.waitForVisibility(shelving.assignedShelf, 1000);
-        String shelf = shelving.assignedShelf.getText().substring(79,85);
+        String shelf = shelving.assignedShelf.getText().substring(79, 85);
         shelving.closeMsg.click();
         wait.hardWait(1000);
-        driver.findElement(By.tagName("body")).sendKeys(""+ shelf + "");
+        driver.findElement(By.tagName("body")).sendKeys("" + shelf + "");
         Assert.assertEquals("Shelved", shelving.shelvedCheckMark.getText());
     }
 
     @And("user verifies second Container if exists")
     public void user_verifies_second_Container_if_exists() throws InterruptedException {
         List<WebElement> containerList = driver.findElements(By.cssSelector("[class='q-table'] tbody tr"));
-        if(containerList.size() > 1) {
+        if (containerList.size() > 1) {
             driver.findElement(By.tagName("body")).sendKeys(shelving.containerBarcode.getText());
             wait.hardWait(2000);
             driver.findElement(By.tagName("body")).sendKeys("1");
             WaitHelper.waitForVisibility(shelving.assignedShelf, 1000);
-            String shelf = shelving.assignedShelf.getText().substring(79,85);
+            String shelf = shelving.assignedShelf.getText().substring(79, 85);
             System.out.println(shelf);
             shelving.closeMsg.click();
             wait.hardWait(1000);
-            driver.findElement(By.tagName("body")).sendKeys(""+ shelf + "");
+            driver.findElement(By.tagName("body")).sendKeys("" + shelf + "");
             Assert.assertEquals("Shelved", shelving.shelvedCheckMark.getText());
-        }else{
+        } else {
             System.out.println("Job has only one container");
         }
     }
@@ -520,7 +521,6 @@ public class ShelvingSteps {
         user_scans_shelf_to_verify_Container();
         user_clicks_Complete_Job();
     }
-
 
 
 }

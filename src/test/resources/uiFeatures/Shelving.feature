@@ -3,12 +3,14 @@
 Feature: Shelving Page Functionality Validation
 
   Background:
-    Given user navigates to Shelving Page
+    Given user navigates to FETCH Homepage
+    And user logs in as a tester1
 
 
   @FETCH-313 @FETCH-165 @regression
   Scenario: User should be able to validate Shelf Management icons and tabs
-    When user is on Shelving page
+    When user navigates to Shelving Page
+    And user is on Shelving page
     Then the hamburger menu is clickable
     And the search bar is visible
     And the login button is clickable
@@ -18,7 +20,8 @@ Feature: Shelving Page Functionality Validation
 
   @FETCH-313 @FETCH-165
   Scenario: User should be able to select multiple options from Rearrange dropdown
-    When user clicks on Rearrange dropdown
+    When user navigates to Shelving Page
+    And user clicks on Rearrange dropdown
     Then user verifies dropdown options
 
       | optionname             |
@@ -34,7 +37,8 @@ Feature: Shelving Page Functionality Validation
 
   @FETCH-313 @FETCH-165 @regression
   Scenario: User should be able to select multiple options from Rearrange Dropdown
-    When user clicks on Rearrange dropdown
+    When user navigates to Shelving Page
+    And user clicks on Rearrange dropdown
     Then user verifies all options are selected
     And user is able to deselect all the options
     And user selects options A, B and C from the dropdown
@@ -43,7 +47,8 @@ Feature: Shelving Page Functionality Validation
 
   @FETCH-313 @FETCH-165
   Scenario: User should be able to validate fields of Create Shelving Job From Verification modal
-    When user clicks on Create Shelving Job button
+    When user navigates to Shelving Page
+    And user clicks on Create Shelving Job button
     And user selects From Verification Job option
     And user selects Yes
     Then a new modal with shelving location options along with the verification job selection is displayed
@@ -70,21 +75,32 @@ Feature: Shelving Page Functionality Validation
 
   @FETCH-360 @FETCH-336 @regression @smoke
   Scenario: User should be able to rearrange tables columns to their preferred order
-    When user clicks on Rearrange dropdown
+    When user navigates to Shelving Page
+    And user clicks on Rearrange dropdown
     And user unchecks menu items to their preferred order
     Then user verifies the Shelf Table column names
 
 
   @FETCH-648 @FETCH-380 @regression @smoke
   Scenario: User should be able to create a Shelving Job from Verification Jobs with Assigning Shelving Location
-    When user clicks Accession on side navigation menu
-    When user completes a Non-Tray Accession Job
-    Then user completes a Non-Tray Verification Job
+    When user navigates to Shelving Page
+    Then user clicks Accession on side navigation menu
+    And user clicks Start Accession button
+    Then user selects Non-Tray Accession
+    When user selects all fields
+    Then user clicks submit button
+    When user clicks Enter Barcode button
+    And user enters second barcode and clicks Submit button
+    When user clicks Complete Job button
+    And user clicks Complete
+    Then user navigates to the Verification Page
+    And user navigates to the verification job
+    And user saves Verification Job number
+    Then user verifies item barcode
     When user clicks Complete Job button
     And user clicks Complete
     Then user verifies "The Job has been completed." msg
     When user clicks Shelving on side navigation menu
-    When user logs in as a tester
     And user switches on Toggle Barcode Scan
     And user clicks on Create Shelving Job button
     And user selects From Verification Job option
@@ -95,16 +111,43 @@ Feature: Shelving Page Functionality Validation
     And user selects Aisle from dropdown
     And user selects Right side
     And user selects Ladder
+    Then submit button is enabled and clickable
+#    And user clicks Submit
+#    Then user verifies "A Shelving Job has been successfully created." notification
+#    And user verifies the Status is "Created"
+#    When user clicks Execute Job
+#    Then user verifies the Status is "Running"
+
+
+  @FETCH-625 @FETCH-382 @FETCH-686 @FETCH-383 @regression
+  Scenario:  User should be able to change Shelving Address within a Shelving Job
+    When user navigates to Shelving Page
+    Then user clicks Accession on side navigation menu
+    And user clicks Start Accession button
+    Then user selects Non-Tray Accession
+    When user selects all fields
+    Then user clicks submit button
+    When user clicks Enter Barcode button
+    And user enters second barcode and clicks Submit button
+    When user clicks Complete Job button
+    And user clicks Complete
+    Then user navigates to the Verification Page
+    And user navigates to the verification job
+    And user saves Verification Job number
+    Then user verifies item barcode
+    When user clicks Complete Job button
+    And user clicks Complete
+    Then user verifies "The Job has been completed." msg
+    When user clicks Shelving on side navigation menu
+    And user clicks on Create Shelving Job button
+    And user selects From Verification Job option
+    Then user selects a created Verification Job
+    And user selects a Building from Shelving Locations
     And user clicks Submit
     Then user verifies "A Shelving Job has been successfully created." notification
     And user verifies the Status is "Created"
     When user clicks Execute Job
     Then user verifies the Status is "Running"
-
-
-  @FETCH-625 @FETCH-382 @FETCH-686 @FETCH-383 @regression
-  Scenario:  User should be able to change Shelving Address within a Shelving Job
-    When user navigates to Shelving Job with Running Status
     And user clicks three dot menu next to a container
     Then user should see Edit Location option
     And user clicks Edit Location button
@@ -117,7 +160,8 @@ Feature: Shelving Page Functionality Validation
 
   @FETCH-686 @FETCH-383 @regression
   Scenario:  User should be able to change Assigned User within a Shelving Job
-    When user navigates to Shelving Job with Running Status
+    When user navigates to Shelving Page
+    Then user navigates to Shelving Job with Running Status
     And user clicks three dot menu next to Job Number
     And user clicks Edit
     Then Assign User dropdown is clickable
@@ -129,8 +173,8 @@ Feature: Shelving Page Functionality Validation
 
   @FETCH-686 @FETCH-383 @negative
   Scenario: User should receive an Error Message when the Wrong Container is scanned
-    When user logs in as a tester
-    And user switches on Toggle Barcode Scan
+    When user navigates to Shelving Page
+    Then user switches on Toggle Barcode Scan
     When user navigates to Shelving Job with Running Status
     And user scans wrong Container
     Then user verifies "The scanned container does not exist in this shelving job. Please try again." alert msg
@@ -138,8 +182,8 @@ Feature: Shelving Page Functionality Validation
 
   @FETCH-648 @FETCH-380 @FETCH-684 @FETCH-438 @FETCH-686 @FETCH-383 @regression @smoke
   Scenario: User should be able to verify the Shelving Process from Verification Job
-    When user clicks Accession on side navigation menu
-    When user logs in as a tester
+    When user navigates to Shelving Page
+    Then user clicks Accession on side navigation menu
     And user switches on Toggle Barcode Scan
     When user completes a Tray Accession Job
     And user navigates to the Verification Page
@@ -175,11 +219,14 @@ Feature: Shelving Page Functionality Validation
 
   @FETCH-685 @FETCH-439
   Scenario: User should be able to create a Shelving Job from Direct to Shelve Method
-    When user clicks on Create Shelving Job button
+    When user navigates to Shelving Page
+    Then user clicks on Create Shelving Job button
     And user selects Direct To Shelve option
     And user selects a Building from Shelving Locations
     And user clicks Submit
     Then user verifies "A Direct Shelving Job has been successfully created." notification
+
+
 
 
 

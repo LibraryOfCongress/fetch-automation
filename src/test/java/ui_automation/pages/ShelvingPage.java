@@ -30,7 +30,7 @@ public class ShelvingPage {
     @FindBy(css = "[role='option']")
     public List<WebElement> allDropdownOptions;
 
-    @FindBy(css = ".col-xs-grow > .q-btn")
+    @FindBy(xpath = "//button[.='Create Shelving Job']")
     public WebElement createShelvingJob;
 
     @FindBy(css = ".q-table th")

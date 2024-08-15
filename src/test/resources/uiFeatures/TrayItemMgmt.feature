@@ -3,10 +3,12 @@
 Feature: Trayed Item Page Validation
 
   Background:
-    Given user navigates to Item Management Page
+    Given user navigates to FETCH Homepage
+    And user logs in as a tester1
 
   @FETCH-287 @FETCH-170 @regression
   Scenario: User should be able to validate Tray Management icons and tabs
+    When user navigates to Item Management Page
     When user looks at the tray header
     Then the name of tray is displayed
     And the hamburger menu is clickable
@@ -26,6 +28,7 @@ Feature: Trayed Item Page Validation
 
   @FETCH-287 @FETCH-170 @regression
   Scenario: User should be able to validate Tray Labels
+    When user navigates to Item Management Page
     Then user verifies tray labels on Items Management Page
 
       | labelname       |
@@ -43,6 +46,7 @@ Feature: Trayed Item Page Validation
 
   @FETCH-298 @FETCH-180 @regression
   Scenario: User should be able to validate Items in Tray labels
+    When user navigates to Item Management Page
     Then user verifies items labels on Items Management Page
 
       | labelname          |
@@ -61,6 +65,7 @@ Feature: Trayed Item Page Validation
 
   @FETCH-298 @FETCH-180 @ @regression
   Scenario: User should be able to validate Overlay slide with Items in Tray details
+    When user navigates to Item Management Page
     When user clicks on any item in the table of items
     Then the overlay slide is visible
     And user verifies item in tray details on Overlay Slide
@@ -81,6 +86,7 @@ Feature: Trayed Item Page Validation
 
   @FETCH-298 @FETCH-180 @overlay @regression
   Scenario: User should be able to close Overlay Slide using X button
+    When user navigates to Item Management Page
     When user clicks on any item in the table of items
     Then the overlay slide is visible
     And the x button is clickable
@@ -88,6 +94,7 @@ Feature: Trayed Item Page Validation
 
   @FETCH-298 @FETCH-180 @overlay @regression
   Scenario: User should be able to close Overlay Slide by clicking outside of the overlay
+    When user navigates to Item Management Page
     When user clicks on any item in the table of items
     Then the overlay slide is visible
     And user clicks outside of overlay

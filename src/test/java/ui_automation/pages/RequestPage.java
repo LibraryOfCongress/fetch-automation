@@ -78,5 +78,8 @@ public class RequestPage {
     @FindBy(xpath = "//button[.='Submit']")
     public WebElement submitRequest;
 
+    @FindBy(css = "[class='q-table'] tbody td:nth-child(3)")
+    public WebElement firstItemBarcode;
+
 
 }

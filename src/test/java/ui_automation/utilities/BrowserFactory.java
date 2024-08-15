@@ -19,16 +19,17 @@ import java.util.HashMap;
 public class BrowserFactory {
     public static WebDriver createInstance() {
 
+
         WebDriver driver = null;
 
         try {
             if (driver == null) {
-                if(System.getProperty("browser")==null){
+                if (System.getProperty("browser") == null) {
                     WebDriverManager.chromedriver().setup();
                     //hashmap to store key and value of config
                     HashMap<String, Object> chromePrefs = new HashMap<String, Object>();
                     chromePrefs.put("profile.default_content_settings.popups", 0);
-                    chromePrefs.put("download.default_directory", System.getProperty("user.dir")+"\\src\\test\\resources\\testData\\Downloads");
+                    chromePrefs.put("download.default_directory", System.getProperty("user.dir") + "\\src\\test\\resources\\testData\\Downloads");
 
                     ChromeOptions options = new ChromeOptions();
                     options.addArguments("--ignore-ssl-errors=yes");
@@ -36,8 +37,7 @@ public class BrowserFactory {
                     options.setExperimentalOption("prefs", chromePrefs);
 //                    options.addArguments("--auto-open-devtools-for-tabs");
                     driver = new ChromeDriver(options);
-                }
-                else {
+                } else {
                     //if System.getProperty("browser") returns value then based on value Switch case will be executed
                     switch (System.getProperty("browser")) {
                         case "chrome-headless":
@@ -46,7 +46,7 @@ public class BrowserFactory {
                             break;
                         case "chromeRemote":
                             HashMap<String, Object> chromePrefs = new HashMap<String, Object>();
-                            chromePrefs.put("download.default_directory", System.getProperty("user.dir")+"\\src\\test\\resources\\testData\\Downloads");
+                            chromePrefs.put("download.default_directory", System.getProperty("user.dir") + "\\src\\test\\resources\\testData\\Downloads");
                             ChromeOptions chrOptions = new ChromeOptions();
                             chrOptions.addArguments("user-data-dir=C:\\Users\\Afa Faraji\\Downloads\\chrome-win64\\chrome-win64\\chrome.exe");
                             chrOptions.addArguments("--ignore-ssl-errors=yes");
@@ -60,7 +60,6 @@ public class BrowserFactory {
                             break;
                         case "firefox":
                             WebDriverManager.firefoxdriver().setup();
-                            System.setProperty("webdriver.gecko.driver", "C:\\Users\\Afa Faraji\\Downloads\\chromedriver-win64\\geckodriver-v0.33.0-win64\\geckodriver.exe");
                             driver = new FirefoxDriver();
                             break;
                         case "firefox-headless":
@@ -88,6 +87,7 @@ public class BrowserFactory {
                                 throw new WebDriverException("Your operating system does not support the requested browser");
                             }
                             WebDriverManager.edgedriver().setup();
+                            System.setProperty("webdriver.edge.driver", "C:\\Users\\Afa Faraji\\Downloads\\edgedriver_win32\\msedgedriver.exe");
                             driver = new EdgeDriver();
                             break;
 
@@ -101,7 +101,6 @@ public class BrowserFactory {
                         default:
                             WebDriverManager.chromedriver().setup();
                             driver = new ChromeDriver();
-
                             break;
                     }
                 }
@@ -112,4 +111,5 @@ public class BrowserFactory {
         }
         return driver;
     }
+
 }

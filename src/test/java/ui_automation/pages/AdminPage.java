@@ -24,14 +24,26 @@ public class AdminPage {
     @FindBy(css = "[href='/admin/buildings/']")
     public WebElement buildingsLink;
 
+    @FindBy(xpath = "//div[contains(text(),'Location Manager')]/../..")
+    public WebElement locationManagerLink;
+
     @FindBy(css = "[href='/admin/groups/']")
     public WebElement groupsAndPermissionsLink;
+
+    @FindBy(css = "[class='q-expansion-item q-item-type q-expansion-item--expanded q-expansion-item--standard admin-dashboard-expansion'] a")
+    public List<WebElement> lmDropdownLinks;
+
+    @FindBy(xpath = "//*[.='Add Building']/../..")
+    public WebElement addBuildingBtn;
 
     @FindBy(css = "[class='row'] [class$='building-card']")
     public List<WebElement> buildings;
 
     @FindBy(css = "[class='text-h5 text-bold']")
     public List<WebElement> groups;
+
+    @FindBy(css = "[class='q-card q-card--bordered q-card--flat no-shadow admin-groups-card admin-groups-card-dashed']")
+    public WebElement addNewGroup;
 
     @FindBy(css = "[class$='q-mr-sm']")
     public WebElement addNew;
@@ -153,11 +165,17 @@ public class AdminPage {
     @FindBy(css = "[role='tab']")
     public List<WebElement> tabNames;
 
+    @FindBy(css = "[class='q-table'] tr th")
+    public List<WebElement> tableColumns;
+
     @FindBy(xpath = "//button[.='Delete Group']")
     public WebElement confirmDeleteGroup;
 
     @FindBy(xpath = "//button[.='Yes']")
     public List<WebElement> yes;
+
+    @FindBy(xpath = "//button[.='No']")
+    public List<WebElement> no;
 
     @FindBy(css = "[placeholder='Select User To Add']")
     public WebElement selectUserToAddField;

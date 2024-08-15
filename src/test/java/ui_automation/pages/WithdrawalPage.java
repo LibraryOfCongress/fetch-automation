@@ -21,6 +21,9 @@ public class WithdrawalPage {
     @FindBy(css = ".q-table tbody tr")
     public WebElement withdrawJob;
 
+    @FindBy(xpath = "//button[.='Create Withdraw Job']")
+    public WebElement createWithdrawJob;
+
     @FindBy(css = "[class='info-display-number-box text-h4']")
     public WebElement withdrawJobNumber;
 
@@ -31,7 +34,7 @@ public class WithdrawalPage {
     public WebElement withdrawItemsBtn;
 
     @FindBy(css = ".q-table th.text-left")
-    public List<WebElement> jobTableTabs;
+    public List<WebElement> withdrawalColumns;
 
     @FindBy(css = "[role='menuitem']")
     public List<WebElement> threeDotMenuOptions;
@@ -40,6 +43,12 @@ public class WithdrawalPage {
     public WebElement threeDotNextToItemBarcode;
 
     @FindBy(xpath = "//td[.='Created']")
-    public WebElement createdJob;
+    public List<WebElement> createdJobs;
+
+    @FindBy(xpath = "//button[.='Delete Job']")
+    public WebElement confirmDeleteWithdrawJob;
+
+    @FindBy(xpath = "(//p[@class='text-body1'])[1]")
+    public WebElement assignedUser;
 
 }

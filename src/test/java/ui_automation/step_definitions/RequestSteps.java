@@ -8,6 +8,7 @@ import org.openqa.selenium.By;
 import org.openqa.selenium.JavascriptExecutor;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
+import ui_automation.pages.AlertPage;
 import ui_automation.pages.PickListPage;
 import ui_automation.pages.RequestPage;
 import ui_automation.utilities.*;
@@ -16,6 +17,7 @@ import java.util.List;
 import java.util.Map;
 
 import static org.junit.Assert.assertEquals;
+import static org.junit.Assert.assertTrue;
 
 public class RequestSteps {
 
@@ -23,7 +25,9 @@ public class RequestSteps {
     RequestPage request = new RequestPage();
     Helper helper = new Helper();
     WaitHelper wait = new WaitHelper();
+    AlertPage alert = new AlertPage();
     PickListPage picklist = new PickListPage();
+    static String requestBarcode = "";
 
 
 
@@ -113,6 +117,7 @@ public class RequestSteps {
 
     @When("user selects Delivery Location")
     public void user_selects_Delivery_Location() throws InterruptedException {
+        helper.scrollIntoView(request.deliveryLocationField);
         request.deliveryLocationField.click();
         wait.hardWait(2000);
         request.options.get(1).click();
@@ -161,7 +166,7 @@ public class RequestSteps {
 
     @Then("user verifies the Pick List is created")
     public void user_verifies_the_pick_list_is_created() {
-        wait.waitForVisibility(request.alertText, 1000);
+        WaitHelper.waitForVisibility(request.alertText, 1000);
         Assert.assertTrue(request.alertText.getText().contains("Successfully created Pick List #: "));
     }
 
@@ -205,5 +210,23 @@ public class RequestSteps {
         Assert.assertTrue(request.alertText.getText().contains("Successfully added items to Pick List #: "));
     }
 
+    @When("user has an Item present in request table")
+    public void user_has_an_Item_present_in_request_table() {
+        requestBarcode = request.firstItemBarcode.getText();
+        System.out.println("Request Item Barcode is: " + requestBarcode);
+    }
 
+    @When("user enters an existing in request table Item barcode")
+    public void user_enters_an_existing_in_request_table_Item_barcode() {
+        request.itemBarcodeField.click();
+        request.itemBarcodeField.sendKeys(requestBarcode);
+    }
+
+    @Then("user verifies item already requested error msg")
+    public void user_verifies_item_already_requested_error_msg()throws InterruptedException {
+        WaitHelper.waitForVisibility(alert.toastMsg, 1000);
+        assertTrue(alert.toastMsg.getText().toLowerCase().contains("item is already requested"));
+        alert.closeToastMsg.click();
+        wait.hardWait(3000);
+    }
 }

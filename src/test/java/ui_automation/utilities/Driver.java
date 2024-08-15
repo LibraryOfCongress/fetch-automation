@@ -20,7 +20,6 @@ public class Driver {
     public  void setDriver(WebDriver driverParameter){driver.set(driverParameter);}
 
     public void removeDriver(){
-//            driver.get().close();
             driver.get().quit();
             driver.remove();
     }

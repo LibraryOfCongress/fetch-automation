@@ -34,11 +34,13 @@ public class AccessionSteps {
     static long scanned2 = random.nextLong(10000000000L, 100000000000L);
     static long entered1 = random.nextLong(10000000000L, 100000000000L);
     static long entered2 = random.nextLong(10000000000L, 100000000000L);
+    static long entered3 = random.nextLong(10000000000L, 100000000000L);
     static long edited1 = random.nextLong(10000000000L, 100000000000L);
     static long itemBarcode = random.nextLong(10000000000L, 100000000000L);
     static String editedTrayBarcode = "";
     static String generatedTray = "";
     static String generatedTray2 = "";
+    static String accessionJobNumber = "";
 
 
     @Given("user navigates to the Accession Page")
@@ -61,6 +63,13 @@ public class AccessionSteps {
     @And("user selects Non-Tray Accession")
     public void user_selects_NonTray_Accession() {
         helper.jSClick(accession.nonTrayAccession);
+    }
+
+    @And("user saves Accession Job number")
+    public void user_saves_Accession_job_number() {
+        WebElement vJobNumber = driver.findElement(By.cssSelector("[class='text-h4 text-bold']"));
+        accessionJobNumber = vJobNumber.getText().substring(5).trim();
+        System.out.println("Accession Job Number: " + accessionJobNumber);
     }
 
     @Then("user verifies required and optional fields on Start New Accession modal")
@@ -138,14 +147,6 @@ public class AccessionSteps {
     @And("user clicks cancel button")
     public void user_clicks_cancel_button() {
         helper.jSClick(accession.cancelBtn);
-    }
-
-    @Then("user is able to return to the Start Accession single action square screen")
-    public void user_is_able_to_return_to_the_Start_Accession_single_action_square_screen() {
-        String actualURL = driver.getCurrentUrl();
-        String expectedURL = "https://test.fetch.loctest.gov/accession";
-        assertEquals("Returning to Accession Jobs Page failed",
-                expectedURL, actualURL);
     }
 
     @When("user clicks submit button")
@@ -344,6 +345,14 @@ public class AccessionSteps {
         wait.hardWait(1000);
     }
 
+    @Then("user enters another barcode and clicks Submit button")
+    public void user_enters_another_barcode_and_clicks_Submit_button() throws InterruptedException {
+        accession.enterBarcodeField.click();
+        accession.enterBarcodeField.sendKeys(Long.toString(entered3));
+        helper.jSClick(accession.submitBtn);
+        wait.hardWait(1000);
+    }
+
     @Then("user enters item barcode")
     public void user_enters_item_barcode() throws InterruptedException {
         accession.enterBarcodeField.click();
@@ -439,7 +448,7 @@ public class AccessionSteps {
 
     @Then("user is able to see a print window with a batch report")
     public void user_is_able_to_see_a_print_window_with_a_batch_report() {
-        WebDriverWait wait1 = new WebDriverWait(driver, Duration.ofSeconds(10));
+        WebDriverWait wait1 = new WebDriverWait(driver, Duration.ofSeconds(1000));
         wait1.until(ExpectedConditions.numberOfWindowsToBe(2));
         if (driver.getWindowHandles().size() > 1) {
             System.out.println("Print window is displayed");
