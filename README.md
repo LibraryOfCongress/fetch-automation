@@ -35,7 +35,7 @@ Follow these steps to get a local copy of the project and run the tests:
 4. Usage:
 
    - Cucumber feature files are located in `src/test/resources/uiFeatures`.
-   - Step definitions using Selenium WebDriver are located in `src/test/java/ui_automation/step_definitions`.
+   - Step definitions using Selenium WebDriver are located in `src/test/java/automation/step_definitions`.
    - Use Maven to build and manage dependencies.
 
 
@@ -48,9 +48,9 @@ Follow these steps to get a local copy of the project and run the tests:
 
 2. Running Test via TestRunner:
 
-   - Open UITestRunner class located in src/test/java/runner.
+   - Open TestRunner class located in src/test/java/runner.
    - The `@CucumberOptions` `tags` annotation in this class can be modified to control which tests are run. `Tags` could be found in Feature Files in `src/test/resources/uiFeatures`.(E.g. tags = "@accession")
-   - Right-click on the file and choose `Run``UITestRunner`.
+   - Right-click on the file and choose `Run``TestRunner`.
 
 3. Viewing Test Results:
 
