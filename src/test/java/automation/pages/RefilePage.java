@@ -59,5 +59,13 @@ public class RefilePage {
     @FindBy(css = "[class='q-table'] tbody tr")
     public List<WebElement> refileJobsList;
 
+    @FindBy(css = "[class='q-list'] div.q-item__label")
+    public List<WebElement> dropdownOptions;
+
+
+
+
+
+
 
 }

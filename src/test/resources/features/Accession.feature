@@ -247,7 +247,7 @@ Feature: Accession Page Functionality Validation
     And user clicks three dot menu next to Accession Job Number
     Then user clicks Delete Tray
     And user verifies delete tray warning message
-    Then user confirms delete action
+    Then user confirms delete tray action
 
 
   @FETCH-917 @FETCH-735 @cancel_accession @regression

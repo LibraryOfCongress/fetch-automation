@@ -30,6 +30,9 @@ public class AdminPage {
     @FindBy(css = "[href='/admin/groups/']")
     public WebElement groupsAndPermissionsLink;
 
+    @FindBy(xpath = "//div[contains(text(),'List Configurations')]/../..")
+    public WebElement listConfigurationsLink;
+
     @FindBy(css = "[class='q-expansion-item q-item-type q-expansion-item--expanded q-expansion-item--standard admin-dashboard-expansion'] a")
     public List<WebElement> lmDropdownLinks;
 
@@ -158,7 +161,7 @@ public class AdminPage {
     public WebElement enterGroupNameField;
 
     @FindBy(css = "[aria-label='optionsMenu']")
-    public List<WebElement> threeDotMenu;
+    public List<WebElement> threeDotsMenu;
 
     @FindBy(css = "[role='menuitem']")
     public List<WebElement> menuOptions;
@@ -199,5 +202,61 @@ public class AdminPage {
     @FindBy(xpath = "//button[.='Save Changes']")
     public WebElement renameGroupBtn;
 
+    @FindBy(xpath = "//*[contains(text(),'Add/Edit/Remove Size Class')]/../../..")
+    public WebElement sizeClassManagementLink;
+
+    @FindBy(css = "h1[class='text-h4 text-bold']")
+    public WebElement pageHeader;
+
+    @FindBy(xpath = "//*[.='Add Size Class']/../..")
+    public WebElement addSizeClass;
+
+    @FindBy(css = "[class='q-card popup-modal']")
+    public WebElement popupModal;
+
+    @FindBy(css = "[class='text-h6 text-bold']")
+    public WebElement modalHeader;
+
+    @FindBy(xpath = "//*[.='Add Size Class'][@type='button']")
+    public WebElement addSizeClassButton;
+
+    @FindBy(xpath = "//*[.='Update Size Class'][@type='button']")
+    public WebElement updateSizeClassButton;
+
+    @FindBy(xpath = "//*[.='Cancel'][@type='button']")
+    public WebElement cancelButton;
+
+    @FindBy(css = "[placeholder='Enter Full Name']")
+    public WebElement fullname;
+
+    @FindBy(css = "[placeholder='Enter Short Name']")
+    public WebElement shortname;
+
+    @FindBy(css = "[placeholder='Enter Width (in)']")
+    public WebElement width;
+
+    @FindBy(css = "[placeholder='Enter Depth (in)']")
+    public WebElement depth;
+
+    @FindBy(css = "[placeholder='Enter Height (in)']")
+    public WebElement height;
+
+    @FindBy(css = "[placeholder='Select Owner(s)']")
+    public WebElement owner;
+
+    @FindBy(css = ".q-virtual-scroll__content [role='option']")
+    public List<WebElement> ownerFieldOptions;
+
+    @FindBy(css = "[class='q-table'] tbody tr")
+    public List<WebElement> sizeClassList;
+
+    @FindBy(xpath = "//button[.='Delete Size Class']")
+    public WebElement confirmDeleteSizeClass;
+
+    @FindBy(css = "[class='q-card__section q-card__section--vert']")
+    public WebElement warningMsg;
+
+    @FindBy(css = "[class='q-table'] tbody tr td[class='q-td text-left']")
+    public List<WebElement> tableElements;
 
 }

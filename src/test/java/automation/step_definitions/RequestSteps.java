@@ -155,14 +155,14 @@ public class RequestSteps {
         helper.jSClick(request.dropdownOptions.get(1));
     }
 
-    @Then("user verifies Requests with checkboxes are displayed")
-    public void user_verifies_requests_with_checkboxes_are_displayed() {
-        Helper.verifyElementDisplayed(request.checkboxesRequests.get(0));
+    @Then("user verifies options with checkboxes are displayed")
+    public void user_verifies_options_with_checkboxes_are_displayed() {
+        Helper.verifyElementDisplayed(request.optionsWithCheckboxes.get(0));
     }
 
     @When("user selects Requests")
     public void user_selects_requests() {
-        helper.jSClick(request.checkboxesRequests.get(1));
+        helper.jSClick(request.optionsWithCheckboxes.get(1));
     }
 
     @When("user clicks Create Pick List")
@@ -242,9 +242,9 @@ public class RequestSteps {
        user_navigates_to_the_request_page();
        user_clicks_create_button();
        user_selects_create_a_pick_list_option();
-       adminSteps.user_selects_Building_from_dropdown();
+       adminSteps.user_selects_building_from_dropdown();
        shelvingSteps.user_clicks_submit();
-       user_verifies_requests_with_checkboxes_are_displayed();
+       user_verifies_options_with_checkboxes_are_displayed();
        user_selects_requests();
        user_clicks_create_pick_list();
        user_verifies_the_pick_list_is_created();

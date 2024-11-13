@@ -55,7 +55,7 @@ public class RequestPage {
     public WebElement actualBarcode;
 
     @FindBy(css = "[role='checkbox']")
-    public List<WebElement> checkboxesRequests;
+    public List<WebElement> optionsWithCheckboxes;
 
     @FindBy(xpath = "//span[contains(text(),'Create Pick List')]")
     public WebElement createPickListBtn;

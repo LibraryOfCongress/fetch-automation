@@ -87,15 +87,16 @@ Feature: Refile Page Functionality Validation
     And user selects Create Refile Job option
     When user selects Building from dropdown
     And user clicks Submit
-    Then user verifies Requests with checkboxes are displayed
+    Then user verifies options with checkboxes are displayed
     When user selects Requests
     And user clicks Create Refile Job
-    Then user verifies the Refile job is created
+    Then user verifies the Refile Job is created
     When user clicks the alert link
     And user verifies Tray Barcode is displayed
     And user clicks on item in the table
     Then user verifies scan modal is displayed
     And user verifies the information on the scan modal
+
 
   @assigned_user @smoke
   Scenario:  User should be able to change Assigned User within a Refile Job
@@ -113,3 +114,85 @@ Feature: Refile Page Functionality Validation
     And user verifies "The job has been updated." alert msg
     And user verifies the assigned user has been updated
 
+
+  @regression @refile_queue
+  Scenario: User should be able to add Item to Refile Queue
+    When user clicks Accession on side navigation menu
+    And user completes a Non-Tray Accession Job
+    When user navigates to the Verification Page
+    And user navigates to the verification job
+    And user saves Verification Job number
+    Then user verifies item barcode
+    When user clicks Complete Job button
+    And user clicks Complete
+    Then user verifies "The Job has been completed." msg
+    When user clicks Shelving on side navigation menu
+    When user completes a Shelving Job
+    When user clicks Request on side navigation menu
+    When user clicks Create button
+    And user selects Create Manual Requests option
+    Then request job creation modal is displayed
+    When user enters an Item Barcode from an existing Shelving Job
+    And user enters Request ID
+    And user enters Requester Name
+    And user selects Priority
+    And user selects Request Type
+    And user selects Delivery Location
+    Then submit button is enabled
+    And user clicks submit button
+    And user verifies "Successfully created the request." alert msg
+    When user creates a Pick List job
+    Then user switches on Toggle Barcode Scan
+    And user clicks Retrieve Pick List
+    Then user saves an item barcode
+    When user scans a Pick List Container
+    Then user verifies the item is retrieved
+    When user clicks Complete Job
+    And user clicks Complete
+    Then user verifies "The Pick List Job has been completed." alert msg
+    When user navigates to the Refile Page
+    And user clicks Create button
+    Then user selects Add Item to Queue option
+    When user switches on Toggle Barcode Scan
+    Then user scans an Item Barcode from a completed Pick List job
+
+
+  @regression @refile_queue @negative
+  Scenario:  User should not be able to add incorrect Item to Refile Queue
+    When user navigates to the Refile Page
+    And user clicks Create button
+    Then user selects Add Item to Queue option
+    And user switches on Toggle Barcode Scan
+    When user scans incorrect Item Barcode
+    And user verifies "Not Found" alert msg
+
+
+  @regression @refile_job
+  Scenario:  User should be able to create a Refile Job
+    When user navigates to the Refile Page
+    And user clicks Create button
+    When user selects Create Refile Job option
+    And user selects Building from dropdown
+    And user clicks Submit
+    Then user verifies options with checkboxes are displayed
+    When user selects Requests
+    And user clicks Create Refile Job button
+    Then user verifies the Refile Job is created
+    When user clicks the alert link
+    Then user is able to see the Refile Job dashboard
+
+
+  @regression @date_created
+  Scenario: User should be able to verify Refile job created date
+    When user navigates to the Refile Page
+    And user clicks Create button
+    When user selects Create Refile Job option
+    And user selects Building from dropdown
+    And user clicks Submit
+    Then user verifies options with checkboxes are displayed
+    When user selects Requests
+    And user clicks Create Refile Job button
+    Then user verifies the Refile Job is created
+    When user clicks the alert link
+    Then user is able to see the Refile Job dashboard
+    And user verifies date created

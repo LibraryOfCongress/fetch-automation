@@ -111,7 +111,7 @@ Feature: Request Page Functionality Validation
     And user selects Create a Pick List option
     When user selects Building from dropdown
     And user clicks Submit
-    Then user verifies Requests with checkboxes are displayed
+    Then user verifies options with checkboxes are displayed
     When user selects Requests
     And user clicks Create Pick List
     Then user verifies the Pick List is created
@@ -126,7 +126,7 @@ Feature: Request Page Functionality Validation
     And user selects Create a Pick List option
     When user selects Building from dropdown
     And user clicks Submit
-    Then user verifies Requests with checkboxes are displayed
+    Then user verifies options with checkboxes are displayed
     When user selects Requests
     And user clicks Create Pick List
     Then user verifies the Pick List is created
@@ -167,7 +167,7 @@ Feature: Request Page Functionality Validation
     When user selects Building from dropdown
     And user selects Pick List from dropdown
     And user clicks Submit
-    Then user verifies Requests with checkboxes are displayed
+    Then user verifies options with checkboxes are displayed
     When user selects Requests
     And user clicks Add to Pick List
     Then user verifies items are added to the Pick List

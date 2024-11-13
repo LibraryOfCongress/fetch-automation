@@ -48,7 +48,7 @@ Feature: Shelving Page Functionality Validation
   @FETCH-313 @FETCH-165
   Scenario: User should be able to validate fields of Create Shelving Job From Verification modal
     When user navigates to Shelving Page
-    And user clicks on Create Shelving Job button
+    And user clicks Create Shelving Job button
     And user selects From Verification Job option
     And user selects Yes
     Then a new modal with shelving location options along with the verification job selection is displayed
@@ -101,7 +101,7 @@ Feature: Shelving Page Functionality Validation
     And user clicks Complete
     Then user verifies "The Job has been completed." msg
     When user clicks Shelving on side navigation menu
-    And user clicks on Create Shelving Job button
+    And user clicks Create Shelving Job button
     And user selects From Verification Job option
     And user selects Yes
     Then user selects verification job
@@ -147,7 +147,7 @@ Feature: Shelving Page Functionality Validation
     And user clicks Complete
     Then user verifies "The Job has been completed." msg
     When user clicks Shelving on side navigation menu
-    And user clicks on Create Shelving Job button
+    And user clicks Create Shelving Job button
     And user selects From Verification Job option
     Then user selects a created Verification Job
     And user selects a Building from Shelving Locations
@@ -200,7 +200,7 @@ Feature: Shelving Page Functionality Validation
     And user clicks Complete
     Then user verifies "The Job has been completed." msg
     When user clicks Shelving on side navigation menu
-    And user clicks on Create Shelving Job button
+    And user clicks Create Shelving Job button
     And user selects From Verification Job option
     Then user selects a created Verification Job
     And user selects a Building from Shelving Locations
@@ -227,7 +227,7 @@ Feature: Shelving Page Functionality Validation
   @FETCH-685 @FETCH-439
   Scenario: User should be able to create a Shelving Job from Direct to Shelve Method
     When user navigates to Shelving Page
-    Then user clicks on Create Shelving Job button
+    Then user clicks Create Shelving Job button
     And user selects Direct To Shelve option
     And user selects a Building from Shelving Locations
     And user clicks Submit
@@ -237,7 +237,7 @@ Feature: Shelving Page Functionality Validation
   @FETCH-1042 @FETCH-881
   Scenario: User should be able to verify Metadata on Create Shelving Job From Verification modal
     When user navigates to Shelving Page
-    Then user clicks on Create Shelving Job button
+    Then user clicks Create Shelving Job button
     And user selects From Verification Job option
     When user clicks to select a job from Verification Job List
     Then user verifies that the response includes all the metadata required
@@ -245,7 +245,7 @@ Feature: Shelving Page Functionality Validation
   @date_created
   Scenario: User should be able to verify Shelving job created date
     When user navigates to Shelving Page
-    Then user clicks on Create Shelving Job button
+    Then user clicks Create Shelving Job button
     And user selects From Verification Job option
     When user selects a Verification Job from the Verification Jobs List
     And user selects a Building from Shelving Locations

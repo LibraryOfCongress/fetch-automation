@@ -150,8 +150,8 @@ public class ShelvingSteps {
         Assert.assertEquals("Selected options are not displayed!", checkboxValue, shelfTableValue);
     }
 
-    @When("user clicks on Create Shelving Job button")
-    public void user_clicks_on_create_shelving_job_button() throws InterruptedException {
+    @When("user clicks Create Shelving Job button")
+    public void user_clicks_create_shelving_job_button() throws InterruptedException {
         WaitHelper.waitForClickability(shelving.createShelvingJob, 1000);
         shelving.createShelvingJob.click();
         wait.hardWait(1000);
@@ -295,7 +295,7 @@ public class ShelvingSteps {
 
     @When("user navigates to Shelving Job")
     public void user_navigates_to_shelving_job() {
-        WebElement job = driver.findElement(By.xpath("//td[.='29']"));
+        WebElement job = driver.findElement(By.xpath("//td[.='118']"));
         job.click();
     }
 
@@ -509,7 +509,7 @@ public class ShelvingSteps {
     @When("user completes a Shelving Job")
     public void user_completes_a_shelving_Job() throws InterruptedException {
         homeSteps.user_clicks_shelving_on_side_navigation_menu();
-        user_clicks_on_create_shelving_job_button();
+        user_clicks_create_shelving_job_button();
         user_selects_from_verification_job_option();
         user_selects_a_created_verification_job();
         user_selects_a_building_from_shelving_locations();
@@ -526,6 +526,7 @@ public class ShelvingSteps {
     @Then("user selects a Verification Job from the Verification Jobs List")
     public void user_selects_a_verification_job_from_the_verification_jobs_list() throws InterruptedException {
         shelving.selectByNumber.click();
+        WaitHelper.waitForClickability(shelving.verificationJobsList.get(0), 1000);
         shelving.verificationJobsList.get(0).click();
         shelving.selectByNumber.click();
         wait.hardWait(1000);

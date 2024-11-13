@@ -600,8 +600,8 @@ public class AccessionSteps {
         assertTrue(accession.warningMsg.getText().contains("Are you sure you want to delete the tray? Warning: All associated tray items will be deleted."));
     }
 
-    @And("user confirms delete action")
-    public void user_confirms_delete_actios() throws InterruptedException {
+    @And("user confirms delete tray action")
+    public void user_confirms_delete_tray_action() throws InterruptedException {
         helper.jSClick(accession.confirmDeleteTray);
         wait.hardWait(2000);
         alert.closeToastMsg.click();

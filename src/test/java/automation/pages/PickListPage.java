@@ -30,9 +30,6 @@ public class PickListPage {
     @FindBy(css = "[class='info-display-number-box text-h4']")
     public WebElement picklistJobNumber;
 
-    @FindBy(xpath = "(//button[.='more_vert'])[1]")
-    public WebElement threeDotNextToPickListJob;
-
     @FindBy(xpath = "//div[@role='menuitem'][.='Edit']")
     public WebElement editJob;
 

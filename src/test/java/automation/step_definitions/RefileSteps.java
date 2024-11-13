@@ -80,10 +80,16 @@ public class RefileSteps {
     }
 
     @When("user scans an Item Barcode from a completed Pick List job")
-    public void user_enters_an_item_barcode_from_a_completed_pick_list_job() throws InterruptedException {
+    public void user_scans_an_item_barcode_from_a_completed_pick_list_job() throws InterruptedException {
         driver.findElement(By.tagName("body")).sendKeys(PickListSteps.itemBarcode);
         wait.hardWait(2000);
         refile.doneBtn.click();
+    }
+
+    @When("user scans incorrect Item Barcode")
+    public void user_scans_incorrect_item_barcode() throws InterruptedException {
+        driver.findElement(By.tagName("body")).sendKeys("12345");
+        wait.hardWait(2000);
     }
 
     @When("user selects Create Refile Job option")
@@ -98,7 +104,7 @@ public class RefileSteps {
         wait.hardWait(1000);
     }
 
-    @Then("user verifies the Refile job is created")
+    @Then("user verifies the Refile Job is created")
     public void user_verifies_the_refile_job_is_created() {
         WaitHelper.waitForVisibility(refile.alertText, 1000);
         Assert.assertTrue(refile.alertText.getText().contains("Successfully created Refile Job #: "));
@@ -131,6 +137,26 @@ public class RefileSteps {
         refile.refileJobsList.get(0).click();
         wait.hardWait(1000);
     }
+
+    @Then("user selects Add to Refile Job option")
+    public void user_selects_add_to_refile_job_option() {
+        helper.jSClick(refile.dropdownOptions.get(1));
+    }
+
+    @When("user clicks Create Refile Job button")
+    public void user_clicks_create_refile_job_btn() throws InterruptedException {
+        helper.jSClick(refile.createRefileJobBtn);
+        wait.hardWait(1000);
+    }
+
+    @Then("user is able to see the Refile Job dashboard")
+    public void user_is_able_to_see_the_refile_job_dashboard() {
+        String refileJobNumber = refile.refileJobNumber.getText();
+        String createdRefile = refile.createdJobLink.getText();
+        Assert.assertEquals(refileJobNumber, createdRefile);
+    }
+
+
 }
 
 

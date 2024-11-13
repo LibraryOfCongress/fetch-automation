@@ -63,4 +63,14 @@ Feature: Withdrawal Page Functionality Validation
 #    Then user verifies "Remove Item" option is displayed
 
 
+  @date_created
+  Scenario: User should be able to verify Withdraw job created date
+    When user navigates to the Withdrawal Page
+    And user clicks Create Withdraw Job
+    Then user verifies "A Withdraw Job has been successfully created." alert msg
+    And user verifies a Withdraw Job is created
+    And user verifies date created
+
+
+
 

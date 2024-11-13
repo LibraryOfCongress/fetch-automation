@@ -116,11 +116,11 @@ public class VerificationSteps {
         verification.enterBarcodeBtn.click();
         verification.enterBarcodeField.sendKeys(verification.scannedVerificationItems.get(0).getText());
         verification.submitBtn.click();
-        if(!verification.verifiedCheckMark.getText().equals("Item Verified")){
+        if (!verification.verifiedCheckMark.getText().equals("Item Verified")) {
             verification.enterBarcodeBtn.click();
             verification.enterBarcodeField.sendKeys(verification.scannedVerificationItems.get(0).getText());
             verification.submitBtn.click();
-        }else {
+        } else {
             System.out.println(verification.verifiedCheckMark.getText().equals("Item Verified"));
         }
         wait.hardWait(2000);
@@ -270,7 +270,7 @@ public class VerificationSteps {
 
     @And("user saves Trayed Item barcode")
     public void user_saves_trayed_item_barcode() {
-        trayedItemBarcode = verification.scannedVerificationItems.get(0).getText().substring(0,11);
+        trayedItemBarcode = verification.scannedVerificationItems.get(0).getText().substring(0, 11);
         System.out.println("Trayed Item barcode: " + trayedItemBarcode);
     }
 
@@ -306,12 +306,12 @@ public class VerificationSteps {
         WebElement arrow = driver.findElement(By.xpath("(//i[@aria-label='tableColumnSortIcon'])[1]"));
         arrow.click();
         verification.verificationJobsList.get(0).click();
-            wait.hardWait(2000);
+        wait.hardWait(2000);
     }
 
     @When("user verifies that completed jobs are not displayed")
     public void user_verifies_that_completed_jobs_are_not_displayed() {
-        for(WebElement status: verification.jobStatuses) {
+        for (WebElement status : verification.jobStatuses) {
             assertNotEquals("Completed", status.getText());
         }
 

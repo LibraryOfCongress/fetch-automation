@@ -21,7 +21,7 @@ Feature: Admin Page Functionality Validation
       | Shelves   |
 
 
-  Scenario: User should be able to verify Buildings Management page
+  Scenario: User should be able to validate Buildings Management page
     When user navigates to the Admin Page
     And user clicks Location Manager Link
     And user selects Building
@@ -32,10 +32,10 @@ Feature: Admin Page Functionality Validation
       | Created Date |
       | Last Updated |
 
-      Then user verifies Add Building button is clickable
+    Then user verifies Add Building button is clickable
 
 
-  Scenario: User should be able to verify Buildings Management page
+  Scenario: User should be able to validate Buildings Management page
     When user navigates to the Admin Page
     And user clicks Location Manager Link
     And user selects Building
@@ -194,7 +194,7 @@ Feature: Admin Page Functionality Validation
     And user clicks Submit
     Then user verifies a new Group is created
     And user closes alert message
-    When user clicks three dot menu next to group name
+    When user clicks three dots menu
     Then user verifies all the options
 
       | option                    |
@@ -218,20 +218,98 @@ Feature: Admin Page Functionality Validation
 
     And user adds some permissions
     Then user clicks on Groups and Permissions breadcrumb link
-    When user clicks three dot menu next to group name
+    When user clicks three dots menu
     And user clicks Add Edit Users in Group
     And user selects User names
     Then user clicks Add Users
     When user clicks on User name
     Then user is able to delete User from Group
     And user closes modal
-    When user clicks three dot menu next to group name
+    When user clicks three dots menu
     And user clicks Rename Group Name
     And user renames Group
     Then user saves changes
-    When user clicks three dot menu next to group name
+    When user clicks three dots menu
     And user clicks Delete Group
     Then user is able to delete Group
+
+
+  @FETCH-1102 @FETCH-821
+  Scenario: User should be able to validate Size Class Management
+    When user navigates to the Admin Page
+    And user clicks List Configurations
+    And user clicks Size Class Management link
+    Then user verifies Size Class dashboard is displayed
+    And user verifies table columns
+
+      | column      |
+      | Full Name   |
+      | Short Name  |
+      | Width (in)  |
+      | Depth (in)  |
+      | Height (in) |
+      | Owner(s)    |
+
+    When user clicks Add Size Class
+    Then user verifies a modal to add new Size Class is displayed
+    And user verifies Add Size Class button is disabled
+    And user verifies Cancel button is enabled
+    When user enters full name
+    And user enters short name
+    And user enters witdth
+    And user enters depth
+    And user enters height
+    And user selects owner
+    Then user verifies Add Size Class button is enabled
+    When user clicks Add Size Class button
+    Then user verifies "Successfully Added A New Size Class" alert msg
+    And user verifies that Size Class is created
+    When user clicks three dots menu
+    And user clicks Edit Size Class
+    Then user verifies a modal to edit Size Class is displayed
+    When user updates full name
+    And user clicks Update Size Class button
+    Then user verifies "Successfully Updated The Size Class" alert msg
+    When user clicks three dots menu
+    And user clicks Delete Size Class
+    And user verifies delete size class warning message
+    Then user confirms delete size class action
+    And user verifies "Successfully Deleted The Size Class." alert msg
+
+
+  @FETCH-1102 @FETCH-821 @negative
+  Scenario: User should not be able to create Size Class with existing Name
+    When user navigates to the Admin Page
+    And user clicks List Configurations
+    Then user clicks Size Class Management link
+    When user clicks Add Size Class
+    Then user verifies a modal to add new Size Class is displayed
+    When user enters existing in the system full name
+    And user enters short name
+    And user enters witdth
+    And user enters depth
+    And user enters height
+    And user selects owner
+    Then user clicks Add Size Class button
+    And user verifies "Network Error" alert msg
+    And user verifies that Size Class with existing full name is not created
+    When user clicks Add Size Class
+    Then user verifies a modal to add new Size Class is displayed
+    When user enters full name
+    And user enters existing in the system short name
+    And user enters witdth
+    And user enters depth
+    And user enters height
+    And user selects owner
+    Then user clicks Add Size Class button
+    And user verifies "Network Error" alert msg
+    And user verifies that Size Class with existing short name is not created
+
+
+
+
+
+
 
 
 
