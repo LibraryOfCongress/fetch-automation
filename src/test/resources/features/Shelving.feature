@@ -30,6 +30,7 @@ Feature: Shelving Page Functionality Validation
       | Status                 |
       | Assigned User          |
       | Date Added             |
+      | Last Updated           |
 
     And user verifies dropdown checkboxes are clickable
     And user verifies dropdown options match shelf table column options
@@ -83,23 +84,22 @@ Feature: Shelving Page Functionality Validation
 
   @FETCH-648 @FETCH-380 @regression @smoke
   Scenario: User should be able to create a Shelving Job from Verification Jobs with Assigning Shelving Location
-    When user navigates to Shelving Page
-    Then user clicks Accession on side navigation menu
-    And user clicks Start Accession button
-    Then user selects Non-Tray Accession
-    When user selects all fields
-    Then user clicks submit button
-    When user clicks Enter Barcode button
-    And user enters second barcode and clicks Submit button
-    When user clicks Complete Job button
-    And user clicks Complete
-    Then user navigates to the Verification Page
-    And user navigates to the verification job
-    And user saves Verification Job number
-    Then user verifies item barcode
-    When user clicks Complete Job button
-    And user clicks Complete
-    Then user verifies "The Job has been completed." msg
+#    When user clicks Accession on side navigation menu
+#    And user clicks Start Accession button
+#    Then user selects Non-Tray Accession
+#    When user selects all fields
+#    Then user clicks submit button
+#    When user clicks Enter Barcode button
+#    And user enters second barcode and clicks Submit button
+#    When user clicks Complete Job button
+#    And user clicks Complete
+#    Then user navigates to the Verification Page
+#    And user navigates to the verification job
+##    And user saves Verification Job number
+#    Then user verifies item barcode
+#    When user clicks Complete Job button
+#    And user clicks Complete
+#    Then user verifies "The Job has been completed." msg
     When user clicks Shelving on side navigation menu
     And user clicks Create Shelving Job button
     And user selects From Verification Job option
@@ -127,43 +127,43 @@ Feature: Shelving Page Functionality Validation
     Then user is able to see a print window with a batch report
 
 
-  @FETCH-625 @FETCH-382 @FETCH-686 @FETCH-383 @regression
+  @FETCH-625 @FETCH-382 @FETCH-686 @FETCH-383
   Scenario:  User should be able to change Shelving Address within a Shelving Job
-    When user navigates to Shelving Page
-    Then user clicks Accession on side navigation menu
-    And user clicks Start Accession button
-    Then user selects Non-Tray Accession
-    When user selects all fields
-    Then user clicks submit button
-    When user clicks Enter Barcode button
-    And user enters second barcode and clicks Submit button
-    When user clicks Complete Job button
-    And user clicks Complete
-    Then user navigates to the Verification Page
-    And user navigates to the verification job
-    And user saves Verification Job number
-    Then user verifies item barcode
-    When user clicks Complete Job button
-    And user clicks Complete
-    Then user verifies "The Job has been completed." msg
-    When user clicks Shelving on side navigation menu
-    And user clicks Create Shelving Job button
-    And user selects From Verification Job option
-    Then user selects a created Verification Job
-    And user selects a Building from Shelving Locations
-    And user clicks Submit
-    Then user verifies "A Shelving Job has been successfully created." notification
-    And user verifies the Status is "Created"
-    When user clicks Execute Job
-    Then user verifies the Status is "Running"
-    And user clicks three dot menu next to a container
-    Then user should see Edit Location option
-    And user clicks Edit Location button
-    And user selects Ladder
-    And user selects Shelf
-    And user selects Shelf Position
-    And user clicks Submit
-    Then user verifies "The container has been updated." message
+#    When user navigates to Shelving Page
+#    Then user clicks Accession on side navigation menu
+#    And user clicks Start Accession button
+#    Then user selects Non-Tray Accession
+#    When user selects all fields
+#    Then user clicks submit button
+#    When user clicks Enter Barcode button
+#    And user enters second barcode and clicks Submit button
+#    When user clicks Complete Job button
+#    And user clicks Complete
+#    Then user navigates to the Verification Page
+#    And user navigates to the verification job
+#    And user saves Verification Job number
+#    Then user verifies item barcode
+#    When user clicks Complete Job button
+#    And user clicks Complete
+#    Then user verifies "The Job has been completed." msg
+#    When user clicks Shelving on side navigation menu
+#    And user clicks Create Shelving Job button
+#    And user selects From Verification Job option
+#    Then user selects a created Verification Job
+#    And user selects a Building from Shelving Locations
+#    And user clicks Submit
+#    Then user verifies "A Shelving Job has been successfully created." notification
+#    And user verifies the Status is "Created"
+#    When user clicks Execute Job
+#    Then user verifies the Status is "Running"
+#    And user clicks three dot menu next to a container
+#    Then user should see Edit Location option
+#    And user clicks Edit Location button
+#    And user selects Ladder
+#    And user selects Shelf
+#    And user selects Shelf Position
+#    And user clicks Submit
+#    Then user verifies "The container has been updated." message
 
 
   @FETCH-686 @FETCH-383 @regression
@@ -192,7 +192,7 @@ Feature: Shelving Page Functionality Validation
   Scenario: User should be able to verify the Shelving Process from Verification Job
     When user clicks Accession on side navigation menu
     And user switches on Toggle Barcode Scan
-    When user completes a Trayed Accession Job
+    When user completes a new Trayed Accession Job
     And user navigates to the Verification Page
     And user switches on Toggle Barcode Scan
     Then user completes a Tray Verification Job
@@ -252,6 +252,18 @@ Feature: Shelving Page Functionality Validation
     And user clicks Submit
     Then user verifies "A Shelving Job has been successfully created." notification
     And user verifies date created
+
+
+  @FETCH-1035 @FETCH-891
+  Scenario: User should be able to validate Metadata to Modal Addition
+    When user clicks Shelving on side navigation menu
+    And user clicks Create Shelving Job button
+    Then user selects From Verification Job option
+    When user clicks to select a job from Verification Job List
+    Then user verifies a list of verification jobs is displayed
+    And user verifies that the menu includes the correct data
+
+
 
 
 

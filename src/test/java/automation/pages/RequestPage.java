@@ -18,8 +18,8 @@ public class RequestPage {
         PageFactory.initElements(driver, this);
     }
 
-    @FindBy(xpath = "//*[.='Create']")
-    public WebElement create;
+    @FindBy(xpath = "//*[.='Create']/../..")
+    public WebElement createRequestJobMenu;
 
     @FindBy(css = "[class='q-list'] div.q-item__label")
     public List<WebElement> dropdownOptions;
@@ -80,6 +80,9 @@ public class RequestPage {
 
     @FindBy(css = "[class='q-table'] tbody td:nth-child(3)")
     public WebElement firstItemBarcode;
+
+    @FindBy(css = "[class='q-table'] tr")
+    public List<WebElement> requestList;
 
 
 }

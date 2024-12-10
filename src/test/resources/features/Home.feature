@@ -74,9 +74,73 @@ Feature: Home Page Functionality Validation
     Then user verifies the scanned barcode is displayed
 
 
+  @current_date
   Scenario: User should be able to check current date
     When user logs in as a tester1
     Then user verifies today date
+
+
+  @FETCH-1172 @FETCH-967
+  Scenario: User should be able to validate table columns on Shelving, Pick List and Withdrawal pages
+    Then user logs in as a tester1
+    When user clicks Shelving on side navigation menu
+    And user verifies that completed jobs are not displayed
+    Then user verifies columns displayed
+
+      | column                 |
+      | Job Number             |
+      | # of Containers in Job |
+      | Status                 |
+      | Assigned User          |
+      | Date Added             |
+      | Last Updated           |
+
+    When user clicks filter icon
+    Then user verifies filter options
+
+      | option                 |
+      | Created                |
+      | Paused                 |
+
+    When user clicks Pick List on side navigation menu
+    And user verifies that completed jobs are not displayed
+    Then user verifies columns displayed
+
+      | column                 |
+      | Job Number             |
+      | Building               |
+      | # of Items in Job      |
+      | Status                 |
+      | Assigned User          |
+      | Date Added             |
+      | Last Updated           |
+
+    When user clicks filter icon
+    Then user verifies filter options
+
+      | option                 |
+      | Created                |
+      | Paused                 |
+
+    When user clicks Withdrawal on side navigation menu
+    And user verifies that completed jobs are not displayed
+    Then user verifies columns displayed
+
+      | column                 |
+      | Job ID #               |
+      | # of Items             |
+      | Status                 |
+      | Date Created           |
+
+
+    When user clicks filter icon
+    Then user verifies filter options
+
+      | option                 |
+      | Created                |
+      | Paused                 |
+
+
 
 
 

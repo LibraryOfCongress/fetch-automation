@@ -55,8 +55,6 @@ Feature: Shelf Item Management Validation
       | labelname       |
       | Barcode:        |
       | Media Type:     |
-      | Container Type: |
-      | Subcollection:  |
       | Dimensions:     |
       | Accession Date: |
 

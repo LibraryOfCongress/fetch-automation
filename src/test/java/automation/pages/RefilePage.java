@@ -38,13 +38,16 @@ public class RefilePage {
     @FindBy(xpath = "//span[contains(text(),'Create Refile Job')]")
     public WebElement createRefileJobBtn;
 
+    @FindBy(xpath = "//*[.='Create']/../..")
+    public WebElement createRefileJobMenu;
+
     @FindBy(css = "[id='alertText']")
     public WebElement alertText;
 
     @FindBy(css = "[id='alertText'] a")
     public WebElement createdJobLink;
 
-    @FindBy(css = "[class='info-display-number-box text-h4']")
+    @FindBy(css = "p[class$='text-h4']")
     public WebElement refileJobNumber;
 
     @FindBy(css = "[class='q-card popup-modal']")

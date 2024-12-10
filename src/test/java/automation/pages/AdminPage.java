@@ -45,7 +45,7 @@ public class AdminPage {
     @FindBy(css = "[class='text-h5 text-bold']")
     public List<WebElement> groups;
 
-    @FindBy(css = "[class='q-card q-card--bordered q-card--flat no-shadow admin-groups-card admin-groups-card-dashed']")
+    @FindBy(css = "[class$='admin-groups-card admin-groups-card-dashed text-h5 text-bold']")
     public WebElement addNewGroup;
 
     @FindBy(css = "[class$='q-mr-sm']")
@@ -57,7 +57,7 @@ public class AdminPage {
     @FindBy(css = ".q-table tbody tr")
     public List<WebElement> shelvingItems;
 
-    @FindBy(css = "[class$='q-btn--actionable q-focusable q-hoverable more-menu']")
+    @FindBy(css = "[aria-label='optionsMenu']")
     public List<WebElement> threeDots;
 
     @FindBy(css = ".q-menu > .q-list > .q-item")
@@ -75,7 +75,6 @@ public class AdminPage {
     @FindBy(css = "[placeholder='Select Owner']")
     public WebElement editOwner;
 
-//    @FindBy(css = "div.q-virtual-scroll__content div.q-item__label")
     @FindBy(css = "div.q-virtual-scroll__content div.q-item")
     public List<WebElement> modalFieldOptions;
 
@@ -205,11 +204,23 @@ public class AdminPage {
     @FindBy(xpath = "//*[contains(text(),'Add/Edit/Remove Size Class')]/../../..")
     public WebElement sizeClassManagementLink;
 
+    @FindBy(xpath = "//*[contains(text(),'Add/Edit/Remove Media Type')]/../../..")
+    public WebElement mediaTypeManagementLink;
+
+    @FindBy(xpath = "//*[contains(text(),'Add/Edit/Remove Owners')]/../../..")
+    public WebElement ownersManagementLink;
+
     @FindBy(css = "h1[class='text-h4 text-bold']")
     public WebElement pageHeader;
 
     @FindBy(xpath = "//*[.='Add Size Class']/../..")
     public WebElement addSizeClass;
+
+    @FindBy(xpath = "//*[.='Add Media Type']/../..")
+    public WebElement addMediaType;
+
+    @FindBy(xpath = "//*[.='Add Owner']/../..")
+    public WebElement addOwner;
 
     @FindBy(css = "[class='q-card popup-modal']")
     public WebElement popupModal;
@@ -220,8 +231,20 @@ public class AdminPage {
     @FindBy(xpath = "//*[.='Add Size Class'][@type='button']")
     public WebElement addSizeClassButton;
 
+    @FindBy(xpath = "//*[.='Add Owner'][@type='button']")
+    public WebElement addOwnerButton;
+
+    @FindBy(xpath = "//*[.='Add Media Type'][@type='button']")
+    public WebElement addMediaTypeButton;
+
     @FindBy(xpath = "//*[.='Update Size Class'][@type='button']")
     public WebElement updateSizeClassButton;
+
+    @FindBy(xpath = "//*[.='Update Media Type'][@type='button']")
+    public WebElement updateMediaTypeButton;
+
+    @FindBy(xpath = "//*[.='Update Owner'][@type='button']")
+    public WebElement updateOwnerButton;
 
     @FindBy(xpath = "//*[.='Cancel'][@type='button']")
     public WebElement cancelButton;
@@ -245,13 +268,25 @@ public class AdminPage {
     public WebElement owner;
 
     @FindBy(css = ".q-virtual-scroll__content [role='option']")
-    public List<WebElement> ownerFieldOptions;
+    public List<WebElement> dropdownOptions;
 
     @FindBy(css = "[class='q-table'] tbody tr")
     public List<WebElement> sizeClassList;
 
+    @FindBy(css = "[class='q-table'] tbody tr")
+    public List<WebElement> mediaTypeList;
+
+    @FindBy(css = "[class='q-table'] tbody tr")
+    public List<WebElement> ownerList;
+
     @FindBy(xpath = "//button[.='Delete Size Class']")
     public WebElement confirmDeleteSizeClass;
+
+    @FindBy(xpath = "//button[.='Delete Media Type']")
+    public WebElement confirmDeleteMediaType;
+
+    @FindBy(xpath = "//button[.='Delete Owner']")
+    public WebElement confirmDeleteOwner;
 
     @FindBy(css = "[class='q-card__section q-card__section--vert']")
     public WebElement warningMsg;
@@ -259,4 +294,15 @@ public class AdminPage {
     @FindBy(css = "[class='q-table'] tbody tr td[class='q-td text-left']")
     public List<WebElement> tableElements;
 
+    @FindBy(css = "[placeholder='Enter Name']")
+    public WebElement name;
+
+    @FindBy(css = "[placeholder='Select Owner Tier']")
+    public WebElement selectOwnerTier;
+
+    @FindBy(css = "[placeholder='Select Parent Owner']")
+    public WebElement selectParentOwner;
+
+    @FindBy(css = "[placeholder='Enter Owner Name']")
+    public WebElement ownerName;
 }

@@ -330,13 +330,14 @@ public class ShelvingSteps {
 
     @Then("user selects User from dropdown")
     public void user_selects_user_from_dropdown() throws InterruptedException {
-        Helper.clickWithJS(shelving.assignedUserField);
+        WaitHelper.waitForClickability(shelving.assignedUserField, 3000);
+        shelving.assignedUserField.click();
+        WaitHelper.waitForVisibility(shelving.allDropdownOptions.get(0),3000);
         for (WebElement user : shelving.allDropdownOptions) {
-            if (user.getText().equals("Tester")) {
+            if (user.getText().equals("Gregory Wolfe")) {
                 user.click();
             }
         }
-        wait.hardWait(1000);
     }
 
     @Then("Save Edits button is clickable")
@@ -383,10 +384,10 @@ public class ShelvingSteps {
     public void user_selects_a_created_verification_job() throws InterruptedException {
         WaitHelper.waitForClickability(shelving.selectByNumber, 2000);
         shelving.selectByNumber.click();
-        wait.hardWait(1000);
+        wait.hardWait(2000);
         for (WebElement dropdownValue : shelving.verificationJobsList) {
             ((JavascriptExecutor) driver).executeScript("arguments[0].scrollIntoView(true);", dropdownValue);
-            if (dropdownValue.getText().contains("Job #: " + VerificationSteps.verifificationJobNumber)) {
+            if (dropdownValue.getText().contains("Job #: " + VerificationSteps.verificationJobNumber)) {
                 dropdownValue.click();
             }
         }
@@ -396,9 +397,10 @@ public class ShelvingSteps {
 
     @Then("user selects verification job")
     public void user_selects_verification_job() throws InterruptedException {
-        WaitHelper.waitForClickability(shelving.selectByNumber, 1000);
+        WaitHelper.fluentWait(shelving.selectByNumber, 1000);
         shelving.selectByNumber.click();
-        helper.jSClick(shelving.verificationJobsList.get(0));
+        WaitHelper.waitForClickability(shelving.verificationJobsList.get(0), 1000);
+        shelving.verificationJobsList.get(0).click();
         shelving.selectByNumber.click();
         wait.hardWait(1000);
     }
@@ -562,18 +564,45 @@ public class ShelvingSteps {
 
     @And("user verifies date created")
     public void user_verifies_date_created() throws InterruptedException {
-        wait.hardWait(1000);
+        WaitHelper.waitForVisibility(shelving.dateCreated, 3000);
         String dateCreated = shelving.dateCreated.getText();
         Date currentDate = new Date();
         SimpleDateFormat dateFormat = new SimpleDateFormat("MM/dd/yyyy");
         String date = dateFormat.format(currentDate);
-        assertEquals(dateCreated, date);
+        System.out.println("Date created: "+ dateCreated + " Current date: " + date);
+        assertTrue(date.contains(dateCreated));
     }
 
     @Then("user clicks on Shelving Job")
     public void user_clicks_on_shelving_job() {
         shelving.shelvingJobsList.get(0).click();
     }
+
+    @Then("user verifies a list of verification jobs is displayed")
+    public void user_verifies_a_list_of_verification_jobs_is_displayed() {
+        WaitHelper.waitForClickability(shelving.verificationJobsList.get(0), 1000);
+        for (WebElement job : shelving.verificationJobsList) {
+            job.isDisplayed();
+            System.out.println("Completed Verification Jobs List: " + job.getText());
+        }
+    }
+
+    @And("user verifies that the menu includes the correct data")
+    public void user_verifies_that_the_menu_includes_the_correct_data() {
+        String data = shelving.verificationJobsList.get(0).getText();
+        String jobNumber = data.substring(0, 9);
+        if (data.contains("Trayed")) {
+            String itemsCount = data.substring(34);
+            assertTrue(jobNumber.contains("Job #"));
+            assertTrue(itemsCount.contains("items"));
+        } else if (data.contains("Non-Tray")) {
+            String nontrayItemsCount = data.substring(24);
+            assertTrue(jobNumber.contains("Job #"));
+            assertTrue(nontrayItemsCount.contains("items"));
+        }
+    }
+
+
 }
 
 

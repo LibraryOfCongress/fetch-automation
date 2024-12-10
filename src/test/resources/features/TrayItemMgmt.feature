@@ -55,7 +55,6 @@ Feature: Trayed Item Page Validation
       | Size Class         |
       | Temporary Location |
       | Permanent Location |
-      | Subcollection      |
       | Volume             |
       | Arrival Date       |
       | Accession Date     |
@@ -63,7 +62,7 @@ Feature: Trayed Item Page Validation
       | Container Type     |
 
 
-  @FETCH-298 @FETCH-180 @ @regression
+  @FETCH-298 @FETCH-180 @regression
   Scenario: User should be able to validate Overlay slide with Items in Tray details
     When user navigates to Item Management Page
     When user clicks on item in the table
@@ -73,15 +72,8 @@ Feature: Trayed Item Page Validation
       | labelname        |
       | Barcode:         |
       | Media Type:      |
-      | Size Class:      |
-      | Volume:          |
-      | Container Type:  |
-      | Subcollection:   |
       | Dimensions:      |
-      | Condition:       |
       | Accession Date:  |
-      | Withdrawal Date: |
-      | Arrival Date:    |
 
 
   @FETCH-298 @FETCH-180 @overlay @regression

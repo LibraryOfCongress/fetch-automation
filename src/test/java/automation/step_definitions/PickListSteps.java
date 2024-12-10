@@ -95,7 +95,8 @@ public class PickListSteps {
     @Then("user verifies the item is retrieved")
     public void user_verifies_the_item_is_retrieved() {
         WaitHelper.waitForVisibility(picklist.retrievedItem,700);
-        System.out.println(picklist.retrievedItem.getText());
+        Assert.assertEquals("Retrieved", picklist.retrievedItem.getText());
+
     }
 
     @And("user scans a Pick List Container")

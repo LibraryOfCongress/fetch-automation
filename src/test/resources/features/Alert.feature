@@ -26,7 +26,7 @@ Feature: Alert Notification Validation
       And user enters barcode and clicks Submit button
       When user selects one of the barcodes in the table
       And user clicks Delete
-      And user clicks Confirm
+      And user clicks Delete Item
       Then user verifies "The selected item(s) has been removed." alert msg
       When user clicks three dot menu next to Accession Job Number
       And user clicks Cancel Job

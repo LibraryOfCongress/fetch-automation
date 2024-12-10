@@ -146,7 +146,8 @@ public class AccessionPage {
     @FindBy(xpath = "//i[.='more_vert']")
     public WebElement threeDot;
 
-    @FindBy(css = "[class$='q-item--clickable q-link cursor-pointer q-focusable q-hoverable']")
+//    @FindBy(css = "[class$='q-item--clickable q-link cursor-pointer q-focusable q-hoverable']")
+    @FindBy(xpath = "//*[.='Edit'][@role='menuitem']")
     public WebElement editAccessionJob;
 
     @FindBy(xpath = "(//div[@role='menuitem'])[2]")
@@ -183,11 +184,8 @@ public class AccessionPage {
     @FindBy(css = "[class='q-table'] tbody tr")
     public List<WebElement> accessionJobsList;
 
-    @FindBy(xpath = "//*[text()='Trayed']")
-    public List<WebElement> trayedJobList;
-
-    @FindBy(xpath = "//*[text()='Non-Trayed']")
-    public List<WebElement> nonTrayedJobList;
+    @FindBy(xpath = "//td[.='Running']")
+    public List<WebElement> runningAccessionJobs;
 
     @FindBy(css = "[id='alertText']")
     public WebElement alertModal;

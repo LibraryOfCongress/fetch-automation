@@ -73,6 +73,9 @@ public class VerificationPage {
     @FindBy(css = "div[role='option']")
     public List<WebElement> editFieldOptions;
 
+    @FindBy(xpath = "(//p[@class='outline'])[2]")
+    public WebElement containerSizeValue;
+
     @FindBy(css = "[class='q-td text-left'] span")
     public List<WebElement> scannedItemList;
 

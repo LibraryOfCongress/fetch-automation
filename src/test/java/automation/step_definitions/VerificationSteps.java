@@ -25,14 +25,14 @@ public class VerificationSteps {
     long random02 = random.nextLong(10000000000L, 100000000000L);
     long scanned01 = random.nextLong(10000000000L, 100000000000L);
     long scanned02 = random.nextLong(10000000000L, 100000000000L);
-    static String verifificationJobNumber = "";
+    long scanned03 = random.nextLong(10000000000L, 100000000000L);
+    static String verificationJobNumber = "";
     static String trayedItemBarcode = "";
 
 
     @Given("user navigates to the Verification Page")
-    public void user_navigates_to_the_verification_page() throws InterruptedException {
+    public void user_navigates_to_the_verification_page() {
         Driver.getInstance().getDriver().get(ConfigurationReader.getProperty("config.properties", "verificationURL"));
-        wait.hardWait(1000);
     }
 
     @When("user clicks on Verification Job for a Trayed Item")
@@ -78,16 +78,15 @@ public class VerificationSteps {
     }
 
     @Then("user clicks Next Tray button")
-    public void user_clicks_next_tray_button() throws InterruptedException {
+    public void user_clicks_next_tray_button() {
         helper.scrollIntoView(verification.nextTrayBtn);
         helper.jSClick(verification.nextTrayBtn);
-        wait.hardWait(1000);
     }
 
     @Then("user clicks on new tray on the modal")
-    public void user_clicks_on_new_tray_on_the_modal() throws InterruptedException {
+    public void user_clicks_on_new_tray_on_the_modal() {
+        WaitHelper.waitForClickability(verification.newTrays.get(0),2000);
         verification.newTrays.get(0).click();
-        wait.hardWait(1000);
     }
 
     @When("user clicks on Verification Job for a Non-Trayed Item")
@@ -112,7 +111,7 @@ public class VerificationSteps {
 
     @When("user verifies the barcode")
     public void user_verifies_the_barcode() throws InterruptedException {
-        WaitHelper.waitForClickability(verification.enterBarcodeBtn, 1000);
+        WaitHelper.waitForClickability(verification.enterBarcodeBtn, 3000);
         verification.enterBarcodeBtn.click();
         verification.enterBarcodeField.sendKeys(verification.scannedVerificationItems.get(0).getText());
         verification.submitBtn.click();
@@ -128,11 +127,11 @@ public class VerificationSteps {
 
     @When("user verifies item barcode")
     public void user_verifies_item_barcode() throws InterruptedException {
-        WaitHelper.waitForClickability(verification.enterBarcodeBtn, 2000);
+        WaitHelper.waitForClickability(verification.enterBarcodeBtn, 3000);
         verification.enterBarcodeBtn.click();
         verification.enterBarcodeField.sendKeys(verification.scannedVerificationItems.get(0).getText());
         verification.submitBtn.click();
-        WaitHelper.waitForClickability(verification.enterBarcodeBtn, 2000);
+        WaitHelper.waitForClickability(verification.enterBarcodeBtn, 3000);
         verification.enterBarcodeBtn.click();
         verification.enterBarcodeField.sendKeys(verification.scannedVerificationItems.get(0).getText());
         verification.submitBtn.click();
@@ -140,10 +139,9 @@ public class VerificationSteps {
     }
 
     @When("user verifies the barcode by scanning")
-    public void user_verifies_the_barcode_by_scanning() throws InterruptedException {
-        wait.hardWait(1000);
+    public void user_verifies_the_barcode_by_scanning() {
+        WaitHelper.waitForVisibility(verification.scannedVerificationItems.get(0),2000);
         driver.findElement(By.tagName("body")).sendKeys(verification.scannedVerificationItems.get(0).getText());
-        wait.hardWait(1000);
     }
 
     @Then("user verifies Complete Job button is activated")
@@ -153,7 +151,7 @@ public class VerificationSteps {
 
     @When("user navigates to the verification job link")
     public void user_navigates_to_the_verification_job_link() {
-        verification.verificationJobsList.get(0).click();
+        verification.verificationJobsList.getLast().click();
     }
 
     @And("user verifies barcode")
@@ -178,55 +176,46 @@ public class VerificationSteps {
 
     @When("user clicks three dot menu next to Job Number")
     public void user_clicks_three_dot_menu_next_to_job_number() throws InterruptedException {
-        helper.jSClick(verification.threeDot);
-        wait.hardWait(2000);
-    }
-
-    @When("user edits Owner field")
-    public void user_edits_owner_field() throws InterruptedException {
-        helper.scrollIntoViewAndClick(verification.editOwnerField);
-        verification.editFieldOptions.get(4).click();
+        WaitHelper.waitForVisibility(verification.threeDot,3000);
+        verification.threeDot.click();
         wait.hardWait(1000);
     }
 
     @When("user edits Container Size field")
-    public void user_edits_container_size_field() throws InterruptedException {
+    public void user_edits_container_size_field() {
+        WaitHelper.waitForClickability(verification.editContainerSizeField,2000);
         helper.scrollIntoViewAndClick(verification.editContainerSizeField);
         verification.editFieldOptions.get(2).click();
-        wait.hardWait(1000);
     }
 
     @When("user edits Media Type field")
-    public void user_edits_media_type_field() throws InterruptedException {
-        WaitHelper.waitForClickability(verification.editMediaTypeField, 1000);
-        helper.jSClick(verification.editMediaTypeField);
+    public void user_edits_media_type_field()  {
+        WaitHelper.waitForClickability(verification.editMediaTypeField, 2000);
+        verification.editMediaTypeField.click();
+        WaitHelper.waitForVisibility(verification.editFieldOptions.get(4),2000);
         verification.editFieldOptions.get(4).click();
-        wait.hardWait(1000);
     }
 
     @Then("user enters the barcode and clicks Submit button")
-    public void user_enters_the_barcode_and_clicks_submit_button() throws InterruptedException {
+    public void user_enters_the_barcode_and_clicks_submit_button() {
+        WaitHelper.waitForClickability(verification.enterBarcodeField,2000);
         accession.enterBarcodeField.click();
         accession.enterBarcodeField.sendKeys(Long.toString(random01));
         helper.jSClick(accession.submitBtn);
-        wait.hardWait(1000);
     }
 
     @Then("user confirms they want to add a new item to the job")
-    public void user_confirms_they_want_to_add_a_new_item_to_the_job() throws InterruptedException {
+    public void user_confirms_they_want_to_add_a_new_item_to_the_job() {
         WaitHelper.waitForClickability(verification.addNewItem, 2000);
         verification.addNewItem.click();
-        wait.hardWait(1000);
     }
 
-
     @Then("user edits the barcode and clicks Submit button")
-    public void user_edits_the_barcode_and_clicks_submit_button() throws InterruptedException {
+    public void user_edits_the_barcode_and_clicks_submit_button() {
         accession.enterBarcodeField.sendKeys(Keys.CONTROL + "a");
         accession.enterBarcodeField.sendKeys(Keys.DELETE);
         accession.enterBarcodeField.sendKeys(Long.toString(random02));
         accession.submitBtn.click();
-        wait.hardWait(2000);
     }
 
     @Then("verify the edited barcode is displayed")
@@ -236,22 +225,27 @@ public class VerificationSteps {
     }
 
     @And("user scans item barcode")
-    public void user_scans_item_barcode() throws InterruptedException {
-        wait.hardWait(1000);
+    public void user_scans_item_barcode() {
+        WaitHelper.waitForVisibility(verification.containerSizeValue,3000);
         driver.findElement(By.tagName("body")).sendKeys("" + scanned01 + "");
-        wait.hardWait(2000);
     }
 
-    @And("user scans items barcode")
-    public void user_scans_items_barcode() throws InterruptedException {
+    @And("user scans the barcode of the item")
+    public void user_scans_the_barcode_of_the_item() throws InterruptedException {
         wait.hardWait(1000);
         driver.findElement(By.tagName("body")).sendKeys("" + scanned02 + "");
         wait.hardWait(2000);
     }
 
+    @And("user scans the item barcode")
+    public void user_scans_the_item_barcode() {
+        driver.findElement(By.tagName("body")).sendKeys("" + scanned03 + "");
+    }
+
     @When("user scans Tray Barcode")
     public void user_scans_tray_barcode() throws InterruptedException {
         wait.hardWait(1000);
+//        driver.findElement(By.tagName("body")).sendKeys("BH700982");
         driver.findElement(By.tagName("body")).sendKeys(AccessionSteps.generatedTray);
     }
 
@@ -264,8 +258,8 @@ public class VerificationSteps {
     @And("user saves Verification Job number")
     public void user_saves_verification_job_number() {
         WebElement vJobNumber = driver.findElement(By.xpath("//h1[@class='text-h4 text-bold']"));
-        verifificationJobNumber = vJobNumber.getText().substring(5).trim();
-        System.out.println("Verification Job Number: " + verifificationJobNumber);
+        verificationJobNumber = vJobNumber.getText().substring(5).trim();
+        System.out.println("Verification Job Number: " + verificationJobNumber);
     }
 
     @And("user saves Trayed Item barcode")
@@ -275,14 +269,13 @@ public class VerificationSteps {
     }
 
     @Then("user clicks a completed Accession Job")
-    public void user_clicks_a_completed_accession_job() throws InterruptedException {
+    public void user_clicks_a_completed_accession_job() {
         for (WebElement job : verification.verificationJobsList) {
             ((JavascriptExecutor) driver).executeScript("arguments[0].scrollIntoView(true);", job);
             if (job.getText().equals(AccessionSteps.accessionJobNumber)) {
                 job.click();
             }
         }
-        wait.hardWait(1000);
     }
 
     @And("user completes a Non-Tray Verification Job")

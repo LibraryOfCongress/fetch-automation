@@ -51,4 +51,16 @@ public class WithdrawalPage {
     @FindBy(xpath = "//label[.=' Assigned User: ']//following-sibling::p")
     public WebElement assignedUser;
 
+    @FindBy(xpath = "//*[.='Add Items']/../..")
+    public WebElement addItemsBtn;
+
+    @FindBy(css = "[role='menuitem']")
+    public List<WebElement> dropdownOptions;
+
+    @FindBy(xpath = "//div[.=' Scan Item(s) '][@role='menuitem']")
+    public WebElement scanItemsOption;
+
+    @FindBy(css = "[class='q-td text-left']:nth-child(4)")
+    public WebElement itemBarcode1;
+
 }

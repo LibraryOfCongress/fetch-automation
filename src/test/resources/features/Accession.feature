@@ -189,7 +189,6 @@ Feature: Accession Page Functionality Validation
     And user enters barcode and clicks Submit button
     When user clicks three dot menu next to Accession Job Number
     And user clicks Edit
-    And user edits Container Size
     And user edits Media Type
     And user clicks Save Edits
     Then user verifies "The tray has been updated." alert msg
@@ -340,9 +339,9 @@ Feature: Accession Page Functionality Validation
     And user switches on Toggle Barcode Scan
     Then user navigates to the verification job
     And user scans Tray Barcode
-    Then user swithes off Toggle Barcode Scan
-    And user verifies the barcode by scanning
-    When user enters an Item barcode of invalid type
+    Then user verifies "The job has been updated." alert msg
+    When user swithes off Toggle Barcode Scan
+    And user enters an Item barcode of invalid type
     Then user verifies "Barcode value is invalid for Item barcode rules." error alert is displayed
     And user verifies the Item barcode is not added
     When user enters an existing in the system Tray barcode

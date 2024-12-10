@@ -9,6 +9,7 @@ import automation.pages.AlertPage;
 import automation.utilities.*;
 
 import static org.junit.Assert.assertEquals;
+import static org.junit.Assert.assertTrue;
 
 public class AlertSteps {
 
@@ -26,9 +27,8 @@ public class AlertSteps {
     }
 
     @When("user clicks on the Show Generic Alert button")
-    public void user_clicks_on_the_show_generic_alert_button() throws InterruptedException {
+    public void user_clicks_on_the_show_generic_alert_button()  {
         helper.jSClick(alert.genericAlert);
-        wait.hardWait(1000);
     }
 
     @Then("user verifies UI alert on top of the screen is visible")
@@ -75,10 +75,21 @@ public class AlertSteps {
 
     @Then("user verifies {string} alert msg")
     public void user_verifies_alert_msg(String string) throws InterruptedException {
-        WaitHelper.waitForVisibility(alert.toastMsg, 1000);
+        WaitHelper.waitForVisibility(alert.toastMsg, 3000);
         assertEquals(string, alert.toastMsg.getText());
+        WaitHelper.waitForClickability(alert.closeToastMsg,3000);
         alert.closeToastMsg.click();
-        wait.hardWait(3000);
+        wait.hardWait(2000);
+    }
+
+    @Then("user verifies alert message is displayed")
+    public void user_verifies_alert_message_is_displayed() throws InterruptedException {
+        WaitHelper.waitForVisibility(alert.toastMsg, 3000);
+        System.out.println("Error message detail: " + alert.toastMsg.getText());
+        Helper.verifyElementDisplayed(alert.toastMsg);
+        WaitHelper.waitForClickability(alert.closeToastMsg,3000);
+        alert.closeToastMsg.click();
+        wait.hardWait(2000);
     }
 
     @When("user clicks Delete")
@@ -88,23 +99,22 @@ public class AlertSteps {
     }
 
     @When("user clicks Confirm")
-    public void user_clicks_confirm() throws InterruptedException {
+    public void user_clicks_confirm()  {
         WaitHelper.waitForClickability(accession.confirmDelete, 2000);
         helper.jSClick(accession.confirmDelete);
-        wait.hardWait(2000);
     }
 
     @When("user clicks Delete Item")
-    public void user_delete_item() throws InterruptedException {
+    public void user_delete_item() {
         WaitHelper.waitForClickability(accession.deleteItem, 2000);
         helper.jSClick(accession.deleteItem);
-        wait.hardWait(2000);
     }
 
     @Then("user verifies {string}")
     public void user_verifies(String string) {
         WaitHelper.waitForVisibility(alert.completedAndMovedForVerificationMsg, 5000);
         assertEquals(string, alert.completedAndMovedForVerificationMsg.getText());
+        WaitHelper.waitForClickability(alert.closeToastMsg,3000);
         alert.closeToastMsg.click();
     }
 
@@ -112,6 +122,7 @@ public class AlertSteps {
     public void user_verifies_msg(String string) {
         WaitHelper.waitForVisibility(alert.theJobHasBeenCompleted, 1000);
         assertEquals(string, alert.theJobHasBeenCompleted.getText());
+        WaitHelper.waitForClickability(alert.closeToastMsg,3000);
         alert.closeToastMsg.click();
     }
 
@@ -119,15 +130,16 @@ public class AlertSteps {
     public void user_verifies_notification(String string) {
         WaitHelper.waitForVisibility(alert.jobCreated, 1000);
         assertEquals(string, alert.jobCreated.getText());
+        WaitHelper.waitForClickability(alert.closeToastMsg,3000);
         alert.closeToastMsg.click();
     }
 
     @Then("user verifies {string} message")
-    public void user_verifies_message(String string) throws InterruptedException {
+    public void user_verifies_message(String string) {
         WaitHelper.waitForVisibility(alert.theContainerHasBeenUpdated, 1000);
         assertEquals(string, alert.theContainerHasBeenUpdated.getText());
+        WaitHelper.waitForClickability(alert.closeToastMsg,3000);
         alert.closeToastMsg.click();
-        wait.hardWait(1000);
     }
 
 

@@ -9,7 +9,6 @@ Feature: Verification Page Functionality Validation
 
   @FETCH-585 @FETCH-456 @trayed @next_tray
   Scenario: User should be able to validate Verification Job features for a Trayed Item
-    When user navigates to the Verification Page
     And user switches on Toggle Barcode Scan
     Then user clicks Accession on side navigation menu
     When user clicks Start Accession button
@@ -17,8 +16,9 @@ Feature: Verification Page Functionality Validation
     And user selects all required fields
     And user selects Media Type
     And user clicks submit button
+    Then user verifies "An Accession Job has successfully been created." alert msg
     And user scans Barcode
-    And user scans items barcode
+    And user scans the barcode of the item
     Then verify Add Tray button is activated
     And user clicks Add Tray button
     Then verify new modal Select Tray is displayed
@@ -31,7 +31,6 @@ Feature: Verification Page Functionality Validation
     And user navigates to the Verification Page
     And user switches on Toggle Barcode Scan
     When user navigates to the verification job
-#    When user clicks on Verification Job for a Trayed Item
     Then Tray container view is displayed
     And user scans Tray Barcode
     Then user swithes off Toggle Barcode Scan
@@ -65,7 +64,6 @@ Feature: Verification Page Functionality Validation
     Then user verifies non-trayed items container view is displayed
     And user clicks three dot menu next to Job Number
     And user clicks Edit
-    And user edits Owner field
     And user edits Container Size field
     And user edits Media Type field
     And user clicks Save Edits
@@ -76,7 +74,7 @@ Feature: Verification Page Functionality Validation
     And user edits the barcode and clicks Submit button
     Then user verifies "The item has been updated." alert msg
     And user clicks Enter Barcode button
-    And user enters another barcode and clicks Submit button
+    And user enters item barcode and clicks Submit button
     Then user confirms they want to add a new item to the job
     When user verifies second barcode
     When user selects one of the barcodes in the table
@@ -102,7 +100,7 @@ Feature: Verification Page Functionality Validation
     And user selects Media Type
     And user clicks submit button
     And user scans Barcode
-    And user scans item barcode
+    And user scans the item barcode
     When user clicks Complete Job button
     Then user clicks Complete
     And user navigates to the Verification Page
@@ -110,10 +108,10 @@ Feature: Verification Page Functionality Validation
     When user navigates to the verification job
     Then Tray container view is displayed
     And user scans Tray Barcode
+    Then user verifies "The job has been updated." alert msg
     Then user swithes off Toggle Barcode Scan
     And user clicks three dot menu next to Job Number
     And user clicks Edit
-    And user edits Container Size
     And user edits Media Type
     And user clicks Save Edits
     Then user verifies "Verification Container Has Been Updated" alert msg

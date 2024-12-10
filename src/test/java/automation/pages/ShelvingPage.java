@@ -27,10 +27,10 @@ public class ShelvingPage {
     @FindBy(css = "[role='checkbox']")
     public List<WebElement> rearrangeDropdownOptions;
 
-    @FindBy(css = "[role='option']")
+    @FindBy(css = "[class*='q-link cursor-pointer q-manual-focusable'][role='option']")
     public List<WebElement> allDropdownOptions;
 
-    @FindBy(xpath = "//button[.='Create Shelving Job']")
+    @FindBy(css = "[aria-label='createShelvingJobMenu']")
     public WebElement createShelvingJob;
 
     @FindBy(css = ".q-table th")
@@ -63,7 +63,7 @@ public class ShelvingPage {
     @FindBy(css = "[placeholder='Select Type']")
     public WebElement selectType;
 
-    @FindBy(xpath = "//button[.='From Verification Job']")
+    @FindBy(xpath = "//div[.=' From Verification Job '][@role='menuitem']")
     public WebElement fromVerificationJob;
 
     @FindBy(xpath = "//button[.='Direct To Shelve']")
@@ -114,7 +114,8 @@ public class ShelvingPage {
     @FindBy(xpath = "//td[.='Created']")
     public WebElement createdJob;
 
-    @FindBy(css = "[class='q-field__input q-placeholder col']")
+//    @FindBy(css = "[class='q-field__input q-placeholder col']")
+    @FindBy(css = "[aria-label='userSelect']")
     public WebElement assignedUserField;
 
     @FindBy(xpath = "//button[.='Save Edits']")

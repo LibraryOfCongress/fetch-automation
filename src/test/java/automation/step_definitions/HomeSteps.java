@@ -229,19 +229,27 @@ public class HomeSteps {
     }
 
     @When("user switches on Toggle Barcode Scan")
-    public void user_switches_on_toggle_barcode_scan() throws InterruptedException {
-        WebElement userIcon = driver.findElement(By.cssSelector("[aria-label='UserMenu']"));
-        userIcon.click();
-        wait.hardWait(2000);
-        home.toggleScan.click();
-        wait.hardWait(1000);
-        userIcon.click();
+    public void user_switches_on_toggle_barcode_scan()  {
+        if(home.userIcon.isDisplayed()) {
+            WaitHelper.waitForClickability(home.userIcon, 3000);
+            home.userIcon.click();
+            WaitHelper.waitForClickability(home.toggleScan, 3000);
+            home.toggleScan.click();
+            home.userIcon.click();
+        }if(!home.userIcon.isDisplayed()) {
+           driver.navigate().refresh();
+            WaitHelper.waitForClickability(home.userIcon,3000);
+            home.userIcon.click();
+            WaitHelper.waitForClickability(home.toggleScan,3000);
+            home.toggleScan.click();
+            home.userIcon.click();
+        }
     }
 
     @When("user swithes off Toggle Barcode Scan")
-    public void user_switches_off_barcode_scan() throws InterruptedException {
+    public void user_switches_off_barcode_scan() {
+        WaitHelper.waitForClickability(home.disableScan,3000);
         helper.jSClick(home.disableScan);
-        wait.hardWait(2000);
     }
 
     @Then("verify barcode scanning is enabled")
@@ -250,9 +258,43 @@ public class HomeSteps {
         Assert.assertEquals("Barcode scanning is enabled.", home.scanningEnabledAlert.getText());
     }
 
-
     @Then("user verifies today date")
     public void user_verifies_today_date() {
         Helper.todayDate();
     }
+
+    @Then("user verifies columns displayed")
+    public void user_verifies_columns_displayed(io.cucumber.datatable.DataTable dataTable) throws InterruptedException {
+        List<Map<String, String>> maps = dataTable.asMaps(String.class, String.class);
+        int i = 0;
+        for (Map<String, String> map : maps) {
+            String expectedColumn = map.get("column");
+            wait.hardWait(1000);
+            String actualColumn = home.tableColumns.get(i).getText();
+            Assert.assertEquals("Column name verification failed",
+                    expectedColumn, actualColumn);
+            i++;
+        }
+    }
+
+    @When("user clicks filter icon")
+    public void userClicksFilterIcon() {
+    WaitHelper.waitForVisibility(home.filterIcon,2000);
+    home.filterIcon.click();
+    }
+
+    @Then("user verifies filter options")
+    public void user_verifies_filter_options(io.cucumber.datatable.DataTable dataTable) throws InterruptedException {
+        List<Map<String, String>> maps = dataTable.asMaps(String.class, String.class);
+        int i = 0;
+        for (Map<String, String> map : maps) {
+            String expectedOption = map.get("option");
+            wait.hardWait(1000);
+            String actualOption = home.filterOptions.get(i).getText();
+            Assert.assertEquals("Filter options verification failed",
+                    expectedOption, actualOption);
+            i++;
+        }
+    }
+
 }

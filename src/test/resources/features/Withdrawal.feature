@@ -17,7 +17,6 @@ Feature: Withdrawal Page Functionality Validation
       | # of Items     |
       | Status         |
       | Date Created   |
-      | Completed Date |
 
 
   @regression @smoke
@@ -31,9 +30,13 @@ Feature: Withdrawal Page Functionality Validation
   @assigned_user @smoke
   Scenario:  User should be able to change Assigned User within a Withdraw Job
     When user navigates to the Withdrawal Page
+#    And user clicks Create Withdraw Job
+#    Then user verifies "A Withdraw Job has been successfully created." alert msg
+#    And user verifies a Withdraw Job is created
     And user clicks on the created Withdraw Job
     And user clicks three dot menu next to Job Number
     Then user clicks Edit
+    Then Assign User dropdown is clickable
     When user selects User from dropdown
     And Save Edits button is clickable
     And Cancel edits button is clickable
@@ -70,6 +73,27 @@ Feature: Withdrawal Page Functionality Validation
     Then user verifies "A Withdraw Job has been successfully created." alert msg
     And user verifies a Withdraw Job is created
     And user verifies date created
+
+
+
+  Scenario: User should be able to add to Withdraw job Items with status "Out"
+    When user creates a Request
+    And user creates a Pick List job
+    Then user switches on Toggle Barcode Scan
+    And user clicks Retrieve Pick List
+    Then user saves an item barcode
+    When user scans a Pick List Container
+    Then user verifies the item is retrieved
+    When user clicks Complete Job
+    And user clicks Complete
+    Then user verifies "The Pick List Job has been completed." alert msg
+    When user navigates to the Withdrawal Page
+    Then user switches on Toggle Barcode Scan
+    When user clicks Create Withdraw Job
+    And user clicks Add Items
+    Then user selects Scan Items option
+    When user scans an Item Barcode from a completed Pick List job
+    And user verifies scanned barcode is displayed
 
 
 

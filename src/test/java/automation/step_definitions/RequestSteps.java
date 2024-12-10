@@ -4,7 +4,6 @@ import io.cucumber.java.en.Given;
 import io.cucumber.java.en.Then;
 import io.cucumber.java.en.When;
 import org.junit.Assert;
-import org.openqa.selenium.By;
 import org.openqa.selenium.JavascriptExecutor;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
@@ -30,7 +29,7 @@ public class RequestSteps {
     AdminSteps adminSteps = new AdminSteps();
     ShelvingSteps shelvingSteps = new ShelvingSteps();
     static String requestBarcode = "";
-
+    static String createdJob = "";
 
 
     @Given("user navigates to the Request Page")
@@ -38,10 +37,16 @@ public class RequestSteps {
         Driver.getInstance().getDriver().get(ConfigurationReader.getProperty("config.properties", "requestURL"));
     }
 
+    @When("user clicks Create Request Job menu")
+    public void user_clicks_create_request_job_menu()  {
+        WaitHelper.waitForClickability(request.createRequestJobMenu,3000);
+        request.createRequestJobMenu.click();
+    }
+
     @When("user clicks Create button")
-    public void user_clicks_create_button() throws InterruptedException {
-        helper.jSClick(request.create);
-        wait.hardWait(100);
+    public void user_clicks_create_button() {
+        WaitHelper.waitForClickability(request.createRequestJobMenu,3000);
+        request.createRequestJobMenu.click();
     }
 
     @Then("user verifies the dropdown options")
@@ -60,6 +65,7 @@ public class RequestSteps {
 
     @Then("user selects Create Manual Requests option")
     public void user_selects_create_manual_requests_option() {
+        WaitHelper.waitForClickability(request.dropdownOptions.get(2),3000);
         request.dropdownOptions.get(2).click();
     }
 
@@ -76,25 +82,25 @@ public class RequestSteps {
     }
 
     @When("user enters an incorrect Item Barcode")
-    public void user_enters_an_incorrect_item_barcode()  {
+    public void user_enters_an_incorrect_item_barcode() {
         request.itemBarcodeField.click();
         request.itemBarcodeField.sendKeys("1234567890");
     }
 
     @When("user enters an item barcode")
-    public void user_enters_an_item_barcode()  {
+    public void user_enters_an_item_barcode() {
         request.itemBarcodeField.click();
         request.itemBarcodeField.sendKeys("11223344550");
     }
 
-    @When("user enters an Item Barcode from an existing Shelving Job")
-    public void user_enters_an_item_barcode_from_an_existing_shelving_job()  {
+    @When("user enters shelved Item Barcode")
+    public void user_enters_shelved_item_barcode() {
         request.itemBarcodeField.click();
         request.itemBarcodeField.sendKeys(ShelvingSteps.itemBarcode);
     }
 
     @When("user enters a Trayed Item Barcode from an existing Shelving Job")
-    public void user_enters_a_trayed_item_barcode_from_an_existing_shelving_job()  {
+    public void user_enters_a_trayed_item_barcode_from_an_existing_shelving_job() {
         request.itemBarcodeField.click();
         request.itemBarcodeField.sendKeys(VerificationSteps.trayedItemBarcode);
     }
@@ -127,26 +133,25 @@ public class RequestSteps {
     public void user_selects_delivery_location() throws InterruptedException {
         helper.scrollIntoView(request.deliveryLocationField);
         request.deliveryLocationField.click();
-        wait.hardWait(2000);
+        wait.hardWait(1000);
         request.options.get(1).click();
     }
 
     @Then("user clicks on created Request")
-    public void user_clicks_on_created_request() throws InterruptedException {
-        List<WebElement> requests = driver.findElements(By.cssSelector("[class='q-table'] tr"));
-        for(WebElement request: requests) {
-            ((JavascriptExecutor) driver).executeScript("arguments[0].scrollIntoView(true);",request);
-            if(request.getText().contains("Totu") && request.getText().contains(ShelvingSteps.itemBarcode)) {
+    public void user_clicks_on_created_request() {
+        WaitHelper.fluentWait(request.requestList.getLast(),2000);
+        for (WebElement request : request.requestList) {
+           ((JavascriptExecutor) driver).executeScript("arguments[0].scrollIntoView(true);", request);
+            if (request.getText().contains("Totu") && request.getText().contains(ShelvingSteps.itemBarcode)) {
                 request.click();
             }
         }
-        wait.hardWait(2000);
     }
 
     @Then("user verifies Request details on Overlay Slide")
-    public void user_verifies_request_details_on_overlay_slide(){
-        WaitHelper.waitForVisibility(request.requestItemDetails.get(0), 10);
-            String actualBarcode= request.actualBarcode.getText();
+    public void user_verifies_request_details_on_overlay_slide() {
+        WaitHelper.waitForVisibility(request.requestItemDetails.get(0), 3000);
+        String actualBarcode = request.actualBarcode.getText();
         Assert.assertEquals(ShelvingSteps.itemBarcode, actualBarcode);
     }
 
@@ -178,15 +183,16 @@ public class RequestSteps {
     }
 
     @When("user clicks the alert link")
-    public void user_clicks_the_alert_link() {
+    public void user_clicks_the_alert_link() throws InterruptedException {
+        createdJob = request.createdJobLink.getText();
         helper.jSClick(request.createdJobLink);
+        wait.hardWait(1000);
     }
 
     @Then("user is able to see the Pick List dashboard")
     public void user_is_able_to_see_the_pick_list_dashboard() {
         String picklistJobNumber = picklist.picklistJobNumber.getText();
-        String createdPickList = request.createdJobLink.getText();
-        Assert.assertEquals(picklistJobNumber, createdPickList);
+        Assert.assertEquals(picklistJobNumber, createdJob);
     }
 
     @When("user selects Add to Pick List option")
@@ -214,7 +220,8 @@ public class RequestSteps {
 
     @Then("user verifies items are added to the Pick List")
     public void user_verifies_items_are_added_to_the_pick_list() {
-        Assert.assertTrue(request.alertText.getText().contains("Successfully added items to Pick List #: "));
+        WaitHelper.waitForVisibility(request.alertText,1000);
+        assertTrue(request.alertText.getText().contains("Successfully added items to Pick List #: "));
     }
 
     @When("user has an Item present in request table")
@@ -230,7 +237,7 @@ public class RequestSteps {
     }
 
     @Then("user verifies item already requested error msg")
-    public void user_verifies_item_already_requested_error_msg()throws InterruptedException {
+    public void user_verifies_item_already_requested_error_msg() throws InterruptedException {
         WaitHelper.waitForVisibility(alert.toastMsg, 1000);
         assertTrue(alert.toastMsg.getText().toLowerCase().contains("item is already requested"));
         alert.closeToastMsg.click();
@@ -239,17 +246,17 @@ public class RequestSteps {
 
     @When("user creates a Pick List job")
     public void user_creates_a_Pick_List_job() throws InterruptedException {
-       user_navigates_to_the_request_page();
-       user_clicks_create_button();
-       user_selects_create_a_pick_list_option();
-       adminSteps.user_selects_building_from_dropdown();
-       shelvingSteps.user_clicks_submit();
-       user_verifies_options_with_checkboxes_are_displayed();
-       user_selects_requests();
-       user_clicks_create_pick_list();
-       user_verifies_the_pick_list_is_created();
-       user_clicks_the_alert_link();
-       user_is_able_to_see_the_pick_list_dashboard();
+        user_navigates_to_the_request_page();
+        user_clicks_create_request_job_menu();
+        user_selects_create_a_pick_list_option();
+        adminSteps.user_selects_building_from_dropdown();
+        shelvingSteps.user_clicks_submit();
+        user_verifies_options_with_checkboxes_are_displayed();
+        user_selects_requests();
+        user_clicks_create_pick_list();
+        user_verifies_the_pick_list_is_created();
+        user_clicks_the_alert_link();
+        user_is_able_to_see_the_pick_list_dashboard();
     }
 
     @When("user clicks running job")

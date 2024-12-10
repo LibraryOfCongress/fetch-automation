@@ -140,7 +140,15 @@ public class Helper {
         int max =999999, min =100000;
         int number = rand.nextInt(max-min+1)+min;
 
-        return number ;
+        return number;
+    }
+
+    public static String generateItemBarcode() {
+        Random rand = new Random();
+        long randomNumber = rand.nextLong(1000000000L, 10000000000L);
+        String number = String.valueOf(randomNumber)+"A";
+
+        return number;
     }
 
     public static String todayDate() {

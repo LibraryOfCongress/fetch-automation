@@ -1,6 +1,6 @@
 package automation.pages;
 
-import org.checkerframework.framework.qual.QualifierForLiterals;
+
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
@@ -21,12 +21,6 @@ public class PickListPage {
     @FindBy(css = ".q-table th")
     public List<WebElement> picklistTableColumnNames;
 
-    @FindBy(css = ".q-table tr")
-    public List<WebElement> picklistTableRows;
-
-    @FindBy(css = "[class='q-td text-left']")
-    public List<WebElement> tabs;
-
     @FindBy(css = "[class='info-display-number-box text-h4']")
     public WebElement picklistJobNumber;
 
@@ -38,9 +32,6 @@ public class PickListPage {
 
     @FindBy(css = ".q-table th")
     public List<WebElement> itemsInJobTableColumnNames;
-
-    @FindBy(xpath = "//td[.='Created']")
-    public WebElement createdJob;
 
     @FindBy(xpath = "//td[.='Running']")
     public WebElement runningJob;

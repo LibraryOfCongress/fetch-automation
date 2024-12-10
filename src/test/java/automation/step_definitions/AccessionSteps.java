@@ -33,9 +33,12 @@ public class AccessionSteps {
     static ThreadLocalRandom random = ThreadLocalRandom.current();
     static long scanned1 = random.nextLong(10000000000L, 100000000000L);
     static long scanned2 = random.nextLong(10000000000L, 100000000000L);
+    static long scanned3 = random.nextLong(10000000000L, 100000000000L);
     static long entered1 = random.nextLong(10000000000L, 100000000000L);
     static long entered2 = random.nextLong(10000000000L, 100000000000L);
     static long entered3 = random.nextLong(10000000000L, 100000000000L);
+    static long entered4 = random.nextLong(10000000000L, 100000000000L);
+    static long entered5 = random.nextLong(10000000000L, 100000000000L);
     static long edited1 = random.nextLong(10000000000L, 100000000000L);
     static long itemBarcode = random.nextLong(10000000000L, 100000000000L);
     static String editedTrayBarcode = "";
@@ -92,7 +95,7 @@ public class AccessionSteps {
         WaitHelper.waitForClickability(accession.ownerField, 10);
         accession.ownerField.click();
         wait.hardWait(100);
-        accession.ownerFieldOptions.get(3).click();
+        accession.ownerFieldOptions.get(1).click();
         wait.hardWait(100);
     }
 
@@ -164,15 +167,15 @@ public class AccessionSteps {
 
     @When("user scans Barcode")
     public void user_scans_barcode() throws InterruptedException {
-        wait.hardWait(3000);
-        generatedTray = "AH" + Helper.generateBarcodeNumber();
+        wait.hardWait(2000);
+        generatedTray = "DH" + Helper.generateBarcodeNumber();
         driver.findElement(By.tagName("body")).sendKeys(generatedTray);
     }
 
     @When("user scans another Barcode")
     public void user_scans_another_barcode() throws InterruptedException {
-        wait.hardWait(3000);
-        generatedTray2 = "AL" + Helper.generateBarcodeNumber();
+        wait.hardWait(2000);
+        generatedTray2 = "EH" + Helper.generateBarcodeNumber();
         driver.findElement(By.tagName("body")).sendKeys(generatedTray2);
     }
 
@@ -319,8 +322,8 @@ public class AccessionSteps {
 
     @Then("user clicks Enter Barcode button")
     public void user_clicks_enter_barcode_button() throws InterruptedException {
-        WaitHelper.waitForClickability(accession.enterBarcodeBtn, 1000);
-        helper.jSClick(accession.enterBarcodeBtn);
+        WaitHelper.waitForClickability(accession.enterBarcodeBtn, 3000);
+        accession.enterBarcodeBtn.click();
         wait.hardWait(2000);
     }
 
@@ -352,6 +355,23 @@ public class AccessionSteps {
         accession.enterBarcodeField.sendKeys(Long.toString(entered3));
         WaitHelper.waitForVisibility(accession.submitBtn,3000);
         accession.submitBtn.click();
+        wait.hardWait(1000);
+    }
+
+    @Then("user enters non-tray item barcode and clicks Submit button")
+    public void user_enters_non_tray_item_barcode_and_clicks_submit_button() throws InterruptedException {
+        accession.enterBarcodeField.click();
+        accession.enterBarcodeField.sendKeys(Long.toString(entered5));
+        WaitHelper.waitForVisibility(accession.submitBtn,3000);
+        accession.submitBtn.click();
+        wait.hardWait(1000);
+    }
+
+    @Then("user enters item barcode and clicks Submit button")
+    public void user_enters_item_barcode_and_clicks_submit_button() throws InterruptedException {
+        accession.enterBarcodeField.click();
+        accession.enterBarcodeField.sendKeys(Long.toString(entered4));
+        helper.jSClick(accession.submitBtn);
         wait.hardWait(1000);
     }
 
@@ -407,8 +427,8 @@ public class AccessionSteps {
     }
 
     @Then("verify Add Tray button is activated")
-    public void verify_add_tray_button_is_activated() {
-        helper.scrollIntoView(accession.addTrayBtn);
+    public void verify_add_tray_button_is_activated() throws InterruptedException {
+       WaitHelper.waitForVisibility(accession.addTrayBtn,2000);
         assertTrue(accession.addTrayBtn.isEnabled());
     }
 
@@ -472,6 +492,13 @@ public class AccessionSteps {
         wait.hardWait(2000);
     }
 
+    @And("user enters a new barcode by scanning")
+    public void user_enters_a_new_barcode_by_scanning() throws InterruptedException {
+        wait.hardWait(1000);
+        driver.findElement(By.tagName("body")).sendKeys("" + scanned3 + "");
+        wait.hardWait(2000);
+    }
+
     @And("user enters a second barcode by scanning")
     public void user_enters_a_second_barcode_by_scanning() throws InterruptedException {
         wait.hardWait(1000);
@@ -502,35 +529,35 @@ public class AccessionSteps {
     }
 
     @When("user clicks Edit")
-    public void user_clicks_edit() throws InterruptedException {
-        wait.hardWait(1000);
-        helper.jSClick(accession.editAccessionJob);
+    public void user_clicks_edit() {
+        WaitHelper.waitForVisibility(accession.editAccessionJob,3000);
+        accession.editAccessionJob.click();
     }
 
     @When("user edits Container Size")
     public void user_edits_container_size() throws InterruptedException {
         helper.scrollIntoViewAndClick(accession.csField);
-        accession.editFieldOptions.get(2).click();
+        WaitHelper.waitForVisibility(accession.editFieldOptions.get(3),2000);
+        accession.editFieldOptions.get(3).click();
         wait.hardWait(1000);
     }
 
     @When("user edits Media Type")
-    public void user_edits_media_type() throws InterruptedException {
-        WaitHelper.waitForClickability(accession.mtField, 1000);
-        helper.jSClick(accession.mtField);
+    public void user_edits_media_type() {
+        helper.scrollIntoViewAndClick(accession.mtField);
+        WaitHelper.waitForVisibility(accession.editFieldOptions.get(2),3000);
         accession.editFieldOptions.get(2).click();
-        wait.hardWait(2000);
-
     }
 
     @When("user clicks Save Edits")
     public void user_clicks_save_edits() {
-        WaitHelper.waitForClickability(accession.saveEdits, 1000);
-        helper.jSClick(accession.saveEdits);
+        WaitHelper.waitForClickability(accession.saveEdits, 3000);
+        accession.saveEdits.click();
     }
 
     @When("user clicks Resume Job button")
     public void user_clicks_resume_job_button() {
+        WaitHelper.waitForClickability(accession.resumeJob,3000);
         helper.jSClick(accession.resumeJob);
     }
 
@@ -553,7 +580,7 @@ public class AccessionSteps {
         }else{
             System.out.println("No download banner present");
         }
-        accession.accessionJobsList.get(accession.accessionJobsList.size() - 1).click();
+        accession.runningAccessionJobs.get(accession.runningAccessionJobs.size() - 1).click();
     }
 
     @And("user clicks Cancel Job")
@@ -608,26 +635,79 @@ public class AccessionSteps {
     }
 
     @When("user completes a Non-Tray Accession Job")
-    public void user_creates_a_non_tray_accession_Job() throws InterruptedException {
+    public void user_completes_a_non_tray_accession_job() throws InterruptedException {
         user_clicks_start_accession_button();
         user_selects_non_tray_accession();
         user_selects_all_fields();
         user_clicks_submit_button();
         user_clicks_enter_barcode_button();
-        user_enters_barcode_and_clicks_submit_button();
+//        user_enters_barcode_and_clicks_submit_button();
+        WaitHelper.waitForVisibility(accession.enterBarcodeField,2000);
+        accession.enterBarcodeField.click();
+        accession.enterBarcodeField.sendKeys(Helper.generateItemBarcode());
+        helper.jSClick(accession.submitBtn);
+        wait.hardWait(1000);
+
+        user_clicks_complete_job_button();
+        user_clicks_complete();
+    }
+
+    @When("user completes Non-Tray Accession Job")
+    public void user_completes_non_tray_accession_job() throws InterruptedException {
+        user_clicks_start_accession_button();
+        user_selects_non_tray_accession();
+        WaitHelper.waitForClickability(accession.ownerField, 100);
+        accession.ownerField.click();
+        WaitHelper.waitForVisibility(accession.ownerFieldOptions.get(0), 100);
+        accession.ownerFieldOptions.get(0).click();
+        accession.containerSizeField.click();
+        helper.jSClick(accession.containerOptions.get(2));
+        accession.mediaTypeField.click();
+        wait.hardWait(1000);
+        WaitHelper.waitForClickability(accession.mediaTypeField, 100);
+        accession.mediaOptions.get(5).click();
+        user_clicks_submit_button();
+        user_clicks_enter_barcode_button();
+        user_enters_non_tray_item_barcode_and_clicks_submit_button();
+        user_clicks_complete_job_button();
+        user_clicks_complete();
+    }
+
+    @When("user completes a new Non-Tray Accession Job")
+    public void user_completes_a_new_non_tray_accession_Job() throws InterruptedException {
+        user_clicks_start_accession_button();
+        user_selects_non_tray_accession();
+        user_selects_all_fields();
+        user_clicks_submit_button();
+        user_clicks_enter_barcode_button();
+        user_enters_another_barcode_and_clicks_submit_button();
         user_clicks_complete_job_button();
         user_clicks_complete();
     }
 
     @When("user completes a Trayed Accession Job")
-    public void user_creates_a_trayed_accession_job() throws InterruptedException {
+    public void user_completes_a_trayed_accession_job() throws InterruptedException {
         user_clicks_start_accession_button();
         user_selects_trayed_accession();
         user_selects_all_required_fields();
         user_selects_media_type();
         user_clicks_submit_button();
         user_scans_barcode();
-        user_enters_barcode_by_scanning();
+        user_enters_a_new_barcode_by_scanning();
+        user_clicks_complete_job_button();
+        user_clicks_complete();
+    }
+
+    @When("user completes a new Trayed Accession Job")
+    public void user_completes_a_new_trayed_accession_job() throws InterruptedException {
+        user_clicks_start_accession_button();
+        user_selects_trayed_accession();
+        user_selects_all_required_fields();
+        user_selects_media_type();
+        user_clicks_submit_button();
+        user_scans_barcode();
+//        user_enters_barcode_by_scanning();
+        user_enters_a_second_barcode_by_scanning();
         user_clicks_complete_job_button();
         user_clicks_complete();
     }
@@ -670,7 +750,7 @@ public class AccessionSteps {
     }
 
     @Then("user navigates to the completed job using Top Search")
-    public void user_navigates_to_the_completed_job_using_top_search() throws InterruptedException {
+    public void user_navigates_to_the_completed_job_using_top_search() {
         Helper.clickWithJS(accession.searchBar);
         accession.searchBar.sendKeys("1");
         accession.searchBar.sendKeys(Keys.ENTER);

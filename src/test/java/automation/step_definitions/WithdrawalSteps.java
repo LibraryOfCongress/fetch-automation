@@ -1,9 +1,9 @@
 package automation.step_definitions;
 
+import io.cucumber.java.en.And;
 import io.cucumber.java.en.Given;
 import io.cucumber.java.en.Then;
 import io.cucumber.java.en.When;
-import org.openqa.selenium.WebDriver;
 import automation.pages.WithdrawalPage;
 import automation.utilities.ConfigurationReader;
 import automation.utilities.Driver;
@@ -18,7 +18,6 @@ import static org.junit.Assert.assertEquals;
 
 public class WithdrawalSteps {
 
-    WebDriver driver = Driver.getInstance().getDriver();
     WithdrawalPage withdrawal = new WithdrawalPage();
     VerificationSteps verificationSteps = new VerificationSteps();
     Helper helper = new Helper();
@@ -32,6 +31,7 @@ public class WithdrawalSteps {
 
     @When("user clicks Create Withdraw Job")
     public void user_clicks_create_withdraw_job() {
+        WaitHelper.waitForVisibility(withdrawal.createWithdrawJob,3000);
         Helper.clickWithJS(withdrawal.createWithdrawJob);
     }
 
@@ -119,6 +119,24 @@ public class WithdrawalSteps {
     @Then("user verifies the assigned user has been updated")
     public void user_verifies_the_assigned_user_has_been_updated() {
         System.out.println(withdrawal.assignedUser.getText());
-        assertEquals("Tester", withdrawal.assignedUser.getText());
+        assertEquals("Gregory", withdrawal.assignedUser.getText());
+    }
+
+    @Then("user clicks Add Items")
+    public void user_clicks_add_items() {
+        WaitHelper.waitForVisibility(withdrawal.addItemsBtn,3000);
+        withdrawal.addItemsBtn.click();
+    }
+
+    @And("user selects Scan Items option")
+    public void user_selects_scan_items_option() {
+        WaitHelper.waitForVisibility(withdrawal.scanItemsOption,3000);
+        withdrawal.scanItemsOption.click();
+    }
+
+    @And("user verifies scanned barcode is displayed")
+    public void user_verifies_scanned_barcode_is_displayed() {
+        WaitHelper.waitForVisibility(withdrawal.itemBarcode1,3000);
+        assertEquals(PickListSteps.itemBarcode, withdrawal.itemBarcode1.getText());
     }
 }

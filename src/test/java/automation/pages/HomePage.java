@@ -26,6 +26,9 @@ public class HomePage {
     @FindBy(css = "[type='search']")
     public WebElement searchBar;
 
+    @FindBy(css = "[aria-label='UserMenu']")
+    public WebElement userIcon;
+
     @FindBy(xpath = "//*[@class='demo']/li")
     public WebElement barCodeField;
 
@@ -115,6 +118,17 @@ public class HomePage {
 
     @FindBy(xpath = "//button[.='Never']")
     public WebElement never;
+
+    @FindBy(css = "thead th")
+    public List<WebElement> tableColumns;
+
+    @FindBy(css = "[aria-label='tableFilterOptions']")
+    public WebElement filterIcon;
+
+    @FindBy(css = "[role='menuitem'] label")
+    public List<WebElement> filterOptions;
+
+
 
 
 

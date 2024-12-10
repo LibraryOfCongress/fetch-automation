@@ -11,6 +11,7 @@ import automation.utilities.ConfigurationReader;
 import automation.utilities.Driver;
 import automation.utilities.Helper;
 import automation.utilities.WaitHelper;
+import org.openqa.selenium.support.ui.Wait;
 
 import java.util.List;
 import java.util.Map;
@@ -254,9 +255,10 @@ public class AdminSteps {
     }
 
     @When("user selects Building from dropdown")
-    public void user_selects_building_from_dropdown() throws InterruptedException {
+    public void user_selects_building_from_dropdown() {
+        WaitHelper.waitForClickability(admin.selectBuilding,3000);
         admin.selectBuilding.click();
-        wait.hardWait(1000);
+        WaitHelper.waitForClickability(admin.fieldDropdwnList.get(0),3000);
         helper.jSClick(admin.fieldDropdwnList.get(0));
     }
 
@@ -419,7 +421,14 @@ public class AdminSteps {
 
     @When("user clicks three dots menu")
     public void user_clicks_three_dots_menu() {
+        WaitHelper.waitForVisibility(admin.threeDots.getLast(),2000);
         helper.jSClick(admin.threeDotsMenu.getLast());
+    }
+
+    @When("user clicks three dots menu next to a record with associated records")
+    public void user_clicks_three_dots_menu_next_a_record_with_associated_records() {
+        WaitHelper.waitForVisibility(admin.threeDots.getFirst(),2000);
+        helper.jSClick(admin.threeDotsMenu.getFirst());
     }
 
     @Then("user verifies all the options")
@@ -559,18 +568,51 @@ public class AdminSteps {
 
     @When("user clicks List Configurations")
     public void user_clicks_list_configurations() {
+        WaitHelper.waitForClickability(admin.listConfigurationsLink,2000);
         helper.jSClick(admin.listConfigurationsLink);
+    }
+
+    @When("user clicks Owners Management link")
+    public void user_clicks_owners_management_link() {
+        WaitHelper.waitForClickability(admin.ownersManagementLink,2000);
+        helper.jSClick(admin.ownersManagementLink);
+    }
+
+    @When("user clicks Media Type Management link")
+    public void user_clicks_meia_type_management_link() {
+        WaitHelper.waitForClickability(admin.mediaTypeManagementLink,2000);
+        helper.jSClick(admin.mediaTypeManagementLink);
     }
 
     @When("user clicks Size Class Management link")
     public void user_clicks_size_class_management_link() {
+        WaitHelper.waitForClickability(admin.sizeClassManagementLink,2000);
         helper.jSClick(admin.sizeClassManagementLink);
+    }
+
+    @Then("user verifies Media Type dashboard is displayed")
+    public void user_verifies_media_type_dashboard_is_displayed() {
+        assertEquals("Media Type", admin.pageHeader.getText());
+        Helper.verifyElementDisplayed(admin.addMediaType);
     }
 
     @Then("user verifies Size Class dashboard is displayed")
     public void user_verifies_size_class_dashboard_is_displayed() {
         assertEquals("Size Class", admin.pageHeader.getText());
         Helper.verifyElementDisplayed(admin.addSizeClass);
+    }
+
+    @Then("user verifies Owner dashboard is displayed")
+    public void user_verifies_owner_dashboard_is_displayed() {
+        assertEquals("Owner", admin.pageHeader.getText());
+        Helper.verifyElementDisplayed(admin.addOwner);
+    }
+
+    @When("user clicks Add Media Type")
+    public void user_clicks_add_media_type() throws InterruptedException {
+        WaitHelper.waitForClickability(admin.addMediaType, 1000);
+        admin.addMediaType.click();
+        wait.hardWait(1000);
     }
 
     @When("user clicks Add Size Class")
@@ -580,24 +622,43 @@ public class AdminSteps {
         wait.hardWait(1000);
     }
 
-    @Then("user verifies a modal to add new Size Class is displayed")
-    public void user_verifies_a_modal_to_add_new_size_class_is_displayed() {
-        WaitHelper.waitForVisibility(admin.popUpModal, 1000);
-        Helper.verifyElementDisplayed(admin.popUpModal);
-        assertEquals("Add New Size Class",admin.modalHeader.getText());
+    @When("user clicks Add Owner")
+    public void user_clicks_add_owner() throws InterruptedException {
+        WaitHelper.waitForClickability(admin.addOwner, 1000);
+        admin.addOwner.click();
+        wait.hardWait(1000);
     }
 
-    @Then("user verifies a modal to edit Size Class is displayed")
-    public void user_verifies_a_modal_to_edit_size_class_is_displayed() {
+    @Then("user verifies a modal to add new record is displayed")
+    public void user_verifies_a_modal_to_add_new_record_is_displayed() {
         WaitHelper.waitForVisibility(admin.popUpModal, 1000);
         Helper.verifyElementDisplayed(admin.popUpModal);
-        assertEquals("Edit Size Class",admin.modalHeader.getText());
+        assertTrue(admin.modalHeader.getText().contains("Add New"));
+    }
+
+    @Then("user verifies a modal to edit the record is displayed")
+    public void user_verifies_a_modal_to_edit_the_record_is_displayed() {
+        WaitHelper.waitForVisibility(admin.popUpModal, 1000);
+        Helper.verifyElementDisplayed(admin.popUpModal);
+        assertTrue(admin.modalHeader.getText().contains("Edit"));
     }
 
     @And("user verifies Add Size Class button is disabled")
     public void user_verifies_add_size_class_button_is_disabled() {
         WaitHelper.waitForVisibility(admin.addSizeClassButton, 1000);
         Helper.verifyElementEnabled(admin.addSizeClassButton);
+    }
+
+    @And("user verifies Add Media Type button is disabled")
+    public void user_verifies_add_media_type_button_is_disabled() {
+        WaitHelper.waitForVisibility(admin.addMediaTypeButton, 1000);
+        Helper.verifyElementEnabled(admin.addMediaTypeButton);
+    }
+
+    @And("user verifies Add Owner button is disabled")
+    public void user_verifies_add_owner_button_is_disabled() {
+        WaitHelper.waitForVisibility(admin.addOwnerButton, 1000);
+        Helper.verifyElementEnabled(admin.addOwnerButton);
     }
 
     @And("user verifies Cancel button is enabled")
@@ -653,15 +714,27 @@ public class AdminSteps {
     @And("user selects owner")
     public void user_selects_owner() {
         admin.owner.click();
-        admin.ownerFieldOptions.get(1).click();
-        admin.ownerFieldOptions.get(3).click();
-        admin.ownerFieldOptions.get(4).click();
+        admin.dropdownOptions.get(1).click();
+        admin.dropdownOptions.get(3).click();
+        admin.dropdownOptions.get(4).click();
     }
 
     @Then("user verifies Add Size Class button is enabled")
     public void user_verifies_add_size_class_button_is_enabled() {
         WaitHelper.waitForVisibility(admin.addSizeClassButton, 1000);
         Helper.verifyElementEnabled(admin.addSizeClassButton);
+    }
+
+    @Then("user verifies Add Media Type button is enabled")
+    public void user_verifies_add_media_type_button_is_enabled() {
+        WaitHelper.waitForVisibility(admin.addMediaTypeButton, 1000);
+        Helper.verifyElementEnabled(admin.addMediaTypeButton);
+    }
+
+    @Then("user verifies Add Owner button is enabled")
+    public void user_verifies_add_owner_button_is_enabled() {
+        WaitHelper.waitForVisibility(admin.addOwnerButton, 1000);
+        Helper.verifyElementEnabled(admin.addOwnerButton);
     }
 
     @And("user verifies that Size Class is created")
@@ -671,14 +744,28 @@ public class AdminSteps {
         assertTrue(admin.sizeClassList.get(admin.sizeClassList.size()-1).getText().contains(addedSizeClass));
     }
 
-    @When("user clicks Edit Size Class")
-    public void user_clicks_edit_size_class() throws InterruptedException {
+    @And("user verifies that Media Type is created")
+    public void user_verifies_that_media_type_is_created() {
+        helper.scrollIntoView(admin.mediaTypeList.get(admin.mediaTypeList.size()-1));
+        String addedMediaType = "Test Media Type";
+        assertTrue(admin.mediaTypeList.get(admin.mediaTypeList.size()-1).getText().contains(addedMediaType));
+    }
+
+    @And("user verifies that Owner is created")
+    public void user_verifies_that_owner_is_created() {
+        helper.scrollIntoView(admin.ownerList.get(admin.ownerList.size()-1));
+        String addedOwner = "Test Owner";
+        assertTrue(admin.ownerList.get(admin.ownerList.size()-1).getText().contains(addedOwner));
+    }
+
+    @When("user clicks to edit record")
+    public void user_clicks_to_edit_record() throws InterruptedException {
         helper.jSClick(admin.menuOptions.get(0));
         wait.hardWait(1000);
     }
 
-    @When("user clicks Delete Size Class")
-    public void user_clicks_delete_size_class() throws InterruptedException {
+    @When("user clicks to delete record")
+    public void user_clicks_to_delete_record() throws InterruptedException {
         helper.jSClick(admin.menuOptions.getLast());
         wait.hardWait(1000);
     }
@@ -688,13 +775,36 @@ public class AdminSteps {
         admin.addSizeClassButton.click();
     }
 
+    @When("user clicks Add Media Type button")
+    public void user_clicks_add_media_type_button() {
+        admin.addMediaTypeButton.click();
+    }
+
+    @When("user clicks Add Owner button")
+    public void user_clicks_add_owner_button() {
+        admin.addOwnerButton.click();
+    }
+
     @When("user clicks Update Size Class button")
     public void user_clicks_update_size_class_button() {
+        WaitHelper.waitForVisibility(admin.updateSizeClassButton,2000);
         admin.updateSizeClassButton.click();
     }
 
-    @Then("user verifies delete size class warning message")
-    public void user_verifies_delete_size_class_warning_message() {
+    @When("user clicks Update Media Type button")
+    public void user_clicks_update_media_type_button() {
+        WaitHelper.waitForVisibility(admin.updateMediaTypeButton,2000);
+        admin.updateMediaTypeButton.click();
+    }
+
+    @When("user clicks Update Owner button")
+    public void user_clicks_update_owner_button() {
+        WaitHelper.waitForVisibility(admin.updateOwnerButton,2000);
+        admin.updateOwnerButton.click();
+    }
+
+    @Then("user verifies delete warning message")
+    public void user_verifies_delete_warning_message() {
         WaitHelper.waitForVisibility(admin.warningMsg, 1000);
         assertTrue(admin.warningMsg.getText().contains("Are you sure you want to delete"));
     }
@@ -702,6 +812,16 @@ public class AdminSteps {
     @And("user confirms delete size class action")
     public void user_confirms_delete_size_class_action() {
         helper.jSClick(admin.confirmDeleteSizeClass);
+    }
+
+    @And("user confirms delete media type action")
+    public void user_confirms_delete_media_type_action() {
+        helper.jSClick(admin.confirmDeleteMediaType);
+    }
+
+    @And("user confirms delete owner action")
+    public void user_confirms_delete_owner_action() {
+        helper.jSClick(admin.confirmDeleteOwner);
     }
 
     @When("user enters existing in the system full name")
@@ -726,5 +846,80 @@ public class AdminSteps {
     public void user_verifies_that_size_class_with_existing_short_name_is_not_created()  {
         WaitHelper.fluentWait(admin.sizeClassList.get(admin.sizeClassList.size()-1),1000);
         assertFalse(admin.sizeClassList.get(admin.sizeClassList.size()-1).getText().contains("RS"));
+    }
+
+    @When("user enters name")
+    public void user_enters_name() throws InterruptedException {
+        admin.name.click();
+        admin.name.sendKeys("Test Media Type");
+        wait.hardWait(100);
+    }
+
+    @When("user updates name")
+    public void user_updates_name() throws InterruptedException {
+        admin.name.click();
+        admin.name.sendKeys(Keys.CONTROL + "a");
+        admin.name.sendKeys(Keys.DELETE);
+        admin.name.sendKeys("Updated Test Media Type");
+        wait.hardWait(100);
+    }
+
+    @When("user enters existing in the system name")
+    public void user_enters_existing_in_the_system_name()  {
+        Helper.clickWithJS(admin.name);
+        admin.name.sendKeys("DVD");
+    }
+
+    @And("user verifies that Media Type with existing name is not created")
+    public void user_verifies_that_media_type_with_existing_name_is_not_created()  {
+        WaitHelper.fluentWait(admin.mediaTypeList.get(admin.mediaTypeList.size()-1),1000);
+        assertFalse(admin.mediaTypeList.get(admin.mediaTypeList.size()-1).getText().contains("DVD"));
+    }
+
+    @When("user selects Owner Tier")
+    public void user_selects_owner_tier() {
+        WaitHelper.waitForVisibility(admin.selectOwnerTier,2000);
+        admin.selectOwnerTier.click();
+        admin.dropdownOptions.get(1).click();
+    }
+
+    @When("user selects Parent Owner")
+    public void user_selects_parent_owner() {
+        WaitHelper.waitForVisibility(admin.selectParentOwner,2000);
+        admin.selectParentOwner.click();
+        admin.dropdownOptions.get(2).click();
+    }
+
+    @When("user enters Owner Name")
+    public void user_enters_owner_name() throws InterruptedException {
+        WaitHelper.waitForClickability(admin.ownerName,2000);
+        admin.ownerName.click();
+        admin.ownerName.sendKeys("Test Owner");
+        wait.hardWait(100);
+    }
+
+    @When("user updates Owner Name")
+    public void user_updates_owner_name() throws InterruptedException {
+        WaitHelper.waitForClickability(admin.ownerName,2000);
+        admin.ownerName.click();
+        admin.ownerName.sendKeys(Keys.CONTROL + "a");
+        admin.ownerName.sendKeys(Keys.DELETE);
+        admin.ownerName.sendKeys("Updated Test Owner");
+        wait.hardWait(100);
+    }
+
+    @When("user enters existing in the system owner tier and owner name")
+    public void user_enters_existing_in_the_system_owner_tier_and_owner_name()  {
+        WaitHelper.waitForVisibility(admin.selectOwnerTier,2000);
+        admin.selectOwnerTier.click();
+        admin.dropdownOptions.get(0).click();
+        Helper.clickWithJS(admin.ownerName);
+        admin.ownerName.sendKeys("Library of Congress");
+    }
+
+    @And("user verifies that Owner with existing owner tier and owner name is not created")
+    public void user_verifies_that_owner_with_existing_owner_tier_and_owner_name_is_not_created()  {
+        WaitHelper.fluentWait(admin.ownerList.get(admin.ownerList.size()-1),1000);
+        assertFalse(admin.ownerList.get(admin.ownerList.size()-1).getText().contains("Library of Congress"));
     }
 }
