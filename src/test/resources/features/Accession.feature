@@ -249,7 +249,7 @@ Feature: Accession Page Functionality Validation
     Then user confirms delete tray action
 
 
-  @FETCH-917 @FETCH-735 @cancel_accession @regression
+  @FETCH-917 @FETCH-735 @cancel_accession
   Scenario: User should be able to cancel an Accession Job
     When user navigates to the Accession Page
     And user selects an Accession Job

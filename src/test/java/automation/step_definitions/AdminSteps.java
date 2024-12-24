@@ -670,7 +670,7 @@ public class AdminSteps {
     @When("user enters full name")
     public void user_enters_full_name() throws InterruptedException {
         admin.fullname.click();
-        admin.fullname.sendKeys("Microfilm Boxes");
+        admin.fullname.sendKeys("Test Size Class");
         wait.hardWait(100);
     }
 
@@ -679,14 +679,14 @@ public class AdminSteps {
         admin.fullname.click();
         admin.fullname.sendKeys(Keys.CONTROL + "a");
         admin.fullname.sendKeys(Keys.DELETE);
-        admin.fullname.sendKeys("Microfilm Boxes - 12 - REEL");
+        admin.fullname.sendKeys("Updated Size Class");
         wait.hardWait(100);
     }
 
     @And("user enters short name")
     public void user_enters_short_name() throws InterruptedException {
         admin.shortname.click();
-        admin.shortname.sendKeys("MF");
+        admin.shortname.sendKeys("TSC");
         wait.hardWait(100);
     }
 
@@ -740,7 +740,7 @@ public class AdminSteps {
     @And("user verifies that Size Class is created")
     public void user_verifies_that_size_class_is_created() {
         helper.scrollIntoView(admin.sizeClassList.get(admin.sizeClassList.size()-1));
-        String addedSizeClass = "Microfilm Boxes";
+        String addedSizeClass = "Test Size Class";
         assertTrue(admin.sizeClassList.get(admin.sizeClassList.size()-1).getText().contains(addedSizeClass));
     }
 
@@ -827,25 +827,25 @@ public class AdminSteps {
     @When("user enters existing in the system full name")
     public void user_enters_existing_in_the_system_full_name()  {
         Helper.clickWithJS(admin.fullname);
-        admin.fullname.sendKeys("Record Storage Box");
+        admin.fullname.sendKeys("AL Ft Meade boxes");
     }
 
     @When("user enters existing in the system short name")
     public void user_enters_existing_in_the_system_short_name()  {
         Helper.clickWithJS(admin.shortname);
-        admin.shortname.sendKeys("RS");
+        admin.shortname.sendKeys("AL");
     }
 
     @And("user verifies that Size Class with existing full name is not created")
     public void user_verifies_that_size_class_with_existing_full_name_is_not_created()  {
         WaitHelper.fluentWait(admin.sizeClassList.get(admin.sizeClassList.size()-1),1000);
-        assertFalse(admin.sizeClassList.get(admin.sizeClassList.size()-1).getText().contains("Record Storage Box"));
+        assertFalse(admin.sizeClassList.get(admin.sizeClassList.size()-1).getText().contains("AL Ft Meade boxes"));
     }
 
     @And("user verifies that Size Class with existing short name is not created")
     public void user_verifies_that_size_class_with_existing_short_name_is_not_created()  {
         WaitHelper.fluentWait(admin.sizeClassList.get(admin.sizeClassList.size()-1),1000);
-        assertFalse(admin.sizeClassList.get(admin.sizeClassList.size()-1).getText().contains("RS"));
+        assertFalse(admin.sizeClassList.get(admin.sizeClassList.size()-1).getText().contains("AL"));
     }
 
     @When("user enters name")
@@ -914,12 +914,12 @@ public class AdminSteps {
         admin.selectOwnerTier.click();
         admin.dropdownOptions.get(0).click();
         Helper.clickWithJS(admin.ownerName);
-        admin.ownerName.sendKeys("Library of Congress");
+        admin.ownerName.sendKeys("Consortium of Hobbits");
     }
 
     @And("user verifies that Owner with existing owner tier and owner name is not created")
     public void user_verifies_that_owner_with_existing_owner_tier_and_owner_name_is_not_created()  {
         WaitHelper.fluentWait(admin.ownerList.get(admin.ownerList.size()-1),1000);
-        assertFalse(admin.ownerList.get(admin.ownerList.size()-1).getText().contains("Library of Congress"));
+        assertFalse(admin.ownerList.get(admin.ownerList.size()-1).getText().contains("Consortium of Hobbits"));
     }
 }

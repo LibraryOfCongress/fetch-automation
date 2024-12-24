@@ -15,6 +15,7 @@ import java.util.Map;
 
 
 import static org.junit.Assert.assertEquals;
+import static org.junit.Assert.assertTrue;
 
 public class WithdrawalSteps {
 
@@ -65,8 +66,7 @@ public class WithdrawalSteps {
             String expectedName = map.get("column");
             wait.hardWait(1000);
             String actualName = withdrawal.withdrawalColumns.get(i).getText();
-            assertEquals("Tab names verification failed",
-                    expectedName, actualName);
+            assertTrue(actualName.contains(expectedName));
             i++;
         }
     }

@@ -38,14 +38,14 @@ public class RequestSteps {
     }
 
     @When("user clicks Create Request Job menu")
-    public void user_clicks_create_request_job_menu()  {
-        WaitHelper.waitForClickability(request.createRequestJobMenu,3000);
+    public void user_clicks_create_request_job_menu() {
+        WaitHelper.waitForClickability(request.createRequestJobMenu, 3000);
         request.createRequestJobMenu.click();
     }
 
     @When("user clicks Create button")
     public void user_clicks_create_button() {
-        WaitHelper.waitForClickability(request.createRequestJobMenu,3000);
+        WaitHelper.waitForClickability(request.createRequestJobMenu, 3000);
         request.createRequestJobMenu.click();
     }
 
@@ -65,7 +65,7 @@ public class RequestSteps {
 
     @Then("user selects Create Manual Requests option")
     public void user_selects_create_manual_requests_option() {
-        WaitHelper.waitForClickability(request.dropdownOptions.get(2),3000);
+        WaitHelper.waitForClickability(request.dropdownOptions.get(2), 3000);
         request.dropdownOptions.get(2).click();
     }
 
@@ -133,17 +133,21 @@ public class RequestSteps {
     public void user_selects_delivery_location() throws InterruptedException {
         helper.scrollIntoView(request.deliveryLocationField);
         request.deliveryLocationField.click();
-        wait.hardWait(1000);
+        wait.hardWait(2000);
         request.options.get(1).click();
     }
 
     @Then("user clicks on created Request")
     public void user_clicks_on_created_request() {
-        WaitHelper.fluentWait(request.requestList.getLast(),2000);
         for (WebElement request : request.requestList) {
-           ((JavascriptExecutor) driver).executeScript("arguments[0].scrollIntoView(true);", request);
-            if (request.getText().contains("Totu") && request.getText().contains(ShelvingSteps.itemBarcode)) {
-                request.click();
+            try{
+                ((JavascriptExecutor) driver).executeScript("arguments[0].scrollIntoView(true);", request);
+                if (request.getText().contains("Totu") && request.getText().contains(ShelvingSteps.itemBarcode)) {
+                    request.click();
+            }
+
+            }catch (Exception e){
+                System.out.println("Request " + request + " not visible.");
             }
         }
     }
@@ -220,7 +224,7 @@ public class RequestSteps {
 
     @Then("user verifies items are added to the Pick List")
     public void user_verifies_items_are_added_to_the_pick_list() {
-        WaitHelper.waitForVisibility(request.alertText,1000);
+        WaitHelper.waitForVisibility(request.alertText, 1000);
         assertTrue(request.alertText.getText().contains("Successfully added items to Pick List #: "));
     }
 

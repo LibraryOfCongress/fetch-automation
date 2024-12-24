@@ -382,9 +382,9 @@ public class ShelvingSteps {
 
     @Then("user selects a created Verification Job")
     public void user_selects_a_created_verification_job() throws InterruptedException {
-        WaitHelper.waitForClickability(shelving.selectByNumber, 2000);
+        WaitHelper.waitForVisibility(shelving.selectByNumber, 5000);
         shelving.selectByNumber.click();
-        wait.hardWait(2000);
+        wait.hardWait(3000);
         for (WebElement dropdownValue : shelving.verificationJobsList) {
             ((JavascriptExecutor) driver).executeScript("arguments[0].scrollIntoView(true);", dropdownValue);
             if (dropdownValue.getText().contains("Job #: " + VerificationSteps.verificationJobNumber)) {

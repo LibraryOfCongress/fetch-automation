@@ -84,27 +84,28 @@ Feature: Shelving Page Functionality Validation
 
   @FETCH-648 @FETCH-380 @regression @smoke
   Scenario: User should be able to create a Shelving Job from Verification Jobs with Assigning Shelving Location
-#    When user clicks Accession on side navigation menu
-#    And user clicks Start Accession button
-#    Then user selects Non-Tray Accession
-#    When user selects all fields
-#    Then user clicks submit button
-#    When user clicks Enter Barcode button
-#    And user enters second barcode and clicks Submit button
-#    When user clicks Complete Job button
-#    And user clicks Complete
-#    Then user navigates to the Verification Page
-#    And user navigates to the verification job
-##    And user saves Verification Job number
-#    Then user verifies item barcode
-#    When user clicks Complete Job button
-#    And user clicks Complete
-#    Then user verifies "The Job has been completed." msg
+    When user clicks Accession on side navigation menu
+    And user clicks Start Accession button
+    Then user selects Non-Tray Accession
+    When user selects all fields
+    Then user clicks submit button
+    When user clicks Enter Barcode button
+    And user enters second barcode and clicks Submit button
+    When user clicks Complete Job button
+    And user clicks Complete
+    Then user navigates to the Verification Page
+    And user navigates to the verification job
+    And user saves Verification Job number
+    Then user verifies item barcode
+    When user clicks Complete Job button
+    And user clicks Complete
+    Then user verifies "The Job has been completed." msg
     When user clicks Shelving on side navigation menu
     And user clicks Create Shelving Job button
     And user selects From Verification Job option
     And user selects Yes
-    Then user selects verification job
+#    Then user selects verification job
+    Then user selects a created Verification Job
     And user selects a Building from Shelving Locations
     And user selects Module from dropdown
     And user selects Aisle from dropdown

@@ -104,9 +104,9 @@ public class AccessionSteps {
         WaitHelper.waitForClickability(accession.ownerField, 10);
         accession.ownerField.click();
         wait.hardWait(1000);
-        accession.ownerFieldOptions.get(3).click();
+        accession.ownerFieldOptions.get(5).click();
         accession.containerSizeField.click();
-        helper.jSClick(accession.containerOptions.get(2));
+        helper.jSClick(accession.containerOptions.get(4));
         accession.mediaTypeField.click();
         wait.hardWait(1000);
         WaitHelper.waitForClickability(accession.mediaTypeField, 10);
@@ -303,15 +303,14 @@ public class AccessionSteps {
     }
 
     @When("user clicks Complete Job button")
-    public void user_clicks_complete_job_button() throws InterruptedException {
-        wait.hardWait(1000);
+    public void user_clicks_complete_job_button() {
+        WaitHelper.waitForVisibility(accession.completeJob,3000);
         helper.jSClick(accession.completeJob);
-        wait.hardWait(1000);
     }
 
     @Then("verify a modal confirming complete job action appears")
     public void verify_a_modal_confirming_complete_job_action_appears() {
-        WaitHelper.waitForVisibility(accession.modal, 1000);
+        WaitHelper.waitForVisibility(accession.modal, 3000);
         assertEquals("Are you sure you want to complete the job?", accession.modal.getText());
     }
 

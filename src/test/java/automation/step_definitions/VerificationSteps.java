@@ -183,14 +183,14 @@ public class VerificationSteps {
 
     @When("user edits Container Size field")
     public void user_edits_container_size_field() {
-        WaitHelper.waitForClickability(verification.editContainerSizeField,2000);
+        WaitHelper.waitForClickability(verification.editContainerSizeField,3000);
         helper.scrollIntoViewAndClick(verification.editContainerSizeField);
         verification.editFieldOptions.get(2).click();
     }
 
     @When("user edits Media Type field")
-    public void user_edits_media_type_field()  {
-        WaitHelper.waitForClickability(verification.editMediaTypeField, 2000);
+    public void user_edits_media_type_field() throws InterruptedException {
+        wait.handleStaleElement(By.cssSelector("[aria-label='mediaTypeSelect']"),5,3000);
         verification.editMediaTypeField.click();
         WaitHelper.waitForVisibility(verification.editFieldOptions.get(4),2000);
         verification.editFieldOptions.get(4).click();
@@ -238,7 +238,8 @@ public class VerificationSteps {
     }
 
     @And("user scans the item barcode")
-    public void user_scans_the_item_barcode() {
+    public void user_scans_the_item_barcode() throws InterruptedException {
+        wait.hardWait(1000);
         driver.findElement(By.tagName("body")).sendKeys("" + scanned03 + "");
     }
 
@@ -296,9 +297,10 @@ public class VerificationSteps {
 
     @When("user navigates to the verification job")
     public void user_navigates_to_the_verification_job() throws InterruptedException {
-        WebElement arrow = driver.findElement(By.xpath("(//i[@aria-label='tableColumnSortIcon'])[1]"));
-        arrow.click();
-        verification.verificationJobsList.get(0).click();
+//        WebElement arrow = driver.findElement(By.xpath("(//i[@aria-label='tableColumnSortIcon'])[1]"));
+//        arrow.click();
+//        verification.verificationJobsList.get(0).click();
+        verification.verificationJobsList.getLast().click();
         wait.hardWait(2000);
     }
 

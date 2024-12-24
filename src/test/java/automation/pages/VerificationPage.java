@@ -67,7 +67,7 @@ public class VerificationPage {
     @FindBy(xpath = "(//input[@class='q-field__input q-placeholder col'])[2]")
     public WebElement editContainerSizeField;
 
-    @FindBy(xpath = "(//input[@class='q-field__input q-placeholder col'])[3]")
+    @FindBy(css = "[aria-label='mediaTypeSelect']")
     public WebElement editMediaTypeField;
 
     @FindBy(css = "div[role='option']")

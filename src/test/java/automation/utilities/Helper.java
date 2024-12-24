@@ -61,7 +61,7 @@ public class Helper {
     }
 
     public static void verifyElementEnabled(WebElement element) {
-        if(element.isEnabled()) {
+        if (element.isEnabled()) {
             System.out.println("Button is enabled");
         } else {
             System.out.println("Button is disabled");
@@ -69,7 +69,7 @@ public class Helper {
     }
 
     public static void verifyElementDisabled(WebElement element) {
-        if(element.getAttribute("aria-disabled").equals("true")) {
+        if (element.getAttribute("aria-disabled").equals("true")) {
             System.out.println("Button is disabled");
         } else {
             System.out.println("Button is enabled");
@@ -102,7 +102,7 @@ public class Helper {
     }
 
     public static boolean isClickable(WebElement element) {
-        WebDriverWait wait = new WebDriverWait(Driver.getInstance().getDriver(),Duration.ofSeconds(10));
+        WebDriverWait wait = new WebDriverWait(Driver.getInstance().getDriver(), Duration.ofSeconds(10));
         try {
             wait.until(ExpectedConditions.elementToBeClickable(element));
 
@@ -137,8 +137,8 @@ public class Helper {
 
     public static int generateBarcodeNumber() {
         Random rand = new Random();
-        int max =999999, min =100000;
-        int number = rand.nextInt(max-min+1)+min;
+        int max = 999999, min = 100000;
+        int number = rand.nextInt(max - min + 1) + min;
 
         return number;
     }
@@ -146,7 +146,7 @@ public class Helper {
     public static String generateItemBarcode() {
         Random rand = new Random();
         long randomNumber = rand.nextLong(1000000000L, 10000000000L);
-        String number = String.valueOf(randomNumber)+"A";
+        String number = String.valueOf(randomNumber) + "A";
 
         return number;
     }
@@ -155,9 +155,9 @@ public class Helper {
         Date currentDate = new Date();
         SimpleDateFormat dateFormat = new SimpleDateFormat("MM-dd-yyyy");
         String date = dateFormat.format(currentDate);
-        System.out.println("Today is: " +date);
+        System.out.println("Today is: " + date);
 
-        return date ;
+        return date;
     }
 
 

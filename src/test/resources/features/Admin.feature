@@ -127,14 +127,14 @@ Feature: Admin Page Functionality Validation
     And user selects owner
     Then user verifies Add Size Class button is enabled
     When user clicks Add Size Class button
-    Then user verifies "Successfully Added A New Size Class" alert msg
+    Then user verifies "Successfully added a new Size Class." alert msg
     And user verifies that Size Class is created
     When user clicks three dots menu
     And user clicks to edit record
     Then user verifies a modal to edit the record is displayed
     When user updates full name
     And user clicks Update Size Class button
-    Then user verifies "Successfully Updated The Size Class" alert msg
+    Then user verifies "Successfully updated the Size Class." alert msg
     When user clicks three dots menu
     And user clicks to delete record
     And user verifies delete warning message
@@ -189,14 +189,14 @@ Feature: Admin Page Functionality Validation
     When user enters name
     And user verifies Add Media Type button is enabled
     When user clicks Add Media Type button
-    Then user verifies "Successfully Added A New Media Type" alert msg
+    Then user verifies "Successfully added a new Media Type." alert msg
     And user verifies that Media Type is created
     When user clicks three dots menu
     And user clicks to edit record
     Then user verifies a modal to edit the record is displayed
     When user updates name
     And user clicks Update Media Type button
-    Then user verifies "Successfully Updated The Media Type" alert msg
+    Then user verifies "Successfully updated the Media Type." alert msg
     When user clicks three dots menu
     And user clicks to delete record
     And user verifies delete warning message
@@ -251,14 +251,14 @@ Feature: Admin Page Functionality Validation
     When user enters Owner Name
     And user verifies Add Owner button is enabled
     When user clicks Add Owner button
-    Then user verifies "Successfully Added A New Owner" alert msg
+    Then user verifies "Successfully added a new Owner." alert msg
     And user verifies that Owner is created
     When user clicks three dots menu
     And user clicks to edit record
     Then user verifies a modal to edit the record is displayed
     When user updates Owner Name
     And user clicks Update Owner button
-    Then user verifies "Successfully Updated The Owner" alert msg
+    Then user verifies "Successfully updated the Owner." alert msg
     When user clicks three dots menu
     And user clicks to delete record
     And user verifies delete warning message
