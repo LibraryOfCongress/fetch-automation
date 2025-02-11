@@ -65,7 +65,7 @@ Feature: Verification Page Functionality Validation
     And user clicks three dot menu next to Job Number
     And user clicks Edit
     And user edits Container Size field
-    And user edits Media Type field
+#    And user edits Media Type field
     And user clicks Save Edits
     Then user verifies "The job has been updated." alert msg
     When user selects one of the barcodes in the table

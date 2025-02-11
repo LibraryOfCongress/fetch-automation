@@ -425,6 +425,12 @@ public class AdminSteps {
         helper.jSClick(admin.threeDotsMenu.getLast());
     }
 
+    @When("user clicks three dots menu next to a new created group")
+    public void user_clicks_three_dots_menu_next_to_a_nw_created_group() {
+       WebElement threeDots = driver.findElement(By.xpath("//*[.='Test']/parent::div/button | //*[.='Renamed Test']/parent::div/button"));
+       threeDots.click();
+    }
+
     @When("user clicks three dots menu next to a record with associated records")
     public void user_clicks_three_dots_menu_next_a_record_with_associated_records() {
         WaitHelper.waitForVisibility(admin.threeDots.getFirst(),2000);
@@ -590,6 +596,12 @@ public class AdminSteps {
         helper.jSClick(admin.sizeClassManagementLink);
     }
 
+    @When("user clicks Shelf Type Management link")
+    public void user_clicks_shelf_type_management_link() {
+        WaitHelper.waitForClickability(admin.shelfTypeManagementLink,2000);
+        helper.jSClick(admin.shelfTypeManagementLink);
+    }
+
     @Then("user verifies Media Type dashboard is displayed")
     public void user_verifies_media_type_dashboard_is_displayed() {
         assertEquals("Media Type", admin.pageHeader.getText());
@@ -606,6 +618,12 @@ public class AdminSteps {
     public void user_verifies_owner_dashboard_is_displayed() {
         assertEquals("Owner", admin.pageHeader.getText());
         Helper.verifyElementDisplayed(admin.addOwner);
+    }
+
+    @Then("user verifies Shelf Type dashboard is displayed")
+    public void user_verifies_shelf_type_dashboard_is_displayed() {
+        assertEquals("Shelf Type", admin.pageHeader.getText());
+        Helper.verifyElementDisplayed(admin.addShelfType);
     }
 
     @When("user clicks Add Media Type")
@@ -629,6 +647,13 @@ public class AdminSteps {
         wait.hardWait(1000);
     }
 
+    @When("user clicks Add Shelf Type")
+    public void user_clicks_add_shelf_type() throws InterruptedException {
+        WaitHelper.waitForClickability(admin.addShelfType, 1000);
+        admin.addShelfType.click();
+        wait.hardWait(1000);
+    }
+
     @Then("user verifies a modal to add new record is displayed")
     public void user_verifies_a_modal_to_add_new_record_is_displayed() {
         WaitHelper.waitForVisibility(admin.popUpModal, 1000);
@@ -646,19 +671,25 @@ public class AdminSteps {
     @And("user verifies Add Size Class button is disabled")
     public void user_verifies_add_size_class_button_is_disabled() {
         WaitHelper.waitForVisibility(admin.addSizeClassButton, 1000);
-        Helper.verifyElementEnabled(admin.addSizeClassButton);
+        Helper.verifyButtonIsDisabled(admin.addSizeClassButton);
     }
 
     @And("user verifies Add Media Type button is disabled")
     public void user_verifies_add_media_type_button_is_disabled() {
         WaitHelper.waitForVisibility(admin.addMediaTypeButton, 1000);
-        Helper.verifyElementEnabled(admin.addMediaTypeButton);
+        Helper.verifyButtonIsDisabled(admin.addMediaTypeButton);
     }
 
     @And("user verifies Add Owner button is disabled")
     public void user_verifies_add_owner_button_is_disabled() {
         WaitHelper.waitForVisibility(admin.addOwnerButton, 1000);
-        Helper.verifyElementEnabled(admin.addOwnerButton);
+        Helper.verifyButtonIsDisabled(admin.addOwnerButton);
+    }
+
+    @And("user verifies Add Shelf Type button is disabled")
+    public void user_verifies_add_shelf_type_button_is_disabled() {
+        WaitHelper.waitForVisibility(admin.addShelfTypeButton, 1000);
+        Helper.verifyButtonIsDisabled(admin.addShelfTypeButton);
     }
 
     @And("user verifies Cancel button is enabled")
@@ -714,9 +745,8 @@ public class AdminSteps {
     @And("user selects owner")
     public void user_selects_owner() {
         admin.owner.click();
-        admin.dropdownOptions.get(1).click();
-        admin.dropdownOptions.get(3).click();
-        admin.dropdownOptions.get(4).click();
+        admin.dropdownOptions.get(0).click();
+        admin.owner.click();
     }
 
     @Then("user verifies Add Size Class button is enabled")
@@ -735,6 +765,12 @@ public class AdminSteps {
     public void user_verifies_add_owner_button_is_enabled() {
         WaitHelper.waitForVisibility(admin.addOwnerButton, 1000);
         Helper.verifyElementEnabled(admin.addOwnerButton);
+    }
+
+    @And("user verifies Add Shelf Type button is enabled")
+    public void user_verifies_add_shelf_type_button_is_enabled() {
+        WaitHelper.waitForVisibility(admin.addShelfTypeButton, 1000);
+        Helper.verifyElementEnabled(admin.addShelfTypeButton);
     }
 
     @And("user verifies that Size Class is created")
@@ -756,6 +792,13 @@ public class AdminSteps {
         helper.scrollIntoView(admin.ownerList.get(admin.ownerList.size()-1));
         String addedOwner = "Test Owner";
         assertTrue(admin.ownerList.get(admin.ownerList.size()-1).getText().contains(addedOwner));
+    }
+
+    @And("user verifies that Shelf Type is created")
+    public void user_verifies_that_shelf_type_is_created() {
+        helper.scrollIntoView(admin.shelfTypeList.get(admin.shelfTypeList.size()-1));
+        String addedShelfType = "Test Shelf Type";
+        assertTrue(admin.shelfTypeList.get(admin.shelfTypeList.size()-1).getText().contains(addedShelfType));
     }
 
     @When("user clicks to edit record")
@@ -785,6 +828,11 @@ public class AdminSteps {
         admin.addOwnerButton.click();
     }
 
+    @When("user clicks Add Shelf Type button")
+    public void user_clicks_add_shelf_type_button() {
+        admin.addShelfTypeButton.click();
+    }
+
     @When("user clicks Update Size Class button")
     public void user_clicks_update_size_class_button() {
         WaitHelper.waitForVisibility(admin.updateSizeClassButton,2000);
@@ -803,10 +851,17 @@ public class AdminSteps {
         admin.updateOwnerButton.click();
     }
 
+    @When("user clicks Update Shelf Type button")
+    public void user_clicks_update_shelf_type_button() {
+        WaitHelper.waitForVisibility(admin.updateShelfTypeButton,4000);
+        admin.updateShelfTypeButton.click();
+    }
+
     @Then("user verifies delete warning message")
     public void user_verifies_delete_warning_message() {
         WaitHelper.waitForVisibility(admin.warningMsg, 1000);
         assertTrue(admin.warningMsg.getText().contains("Are you sure you want to delete"));
+        assertTrue(admin.warningMsg.getText().contains("Updated Test"));
     }
 
     @And("user confirms delete size class action")
@@ -824,28 +879,33 @@ public class AdminSteps {
         helper.jSClick(admin.confirmDeleteOwner);
     }
 
+    @And("user confirms delete shelf type action")
+    public void user_confirms_delete_shelf_type_action() {
+        helper.jSClick(admin.confirmDeleteShelfType);
+    }
+
     @When("user enters existing in the system full name")
     public void user_enters_existing_in_the_system_full_name()  {
         Helper.clickWithJS(admin.fullname);
-        admin.fullname.sendKeys("AL Ft Meade boxes");
+        admin.fullname.sendKeys("CL Ft Meade boxes");
     }
 
     @When("user enters existing in the system short name")
     public void user_enters_existing_in_the_system_short_name()  {
         Helper.clickWithJS(admin.shortname);
-        admin.shortname.sendKeys("AL");
+        admin.shortname.sendKeys("EL");
     }
 
     @And("user verifies that Size Class with existing full name is not created")
     public void user_verifies_that_size_class_with_existing_full_name_is_not_created()  {
         WaitHelper.fluentWait(admin.sizeClassList.get(admin.sizeClassList.size()-1),1000);
-        assertFalse(admin.sizeClassList.get(admin.sizeClassList.size()-1).getText().contains("AL Ft Meade boxes"));
+        assertFalse(admin.sizeClassList.get(admin.sizeClassList.size()-1).getText().contains("CL Ft Meade boxes"));
     }
 
     @And("user verifies that Size Class with existing short name is not created")
     public void user_verifies_that_size_class_with_existing_short_name_is_not_created()  {
         WaitHelper.fluentWait(admin.sizeClassList.get(admin.sizeClassList.size()-1),1000);
-        assertFalse(admin.sizeClassList.get(admin.sizeClassList.size()-1).getText().contains("AL"));
+        assertFalse(admin.sizeClassList.get(admin.sizeClassList.size()-1).getText().contains("EL"));
     }
 
     @When("user enters name")
@@ -887,7 +947,7 @@ public class AdminSteps {
     public void user_selects_parent_owner() {
         WaitHelper.waitForVisibility(admin.selectParentOwner,2000);
         admin.selectParentOwner.click();
-        admin.dropdownOptions.get(2).click();
+        admin.dropdownOptions.get(0).click();
     }
 
     @When("user enters Owner Name")
@@ -914,12 +974,66 @@ public class AdminSteps {
         admin.selectOwnerTier.click();
         admin.dropdownOptions.get(0).click();
         Helper.clickWithJS(admin.ownerName);
-        admin.ownerName.sendKeys("Consortium of Hobbits");
+        admin.ownerName.sendKeys("LC");
     }
 
     @And("user verifies that Owner with existing owner tier and owner name is not created")
     public void user_verifies_that_owner_with_existing_owner_tier_and_owner_name_is_not_created()  {
-        WaitHelper.fluentWait(admin.ownerList.get(admin.ownerList.size()-1),1000);
-        assertFalse(admin.ownerList.get(admin.ownerList.size()-1).getText().contains("Consortium of Hobbits"));
+       WaitHelper.fluentWait(admin.ownerList.getLast(),1000);
+        assertEquals(14, admin.ownerList.size());
     }
+
+    @When("user enters Shelf Type Name")
+    public void user_enters_shelf_type_name() throws InterruptedException {
+        admin.shelfTypeName.click();
+        admin.shelfTypeName.sendKeys("Test Shelf Type");
+        wait.hardWait(100);
+    }
+
+    @And("user selects Size Class")
+    public void user_selects_size_class() {
+        admin.selectSizeClass.click();
+        admin.dropdownOptions.get(2).click();
+        admin.dropdownOptions.get(3).click();
+        admin.dropdownOptions.get(4).click();
+    }
+
+    @When("user updates Shelf Type Name")
+    public void user_updates_shelf_type_name() throws InterruptedException {
+        WaitHelper.waitForClickability(admin.shelfTypeName,2000);
+        admin.shelfTypeName.click();
+        admin.shelfTypeName.sendKeys(Keys.CONTROL + "a");
+        admin.shelfTypeName.sendKeys(Keys.DELETE);
+        admin.shelfTypeName.sendKeys("Updated Test Shelf Type");
+        wait.hardWait(100);
+    }
+
+    @When("user decreases capacity of Shelf Type used by shelves")
+    public void user_decreases_capacity_of_shelf_type_used_by_shelves() throws InterruptedException {
+        WaitHelper.waitForClickability(admin.expandMaxCapacity,2000);
+        admin.expandMaxCapacity.click();
+        WaitHelper.waitForVisibility(admin.capacity.get(0),2000);
+        admin.capacity.get(0).click();
+        admin.capacity.get(0).sendKeys(Keys.CONTROL + "a");
+        admin.capacity.get(0).sendKeys(Keys.DELETE);
+        admin.capacity.get(0).sendKeys("5");
+        WaitHelper.waitForClickability(admin.collapseMaxCapacity,2000);
+        admin.collapseMaxCapacity.click();
+        wait.hardWait(100);
+    }
+
+    @When("user increases capacity of Shelf Type used by shelves")
+    public void user_increases_capacity_of_shelf_type_used_by_shelves() throws InterruptedException {
+        WaitHelper.waitForClickability(admin.expandMaxCapacity,2000);
+        admin.expandMaxCapacity.click();
+        WaitHelper.waitForVisibility(admin.capacity.get(1),2000);
+        admin.capacity.get(1).click();
+        admin.capacity.get(1).sendKeys(Keys.CONTROL + "a");
+        admin.capacity.get(1).sendKeys(Keys.DELETE);
+        admin.capacity.get(1).sendKeys("12");
+        WaitHelper.waitForClickability(admin.collapseMaxCapacity,2000);
+        admin.collapseMaxCapacity.click();
+        wait.hardWait(100);
+    }
+
 }

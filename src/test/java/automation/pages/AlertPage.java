@@ -15,7 +15,7 @@ public class AlertPage {
         PageFactory.initElements(driver, this);
     }
 
-    @FindBy(xpath = "(//span[.='Show Generic Alert'])[1]")
+    @FindBy(xpath = "//button[.='Show Generic Alert']")
     public WebElement genericAlert;
 
     @FindBy(css = ".alert-notification")

@@ -4,7 +4,7 @@ Feature: Admin Page Functionality Validation
 
   Background:
     Given user navigates to FETCH Homepage
-    And user logs in as an admin
+    And user logs in as a tester1
 
 
   @FETCH-527 @FETCH-319
@@ -58,8 +58,8 @@ Feature: Admin Page Functionality Validation
     And user enters Group Name
     And user clicks Submit
     Then user verifies a new Group is created
-#    And user closes alert message
-    When user clicks three dots menu
+##    And user closes alert message
+    When user clicks three dots menu next to a new created group
     Then user verifies all the options
 
       | option                    |
@@ -83,24 +83,24 @@ Feature: Admin Page Functionality Validation
 
     And user adds some permissions
     Then user clicks on Groups and Permissions breadcrumb link
-    When user clicks three dots menu
+    When user clicks three dots menu next to a new created group
     And user clicks Add Edit Users in Group
     And user selects User names
     Then user clicks Add Users
     When user clicks on User name
     Then user is able to delete User from Group
     And user closes modal
-    When user clicks three dots menu
+    When user clicks three dots menu next to a new created group
     And user clicks Rename Group Name
     And user renames Group
     Then user saves changes
-    When user clicks three dots menu
+    When user clicks three dots menu next to a new created group
     And user clicks Delete Group
     Then user is able to delete Group
 
 
   @FETCH-1102 @FETCH-821 @regression
-  Scenario: User should be able to validate Size Class Management
+  Scenario: User should be able to validate Size Class Management page
     When user navigates to the Admin Page
     And user clicks List Configurations
     And user clicks Size Class Management link
@@ -172,7 +172,7 @@ Feature: Admin Page Functionality Validation
 
 
   @FETCH-1173 @FETCH-822 @regression
-  Scenario: User should be able to validate Media Type Management
+  Scenario: User should be able to validate Media Type Management page
     When user navigates to the Admin Page
     And user clicks List Configurations
     And user clicks Media Type Management link
@@ -217,7 +217,7 @@ Feature: Admin Page Functionality Validation
     And user verifies that Media Type with existing name is not created
 
 
-  @FETCH-1173 @FETCH-822 @negative @regression
+  @FETCH-1173 @FETCH-822 @negative
   Scenario: User should not be able to delete Media Type with associated records
     When user navigates to the Admin Page
     And user clicks List Configurations
@@ -230,7 +230,7 @@ Feature: Admin Page Functionality Validation
 
 
   @FETCH-1176 @FETCH-820 @regression
-  Scenario: User should be able to validate Owner Management
+  Scenario: User should be able to validate Owner Management page
     When user navigates to the Admin Page
     And user clicks List Configurations
     And user clicks Owners Management link
@@ -267,7 +267,7 @@ Feature: Admin Page Functionality Validation
 
 
   @FETCH-1176 @FETCH-820 @negative @regression
-  Scenario: User should not be able to create Owner with existing Owner Tier/Owner Name combination
+  Scenario: User should not be able to create Owner with existing Owner Tier and Owner Name
     When user navigates to the Admin Page
     And user clicks List Configurations
     And user clicks Owners Management link
@@ -279,7 +279,7 @@ Feature: Admin Page Functionality Validation
     And user verifies that Owner with existing owner tier and owner name is not created
 
 
-  @FETCH-1176 @FETCH-820 @negative @regression
+  @FETCH-1176 @FETCH-820 @negative
   Scenario: User should not be able to delete Media Type with associated records
     When user navigates to the Admin Page
     And user clicks List Configurations
@@ -289,6 +289,79 @@ Feature: Admin Page Functionality Validation
     And user verifies delete warning message
     Then user confirms delete owner action
     And user verifies "Network Error" alert msg
+
+
+  @FETCH-1174 @FETCH-1039 @regression
+  Scenario: User should be able to validate Shelf Types Management page
+    When user navigates to the Admin Page
+    And user clicks List Configurations
+    And user clicks Shelf Type Management link
+    Then user verifies Shelf Type dashboard is displayed
+    And user verifies table columns
+
+      | column         |
+      | Shelf Type     |
+
+    When user clicks Add Shelf Type
+    Then user verifies a modal to add new record is displayed
+    And user verifies Add Shelf Type button is disabled
+    And user verifies Cancel button is enabled
+    When user enters Shelf Type Name
+    And user selects Size Class
+    And user verifies Add Shelf Type button is enabled
+    When user clicks Add Shelf Type button
+    Then user verifies "Successfully added a new Shelf Type." alert msg
+    And user verifies that Shelf Type is created
+    When user clicks three dots menu
+    And user clicks to edit record
+    Then user verifies a modal to edit the record is displayed
+    When user updates Shelf Type Name
+    And user clicks Update Shelf Type button
+    Then user verifies "Successfully updated the Shelf Type." alert msg
+    When user clicks three dots menu
+    And user clicks to delete record
+    And user verifies delete warning message
+    Then user confirms delete shelf type action
+    And user verifies "\"Updated Test Shelf Type\" has been successfully deleted." alert msg
+
+
+  @FETCH-1174 @FETCH-1039 @negative
+  Scenario: User should not be able to delete Shelf Type with associated records
+    When user navigates to the Admin Page
+    And user clicks List Configurations
+    And user clicks Shelf Type Management link
+    When user clicks three dots menu next to a record with associated records
+    And user clicks to delete record
+    And user verifies delete warning message
+    Then user confirms delete shelf type action
+    And user verifies alert msg contains "is in use and cannot be deleted."
+
+
+  @FETCH-1174 @FETCH-1039 @regression
+  Scenario: User should not be able to increase capacity of Shelf Type used by shelves
+    When user navigates to the Admin Page
+    And user clicks List Configurations
+    And user clicks Shelf Type Management link
+    When user clicks three dots menu next to a record with associated records
+    And user clicks to edit record
+    Then user verifies a modal to edit the record is displayed
+    When user increases capacity of Shelf Type used by shelves
+    And user clicks Update Shelf Type button
+    Then user verifies "Successfully updated the Shelf Type." alert msg
+
+
+  @FETCH-1174 @FETCH-1039 @negative @regression
+  Scenario: User should not be able to decrease capacity of Shelf Type used by shelves
+    When user navigates to the Admin Page
+    And user clicks List Configurations
+    And user clicks Shelf Type Management link
+    When user clicks three dots menu next to a record with associated records
+    And user clicks to edit record
+    Then user verifies a modal to edit the record is displayed
+    When user decreases capacity of Shelf Type used by shelves
+    And user clicks Update Shelf Type button
+    Then user verifies alert msg contains "Cannot decrease capacity of Shelf Type"
+
 
 
     # feature_to_be_updated

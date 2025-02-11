@@ -45,7 +45,7 @@ public class AdminPage {
     @FindBy(css = "[class='text-h5 text-bold']")
     public List<WebElement> groups;
 
-    @FindBy(css = "[class$='admin-groups-card admin-groups-card-dashed text-h5 text-bold']")
+    @FindBy(xpath = "//*[.='Add New Group']//../..")
     public WebElement addNewGroup;
 
     @FindBy(css = "[class$='q-mr-sm']")
@@ -210,6 +210,9 @@ public class AdminPage {
     @FindBy(xpath = "//*[contains(text(),'Add/Edit/Remove Owners')]/../../..")
     public WebElement ownersManagementLink;
 
+    @FindBy(xpath = "//*[contains(text(),'Add/Edit/Remove Shelf Type')]/../../..")
+    public WebElement shelfTypeManagementLink;
+
     @FindBy(css = "h1[class='text-h4 text-bold']")
     public WebElement pageHeader;
 
@@ -218,6 +221,9 @@ public class AdminPage {
 
     @FindBy(xpath = "//*[.='Add Media Type']/../..")
     public WebElement addMediaType;
+
+    @FindBy(xpath = "//*[.='Add Shelf Type']/../..")
+    public WebElement addShelfType;
 
     @FindBy(xpath = "//*[.='Add Owner']/../..")
     public WebElement addOwner;
@@ -237,6 +243,9 @@ public class AdminPage {
     @FindBy(xpath = "//*[.='Add Media Type'][@type='button']")
     public WebElement addMediaTypeButton;
 
+    @FindBy(xpath = "//*[.='Add Shelf Type'][@type='button']")
+    public WebElement addShelfTypeButton;
+
     @FindBy(xpath = "//*[.='Update Size Class'][@type='button']")
     public WebElement updateSizeClassButton;
 
@@ -245,6 +254,9 @@ public class AdminPage {
 
     @FindBy(xpath = "//*[.='Update Owner'][@type='button']")
     public WebElement updateOwnerButton;
+
+    @FindBy(xpath = "//*[.='Update Shelf Type'][@type='button']")
+    public WebElement updateShelfTypeButton;
 
     @FindBy(xpath = "//*[.='Cancel'][@type='button']")
     public WebElement cancelButton;
@@ -279,6 +291,9 @@ public class AdminPage {
     @FindBy(css = "[class='q-table'] tbody tr")
     public List<WebElement> ownerList;
 
+    @FindBy(css = "[class='q-table'] tbody tr")
+    public List<WebElement> shelfTypeList;
+
     @FindBy(xpath = "//button[.='Delete Size Class']")
     public WebElement confirmDeleteSizeClass;
 
@@ -287,6 +302,9 @@ public class AdminPage {
 
     @FindBy(xpath = "//button[.='Delete Owner']")
     public WebElement confirmDeleteOwner;
+
+    @FindBy(xpath = "//button[.='Delete Shelf Type']")
+    public WebElement confirmDeleteShelfType;
 
     @FindBy(css = "[class='q-card__section q-card__section--vert']")
     public WebElement warningMsg;
@@ -305,4 +323,22 @@ public class AdminPage {
 
     @FindBy(css = "[placeholder='Enter Owner Name']")
     public WebElement ownerName;
+
+    @FindBy(css = "[placeholder='Enter Shelf Type Name']")
+    public WebElement shelfTypeName;
+
+    @FindBy(css = "[placeholder='Select Size Class']")
+    public WebElement selectSizeClass;
+
+    @FindBy(css = "[aria-label='Expand \\\"Max Capacity\\\"']")
+    public WebElement expandMaxCapacity;
+
+    @FindBy(css = "[aria-label='Collapse \\\"Max Capacity\\\"']")
+    public WebElement collapseMaxCapacity;
+
+    @FindBy(css = "[placeholder='Enter Capacity']")
+    public List<WebElement> capacity;
+
+    @FindBy(css = "[class='q-card__section q-card__section--vert']")
+    public WebElement deleteModalMessage;
 }

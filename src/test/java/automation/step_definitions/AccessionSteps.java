@@ -34,6 +34,7 @@ public class AccessionSteps {
     static long scanned1 = random.nextLong(10000000000L, 100000000000L);
     static long scanned2 = random.nextLong(10000000000L, 100000000000L);
     static long scanned3 = random.nextLong(10000000000L, 100000000000L);
+    static long scanned4 = random.nextLong(10000000000L, 100000000000L);
     static long entered1 = random.nextLong(10000000000L, 100000000000L);
     static long entered2 = random.nextLong(10000000000L, 100000000000L);
     static long entered3 = random.nextLong(10000000000L, 100000000000L);
@@ -44,13 +45,13 @@ public class AccessionSteps {
     static String editedTrayBarcode = "";
     static String generatedTray = "";
     static String generatedTray2 = "";
+    static String generatedTrayForBHSizeClass = "";
     static String accessionJobNumber = "";
 
 
     @Given("user navigates to the Accession Page")
     public void user_navigates_to_the_accession_page() {
         Driver.getInstance().getDriver().get(ConfigurationReader.getProperty("config.properties", "accessionURL"));
-
     }
 
     @When("user clicks Start Accession button")
@@ -92,25 +93,28 @@ public class AccessionSteps {
 
     @When("user selects all required fields")
     public void user_selects_all_required_fields() throws InterruptedException {
-        WaitHelper.waitForClickability(accession.ownerField, 10);
+        WaitHelper.waitForClickability(accession.ownerField, 100);
         accession.ownerField.click();
-        wait.hardWait(100);
-        accession.ownerFieldOptions.get(1).click();
+        wait.hardWait(1000);
+        accession.ownerFieldOptions.get(0).click();
         wait.hardWait(100);
     }
 
     @When("user selects all fields")
     public void user_selects_all_fields() throws InterruptedException {
-        WaitHelper.waitForClickability(accession.ownerField, 10);
+        WaitHelper.waitForClickability(accession.ownerField, 1000);
         accession.ownerField.click();
+        WaitHelper.waitForVisibility(accession.ownerFieldOptions.get(0), 1000);
+        accession.ownerFieldOptions.get(0).click();
+//        WaitHelper.waitForClickability(accession.containerSizeField, 4000);
         wait.hardWait(1000);
-        accession.ownerFieldOptions.get(5).click();
         accession.containerSizeField.click();
-        helper.jSClick(accession.containerOptions.get(4));
-        accession.mediaTypeField.click();
+        WaitHelper.waitForVisibility(accession.containerOptions.get(4), 4000);
+        accession.containerOptions.get(4).click();
         wait.hardWait(1000);
-        WaitHelper.waitForClickability(accession.mediaTypeField, 10);
-        accession.mediaOptions.get(3).click();
+        accession.mediaTypeField.click();
+        WaitHelper.waitForVisibility(accession.mediaOptions.get(2), 2000);
+        accession.mediaOptions.get(2).click();
     }
 
     @Then("Owner dropdown is clickable")
@@ -168,7 +172,7 @@ public class AccessionSteps {
     @When("user scans Barcode")
     public void user_scans_barcode() throws InterruptedException {
         wait.hardWait(2000);
-        generatedTray = "DH" + Helper.generateBarcodeNumber();
+        generatedTray = "EL" + Helper.generateBarcodeNumber();
         driver.findElement(By.tagName("body")).sendKeys(generatedTray);
     }
 
@@ -242,7 +246,7 @@ public class AccessionSteps {
 
     @When("user types {string} in the Owner dropdown search field")
     public void user_types_in_the_owner_dropdown_search_field(String owner) throws InterruptedException {
-        owner = "coll";
+        owner = "geog";
         accession.ownerField.click();
         accession.ownerField.sendKeys(owner);
         wait.hardWait(1000);
@@ -251,7 +255,7 @@ public class AccessionSteps {
     @Then("Owner dropdown should display options related to search query")
     public void Owner_dropdown_should_display_options_related_to_search_query() {
         for (WebElement option : accession.ownerFieldOptions) {
-            assertTrue(option.getText().toLowerCase().contains("coll"));
+            assertTrue(option.getText().toLowerCase().contains("geog"));
         }
     }
 
@@ -321,8 +325,7 @@ public class AccessionSteps {
 
     @Then("user clicks Enter Barcode button")
     public void user_clicks_enter_barcode_button() throws InterruptedException {
-        WaitHelper.waitForClickability(accession.enterBarcodeBtn, 3000);
-        accession.enterBarcodeBtn.click();
+        helper.jSClick(accession.enterBarcodeBtn);
         wait.hardWait(2000);
     }
 
@@ -426,7 +429,7 @@ public class AccessionSteps {
     }
 
     @Then("verify Add Tray button is activated")
-    public void verify_add_tray_button_is_activated() throws InterruptedException {
+    public void verify_add_tray_button_is_activated() {
        WaitHelper.waitForVisibility(accession.addTrayBtn,2000);
         assertTrue(accession.addTrayBtn.isEnabled());
     }
@@ -481,7 +484,7 @@ public class AccessionSteps {
     public void user_selects_media_type() throws InterruptedException {
         accession.mediaTypeField.click();
         wait.hardWait(1000);
-        accession.mediaOptions.get(3).click();
+        accession.mediaOptions.get(1).click();
     }
 
     @And("user enters barcode by scanning")
@@ -529,8 +532,7 @@ public class AccessionSteps {
 
     @When("user clicks Edit")
     public void user_clicks_edit() {
-        WaitHelper.waitForVisibility(accession.editAccessionJob,3000);
-        accession.editAccessionJob.click();
+        helper.jSClick(accession.editAccessionJob);
     }
 
     @When("user edits Container Size")
@@ -692,6 +694,7 @@ public class AccessionSteps {
         user_selects_media_type();
         user_clicks_submit_button();
         user_scans_barcode();
+        wait.hardWait(1000);
         user_enters_a_new_barcode_by_scanning();
         user_clicks_complete_job_button();
         user_clicks_complete();
@@ -718,7 +721,7 @@ public class AccessionSteps {
 
     @When("user navigates to the accession job")
     public void user_navigates_to_the_accession_job() {
-        accession.nonTrayedAccessionJob.click();
+        driver.get("https://test.fetch.loctest.gov/accession/20");
     }
 
     @And("user scans {string} barcode")
@@ -791,6 +794,29 @@ public class AccessionSteps {
         user_scans_barcode();
         user_enters_barcode_by_scanning();
     }
+
+    @Then("user completes an Accession Job with a specific Owner and Size Class")
+    public void user_creates_an_accession_job_with_a_specific_owner_and_size_class() throws InterruptedException {
+        user_navigates_to_the_accession_page();
+        user_clicks_start_accession_button();
+        user_selects_trayed_accession();
+        WaitHelper.waitForClickability(accession.ownerField, 10);
+        accession.ownerField.click();
+        wait.hardWait(100);
+        accession.ownerFieldOptions.get(4).click();
+        wait.hardWait(100);
+        user_selects_media_type();
+        user_clicks_submit_button();
+        wait.hardWait(2000);
+        generatedTrayForBHSizeClass = "BH" + Helper.generateBarcodeNumber();
+        driver.findElement(By.tagName("body")).sendKeys(generatedTrayForBHSizeClass);
+        wait.hardWait(1000);
+        driver.findElement(By.tagName("body")).sendKeys("" + scanned4 + "");
+        wait.hardWait(2000);
+        user_clicks_complete_job_button();
+        user_clicks_complete();
+    }
+
     @When("user enters an Item barcode of invalid type")
     public void user_enters_an_item_barcode_of_invalid_type() throws InterruptedException {
         user_clicks_enter_barcode_button();
@@ -832,6 +858,8 @@ public class AccessionSteps {
         assertTrue( accession.alertModal.getText().contains(arg0));
         Helper.clickWithJS(accession.cancelModal);
     }
+
+
 }
 
 

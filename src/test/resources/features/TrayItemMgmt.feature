@@ -6,7 +6,7 @@ Feature: Trayed Item Page Validation
     Given user navigates to FETCH Homepage
     And user logs in as a tester1
 
-  @FETCH-287 @FETCH-170 @regression
+  @FETCH-287 @FETCH-170
   Scenario: User should be able to validate Tray Management icons and tabs
     When user navigates to Item Management Page
     When user looks at the tray header
@@ -26,7 +26,7 @@ Feature: Trayed Item Page Validation
       | Permanent Location |
 
 
-  @FETCH-287 @FETCH-170 @regression
+  @FETCH-287 @FETCH-170
   Scenario: User should be able to validate Tray Labels
     When user navigates to Item Management Page
     Then user verifies tray labels on Items Management Page
@@ -44,7 +44,7 @@ Feature: Trayed Item Page Validation
       | Delete Count    |
 
 
-  @FETCH-298 @FETCH-180 @regression
+  @FETCH-298 @FETCH-180
   Scenario: User should be able to validate Items in Tray labels
     When user navigates to Item Management Page
     Then user verifies items labels on Items Management Page
@@ -62,7 +62,7 @@ Feature: Trayed Item Page Validation
       | Container Type     |
 
 
-  @FETCH-298 @FETCH-180 @regression
+  @FETCH-298 @FETCH-180
   Scenario: User should be able to validate Overlay slide with Items in Tray details
     When user navigates to Item Management Page
     When user clicks on item in the table
@@ -76,7 +76,7 @@ Feature: Trayed Item Page Validation
       | Accession Date:  |
 
 
-  @FETCH-298 @FETCH-180 @overlay @regression
+  @FETCH-298 @FETCH-180 @overlay
   Scenario: User should be able to close Overlay Slide using X button
     When user navigates to Item Management Page
     When user clicks on item in the table
@@ -84,7 +84,7 @@ Feature: Trayed Item Page Validation
     And the x button is clickable
 
 
-  @FETCH-298 @FETCH-180 @overlay @regression
+  @FETCH-298 @FETCH-180 @overlay
   Scenario: User should be able to close Overlay Slide by clicking outside of the overlay
     When user navigates to Item Management Page
     When user clicks on item in the table

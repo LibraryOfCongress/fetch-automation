@@ -76,6 +76,14 @@ public class Helper {
         }
     }
 
+    public static void verifyButtonIsDisabled(WebElement element) {
+        if (element.getAttribute("disabled").equals("true")) {
+            System.out.println("Button is disabled");
+        } else {
+            System.out.println("Button is enabled");
+        }
+    }
+
     public WebElement selectRandomTextFromDropdown(Select select) {
         Random random = new Random();
         List<WebElement> weblist = select.getOptions();

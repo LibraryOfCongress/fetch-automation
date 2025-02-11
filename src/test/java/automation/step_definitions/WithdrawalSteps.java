@@ -9,6 +9,10 @@ import automation.utilities.ConfigurationReader;
 import automation.utilities.Driver;
 import automation.utilities.Helper;
 import automation.utilities.WaitHelper;
+import org.openqa.selenium.By;
+import org.openqa.selenium.WebDriver;
+import org.openqa.selenium.WebElement;
+import org.openqa.selenium.support.ui.Wait;
 
 import java.util.List;
 import java.util.Map;
@@ -19,6 +23,7 @@ import static org.junit.Assert.assertTrue;
 
 public class WithdrawalSteps {
 
+    WebDriver driver = Driver.getInstance().getDriver();
     WithdrawalPage withdrawal = new WithdrawalPage();
     VerificationSteps verificationSteps = new VerificationSteps();
     Helper helper = new Helper();
@@ -85,16 +90,18 @@ public class WithdrawalSteps {
         }
     }
 
-    @When("user verifies {string} and {string} options are displayed")
-    public void user_verifies_and_options_are_displayed(String edit, String deleteJob) throws InterruptedException {
-        assertEquals(edit, withdrawal.threeDotMenuOptions.get(0).getText());
-        assertEquals(deleteJob, withdrawal.threeDotMenuOptions.get(1).getText());
+    @When("user verifies three dots menu options are displayed")
+    public void user_verifies_Three_dots_menu_options_are_displayed() throws InterruptedException {
+        assertEquals("Edit", withdrawal.threeDotMenuOptions.get(0).getText());
+        assertEquals("Delete Job", withdrawal.threeDotMenuOptions.get(1).getText());
+        assertEquals("View History", withdrawal.threeDotMenuOptions.get(2).getText());
         verificationSteps.user_clicks_three_dot_menu_next_to_job_number();
     }
 
     @When("user clicks three dots menu next to the Item Barcode in the table")
     public void user_clicks_three_dots_menu_next_to_the_item_barcode_in_the_table() throws InterruptedException {
-        helper.jSClick(withdrawal.threeDotNextToItemBarcode);
+        WaitHelper.waitForVisibility(withdrawal.threeDotNextToItemBarcode,4000);
+        withdrawal.threeDotNextToItemBarcode.click();
         wait.hardWait(1000);
     }
 
@@ -119,13 +126,19 @@ public class WithdrawalSteps {
     @Then("user verifies the assigned user has been updated")
     public void user_verifies_the_assigned_user_has_been_updated() {
         System.out.println(withdrawal.assignedUser.getText());
-        assertEquals("Gregory", withdrawal.assignedUser.getText());
+        assertEquals("Admin", withdrawal.assignedUser.getText());
     }
 
     @Then("user clicks Add Items")
     public void user_clicks_add_items() {
         WaitHelper.waitForVisibility(withdrawal.addItemsBtn,3000);
         withdrawal.addItemsBtn.click();
+    }
+
+    @And("user selects Manually Enter Barcode option")
+    public void user_selects_manually_enter_barcode_option() {
+        WaitHelper.waitForVisibility(withdrawal.manuallyEnterBarcodeOption,3000);
+        withdrawal.manuallyEnterBarcodeOption.click();
     }
 
     @And("user selects Scan Items option")
@@ -139,4 +152,51 @@ public class WithdrawalSteps {
         WaitHelper.waitForVisibility(withdrawal.itemBarcode1,3000);
         assertEquals(PickListSteps.itemBarcode, withdrawal.itemBarcode1.getText());
     }
+
+    @When("user enters Item Barcode with status IN")
+    public void user_enters_item_barcode_with_status_in() {
+        WaitHelper.waitForClickability(withdrawal.enterBarcodeField,3000);
+        withdrawal.enterBarcodeField.click();
+        withdrawal.enterBarcodeField.sendKeys(ShelvingSteps.itemBarcode);
+    }
+
+    @When("user navigates to the Withdraw job")
+    public void user_navigates_to_the_withdraw_job() {
+        driver.get("https://test.fetch.loctest.gov/withdrawal/11");
+    }
+
+    @When("user navigates back to the Withdraw job")
+    public void user_navigates_back_to_the_withdraw_job() {
+        WaitHelper.waitForClickability(withdrawal.withdrawJobList.getLast(), 3000);
+        withdrawal.withdrawJobList.getLast().click();
+    }
+
+    @When("user clicks Create Pick List job button")
+    public void user_clicks_create_pick_list_job_button() {
+        WaitHelper.waitForVisibility(withdrawal.createPickListJobFromWithdrawal,3000);
+        withdrawal.createPickListJobFromWithdrawal.click();
+    }
+
+    @Then("user verifies the item status has changed to OUT")
+    public void user_verifies_the_item_status_has_changed_to_out() {
+        WaitHelper.waitForVisibility(withdrawal.withdrawJobColumnValues.getLast(),2000);
+        String itemStatus = withdrawal.withdrawJobColumnValues.getLast().getText();
+        assertEquals("Out", itemStatus);
+    }
+
+    @Then("user verifies the item status has changed to WITHDRAWN")
+    public void user_verifies_the_item_status_has_changed_to_withdrawn() {
+        WebElement withdrawnStatus = driver.findElement(By.cssSelector("td[class='q-td text-left bg-color-green-light']:nth-child(6)"));
+        assertEquals("Withdrawn", withdrawnStatus.getText());
+    }
+
+    @When("user clicks Withdraw Items button")
+    public void user_clicks_withdraw_items_button() {
+        WaitHelper.waitForClickability(withdrawal.withdrawItemsBtn,2000);
+        withdrawal.withdrawItemsBtn.click();
+        WaitHelper.waitForClickability(withdrawal.confirmWithdrawItems,2000);
+        withdrawal.confirmWithdrawItems.click();
+    }
+
+
 }

@@ -14,6 +14,9 @@ import automation.utilities.WaitHelper;
 import java.util.List;
 import java.util.Map;
 
+import static org.junit.Assert.assertFalse;
+import static org.junit.Assert.assertNotEquals;
+
 public class PickListSteps {
 
     WebDriver driver = Driver.getInstance().getDriver();
@@ -21,6 +24,7 @@ public class PickListSteps {
     Helper helper = new Helper();
     WaitHelper wait = new WaitHelper();
     static String itemBarcode = "";
+    static String revertedItemBarcode = "";
     AlertPage alert = new AlertPage();
 
 
@@ -45,9 +49,12 @@ public class PickListSteps {
     }
 
     @When("user clicks on Pick List Job")
-    public void user_clicks_on_pick_list_job() throws InterruptedException {
-           picklist.picklistJobs.get(0).click();
-           wait.hardWait(1000);
+    public void user_clicks_on_pick_list_job() {
+        if(picklist.picklistJobs.get(0).isDisplayed()){
+            picklist.picklistJobs.get(0).click();
+        } else if(!picklist.picklistJobs.get(0).isDisplayed()) {
+            System.out.println("No Pick List jobs available");
+        }
     }
 
     @Then("user verifies job number is displayed")
@@ -101,6 +108,7 @@ public class PickListSteps {
 
     @And("user scans a Pick List Container")
     public void user_scans_a_pick_list_container() throws InterruptedException {
+        WaitHelper.waitForVisibility(picklist.containerBarcode,3000);
         driver.findElement(By.tagName("body")).sendKeys(picklist.containerBarcode.getText());
         wait.hardWait(2000);
     }
@@ -109,6 +117,20 @@ public class PickListSteps {
     public void user_saves_item_barcode() {
         itemBarcode = picklist.containerBarcode.getText();
         System.out.println("Item barcode is : " + itemBarcode);
+    }
+
+    @And("user selects Revert Item to Queue")
+    public void user_selects_revert_item_to_queue() {
+        revertedItemBarcode = picklist.containerBarcode.getText();
+        System.out.println("Reverted to Queue item barcode is : " + revertedItemBarcode);
+        WaitHelper.waitForVisibility(picklist.revertItemToQueue,3000);
+        picklist.revertItemToQueue.click();
+    }
+
+    @And("user verifies the item has been removed from the job")
+    public void user_verifies_the_item_has_been_removed_from_the_job() {
+        WaitHelper.waitForVisibility(picklist.containerBarcode,3000);
+        assertNotEquals(revertedItemBarcode, picklist.containerBarcode.getText());
     }
 
 

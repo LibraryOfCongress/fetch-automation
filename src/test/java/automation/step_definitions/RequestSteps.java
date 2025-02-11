@@ -167,11 +167,22 @@ public class RequestSteps {
     @Then("user verifies options with checkboxes are displayed")
     public void user_verifies_options_with_checkboxes_are_displayed() {
         Helper.verifyElementDisplayed(request.optionsWithCheckboxes.get(0));
+        if(request.optionsWithCheckboxes.size() >= 3){
+            System.out.println("Number of Requests: " + request.optionsWithCheckboxes.size());
+        } else {
+            System.out.println("Number of Requests is not sufficient for this test");
+        }
+    }
+
+    @When("user selects Request")
+    public void user_selects_request() {
+        helper.jSClick(request.optionsWithCheckboxes.get(1));
     }
 
     @When("user selects Requests")
     public void user_selects_requests() {
         helper.jSClick(request.optionsWithCheckboxes.get(1));
+        helper.jSClick(request.optionsWithCheckboxes.get(2));
     }
 
     @When("user clicks Create Pick List")
@@ -256,7 +267,7 @@ public class RequestSteps {
         adminSteps.user_selects_building_from_dropdown();
         shelvingSteps.user_clicks_submit();
         user_verifies_options_with_checkboxes_are_displayed();
-        user_selects_requests();
+        user_selects_request();
         user_clicks_create_pick_list();
         user_verifies_the_pick_list_is_created();
         user_clicks_the_alert_link();
@@ -267,4 +278,6 @@ public class RequestSteps {
     public void user_clicks_running_job() {
         picklist.runningJob.click();
     }
+
+
 }

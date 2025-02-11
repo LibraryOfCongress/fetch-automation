@@ -98,23 +98,6 @@ Feature: Refile Page Functionality Validation
     And user verifies the information on the scan modal
 
 
-  @assigned_user @smoke
-  Scenario:  User should be able to change Assigned User within a Refile Job
-    When user navigates to the Refile Page
-    And user clicks on Refile Job
-    Then user verifies job number is displayed
-    And user clicks three dot menu next to Job Number
-    Then Edit option is displayed
-    When user clicks Edit
-    Then Assign User dropdown is clickable
-    And user selects User from dropdown
-    And Save Edits button is clickable
-    And Cancel edits button is clickable
-    Then user clicks Save Edits button
-    And user verifies "The job has been updated." alert msg
-    And user verifies the assigned user has been updated
-
-
   @regression @refile_queue
   Scenario: User should be able to add Item to Refile Queue
     When user clicks Accession on side navigation menu
@@ -214,11 +197,28 @@ Feature: Refile Page Functionality Validation
     When user selects Building from dropdown
     And user clicks Submit
     Then user verifies options with checkboxes are displayed
-    When user selects Requests
+    When user selects Request
     And user clicks Create Refile Job
     Then user verifies the Refile Job is created
     When user clicks the alert link
     Then user is able to see the Refile Job dashboard
+
+
+  @assigned_user @smoke
+  Scenario:  User should be able to change Assigned User within a Refile Job
+    When user navigates to the Refile Page
+    And user clicks on Refile Job
+    Then user verifies job number is displayed
+    And user clicks three dot menu next to Job Number
+    Then Edit option is displayed
+    When user clicks Edit
+    Then Assign User dropdown is clickable
+    And user selects User from dropdown
+    And Save Edits button is clickable
+    And Cancel edits button is clickable
+    Then user clicks Save Edits button
+    And user verifies "The job has been updated." alert msg
+    And user verifies the assigned user has been updated
 
 
   @regression @date_created
@@ -229,12 +229,22 @@ Feature: Refile Page Functionality Validation
     And user selects Building from dropdown
     And user clicks Submit
     Then user verifies options with checkboxes are displayed
-    When user selects Requests
+    When user selects Request
     And user clicks Create Refile Job button
     Then user verifies the Refile Job is created
     When user clicks the alert link
     Then user is able to see the Refile Job dashboard
     And user verifies date created
+
+
+  @FETCH-857 @FETCH-828
+  Scenario: User should be able to delete Refile job
+    When user navigates to the Refile Page
+    Then user clicks on Refile Job
+    When user clicks three dot menu next to Job Number
+    And user clicks Delete Job
+    And user confirms delete job action
+    Then user verifies "The Refile Job has been canceled." alert msg
 
 
 

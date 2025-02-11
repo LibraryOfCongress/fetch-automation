@@ -167,7 +167,7 @@ Feature: Shelving Page Functionality Validation
 #    Then user verifies "The container has been updated." message
 
 
-  @FETCH-686 @FETCH-383 @regression
+  @FETCH-686 @FETCH-383 @assigned_user @regression
   Scenario:  User should be able to change Assigned User within a Shelving Job
     When user navigates to Shelving Page
     Then user navigates to Shelving Job with Running Status
@@ -235,6 +235,20 @@ Feature: Shelving Page Functionality Validation
     Then user verifies "A Direct Shelving Job has been successfully created." notification
 
 
+  @FETCH-1043 @FETCH-870 @wip
+  Scenario:  User should be able to validate restriction of the Shelf assignment duplication
+    When user completes an Accession Job with a specific Owner and Size Class
+    And user completes a Verification Job with a specific Owner and Size Class
+    Then user navigates to Shelving Page
+    And user clicks Create Shelving Job button
+    When user selects Direct To Shelve option
+    And user selects a Building from Shelving Locations
+    And user clicks Submit
+    Then user verifies "A Direct Shelving Job has been successfully created." notification
+    When user switches on Toggle Barcode Scan
+    Then user scans Shelf
+
+
   @FETCH-1042 @FETCH-881
   Scenario: User should be able to verify Metadata on Create Shelving Job From Verification modal
     When user navigates to Shelving Page
@@ -242,6 +256,7 @@ Feature: Shelving Page Functionality Validation
     And user selects From Verification Job option
     When user clicks to select a job from Verification Job List
     Then user verifies that the response includes all the metadata required
+
 
   @date_created
   Scenario: User should be able to verify Shelving job created date

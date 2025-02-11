@@ -66,6 +66,47 @@ Feature: Withdrawal Page Functionality Validation
 #    Then user verifies "Remove Item" option is displayed
 
 
+  @FETCH-893 @FETCH-826
+  Scenario: User should be able to create/complete Withdraw job
+    When user clicks Accession on side navigation menu
+    And user completes a new Non-Tray Accession Job
+    When user navigates to the Verification Page
+    And user navigates to the verification job
+    And user saves Verification Job number
+    Then user verifies item barcode
+    When user clicks Complete Job button
+    And user clicks Complete
+    Then user verifies "The Job has been completed." msg
+    When user clicks Shelving on side navigation menu
+    Then user completes a Shelving Job
+    When user navigates to the Withdrawal Page
+    When user clicks Create Withdraw Job
+    Then user verifies "A Withdraw Job has been successfully created." alert msg
+    When user clicks Add Items
+    Then user selects Manually Enter Barcode option
+    When user enters Item Barcode with status IN
+    Then user clicks Submit
+    And user verifies "Successfully added an item to the Withdraw Job!" alert msg
+    When user clicks three dot menu next to Job Number
+    Then user verifies three dots menu options are displayed
+    When user clicks three dots menu next to the Item Barcode in the table
+    Then user verifies "Remove Item" option is displayed
+    When user clicks Create Pick List job button
+    Then user clicks the alert link
+    When user switches on Toggle Barcode Scan
+    And user clicks Retrieve Pick List
+    Then user scans a Pick List Container
+    And user verifies the item is retrieved
+    When user clicks Complete Job
+    And user clicks Complete
+    Then user verifies "The Pick List Job has been completed." alert msg
+    When user navigates to the Withdrawal Page
+    And user navigates back to the Withdraw job
+    Then user verifies the item status has changed to OUT
+    When user clicks Withdraw Items button
+    Then user verifies the item status has changed to WITHDRAWN
+
+
   @date_created
   Scenario: User should be able to verify Withdraw job created date
     When user navigates to the Withdrawal Page
@@ -73,7 +114,6 @@ Feature: Withdrawal Page Functionality Validation
     Then user verifies "A Withdraw Job has been successfully created." alert msg
     And user verifies a Withdraw Job is created
     And user verifies date created
-
 
 
   Scenario: User should be able to add to Withdraw job Items with status "Out"

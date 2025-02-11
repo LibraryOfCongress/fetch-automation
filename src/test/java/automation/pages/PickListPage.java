@@ -47,4 +47,7 @@ public class PickListPage {
 
     @FindBy(xpath = "//td[@class='q-td text-left']")
     public WebElement containerBarcode;
+
+    @FindBy(css = "[role='menu']")
+    public WebElement revertItemToQueue;
 }

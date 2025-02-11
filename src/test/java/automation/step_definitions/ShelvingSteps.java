@@ -278,8 +278,8 @@ public class ShelvingSteps {
 
     @Then("user clicks Submit")
     public void user_clicks_submit() throws InterruptedException {
-        wait.hardWait(100);
-        helper.jSClick(shelving.submit);
+        WaitHelper.waitForClickability(shelving.submit,3000);
+        shelving.submit.click();
     }
 
     @When("user selects Yes")
@@ -329,15 +329,11 @@ public class ShelvingSteps {
     }
 
     @Then("user selects User from dropdown")
-    public void user_selects_user_from_dropdown() throws InterruptedException {
+    public void user_selects_user_from_dropdown() {
         WaitHelper.waitForClickability(shelving.assignedUserField, 3000);
         shelving.assignedUserField.click();
-        WaitHelper.waitForVisibility(shelving.allDropdownOptions.get(0),3000);
-        for (WebElement user : shelving.allDropdownOptions) {
-            if (user.getText().equals("Gregory Wolfe")) {
-                user.click();
-            }
-        }
+        WebElement element = driver.findElement(By.xpath("//*[.='Admin Istrator'] [@role='option']"));
+        element.click();
     }
 
     @Then("Save Edits button is clickable")
@@ -352,7 +348,8 @@ public class ShelvingSteps {
 
     @Then("user clicks Save Edits button")
     public void user_clicks_Save_Edits_button() {
-        Helper.clickWithJS(shelving.saveEdits);
+        WaitHelper.waitForClickability(shelving.saveEdits,3000);
+        shelving.saveEdits.click();
     }
 
     @When("user selects Direct To Shelve option")
@@ -468,7 +465,8 @@ public class ShelvingSteps {
 
     @When("user clicks Complete Job")
     public void user_clicks_complete_job() throws InterruptedException {
-        wait.hardWait(2000);
+//        wait.hardWait(2000);
+        WaitHelper.waitForVisibility(shelving.completeJob,3000);
         helper.jSClick(shelving.completeJob);
         wait.hardWait(2000);
     }
@@ -600,6 +598,11 @@ public class ShelvingSteps {
             assertTrue(jobNumber.contains("Job #"));
             assertTrue(nontrayItemsCount.contains("items"));
         }
+    }
+
+    @And("user scans Shelf")
+    public void user_scans_shelf() {
+        driver.findElement(By.tagName("body")).sendKeys("100103");
     }
 
 

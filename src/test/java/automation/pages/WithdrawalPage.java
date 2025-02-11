@@ -19,7 +19,7 @@ public class WithdrawalPage {
 
 
     @FindBy(css = ".q-table tbody tr")
-    public WebElement withdrawJob;
+    public List<WebElement> withdrawJobList;
 
     @FindBy(xpath = "//button[.='Create Withdraw Job']")
     public WebElement createWithdrawJob;
@@ -54,13 +54,25 @@ public class WithdrawalPage {
     @FindBy(xpath = "//*[.='Add Items']/../..")
     public WebElement addItemsBtn;
 
-    @FindBy(css = "[role='menuitem']")
-    public List<WebElement> dropdownOptions;
-
     @FindBy(xpath = "//div[.=' Scan Item(s) '][@role='menuitem']")
     public WebElement scanItemsOption;
 
+    @FindBy(xpath = "//div[.=' Manually Enter Barcode '][@role='menuitem']")
+    public WebElement manuallyEnterBarcodeOption;
+
     @FindBy(css = "[class='q-td text-left']:nth-child(4)")
     public WebElement itemBarcode1;
+
+    @FindBy(css = "[placeholder='Please Enter Barcode']")
+    public WebElement enterBarcodeField;
+
+    @FindBy(xpath = "//button[.='Create Pick List Job']")
+    public  WebElement createPickListJobFromWithdrawal;
+
+    @FindBy(css = "td[class='q-td text-left']")
+    public List<WebElement> withdrawJobColumnValues;
+
+    @FindBy(xpath = "(//button[.='Withdraw Items'])[2]")
+    public WebElement confirmWithdrawItems;
 
 }

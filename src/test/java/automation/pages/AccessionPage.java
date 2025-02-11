@@ -103,7 +103,8 @@ public class AccessionPage {
     @FindBy(css = "[aria-label='dismissAlert']")
     public WebElement cancelModal;
 
-    @FindBy(css = "button[class$='q-btn--no-uppercase btn-no-wrap text-body1 q-mr-sm-md']")
+//    @FindBy(css = "button[class$='q-btn--no-uppercase btn-no-wrap text-body1 q-mr-sm-md']")
+    @FindBy(css = "[class$='q-btn--no-uppercase btn-no-wrap text-body1 q-mr-sm-md'][type='button']")
     public WebElement enterBarcodeBtn;
 
     @FindBy(css = "[placeholder='Please Enter Barcode']")
@@ -115,7 +116,7 @@ public class AccessionPage {
     @FindBy(css = "button[class$='btn-dashed btn-no-wrap text-body1 full-width']")
     public WebElement addTrayModalBtn;
 
-    @FindBy(xpath = "(//span[.='submit']/..)[1]")
+    @FindBy(xpath = "//button[.='Submit']")
     public WebElement submitBtn;
 
     @FindBy(css = "[class='q-td text-left'] span")

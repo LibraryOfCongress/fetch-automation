@@ -112,7 +112,7 @@ Feature: Request Page Functionality Validation
     When user selects Building from dropdown
     And user clicks Submit
     Then user verifies options with checkboxes are displayed
-    When user selects Requests
+    When user selects Request
     And user clicks Create Pick List
     Then user verifies the Pick List is created
     When user clicks the alert link

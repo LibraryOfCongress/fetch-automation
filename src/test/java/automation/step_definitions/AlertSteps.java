@@ -14,7 +14,6 @@ import static org.junit.Assert.assertTrue;
 public class AlertSteps {
 
 
-    WebDriver driver = Driver.getInstance().getDriver();
     AlertPage alert = new AlertPage();
     Helper helper = new Helper();
     AccessionPage accession = new AccessionPage();
@@ -27,12 +26,14 @@ public class AlertSteps {
     }
 
     @When("user clicks on the Show Generic Alert button")
-    public void user_clicks_on_the_show_generic_alert_button()  {
-        helper.jSClick(alert.genericAlert);
+    public void user_clicks_on_the_show_generic_alert_button() throws InterruptedException {
+        helper.scrollIntoView(alert.genericAlert);
+        alert.genericAlert.click();
     }
 
     @Then("user verifies UI alert on top of the screen is visible")
     public void user_verifies_ui_alert_on_top_of_the_screen_is_visible() {
+        WaitHelper.waitForVisibility(alert.alertMsg, 3000);
         String msg = alert.alertMsg.getText();
         String expectedMsg = "This is a user generated error message\n" +
                 "close";
@@ -77,6 +78,15 @@ public class AlertSteps {
     public void user_verifies_alert_msg(String string) throws InterruptedException {
         WaitHelper.waitForVisibility(alert.toastMsg, 3000);
         assertEquals(string, alert.toastMsg.getText());
+        WaitHelper.waitForClickability(alert.closeToastMsg,3000);
+        alert.closeToastMsg.click();
+        wait.hardWait(2000);
+    }
+
+    @Then("user verifies alert msg contains {string}")
+    public void user_verifies_alert_msg_contains(String string) throws InterruptedException {
+        WaitHelper.waitForVisibility(alert.toastMsg, 3000);
+        assertTrue(alert.toastMsg.getText().contains(string));
         WaitHelper.waitForClickability(alert.closeToastMsg,3000);
         alert.closeToastMsg.click();
         wait.hardWait(2000);

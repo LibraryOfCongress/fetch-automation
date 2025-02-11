@@ -52,7 +52,7 @@ public class VerificationPage {
     @FindBy(css = "[placeholder='Please Enter Barcode']")
     public WebElement enterBarcodeField;
 
-    @FindBy(xpath = "(//span[.='submit']/..)[1]")
+    @FindBy(xpath = "//button[.='Submit']")
     public WebElement submitBtn;
 
     @FindBy(xpath = "//span[.='Complete Job'] /../..")

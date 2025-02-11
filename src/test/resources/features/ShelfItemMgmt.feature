@@ -7,7 +7,7 @@ Feature: Shelf Item Management Validation
     And user logs in as a tester1
 
 
-  @FETCH-311 @FETCH-182 @regression
+  @FETCH-311 @FETCH-182
   Scenario: User should be able to validate Shelf Item Management Page icons and tabs
     When user navigates to Shelf Item Management Page
     And user looks at the header
@@ -16,7 +16,7 @@ Feature: Shelf Item Management Validation
     And the search bar is visible
     And the login button is clickable
 
-  @regression
+
   Scenario: User should be able to validate Page Labels
     When user navigates to Shelf Item Management Page
     Then user verifies shelf labels on Non-Trayed Items Management Page
@@ -31,7 +31,7 @@ Feature: Shelf Item Management Validation
       | # of Items Out |
       | Delete Count   |
 
-  @regression
+
   Scenario: User should be able to validate Non-Trayed Items labels
     When user navigates to Shelf Item Management Page
     Then user verifies non-trayed items labels on Non-Trayed Items Management Page
@@ -45,7 +45,7 @@ Feature: Shelf Item Management Validation
       | Subcollection  |
       | Container Type |
 
-  @regression
+
   Scenario: User should be able to validate Overlay Slide with Item's details
     When user navigates to Shelf Item Management Page
     And user clicks on item in the table

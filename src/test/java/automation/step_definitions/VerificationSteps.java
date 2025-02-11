@@ -18,6 +18,7 @@ public class VerificationSteps {
     WebDriver driver = Driver.getInstance().getDriver();
     VerificationPage verification = new VerificationPage();
     AccessionPage accession = new AccessionPage();
+    AccessionSteps accessionSteps = new AccessionSteps();
     Helper helper = new Helper();
     WaitHelper wait = new WaitHelper();
     ThreadLocalRandom random = ThreadLocalRandom.current();
@@ -134,6 +135,7 @@ public class VerificationSteps {
         WaitHelper.waitForClickability(verification.enterBarcodeBtn, 3000);
         verification.enterBarcodeBtn.click();
         verification.enterBarcodeField.sendKeys(verification.scannedVerificationItems.get(0).getText());
+        WaitHelper.waitForClickability(verification.submitBtn,3000);
         verification.submitBtn.click();
         wait.hardWait(2000);
     }
@@ -246,7 +248,6 @@ public class VerificationSteps {
     @When("user scans Tray Barcode")
     public void user_scans_tray_barcode() throws InterruptedException {
         wait.hardWait(1000);
-//        driver.findElement(By.tagName("body")).sendKeys("BH700982");
         driver.findElement(By.tagName("body")).sendKeys(AccessionSteps.generatedTray);
     }
 
@@ -293,6 +294,18 @@ public class VerificationSteps {
         user_saves_verification_job_number();
         user_scans_tray_barcode();
         user_verifies_the_barcode_by_scanning();
+    }
+
+    @Then("user completes a Verification Job with a specific Owner and Size Class")
+    public void user_creates_a_verification_job_with_a_specific_owner_and_size_class() throws InterruptedException {
+        user_navigates_to_the_verification_page();
+        user_navigates_to_the_verification_job();
+        user_saves_verification_job_number();
+        wait.hardWait(1000);
+        driver.findElement(By.tagName("body")).sendKeys(AccessionSteps.generatedTrayForBHSizeClass);
+        user_verifies_the_barcode_by_scanning();
+        accessionSteps.user_clicks_complete_job_button();
+        accessionSteps.user_clicks_complete();
     }
 
     @When("user navigates to the verification job")

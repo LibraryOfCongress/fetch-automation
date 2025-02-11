@@ -114,7 +114,6 @@ public class ShelvingPage {
     @FindBy(xpath = "//td[.='Created']")
     public WebElement createdJob;
 
-//    @FindBy(css = "[class='q-field__input q-placeholder col']")
     @FindBy(css = "[aria-label='userSelect']")
     public WebElement assignedUserField;
 

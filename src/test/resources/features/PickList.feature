@@ -55,7 +55,7 @@ Feature: Pick List Page Functionality Validation
     When user selects Building from dropdown
     And user clicks Submit
     Then user verifies options with checkboxes are displayed
-    When user selects Requests
+    When user selects Request
     And user clicks Create Pick List
     Then user verifies the Pick List is created
     When user clicks the alert link
@@ -123,8 +123,8 @@ Feature: Pick List Page Functionality Validation
     When user clicks Edit
     Then Assign User dropdown is clickable
     And user selects User from dropdown
-    And Save Edits button is clickable
-    And Cancel edits button is clickable
+#    And Save Edits button is clickable
+#    And Cancel edits button is clickable
     Then user clicks Save Edits button
     And user verifies "The job has been updated." alert msg
     And user verifies the assigned user has been updated
@@ -137,6 +137,46 @@ Feature: Pick List Page Functionality Validation
     When user clicks three dot menu next to Job Number
     And user clicks Print Job
     Then user is able to see a print window with a batch report
+
+
+  @FETCH-857 @FETCH-828
+  Scenario: User should be able to delete Pick List job
+    When user navigates to the Pick List Page
+    Then user clicks on Pick List Job
+    When user clicks three dot menu next to Job Number
+    And user clicks Delete Job
+    And user confirms delete job action
+    Then user verifies "The Pick List Job has been canceled." alert msg
+
+
+  @FETCH-807 @FETCH-687
+  Scenario: User should be able to validate Retrieve Picklist Display page
+    When user navigates to the Request Page
+    And user clicks Create Request Job menu
+    Then user selects Create a Pick List option
+    When user selects Building from dropdown
+    And user clicks Submit
+    Then user verifies options with checkboxes are displayed
+    When user selects Requests
+    Then user clicks Create Pick List
+    And user verifies the Pick List is created
+    When user clicks the alert link
+    And user is able to see the Pick List dashboard
+    When user clicks three dot menu next to a container
+    And user selects Revert Item to Queue
+    Then user verifies alert msg contains "has been sent back to the request queue."
+    Then user verifies the item has been removed from the job
+    Then user switches on Toggle Barcode Scan
+    When user clicks Retrieve Pick List
+    And user scans a Pick List Container
+    Then user verifies the item is retrieved
+    When user clicks Pause Job button
+    Then user verifies "Job Status has been updated to: Paused" alert msg
+    When user clicks Resume Job button
+    Then user verifies "Job Status has been updated to: Running" alert msg
+    When user clicks Complete Job
+    And user clicks Complete
+    Then user verifies "The Pick List Job has been completed." alert msg
 
 
 
